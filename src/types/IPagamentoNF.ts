@@ -1,0 +1,34 @@
+export default interface IPagamentoNF {
+    id: number;
+    pagamentoId: number;
+    vendaId: number;
+    moeda: string;
+    meiopagamento: string;
+    tipopagamento: string;
+    valorcomprador: any;
+    valorbase: any;
+    taxas: any;
+    comissao: any;
+    datapagamento: string;
+    cupom: string;
+    statusvenda: string;
+    idproduto: number;
+    produto: string;
+    datavenda: string;
+    documentocliente: string;
+    clienteId: number;
+    nomesocial: string;
+    nomecomercial: string;
+    cpfcnpj: string;
+    email: string;
+    telefone: string;
+    pais: string;
+    cep: string;
+    uf: string;
+    cidade: string;
+    bairro: string;
+    logradouro: string;
+    complemento: string;
+    numero: string;
+    parcelas: number;
+}
