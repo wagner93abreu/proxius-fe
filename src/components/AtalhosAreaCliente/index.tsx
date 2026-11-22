@@ -60,14 +60,14 @@ export default function AtalhosAreaCliente({
         <Box
             sx={{
                 backgroundColor: "rgba(255,255,255,0.6)",
-                border: "1px solid rgba(85, 8, 29, 0.16)",
+                border: "1px solid rgba(20, 20, 20, 0.16)",
                 borderRadius: 2,
                 padding: 2,
-                color: "#55081d",
+                color: "#141414",
                 width: "95%",
             }}
         >
-            <Typography variant="h6" align="left" gutterBottom sx={{ color: "#55081d", marginBottom: 1 }}>
+            <Typography variant="h6" align="left" gutterBottom sx={{ color: "#141414", marginBottom: 1 }}>
                 Atalhos
             </Typography>
             <Stack direction="row" spacing={2} justifyContent="space-around" alignItems="center">
@@ -77,14 +77,14 @@ export default function AtalhosAreaCliente({
                         onClick={() => handleOpen("agendar")}
                         disabled={!canOpenAgendar}
                         sx={{
-                            color: "#55081d",
-                            border: "1px solid rgba(85, 8, 29, 0.4)",
+                            color: "#141414",
+                            border: "1px solid rgba(20, 20, 20, 0.4)",
                             borderRadius: "50%",
                         }}
                     >
                         <EventAvailableIcon />
                     </IconButton>
-                    <Typography variant="caption" color="#55081d" align="center">
+                    <Typography variant="caption" color="#141414" align="center">
                         Agendar
                     </Typography>
                 </Stack>
@@ -94,14 +94,14 @@ export default function AtalhosAreaCliente({
                         onClick={() => handleOpen("pastas")}
                         disabled={!canOpenPastas}
                         sx={{
-                            color: "#55081d",
-                            border: "1px solid rgba(85, 8, 29, 0.4)",
+                            color: "#141414",
+                            border: "1px solid rgba(20, 20, 20, 0.4)",
                             borderRadius: "50%",
                         }}
                     >
                         <FolderOpenIcon />
                     </IconButton>
-                    <Typography variant="caption" color="#55081d" align="center">
+                    <Typography variant="caption" color="#141414" align="center">
                         Pastas
                     </Typography>
                 </Stack>
@@ -111,14 +111,14 @@ export default function AtalhosAreaCliente({
                         onClick={() => handleOpen("comentarios")}
                         disabled={!canOpenComentarios}
                         sx={{
-                            color: "#55081d",
-                            border: "1px solid rgba(85, 8, 29, 0.4)",
+                            color: "#141414",
+                            border: "1px solid rgba(20, 20, 20, 0.4)",
                             borderRadius: "50%",
                         }}
                     >
                         <ChatBubbleOutlineIcon />
                     </IconButton>
-                    <Typography variant="caption" color="#55081d" align="center">
+                    <Typography variant="caption" color="#141414" align="center">
                         Comentarios
                     </Typography>
                 </Stack>
@@ -129,11 +129,11 @@ export default function AtalhosAreaCliente({
                 onClose={handleClose}
                 fullWidth
                 maxWidth="sm"
-                PaperProps={{ sx: { backgroundColor: "#f7efe4", color: "#55081d" } }}
+                PaperProps={{ sx: { backgroundColor: "#f5f5f5", color: "#141414" } }}
             >
                 <DialogTitle sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                     Agendar sessao
-                    <IconButton aria-label="Fechar" onClick={handleClose} sx={{ color: "#55081d" }}>
+                    <IconButton aria-label="Fechar" onClick={handleClose} sx={{ color: "#141414" }}>
                         <CloseIcon />
                     </IconButton>
                 </DialogTitle>
@@ -151,11 +151,11 @@ export default function AtalhosAreaCliente({
                 onClose={handleClose}
                 fullWidth
                 maxWidth="sm"
-                PaperProps={{ sx: { backgroundColor: "#f7efe4", color: "#55081d" } }}
+                PaperProps={{ sx: { backgroundColor: "#f5f5f5", color: "#141414" } }}
             >
                 <DialogTitle sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                     Pastas do cliente
-                    <IconButton aria-label="Fechar" onClick={handleClose} sx={{ color: "#55081d" }}>
+                    <IconButton aria-label="Fechar" onClick={handleClose} sx={{ color: "#141414" }}>
                         <CloseIcon />
                     </IconButton>
                 </DialogTitle>
@@ -169,7 +169,7 @@ export default function AtalhosAreaCliente({
                 onClose={handleClose}
                 fullWidth
                 maxWidth="sm"
-                PaperProps={{ sx: { backgroundColor: "#f7efe4", color: "#55081d" } }}
+                PaperProps={{ sx: { backgroundColor: "#f5f5f5", color: "#141414" } }}
             >
                 {/* <DialogTitle sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                     <IconButton aria-label="Fechar" onClick={handleClose} sx={{ color: "#cfcfcf" }}>

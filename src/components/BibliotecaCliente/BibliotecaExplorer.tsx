@@ -822,9 +822,9 @@ export default function BibliotecaExplorer({ cliforId, mode = "consulta" }: Bibl
     return (
         <Box sx={{
             mt: 2, p: adminView ? { xs: 2, sm: 3 } : { xs: 1, sm: 2 },
-            border: "1px solid rgba(85, 8, 29, 0.16)", borderRadius: adminView ? "20px" : 2,
+            border: "1px solid rgba(20, 20, 20, 0.16)", borderRadius: adminView ? "20px" : 2,
             ...(adminView && {
-                bgcolor: "rgba(255,255,255,0.72)", boxShadow: "0 16px 48px rgba(85, 8, 29, 0.06)",
+                bgcolor: "rgba(255,255,255,0.72)", boxShadow: "0 16px 48px rgba(20, 20, 20, 0.06)",
                 "& .MuiTypography-root, & .MuiButton-root": { overflowWrap: "anywhere" },
             }),
         }}>
@@ -833,10 +833,10 @@ export default function BibliotecaExplorer({ cliforId, mode = "consulta" }: Bibl
                 <Box>
                     <Stack direction="row" alignItems="center" spacing={1.5}>
                         <Typography variant="h6" component={adminView ? "h2" : "h6"}
-                            sx={{ color: "#55081d" }}>Bibliotecas</Typography>
+                            sx={{ color: "#141414" }}>Bibliotecas</Typography>
                         {adminView && !loading && userRole === "ADMIN" && (
                             <Chip label={`${libraries.length} ${libraries.length === 1 ? "biblioteca" : "bibliotecas"}`}
-                                size="small" sx={{ bgcolor: "rgba(85, 8, 29, 0.06)", color: "primary.main" }} />
+                                size="small" sx={{ bgcolor: "rgba(20, 20, 20, 0.06)", color: "primary.main" }} />
                         )}
                     </Stack>
                     {adminView && (
@@ -922,7 +922,7 @@ export default function BibliotecaExplorer({ cliforId, mode = "consulta" }: Bibl
                                 <Card key={library.id} variant="outlined" sx={adminView ? {
                                     borderColor: "divider",
                                     transition: "border-color 160ms ease, box-shadow 160ms ease",
-                                    "&:hover": { borderColor: "primary.main", boxShadow: "0 8px 24px rgba(85, 8, 29, 0.08)" },
+                                    "&:hover": { borderColor: "primary.main", boxShadow: "0 8px 24px rgba(20, 20, 20, 0.08)" },
                                     "@media (prefers-reduced-motion: reduce)": { transition: "none" },
                                 } : undefined}>
                                     <CardActionArea
@@ -940,7 +940,7 @@ export default function BibliotecaExplorer({ cliforId, mode = "consulta" }: Bibl
                                         }}>
                                             {adminView ? (
                                                 <Box sx={{ display: "grid", placeItems: "center", width: 48, height: 48,
-                                                    bgcolor: "#f3e9dd", color: "primary.main", borderRadius: "12px" }}>
+                                                    bgcolor: "#eeeeee", color: "primary.main", borderRadius: "12px" }}>
                                                     <FolderOutlinedIcon fontSize="large" aria-hidden="true" />
                                                 </Box>
                                             ) : <FolderOutlinedIcon color="primary" fontSize="large" aria-hidden="true" />}
@@ -970,7 +970,7 @@ export default function BibliotecaExplorer({ cliforId, mode = "consulta" }: Bibl
                                 aria-label={adminView ? "Navegação da biblioteca" : undefined}
                                 direction="row" flexWrap="wrap" alignItems="center" gap={1} sx={{
                                     mb: 2, ...(adminView && {
-                                        p: 1, bgcolor: "rgba(85, 8, 29, 0.04)", borderRadius: 2,
+                                        p: 1, bgcolor: "rgba(20, 20, 20, 0.04)", borderRadius: 2,
                                         "& [aria-current]": { fontWeight: 600, px: 1 },
                                     }),
                                 }}>
@@ -1047,7 +1047,7 @@ export default function BibliotecaExplorer({ cliforId, mode = "consulta" }: Bibl
                                     {!openFolder && folders.map((folder) => (
                                         <Card key={folder.id} variant="outlined" sx={isStaff ? {
                                             display: "flex", alignItems: "center", pr: 1,
-                                            ...(adminView && { bgcolor: "#faf5ee" }),
+                                            ...(adminView && { bgcolor: "#f7f7f7" }),
                                         } : undefined}>
                                             <CardActionArea
                                                 aria-label={`Abrir pasta ${folder.nome}`}
@@ -1056,7 +1056,7 @@ export default function BibliotecaExplorer({ cliforId, mode = "consulta" }: Bibl
                                             >
                                                 <CardContent sx={{
                                                     display: "flex", alignItems: "center", gap: 1.5, py: adminView ? 1.5 : 1,
-                                                    ...(adminView && { bgcolor: "#faf5ee" }),
+                                                    ...(adminView && { bgcolor: "#f7f7f7" }),
                                                 }}>
                                                     <FolderOutlinedIcon color="primary" aria-hidden="true" />
                                                     <Typography sx={{ overflowWrap: "anywhere", minWidth: 0 }}>{folder.nome}</Typography>

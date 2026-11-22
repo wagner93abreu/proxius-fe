@@ -24,7 +24,7 @@ const BoxCustomizado = styled(Box)`
     margin-top: 1rem;
     position: relative;
     width: min(700px, 92vw);
-    background-color: #fffdfa;
+    background-color: #ffffff;
     border: none;
     border-radius: 12px;
     padding: clamp(1.25rem, 3vw, 2.5rem);
@@ -68,7 +68,7 @@ img{
 }    
 `
 const Campo = styled.input`
-    color: #35252b;
+    color: #242424;
     font-size: 15px;
     background:rgba(240, 240, 240, 0.08);
     margin-top: 3px;
@@ -85,17 +85,17 @@ const Campo = styled.input`
 const BotaoCustom = styled.button`
   font-size: 14px;
   font-weight: 500;
-  background-color: #f7f1e9;
-  color: #55081d;
+  background-color: #f5f5f5;
+  color: #141414;
   padding: 10px 16px;
-  border: 1px solid rgba(85, 8, 29, 0.2);
+  border: 1px solid rgba(20, 20, 20, 0.2);
   border-radius: 12px;
   cursor: pointer;
   box-shadow: none;
     width: 100%;
     max-width: 200px;
-    &:hover { background-color: #efe5d8; }
-    &:focus-visible { outline: 3px solid #b78c9a; outline-offset: 3px; }
+    &:hover { background-color: #f6f6f6; }
+    &:focus-visible { outline: 3px solid #858585; outline-offset: 3px; }
 `
 
 const Overlay = styled.div`

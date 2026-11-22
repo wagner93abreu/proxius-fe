@@ -28,7 +28,7 @@ background-image: ${props => props.imagem ? `url(${props.imagem})` : 'none'}
 const TituloEstilizado = styled.h2`
     color: var(--cinza-claro);
     ${({ theme }) => theme.palette?.mode === "light" && css`
-        color: #55081d;
+        color: #141414;
         font-size: clamp(24px, 3vw, 32px);
         letter-spacing: -0.025em;
         margin: 0 0 24px;
@@ -39,7 +39,7 @@ const ContainerEstilizado = styled.div`
     display: flex;
     align-items: center;
     gap: 12px;
-    color: ${({ theme }) => theme.palette?.mode === "light" ? "#55081d" : "inherit"};
+    color: ${({ theme }) => theme.palette?.mode === "light" ? "#141414" : "inherit"};
     > svg { margin-bottom: 24px; }
 `
 

@@ -66,7 +66,7 @@ const Rotulo = styled.label`
     font-weight: 700;
     font-size: 16px;
     line-height: 19px;
-    color: #35252b;
+    color: #242424;
 `
 const ContainerInput = styled.div`
     width: 100%
@@ -74,7 +74,7 @@ const ContainerInput = styled.div`
 
 const SpanErro = styled.span`
     float: left;
-    color: #b3261e;
+    color: #303030;
     font-size: 14px;
     margin-top: -25px;
 `

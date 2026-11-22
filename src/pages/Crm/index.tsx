@@ -17,7 +17,7 @@ import { useSearchParams } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import lightTheme from '../../styles/lightTheme';
-import wallpaper from '../Login/wallpaper.png';
+import LogoProxiUs from '../../components/LogoProxiUs';
 import { mostrarMensagem } from "../../stores/mensagem.store";
 
 interface SearchResult {
@@ -33,9 +33,9 @@ interface AtendenteOption {
 
 
 const CabecalhoEstilizado = styled.header`
-    background-color: rgba(255, 253, 250, 0.94);
-    border-bottom: 1px solid rgba(85, 8, 29, 0.12);
-    box-shadow: 0 4px 20px rgba(85, 8, 29, 0.04);
+    background-color: rgba(255, 255, 255, 0.94);
+    border-bottom: 1px solid rgba(20, 20, 20, 0.12);
+    box-shadow: 0 4px 20px rgba(20, 20, 20, 0.04);
     backdrop-filter: blur(12px);
     display:flex;
     align-items: center;
@@ -62,8 +62,8 @@ const LinkEstilizado = styled.a`
  width: 40px;
  height: 40px;
  border-radius: 12px;
- background: #efe5d8;
- color: #55081d;
+ background: #f6f6f6;
+ color: #141414;
  font-weight: 700;
  margin: 0px;
  margin-left: 5px;
@@ -80,10 +80,10 @@ const InputCustomizado = styled.input`
   border: none;
   background: none;
   outline: none;
-  color: #35252b;
+  color: #242424;
   min-width: 0;
   font: inherit;
-  &::placeholder { color: #75656b; }
+  &::placeholder { color: #666666; }
 `
 const SpanCustomizado = styled.button`
   display: grid;
@@ -91,15 +91,12 @@ const SpanCustomizado = styled.button`
   padding: 0;
   border: none;
   background: transparent;
-  color: #55081d;
+  color: #141414;
   width: 28px;
   height: 28px;
   flex-shrink: 0;
   cursor: pointer;
-  &:focus-visible { outline: 2px solid #55081d; border-radius: 6px; }
-`
-const Logo = styled.img`
-  width: 23px;
+  &:focus-visible { outline: 2px solid #141414; border-radius: 6px; }
 `
 const Kanban = styled.div`
   display: flex;
@@ -115,8 +112,8 @@ const Kanban = styled.div`
   height: auto;
   overflow-x: auto;
   overflow-y: auto;
-  background: linear-gradient(180deg, rgba(239, 229, 216, 0.85) 0%, rgba(226, 216, 204, 0.85) 100%), url(${wallpaper}) center / cover;
-  scrollbar-color: rgba(85, 8, 29, 0.25) transparent;
+  background: #f6f6f6;
+  scrollbar-color: rgba(20, 20, 20, 0.25) transparent;
   @media (max-width: 768px) { padding: 12px; }
 `
 const LoadingOverlay = styled.div`
@@ -125,16 +122,16 @@ const LoadingOverlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255, 253, 250, 0.7);
+  background: rgba(255, 255, 255, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
   backdrop-filter: blur(2px);
-  color: #55081d;
+  color: #141414;
 `;
 const Titulo = styled.h2`
-  color: #55081d;
+  color: #141414;
   font-weight: 700;
   text-align: left;
   font-size: 22px;
@@ -156,12 +153,12 @@ const Header = styled.div`
 const ContainerPesquisa = styled.div`
   display: flex;
   align-items: center;
-  background-color: #fffdfa;
-  border: 1px solid rgba(85, 8, 29, 0.16);
+  background-color: #ffffff;
+  border: 1px solid rgba(20, 20, 20, 0.16);
   border-radius: 12px;
   padding: 6px 12px;
   gap: 8px;
-  &:focus-within { border-color: #55081d; box-shadow: 0 0 0 3px rgba(85, 8, 29, 0.08); }
+  &:focus-within { border-color: #141414; box-shadow: 0 0 0 3px rgba(20, 20, 20, 0.08); }
 `
 const SearchWrapper = styled.div`
   position: relative;
@@ -188,10 +185,10 @@ const SearchResults = styled.ul`
   list-style: none;
   margin: 0;
   padding: 8px 0;
-  background: #fffdfa;
+  background: #ffffff;
   border-radius: 14px;
-  border: 1px solid rgba(85, 8, 29, 0.12);
-  box-shadow: 0 12px 32px rgba(85, 8, 29, 0.14);
+  border: 1px solid rgba(20, 20, 20, 0.12);
+  box-shadow: 0 12px 32px rgba(20, 20, 20, 0.14);
   max-height: 320px;
   overflow-y: auto;
   z-index: 3;
@@ -210,7 +207,7 @@ const SearchResultItem = styled.li`
   justify-content: space-between;
   gap: 12px;
   padding: 10px 14px;
-  border-bottom: 1px solid rgba(85, 8, 29, 0.08);
+  border-bottom: 1px solid rgba(20, 20, 20, 0.08);
   cursor: pointer;
 
   &:last-child {
@@ -218,19 +215,19 @@ const SearchResultItem = styled.li`
   }
 
   &:hover {
-    background: rgba(85, 8, 29, 0.05);
+    background: rgba(20, 20, 20, 0.05);
   }
 `
 const ResultName = styled.span`
-  color: #35252b;
+  color: #242424;
   font-weight: 700;
 `
 const ResultStage = styled.span`
-  color: #75656b;
+  color: #666666;
   font-size: 0.9rem;
 `
 const SearchStatus = styled.span`
-  color: #75656b;
+  color: #666666;
   font-size: 0.9rem;
   padding: 10px 14px;
   display: block;
@@ -612,7 +609,7 @@ export default function Crm(){
           <Container>
             <Header>
             <div onClick={showSideBar}>
-                <LinkEstilizado href="#" aria-label="Abrir menu"><Logo src={`${process.env.PUBLIC_URL}/logo_vinho_192.png`} alt="logo RH" /></LinkEstilizado>
+                <LinkEstilizado href="#" aria-label="Abrir menu"><LogoProxiUs /></LinkEstilizado>
                 {sideBar && <Sidebar active={sideBar}  setActive={setSideBar} />} 
             </div>
               <Titulo>Gestão de {capitalizeFirstLetter(selectedPanel)}</Titulo>

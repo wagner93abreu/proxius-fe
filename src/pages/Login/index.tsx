@@ -9,6 +9,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import AlertPortal from "../../components/AlertPortal";
 import axios from "axios";
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Typography } from "@mui/material";
+import LogoProxiUs from "../../components/LogoProxiUs";
 
 const Card = styled.div`
   width: 100%;
@@ -18,16 +19,14 @@ const Card = styled.div`
   flex-direction: column;
   align-items: center;
   background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(85, 8, 29, 0.14);
+  border: 1px solid rgba(20, 20, 20, 0.14);
   border-radius: 24px;
-  box-shadow: 0 24px 60px rgba(85, 8, 29, 0.12);
+  box-shadow: 0 24px 60px rgba(20, 20, 20, 0.12);
   padding: 40px 32px;
 `;
 
-const Imagem = styled.img`
-  width: 64px;
-  height: 64px;
-  object-fit: contain;
+const Imagem = styled(LogoProxiUs)`
+  font-size: 64px;
   margin-bottom: 0.5em;
 `;
 
@@ -35,13 +34,13 @@ const Titulo = styled.h2`
   font-weight: 700;
   font-size: 24px;
   line-height: 28px;
-  color: #55081d;
+  color: #141414;
   margin: 0;
 `;
 
 const Subtitulo = styled.p`
   font-size: 14px;
-  color: rgba(85, 8, 29, 0.68);
+  color: rgba(20, 20, 20, 0.68);
   margin: 0.4em 0 1.5em;
   text-align: center;
 `;
@@ -53,21 +52,21 @@ const Formulario = styled.form`
   align-items: center;
 
   label {
-    color: #55081d;
+    color: #141414;
   }
 `;
 
 const BotaoCustomizado = styled(Botao)`
   width: 100%;
   margin-right: 0;
-  background-color: #55081d;
+  background-color: #141414;
 
   &:hover {
-    background-color: #6f102a;
+    background-color: #383838;
   }
 
   &:active {
-    border-color: #55081d;
+    border-color: #141414;
   }
 `;
 
@@ -79,7 +78,7 @@ const LinkEsqueciSenha = styled.button`
   padding: 0;
   font-size: 13px;
   font-weight: 700;
-  color: #55081d;
+  color: #141414;
   text-decoration: underline;
   cursor: pointer;
 `;
@@ -89,18 +88,18 @@ const RotuloDialog = styled.label`
   font-weight: 700;
   font-size: 14px;
   line-height: 18px;
-  color: #55081d;
+  color: #141414;
 `;
 
 const CampoDialog = styled.input`
-  color: #55081d;
+  color: #141414;
   font-size: 15px;
   background: rgba(255, 255, 255, 0.78);
   margin-top: 6px;
   box-sizing: border-box;
-  box-shadow: 2px 2px 6px rgba(85, 8, 29, 0.1);
+  box-shadow: 2px 2px 6px rgba(20, 20, 20, 0.1);
   border-radius: 3px;
-  border: 1px solid rgba(85, 8, 29, 0.16);
+  border: 1px solid rgba(20, 20, 20, 0.16);
   width: 100%;
   padding: 10px;
 `;
@@ -232,8 +231,8 @@ export default function Login() {
       <AlertPortal show={showError} message={errorMessage} severity="error" onClose={() => setShowError(false)} />
       <AlertPortal show={showSuccess} message={successMessage} severity="success" onClose={() => setShowSuccess(false)} />
       <Card>
-        <Imagem src={`${process.env.PUBLIC_URL}/logo_vinho.png`} alt="Logo do RH sem Comp" />
-        <Titulo>RH Integrado</Titulo>
+        <Imagem />
+        <Titulo>ProxiUs</Titulo>
         <Subtitulo>Acesse sua conta para continuar</Subtitulo>
         <Formulario onSubmit={handleLogin}>
             <CampoDigitacao required={true} tipo="login" label="Login" valor={login} placeholder="login" onChange={setLogin} />
@@ -249,12 +248,12 @@ export default function Login() {
         onClose={handleFecharEsqueciSenha}
         fullWidth
         maxWidth="xs"
-        PaperProps={{ sx: { backgroundColor: "#f7efe4", color: "#55081d", borderRadius: "8px" } }}
+        PaperProps={{ sx: { backgroundColor: "#f5f5f5", color: "#141414", borderRadius: "8px" } }}
       >
-        <DialogTitle sx={{ color: "#55081d", fontWeight: 700 }}>Recuperar senha</DialogTitle>
+        <DialogTitle sx={{ color: "#141414", fontWeight: 700 }}>Recuperar senha</DialogTitle>
         <form onSubmit={handleSolicitarRecuperacao}>
           <DialogContent>
-            <Typography variant="body2" sx={{ color: "rgba(85, 8, 29, 0.75)", mb: 2 }}>
+            <Typography variant="body2" sx={{ color: "rgba(20, 20, 20, 0.75)", mb: 2 }}>
               Informe o e-mail cadastrado. Se ele existir em nossa base, enviaremos um link para redefinição de senha.
             </Typography>
             <RotuloDialog>Email</RotuloDialog>
@@ -267,12 +266,12 @@ export default function Login() {
             />
           </DialogContent>
           <DialogActions sx={{ px: 3, pb: 2 }}>
-            <Button onClick={handleFecharEsqueciSenha} sx={{ color: "#55081d" }}>Cancelar</Button>
+            <Button onClick={handleFecharEsqueciSenha} sx={{ color: "#141414" }}>Cancelar</Button>
             <Button
               type="submit"
               variant="outlined"
               disabled={enviandoRecuperacao}
-              sx={{ borderColor: "#55081d", color: "#55081d", fontWeight: 700, "&:hover": { borderColor: "#6f102a", color: "#6f102a" } }}
+              sx={{ borderColor: "#141414", color: "#141414", fontWeight: 700, "&:hover": { borderColor: "#383838", color: "#383838" } }}
             >
               {enviandoRecuperacao ? "Enviando..." : "Enviar link"}
             </Button>

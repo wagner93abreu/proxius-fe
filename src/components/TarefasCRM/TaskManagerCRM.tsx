@@ -350,26 +350,26 @@ export default function TaskManagerCRM({
     const descriptionColSpan = showDescriptionColumn ? 6 : 5;
     const dateTimePickerStyles = {
         "& .MuiPaper-root": {
-            backgroundColor: "#fffdfa",
-            color: "#35252b",
+            backgroundColor: "#ffffff",
+            color: "#242424",
         },
         "& .MuiPickersLayout-root": {
-            backgroundColor: "#fffdfa",
-            color: "#35252b",
+            backgroundColor: "#ffffff",
+            color: "#242424",
         },
     };
 
     return (
         <Box
             sx={{
-                backgroundColor: "#fffdfa",
+                backgroundColor: "#ffffff",
                 borderRadius: "14px",
-                border: "1px solid rgba(85, 8, 29, 0.1)",
+                border: "1px solid rgba(20, 20, 20, 0.1)",
                 padding: "12px",
             }}
         >
             <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
-                <Typography variant="h6" align="left" gutterBottom style={{ color: "#35252b", margin: 0 }}>
+                <Typography variant="h6" align="left" gutterBottom style={{ color: "#242424", margin: 0 }}>
                     {title}
                 </Typography>
                 <Button
@@ -377,13 +377,13 @@ export default function TaskManagerCRM({
                     disabled={loading}
                     sx={{
                         backgroundColor: "transparent",
-                        border: "2px solid #55081d",
-                        color: "#55081d",
+                        border: "2px solid #141414",
+                        color: "#141414",
                         boxShadow: "none",
                         padding: "5px 16px",
                         fontWeight: 700,
                         textTransform: "none",
-                        "&:hover": { backgroundColor: "rgba(85, 8, 29, 0.06)" },
+                        "&:hover": { backgroundColor: "rgba(20, 20, 20, 0.06)" },
                     }}
                 >
                     {addButtonLabel}
@@ -394,30 +394,30 @@ export default function TaskManagerCRM({
                 <Table
                     size="small"
                     sx={{
-                        backgroundColor: "rgba(0, 0, 26, 0)",
-                        color: "#35252b",
+                        backgroundColor: "rgba(0, 0, 0, 0)",
+                        color: "#242424",
                         borderCollapse: "collapse",
                         tableLayout: "fixed",
                         width: "100%",
                         minWidth: showDescriptionColumn ? "980px" : "760px",
-                        "& td, & th": { borderBottom: "1px solid rgba(85, 8, 29, 0.16)", fontSize: "13px" },
-                        "& th": { borderBottom: "1px solid rgba(85, 8, 29, 0.16)", fontSize: "13px" },
+                        "& td, & th": { borderBottom: "1px solid rgba(20, 20, 20, 0.16)", fontSize: "13px" },
+                        "& th": { borderBottom: "1px solid rgba(20, 20, 20, 0.16)", fontSize: "13px" },
                     }}
                 >
                     <TableHead>
                         <TableRow>
-                            <TableCell align="center" style={{ color: "#35252b", width: "40px" }}>
+                            <TableCell align="center" style={{ color: "#242424", width: "40px" }}>
                                 Feito
                             </TableCell>
-                            {showDescriptionColumn && <TableCell style={{ color: "#35252b", width: "45%" }}>Descrição</TableCell>}
-                            <TableCell style={{ color: "#35252b", width: showDescriptionColumn ? "18%" : "32%" }}>Atendente</TableCell>
-                            <TableCell align="center" style={{ color: "#35252b", width: "14%", minWidth: "125px" }}>
+                            {showDescriptionColumn && <TableCell style={{ color: "#242424", width: "45%" }}>Descrição</TableCell>}
+                            <TableCell style={{ color: "#242424", width: showDescriptionColumn ? "18%" : "32%" }}>Atendente</TableCell>
+                            <TableCell align="center" style={{ color: "#242424", width: "14%", minWidth: "125px" }}>
                                 Prevista
                             </TableCell>
-                            <TableCell align="center" style={{ color: "#35252b", width: "14%", minWidth: "125px" }}>
+                            <TableCell align="center" style={{ color: "#242424", width: "14%", minWidth: "125px" }}>
                                 Realizada
                             </TableCell>
-                            <TableCell align="center" style={{ color: "#35252b", width: "90px" }}>
+                            <TableCell align="center" style={{ color: "#242424", width: "90px" }}>
                                 Ações
                             </TableCell>
                         </TableRow>
@@ -425,16 +425,16 @@ export default function TaskManagerCRM({
                     <TableBody>
                         {tasks.length === 0 ? (
                             <TableRow>
-                                <TableCell colSpan={descriptionColSpan} sx={{ color: "#75656b" }}>
+                                <TableCell colSpan={descriptionColSpan} sx={{ color: "#666666" }}>
                                     {loading ? "Carregando..." : emptyStateText}
                                 </TableCell>
                             </TableRow>
                         ) : (
                             tasks.map((task) => (
-                                <TableRow key={task.id || task.localId} sx={{ "& td": { color: "#35252b" } }}>
+                                <TableRow key={task.id || task.localId} sx={{ "& td": { color: "#242424" } }}>
                                     <TableCell align="center">
                                         <Checkbox
-                                            sx={{ color: "#55081d", "&.Mui-checked": { color: "#55081d" } }}
+                                            sx={{ color: "#141414", "&.Mui-checked": { color: "#141414" } }}
                                             checked={!!task.done}
                                             onChange={(e) => handleRequestDoneToggle(task, e.target.checked)}
                                         />
@@ -443,14 +443,14 @@ export default function TaskManagerCRM({
                                         <TableCell>
                                             <Typography
                                                 variant="body2"
-                                                sx={{ color: "#35252b", whiteSpace: "pre-wrap", wordBreak: "break-word", fontSize: "13px" }}
+                                                sx={{ color: "#242424", whiteSpace: "pre-wrap", wordBreak: "break-word", fontSize: "13px" }}
                                             >
                                                 {task.description || ""}
                                             </Typography>
                                         </TableCell>
                                     )}
                                     <TableCell>
-                                        <Typography variant="body2" sx={{ color: "#35252b", fontSize: "13px" }}>
+                                        <Typography variant="body2" sx={{ color: "#242424", fontSize: "13px" }}>
                                             {getResponsavelNome(task)}
                                         </Typography>
                                     </TableCell>
@@ -460,7 +460,7 @@ export default function TaskManagerCRM({
                                             variant="outlined"
                                             size="small"
                                             value={formatDateDisplay(task.estimatedDate)}
-                                            InputProps={{ readOnly: true, style: { color: "#35252b", fontSize: "13px", textAlign: "center" } }}
+                                            InputProps={{ readOnly: true, style: { color: "#242424", fontSize: "13px", textAlign: "center" } }}
                                             sx={{
                                                 minWidth: "125px",
                                                 "& .MuiOutlinedInput-notchedOutline": { border: "none" },
@@ -475,7 +475,7 @@ export default function TaskManagerCRM({
                                             variant="outlined"
                                             size="small"
                                             value={formatDateDisplay(task.conclusionDate)}
-                                            InputProps={{ readOnly: true, style: { color: "#35252b", fontSize: "13px", textAlign: "center" } }}
+                                            InputProps={{ readOnly: true, style: { color: "#242424", fontSize: "13px", textAlign: "center" } }}
                                             sx={{
                                                 minWidth: "125px",
                                                 "& .MuiOutlinedInput-notchedOutline": { border: "none" },
@@ -486,10 +486,10 @@ export default function TaskManagerCRM({
                                     </TableCell>
                                     <TableCell align="center">
                                         <Box display="flex" justifyContent="center" gap={1}>
-                                            <IconButton size="small" aria-label="Editar tarefa" onClick={() => openEditTaskModal(task)} sx={{ color: "#75656b" }}>
+                                            <IconButton size="small" aria-label="Editar tarefa" onClick={() => openEditTaskModal(task)} sx={{ color: "#666666" }}>
                                                 ✎
                                             </IconButton>
-                                            <IconButton size="small" aria-label="Excluir tarefa" onClick={() => handleRequestDeleteTask(task)} sx={{ color: "#75656b" }}>
+                                            <IconButton size="small" aria-label="Excluir tarefa" onClick={() => handleRequestDeleteTask(task)} sx={{ color: "#666666" }}>
                                                 x
                                             </IconButton>
                                         </Box>
@@ -506,13 +506,13 @@ export default function TaskManagerCRM({
                 onClose={closeTaskModal}
                 fullWidth
                 maxWidth="sm"
-                PaperProps={{ sx: { backgroundColor: "#fffdfa", color: "#35252b" } }}
+                PaperProps={{ sx: { backgroundColor: "#ffffff", color: "#242424" } }}
             >
-                <DialogTitle sx={{ color: "#35252b" }}>{taskModalMode === "add" ? resolvedAddDialogTitle : resolvedEditDialogTitle}</DialogTitle>
+                <DialogTitle sx={{ color: "#242424" }}>{taskModalMode === "add" ? resolvedAddDialogTitle : resolvedEditDialogTitle}</DialogTitle>
                 <DialogContent sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
                     {showDescriptionField && (
                         <Box>
-                            <Typography variant="body2" sx={{ color: "#55081d", mb: 0.5 }}>
+                            <Typography variant="body2" sx={{ color: "#141414", mb: 0.5 }}>
                                 Descrição
                             </Typography>
                             <TextField
@@ -521,13 +521,13 @@ export default function TaskManagerCRM({
                                 onChange={(e) => setTaskDescription(e.target.value)}
                                 multiline
                                 minRows={3}
-                                InputProps={{ sx: { color: "#35252b" } }}
+                                InputProps={{ sx: { color: "#242424" } }}
                                 sx={{ background: "rgba(255,255,255,0.06)", mt: 0.5 }}
                             />
                         </Box>
                     )}
                     <Box>
-                        <Typography variant="body2" sx={{ color: "#55081d", mb: 0.5 }}>
+                        <Typography variant="body2" sx={{ color: "#141414", mb: 0.5 }}>
                             Selecionar atendente
                         </Typography>
                         <Select
@@ -542,7 +542,7 @@ export default function TaskManagerCRM({
                         />
                     </Box>
                     <Box>
-                        <Typography variant="body2" sx={{ color: "#55081d", mb: 0.5 }}>
+                        <Typography variant="body2" sx={{ color: "#141414", mb: 0.5 }}>
                             Data prevista
                         </Typography>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -556,14 +556,14 @@ export default function TaskManagerCRM({
                                     },
                                     desktopPaper: {
                                         sx: {
-                                            backgroundColor: "#fffdfa",
-                                            color: "#35252b",
+                                            backgroundColor: "#ffffff",
+                                            color: "#242424",
                                         },
                                     },
                                     mobilePaper: {
                                         sx: {
-                                            backgroundColor: "#fffdfa",
-                                            color: "#35252b",
+                                            backgroundColor: "#ffffff",
+                                            color: "#242424",
                                             ...dateTimePickerStyles,
                                         },
                                     },
@@ -573,8 +573,8 @@ export default function TaskManagerCRM({
                                         sx: {
                                             background: "rgba(255,255,255,0.06)",
                                             mt: 0.5,
-                                            input: { color: "#35252b" },
-                                            label: { color: "#75656b" },
+                                            input: { color: "#242424" },
+                                            label: { color: "#666666" },
                                         },
                                     },
                                 }}
@@ -583,14 +583,14 @@ export default function TaskManagerCRM({
                     </Box>
                 </DialogContent>
                 <DialogActions sx={{ display: "flex", gap: 1 }}>
-                    <Button onClick={closeTaskModal} sx={{ color: "#35252b" }}>
+                    <Button onClick={closeTaskModal} sx={{ color: "#242424" }}>
                         Cancelar
                     </Button>
                     <Button
                         onClick={handleSaveTask}
                         color="primary"
                         disabled={isSavingTask || (!fixedDescription && taskDescription.trim().length < 3) || !taskResponsavel}
-                        sx={{ fontWeight: 700, color: "#55081d" }}
+                        sx={{ fontWeight: 700, color: "#141414" }}
                     >
                         {isSavingTask ? "Salvando..." : "Salvar"}
                     </Button>
@@ -602,19 +602,19 @@ export default function TaskManagerCRM({
                 onClose={handleCancelDoneToggle}
                 fullWidth
                 maxWidth="xs"
-                PaperProps={{ sx: { backgroundColor: "#fffdfa", color: "#35252b" } }}
+                PaperProps={{ sx: { backgroundColor: "#ffffff", color: "#242424" } }}
             >
-                <DialogTitle sx={{ color: "#35252b" }}>Confirmar</DialogTitle>
+                <DialogTitle sx={{ color: "#242424" }}>Confirmar</DialogTitle>
                 <DialogContent>
                     <Typography color="text.primary">
                         {confirmChecked ? "Deseja marcar a tarefa como finalizada?" : "Deseja retornar a tarefa para pendente?"}
                     </Typography>
                 </DialogContent>
                 <DialogActions sx={{ display: "flex", gap: 1 }}>
-                    <Button onClick={handleCancelDoneToggle} sx={{ color: "#35252b" }}>
+                    <Button onClick={handleCancelDoneToggle} sx={{ color: "#242424" }}>
                         Cancelar
                     </Button>
-                    <Button onClick={handleConfirmDoneToggle} color="primary" sx={{ fontWeight: 700, color: "#55081d" }}>
+                    <Button onClick={handleConfirmDoneToggle} color="primary" sx={{ fontWeight: 700, color: "#141414" }}>
                         Confirmar
                     </Button>
                 </DialogActions>
@@ -625,17 +625,17 @@ export default function TaskManagerCRM({
                 onClose={() => setDeleteTarget(null)}
                 fullWidth
                 maxWidth="xs"
-                PaperProps={{ sx: { backgroundColor: "#fffdfa", color: "#35252b" } }}
+                PaperProps={{ sx: { backgroundColor: "#ffffff", color: "#242424" } }}
             >
-                <DialogTitle sx={{ color: "#35252b" }}>Confirmar exclusão</DialogTitle>
+                <DialogTitle sx={{ color: "#242424" }}>Confirmar exclusão</DialogTitle>
                 <DialogContent>
                     <Typography color="text.primary">Deseja remover este registro?</Typography>
                 </DialogContent>
                 <DialogActions sx={{ display: "flex", gap: 1 }}>
-                    <Button onClick={() => setDeleteTarget(null)} disabled={isDeleting} sx={{ color: "#35252b" }}>
+                    <Button onClick={() => setDeleteTarget(null)} disabled={isDeleting} sx={{ color: "#242424" }}>
                         Cancelar
                     </Button>
-                    <Button onClick={handleConfirmDeleteTask} color="primary" disabled={isDeleting} sx={{ fontWeight: 700, color: "#55081d" }}>
+                    <Button onClick={handleConfirmDeleteTask} color="primary" disabled={isDeleting} sx={{ fontWeight: 700, color: "#141414" }}>
                         {isDeleting ? "Removendo..." : "Remover"}
                     </Button>
                 </DialogActions>

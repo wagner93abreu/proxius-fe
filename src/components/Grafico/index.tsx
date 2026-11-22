@@ -35,7 +35,7 @@ function Grafico({ profissionais, consultas }: Props) {
                 >
                     <XAxis type="number"></XAxis>
                     <YAxis type="category" dataKey="nome"></YAxis>
-                    <Bar dataKey="consultas" fill="#083860" barSize={30}></Bar>
+                    <Bar dataKey="consultas" fill="#333333" barSize={30}></Bar>
                 </BarChart>
             </ResponsiveContainer>
         </SecaoEstilizada>

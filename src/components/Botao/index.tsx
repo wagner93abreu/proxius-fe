@@ -20,8 +20,8 @@ margin-right: 2em;
     border: solid var(--amarelo);
 }
 ${({ theme }) => theme.palette?.mode === "light" && css`
-    background-color: #55081d;
-    color: #fffdfa;
+    background-color: #141414;
+    color: #ffffff;
     min-height: 42px;
     border-radius: 10px;
     padding: 10px 16px;
@@ -32,9 +32,9 @@ ${({ theme }) => theme.palette?.mode === "light" && css`
     justify-content: center;
     gap: 8px;
     font-family: inherit;
-    &:hover { background-color: #6f102a; }
-    &:active { border-color: #b78c9a; }
-    &:focus-visible { outline: 3px solid #b78c9a; outline-offset: 3px; }
+    &:hover { background-color: #383838; }
+    &:active { border-color: #858585; }
+    &:focus-visible { outline: 3px solid #858585; outline-offset: 3px; }
     &:disabled { opacity: 0.5; cursor: not-allowed; }
     svg { width: 20px; height: 20px; flex-shrink: 0; }
 `}

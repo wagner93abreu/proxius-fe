@@ -76,12 +76,19 @@ afterEach(() => {
     jest.restoreAllMocks();
 });
 
+test("exibe etiquetas existentes em tons neutros sem alterar seus dados", async () => {
+    renderCrm();
+    const ana = await screen.findByRole("button", { name: "Abrir card de Ana Souza" });
+    expect(await within(ana).findByTestId("crm-tag-1")).toHaveStyle({ backgroundColor: "#ededed", color: "#242424" });
+    expect(http.put).not.toHaveBeenCalled();
+});
+
 test("aplica o tema claro e preserva os filtros e a movimentação dos cards", async () => {
     renderCrm();
     const ana = await screen.findByRole("button", { name: "Abrir card de Ana Souza" });
-    expect(ana).toHaveStyle({ backgroundColor: "#fffdfa", color: "#35252b" });
-    expect(screen.getByRole("banner")).toHaveStyle({ backgroundColor: "rgba(255, 253, 250, 0.94)" });
-    expect(await within(ana).findByTestId("crm-tag-1")).toHaveStyle({ backgroundColor: "#123456", color: "#ffffff" });
+    expect(ana).toHaveStyle({ backgroundColor: "#ffffff", color: "#242424" });
+    expect(screen.getByRole("banner")).toHaveStyle({ backgroundColor: "rgba(255, 255, 255, 0.94)" });
+    expect(await within(ana).findByTestId("crm-tag-1")).toHaveStyle({ backgroundColor: "#ededed", color: "#242424" });
 
     abrirMenu();
     expect(screen.getByRole("button", { name: "Gestão de Parceiros" })).toBeInTheDocument();
@@ -107,7 +114,7 @@ test("abre o card claro e mantém as abas e os formulários internos", async () 
     renderCrm();
     fireEvent.click(await screen.findByRole("button", { name: "Abrir card de Ana Souza" }));
     const dialog = await screen.findByRole("dialog", { name: "Cliente/Lead" });
-    expect(dialog).toHaveStyle({ backgroundColor: "#fffdfa", color: "#35252b" });
+    expect(dialog).toHaveStyle({ backgroundColor: "#ffffff", color: "#242424" });
     await waitFor(() => expect(http.get).toHaveBeenCalledWith("card/card-1", expect.any(Object)));
     expect(window.alert).not.toHaveBeenCalled();
     expect(await within(dialog).findByText("Enviar proposta")).toBeInTheDocument();
@@ -130,7 +137,7 @@ test("aplica o tema claro aos modais do menu direito", async () => {
         abrirMenu();
         fireEvent.click(screen.getByRole("button", { name: item }));
         const dialog = await screen.findByRole("dialog", { name: titulo });
-        expect(dialog).toHaveStyle({ backgroundColor: "#fffdfa", color: "#35252b" });
+        expect(dialog).toHaveStyle({ backgroundColor: "#ffffff", color: "#242424" });
         fireEvent.click(within(dialog).getByRole("button", { name: fechar }));
         await waitFor(() => expect(screen.queryByRole("dialog", { name: titulo })).not.toBeInTheDocument());
     }

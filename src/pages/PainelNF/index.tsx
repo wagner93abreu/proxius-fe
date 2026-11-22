@@ -30,7 +30,7 @@ const Rotulo = styled.label`
     font-weight: 700;
     font-size: 16px;
     line-height: 19px;
-    color: #35252b
+    color: #242424
 `
 
 const Rotulo2 = styled.label`
@@ -38,7 +38,7 @@ display: block;
 font-weight: 700;
 font-size: 20px;
 
-color: #35252b;
+color: #242424;
 
 @media (max-width: 600px) {
     line-height: 1.4;
@@ -49,15 +49,15 @@ const GridCustomizado = styled(Grid)`
   text-align: center;
 `
 const H2cstm = styled.h2`
-  border: 1px solid rgba(85, 8, 29, 0.12);
+  border: 1px solid rgba(20, 20, 20, 0.12);
   border-radius: 10px;
   font-size: 30px;
   margin-top: 2px;
   padding-top: 10px;
   padding-bottom: 10px;
-  color: #35252b;
-  background-color: #fffdfa;
-  box-shadow: 0 4px 20px rgba(85, 8, 29, 0.04);
+  color: #242424;
+  background-color: #ffffff;
+  box-shadow: 0 4px 20px rgba(20, 20, 20, 0.04);
 
   @media (max-width: 600px) {
     font-size: 25px;
@@ -266,11 +266,11 @@ export default function PainelNF(){
           <div style={{ height: '100%', width: '100%'}}>
          
 
-            <DataGrid style={{ backgroundColor: "#fffdfa",
-                              borderBottomColor: "rgba(85, 8, 29, 0.12)",
-                              borderTopColor: "rgba(85, 8, 29, 0.12)",
-                              color: "#35252b",
-                              borderColor:"rgba(85, 8, 29, 0.12)",
+            <DataGrid style={{ backgroundColor: "#ffffff",
+                              borderBottomColor: "rgba(20, 20, 20, 0.12)",
+                              borderTopColor: "rgba(20, 20, 20, 0.12)",
+                              color: "#242424",
+                              borderColor:"rgba(20, 20, 20, 0.12)",
 
                             }}
               rows={pagamentos}

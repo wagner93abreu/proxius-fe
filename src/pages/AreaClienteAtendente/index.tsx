@@ -21,7 +21,7 @@ import { mostrarMensagem } from "../../stores/mensagem.store";
 const Container = styled.section`
   width: 100%;
   min-height: calc(100dvh - 48px);
-  background: linear-gradient(180deg, #efe5d8 0%, #e2d8cc 100%);
+  background: linear-gradient(180deg, #f6f6f6 0%, #e8e8e8 100%);
   margin: 0;
   padding: 1em 1em calc(1em + 25px);
   box-sizing: border-box;
@@ -38,7 +38,7 @@ const Titulo = styled.h2`
   font-weight: 700;
   font-size: 24px;
   line-height: 28px;
-  color: #55081d;
+  color: #141414;
 `;
 
 const PainelFlex = styled.div`
@@ -70,7 +70,7 @@ const CabecalhoCliente = styled.div`
     width: clamp(70px, 12.5vw, 84px);
     height: clamp(70px, 12.5vw, 84px);
     border-radius: 10px;
-    border: 2px solid #55081d;
+    border: 2px solid #141414;
     object-fit: cover;
   }
 `;
@@ -220,7 +220,7 @@ export default function AreaClienteAtendente() {
             <Button
               variant="outlined"
               onClick={() => setOpenPerfilModal(true)}
-              sx={{ borderColor: "#55081d", color: "#55081d", fontWeight: 700, width: "fit-content", "&:hover": { borderColor: "#6f102a", color: "#6f102a" } }}
+              sx={{ borderColor: "#141414", color: "#141414", fontWeight: 700, width: "fit-content", "&:hover": { borderColor: "#383838", color: "#383838" } }}
             >
               Editar meu perfil
             </Button>
@@ -231,13 +231,13 @@ export default function AreaClienteAtendente() {
           disabled={!cardId}
           sx={{
             backgroundColor: "transparent",
-            border: "2px solid #55081d",
-            color: "#55081d",
+            border: "2px solid #141414",
+            color: "#141414",
             boxShadow: "none",
             padding: "5px 16px",
             fontWeight: 700,
             textTransform: "none",
-            "&:hover": { backgroundColor: "rgba(85, 8, 29, 0.08)" },
+            "&:hover": { backgroundColor: "rgba(20, 20, 20, 0.08)" },
           }}
         >
           Planejamento Estratégico
@@ -290,7 +290,7 @@ export default function AreaClienteAtendente() {
         fullWidth
         maxWidth="md"
       >
-        <DialogContent style={{ backgroundColor: "#f7efe4" }}>
+        <DialogContent style={{ backgroundColor: "#f5f5f5" }}>
           <Comentarios
             cardId={cardId}
             usuarioNome={usuarioNome || nome || ""}
@@ -299,13 +299,13 @@ export default function AreaClienteAtendente() {
             $light
           />
         </DialogContent>
-        <DialogActions style={{ backgroundColor: "#f7efe4" }}>
+        <DialogActions style={{ backgroundColor: "#f5f5f5" }}>
           <Button
             onClick={() => {
               setOpenPlanejamento(false);
               window.location.reload();
             }}
-            sx={{ backgroundColor: "#55081d", color: "#fff", fontWeight: 700, "&:hover": { backgroundColor: "#6f102a" } }}
+            sx={{ backgroundColor: "#141414", color: "#fff", fontWeight: 700, "&:hover": { backgroundColor: "#383838" } }}
           >
             Fechar
           </Button>

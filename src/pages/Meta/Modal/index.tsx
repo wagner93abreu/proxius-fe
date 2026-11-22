@@ -22,11 +22,11 @@ const BoxCustomizado = styled(Box)`
   max-height: 90vh;
   overflow-y: auto;
   box-sizing: border-box;
-  background-color: #fffdfa;
-  color: #35252b;
-  border: 1px solid rgba(85, 8, 29, 0.12);
+  background-color: #ffffff;
+  color: #242424;
+  border: 1px solid rgba(20, 20, 20, 0.12);
   border-radius: 20px;
-  box-shadow: 0 24px 64px rgba(53, 37, 43, 0.24);
+  box-shadow: 0 24px 64px rgba(36, 36, 36, 0.24);
   padding: 28px 32px;
 
   &:focus {
@@ -40,38 +40,38 @@ const BoxCustomizado = styled(Box)`
 
 const TituloModal = styled.h2`
   margin: 0 0 4px;
-  color: #55081d;
+  color: #141414;
   font-size: 22px;
   font-weight: 700;
 `;
 
 const Subtitulo = styled.p`
   margin: 0 0 24px;
-  color: #75656b;
+  color: #666666;
   font-size: 14px;
 `;
 
 const InputMaskCustomizado = styled(ReactInputMask)`
     font-size: 15px;
-    color: #35252b;
+    color: #242424;
     background: #ffffff;
     margin-top: 6px;
     margin-bottom: 28px;
     box-sizing: border-box;
-    border: 1px solid rgba(85, 8, 29, 0.2);
+    border: 1px solid rgba(20, 20, 20, 0.2);
     border-radius: 10px;
     width: 100%;
     padding: 12px 14px;
     transition: border-color 160ms ease, box-shadow 160ms ease;
 
     &:hover {
-        border-color: rgba(85, 8, 29, 0.45);
+        border-color: rgba(20, 20, 20, 0.45);
     }
 
     &:focus {
         outline: none;
-        border-color: #55081d;
-        box-shadow: 0 0 0 3px rgba(85, 8, 29, 0.15);
+        border-color: #141414;
+        box-shadow: 0 0 0 3px rgba(20, 20, 20, 0.15);
     }
 `
 const ContainerInput = styled.div`
@@ -79,25 +79,25 @@ const ContainerInput = styled.div`
 `
 const Campo = styled.input`
     font-size: 15px;
-    color: #35252b;
+    color: #242424;
     background: #ffffff;
     margin-top: 6px;
     margin-bottom: 28px;
     box-sizing: border-box;
-    border: 1px solid rgba(85, 8, 29, 0.2);
+    border: 1px solid rgba(20, 20, 20, 0.2);
     border-radius: 10px;
     width: 100%;
     padding: 12px 14px;
     transition: border-color 160ms ease, box-shadow 160ms ease;
 
     &:hover {
-        border-color: rgba(85, 8, 29, 0.45);
+        border-color: rgba(20, 20, 20, 0.45);
     }
 
     &:focus {
         outline: none;
-        border-color: #55081d;
-        box-shadow: 0 0 0 3px rgba(85, 8, 29, 0.15);
+        border-color: #141414;
+        box-shadow: 0 0 0 3px rgba(20, 20, 20, 0.15);
     }
 `
 const Container = styled.div`
@@ -110,17 +110,17 @@ const BotaoCustomizado = styled(Botao)`
     padding: 12px 16px;
     border: none;
     border-radius: 10px;
-    background-color: #55081d;
+    background-color: #141414;
     color: #ffffff;
     font-size: 15px;
     cursor: pointer;
 
     &:hover {
-        background-color: #6f102a;
+        background-color: #383838;
     }
 
     &:focus-visible {
-        outline: 3px solid rgba(85, 8, 29, 0.35);
+        outline: 3px solid rgba(20, 20, 20, 0.35);
         outline-offset: 2px;
     }
 
@@ -134,7 +134,7 @@ const Rotulo = styled.label`
     font-weight: 700;
     font-size: 14px;
     line-height: 19px;
-    color: #55081d;
+    color: #141414;
 `
 
 const CampoSelect = styled.select`
@@ -150,7 +150,7 @@ const CampoSelect = styled.select`
 `
 const SpanErro = styled.span`
     float: left;
-    color: #b3261e;
+    color: #303030;
     font-size: 13px;
     margin-top: -24px;
     margin-bottom: 12px;

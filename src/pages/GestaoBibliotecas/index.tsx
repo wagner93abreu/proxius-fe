@@ -11,8 +11,8 @@ import IUser from "../../types/IUser";
 import lightTheme from "../../styles/lightTheme";
 
 const ContainerClaro = styled(Container)`
-    background: linear-gradient(180deg, #efe5d8 0%, #e2d8cc 100%);
-    color: #55081d;
+    background: linear-gradient(180deg, #f6f6f6 0%, #e8e8e8 100%);
+    color: #141414;
     min-height: calc(100dvh - 48px);
     box-sizing: border-box;
     margin: 0;

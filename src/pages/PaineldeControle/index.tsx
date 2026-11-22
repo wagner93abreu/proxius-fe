@@ -23,8 +23,8 @@ import lightTheme from "../../styles/lightTheme";
 import { mostrarMensagem } from "../../stores/mensagem.store";
 
 const ContainerClaro = styled(Container)`
-  background: linear-gradient(180deg, #efe5d8 0%, #e2d8cc 100%);
-  color: #55081d;
+  background: linear-gradient(180deg, #f6f6f6 0%, #e8e8e8 100%);
+  color: #141414;
   min-height: calc(100dvh - 48px);
   box-sizing: border-box;
   margin: 0;
@@ -58,14 +58,14 @@ function CartaoAtalho({ atalho, onClick }: { atalho: Atalho; onClick: () => void
       p: 2.5, textAlign: "left", borderRadius: "16px", border: "1px solid", borderColor: "divider",
       bgcolor: "background.paper", color: "text.primary",
       transition: "border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease",
-      "&:hover": { borderColor: "primary.main", boxShadow: "0 10px 28px rgba(85, 8, 29, 0.1)", transform: "translateY(-2px)" },
+      "&:hover": { borderColor: "primary.main", boxShadow: "0 10px 28px rgba(20, 20, 20, 0.1)", transform: "translateY(-2px)" },
       "&:hover .atalho-seta": { color: "primary.main", transform: "translateX(2px)" },
-      "&.Mui-focusVisible": { outline: "3px solid rgba(85, 8, 29, 0.35)", outlineOffset: 2 },
+      "&.Mui-focusVisible": { outline: "3px solid rgba(20, 20, 20, 0.35)", outlineOffset: 2 },
       "@media (prefers-reduced-motion: reduce)": { transition: "none", "&:hover": { transform: "none" } },
     }}>
       <Box sx={{
         display: "grid", placeItems: "center", width: 48, height: 48, flexShrink: 0,
-        borderRadius: 3, bgcolor: "rgba(85, 8, 29, 0.07)", color: "primary.main",
+        borderRadius: 3, bgcolor: "rgba(20, 20, 20, 0.07)", color: "primary.main",
       }}>
         <Icon aria-hidden="true" />
       </Box>
@@ -169,8 +169,8 @@ export default function PainelDeControle() {
                 <Stack spacing={3}>
                   {grupos.map((grupo) => (
                     <Box key={grupo.id} component="section" aria-labelledby={`painel-${grupo.id}`} sx={{
-                      p: { xs: 2, sm: 3 }, border: "1px solid rgba(85, 8, 29, 0.16)", borderRadius: "20px",
-                      bgcolor: "rgba(255,255,255,0.72)", boxShadow: "0 16px 48px rgba(85, 8, 29, 0.06)",
+                      p: { xs: 2, sm: 3 }, border: "1px solid rgba(20, 20, 20, 0.16)", borderRadius: "20px",
+                      bgcolor: "rgba(255,255,255,0.72)", boxShadow: "0 16px 48px rgba(20, 20, 20, 0.06)",
                     }}>
                       <Typography id={`painel-${grupo.id}`} component="h2" variant="h6">{grupo.title}</Typography>
                       <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5, mb: 2.5 }}>

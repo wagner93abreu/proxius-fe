@@ -16,12 +16,13 @@ import IUser from "../../types/IUser";
 import fotoPadrao from "../MeuPerfil/perfil.png";
 import ModalPerfilAreaCliente from "../../components/ModalPerfilAreaCliente";
 import Rodape from "../../components/Rodape";
+import LogoProxiUs from "../../components/LogoProxiUs";
 import { mostrarMensagem } from "../../stores/mensagem.store";
 
 const Container = styled.section`
   width: 100%;
   min-height: 100dvh;
-  background: linear-gradient(180deg, #efe5d8 0%, #e2d8cc 100%);
+  background: linear-gradient(180deg, #f6f6f6 0%, #e8e8e8 100%);
   margin: 0;
   padding: 0 1em calc(1em + 25px);
   box-sizing: border-box;
@@ -30,8 +31,8 @@ const Container = styled.section`
 `
 
 const CabecalhoPagina = styled.header`
-  background-color: #efe5d8;
-  border-bottom: 1px solid rgba(85, 8, 29, 0.12);
+  background-color: #f6f6f6;
+  border-bottom: 1px solid rgba(20, 20, 20, 0.12);
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -47,7 +48,7 @@ const CabecalhoPagina = styled.header`
 const MenuVisual = styled.div`
   display: flex;
   align-items: center;
-  color: #55081d;
+  color: #141414;
   opacity: 0.9;
   position: absolute;
   left: 50%;
@@ -56,8 +57,8 @@ const MenuVisual = styled.div`
 
 const BotaoSair = styled.button`
   background-color: transparent;
-  border: 1px solid rgba(85, 8, 29, 0.22);
-  color: #55081d;
+  border: 1px solid rgba(20, 20, 20, 0.22);
+  color: #141414;
   border-radius: 8px;
   padding: 5px 16px;
   font-weight: 700;
@@ -65,13 +66,13 @@ const BotaoSair = styled.button`
   min-height: 36px;
 
   &:focus-visible {
-    outline: 3px solid #b78c9a;
+    outline: 3px solid #858585;
     outline-offset: 3px;
   }
 
   &:hover {
-    border-color: #6f102a;
-    color: #6f102a;
+    border-color: #383838;
+    color: #383838;
   }
 `;
 
@@ -79,7 +80,7 @@ const Titulo = styled.h2`
   font-weight: 700;
   font-size: 24px;
   line-height: 28px;
-  color: #55081d;
+  color: #141414;
 `;
 
 const PainelFlex = styled.div`
@@ -113,7 +114,7 @@ const CabecalhoPerfil = styled.div`
     width: clamp(70px, 12.5vw, 84px);
     height: clamp(70px, 12.5vw, 84px);
     border-radius: 10px;
-    border: 2px solid #55081d;
+    border: 2px solid #141414;
     object-fit: cover;
   }
 `;
@@ -128,7 +129,7 @@ const MensagemAguardo = styled.div`
   min-height: 160px;
   margin-bottom: 20px;
   padding: 24px;
-  color: #55081d;
+  color: #141414;
   font-weight: 700;
   font-size: 18px;
   line-height: 1.5;
@@ -147,10 +148,6 @@ const InfoCliente = styled.div`
   gap: 10px;
   margin-top: -20px;
 `;
-
-const Logo = styled.img`
-    width: 40px;
-`
 
 export default function AreaCliente() {
   const {usuario} = autenticaStore;
@@ -231,7 +228,7 @@ export default function AreaCliente() {
     <Container>
         <CabecalhoPagina>
           <MenuVisual aria-hidden="true">
-           <Logo src={`${process.env.PUBLIC_URL}/logo_vinho_192.png`} alt="logo RH" />
+           <LogoProxiUs />
           </MenuVisual>
           <BotaoSair type="button" onClick={handleLogout}>Sair</BotaoSair>
         </CabecalhoPagina>
@@ -247,7 +244,7 @@ export default function AreaCliente() {
               <Button
                 variant="outlined"
                 onClick={() => setOpenPerfilModal(true)}
-                sx={{ borderColor: "#55081d", color: "#55081d", fontWeight: 700, fontSize: 9, width: "fit-content", "&:hover": { borderColor: "#6f102a", color: "#6f102a" } }}
+                sx={{ borderColor: "#141414", color: "#141414", fontWeight: 700, fontSize: 9, width: "fit-content", "&:hover": { borderColor: "#383838", color: "#383838" } }}
               >
                 Editar meu perfil
               </Button>

@@ -21,7 +21,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     .cards-hover {
-    background-color: rgba(85, 8, 29, 0.08);
+    background-color: rgba(20, 20, 20, 0.08);
     border-radius: 8px;
 }
 `;
@@ -33,7 +33,7 @@ const Column = styled.div`
     box-sizing: border-box;
     width: 100%;
     overflow-y: auto;
-    background-color: #fffdfa;
+    background-color: #ffffff;
     border-radius: 14px;
     box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
     padding: 12px;
@@ -56,7 +56,7 @@ const Title = styled.div`
     margin-botton: -14px;
     h2 {
         font-size: 22px;
-        color: #75656b;
+        color: #666666;
         font-weight: 600;
     }
 `
@@ -69,7 +69,7 @@ const AddCard = styled.button`
     margin-top: 15px;
     i {
         font-size: 30px;
-        color: #75656b;
+        color: #666666;
     }
     
 `
@@ -104,15 +104,15 @@ const BoxCustomizado = styled(Box)`
     max-height: 90vh;
     overflow-y: auto;
     scrollbar-width: thin;
-    scrollbar-color: rgba(85, 8, 29, 0.25) #fffdfa;
-    background-color: #fffdfa;
+    scrollbar-color: rgba(20, 20, 20, 0.25) #ffffff;
+    background-color: #ffffff;
     border: none;
     border-radius: 20px;
     padding: 24px;
     box-sizing: border-box;
-    border: 1px solid rgba(85, 8, 29, 0.12);
-    box-shadow: 0 24px 60px rgba(85, 8, 29, 0.18);
-    color: #35252b;
+    border: 1px solid rgba(20, 20, 20, 0.12);
+    box-shadow: 0 24px 60px rgba(20, 20, 20, 0.18);
+    color: #242424;
 
     @media (max-width: 768px) {
         width: 95vw; 
@@ -178,8 +178,8 @@ export default function ModalArquivados({ open, handleClose, colunas, refreshCar
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <Grid item xs={12}>
                             <Box display="flex" alignItems="center" justifyContent="space-between" mb={2}>
-                                <h2 id="crm-arquivados-titulo" style={{ color: "#55081d", margin: 0 }}>Arquivados</h2>
-                                <IconButton aria-label="Fechar arquivados" onClick={handleClose} sx={{ color: "#55081d" }}>
+                                <h2 id="crm-arquivados-titulo" style={{ color: "#141414", margin: 0 }}>Arquivados</h2>
+                                <IconButton aria-label="Fechar arquivados" onClick={handleClose} sx={{ color: "#141414" }}>
                                     <CloseOutlinedIcon />
                                 </IconButton>
                             </Box>

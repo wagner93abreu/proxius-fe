@@ -2,6 +2,18 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Página inicial ProxiUs
+
+Em `localhost`, a página inicial apresenta o ProxiUs e mantém o acesso ao
+ambiente local RH Sem Complicações e à administração da plataforma. O link de
+acesso usa a mesma porta do servidor de desenvolvimento. O domínio público
+`proxius.com.br` ainda precisa ser configurado para exibir essa página.
+
+As telas do sistema usam uma identidade monocromática e a marca `P.`. Imagens
+e marcas de clientes e parceiros são preservadas. As cores configuradas nas
+etiquetas também são preservadas e podem ser editadas; no CRM, as etiquetas são
+exibidas em tons neutros e identificadas pelo nome.
+
 ## Modais de mensagens
 
 O componente [ModalErro](src/components/ModalErro/index.tsx) usa o Dialog do MUI
@@ -28,6 +40,23 @@ A redefinição de senha redireciona ao login somente após fechar o modal de su
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `npm install`
+
+Installs the dependencies listed in `package-lock.json`.
+
+### `npm run dev`
+
+Starts the development server (the same as `npm start`).
+
+The project uses Create React App 5 and TypeScript 4.9. Keep Zod on version 3
+and styled-components on 6.1.13 until those tools can be upgraded together.
+The jsdom `nwsapi` override preserves compatibility with the existing tests.
+
+Run `npm audit` to review dependency advisories. Do not use
+`npm audit fix --force` blindly: it can replace `react-scripts` with 0.0.0,
+which cannot run the application. Some remaining advisories require dependency
+upgrades or migration away from Create React App.
 
 ### `npm start`
 

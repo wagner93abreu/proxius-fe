@@ -21,7 +21,7 @@ const BoxCustomizado = styled(Box)`
     width: 80vw;
     max-height: 90vh;
     overflow-y: auto;
-    background-color: #fffdfa;
+    background-color: #ffffff;
     border: none;
     border-radius: 12px;
     padding: 1em 5em;
@@ -53,12 +53,12 @@ const Rotulo = styled.label`
     font-weight: 700;
     font-size: 16px;
     line-height: 19px;
-    color: #35252b
+    color: #242424
 `
 
 const SpanErro = styled.span`
     float: left;
-    color: #b3261e;
+    color: #303030;
     font-size: 14px;
     margin-top: -25px;
 `

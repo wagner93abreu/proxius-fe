@@ -16,13 +16,13 @@ const Container = styled(Box)<{ $light?: boolean }>`
     overflow-y: auto;
     margin-top: 16px;
     padding: 16px;
-    background: ${({ $light }) => ($light ? "rgba(255,255,255,0.6)" : "#290511ff")};
-    border: ${({ $light }) => ($light ? "1px solid rgba(85, 8, 29, 0.16)" : "none")};
+    background: ${({ $light }) => ($light ? "rgba(255,255,255,0.6)" : "#1b1b1bff")};
+    border: ${({ $light }) => ($light ? "1px solid rgba(20, 20, 20, 0.16)" : "none")};
     border-radius: 6px;
-    color: ${({ $light }) => ($light ? "#55081d" : "white")};
+    color: ${({ $light }) => ($light ? "#141414" : "white")};
 
     /* Ensure scrollbar colors apply across browsers */
-    scrollbar-color: ${({ $light }) => ($light ? "rgba(85, 8, 29, 0.35) #efe5d8" : "rgba(225, 169, 95, 0.4) #290511ff")};
+    scrollbar-color: ${({ $light }) => ($light ? "rgba(20, 20, 20, 0.35) #f6f6f6" : "rgba(190, 190, 190, 0.4) #1b1b1bff")};
     scrollbar-width: thin;
 
     @media (max-width: 1024px) {
@@ -36,19 +36,19 @@ const Container = styled(Box)<{ $light?: boolean }>`
     }
 
     &&::-webkit-scrollbar-track {
-        background: ${({ $light }) => ($light ? "#efe5d8" : "#290511ff")};
+        background: ${({ $light }) => ($light ? "#f6f6f6" : "#1b1b1bff")};
         border-radius: 10px;
         margin: 4px 2px;
     }
 
     &&::-webkit-scrollbar-thumb {
-        background: ${({ $light }) => ($light ? "rgba(85, 8, 29, 0.35)" : "rgba(225, 169, 95, 0.4)")};
+        background: ${({ $light }) => ($light ? "rgba(20, 20, 20, 0.35)" : "rgba(190, 190, 190, 0.4)")};
         border-radius: 10px;
-        border: 2px solid ${({ $light }) => ($light ? "#efe5d8" : "#290511ff")};
+        border: 2px solid ${({ $light }) => ($light ? "#f6f6f6" : "#1b1b1bff")};
     }
 
     &&::-webkit-scrollbar-thumb:hover {
-        background: ${({ $light }) => ($light ? "rgba(85, 8, 29, 0.5)" : "rgba(225, 169, 95, 0.6)")};
+        background: ${({ $light }) => ($light ? "rgba(20, 20, 20, 0.5)" : "rgba(190, 190, 190, 0.6)")};
     }
 `;
 
@@ -61,7 +61,7 @@ const CommentRow = styled(Box)`
 
 const Meta = styled(Typography)<{ $light?: boolean }>`
     font-size: 12px;
-    color: ${({ $light }) => ($light ? "rgba(85, 8, 29, 0.65)" : "#cfcfcf")};
+    color: ${({ $light }) => ($light ? "rgba(20, 20, 20, 0.65)" : "#cfcfcf")};
 `;
 
 interface ComentariosProps {
@@ -74,13 +74,13 @@ interface ComentariosProps {
 
 export default function Comentarios({ cardId, usuarioNome, usuarioId, origemTipo = "CARD", $light = false }: ComentariosProps) {
     const light = $light;
-    const corTexto = light ? "#55081d" : "white";
-    const corMuted = light ? "rgba(85, 8, 29, 0.65)" : "#cfcfcf";
-    const corDestaque = light ? "#55081d" : "#e1a95f";
-    const corDestaqueHover = light ? "#6f102a" : "#c98c44";
+    const corTexto = light ? "#141414" : "white";
+    const corMuted = light ? "rgba(20, 20, 20, 0.65)" : "#cfcfcf";
+    const corDestaque = light ? "#141414" : "#dddddd";
+    const corDestaqueHover = light ? "#383838" : "#bbbbbb";
     const corCampoBg = light ? "rgba(255,255,255,0.7)" : "rgba(255,255,255,0.06)";
-    const corDialogBg = light ? "#f7efe4" : "#290511ff";
-    const corDivider = light ? "rgba(85, 8, 29, 0.15)" : "rgba(255,255,255,0.08)";
+    const corDialogBg = light ? "#f5f5f5" : "#1b1b1bff";
+    const corDivider = light ? "rgba(20, 20, 20, 0.15)" : "rgba(255,255,255,0.08)";
     const { usuario } = autenticaStore;
     const usuarioLogadoId = localStorage.getItem("userID") || "";
     const autorComentarioId = origemTipo === "PLANEJAMENTO" ? usuarioId : usuarioLogadoId;

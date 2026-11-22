@@ -218,12 +218,12 @@ function CopyDialog({ cliforId, onNavigate, clientName, userId }: CopiarModeloCl
     return (
         <>
             <Button variant="outlined" startIcon={<ContentCopyIcon />} onClick={openDialog}
-                sx={{ borderColor: "#55081d", color: "#55081d", fontWeight: 700 }}>
+                sx={{ borderColor: "#141414", color: "#141414", fontWeight: 700 }}>
                 Copiar modelo para cliente
             </Button>
             {operation && <Typography role="status" variant="caption">{statusLabels[operation.estado]}</Typography>}
             <Dialog open={open} onClose={() => !sending && setOpen(false)} fullWidth maxWidth="sm">
-                <DialogTitle sx={{ color: "#55081d" }}>Copiar modelo para cliente</DialogTitle>
+                <DialogTitle sx={{ color: "#141414" }}>Copiar modelo para cliente</DialogTitle>
                 <DialogContent>
                     <Stack spacing={2} sx={{ pt: 1 }}>
                         <Typography>Cliente: <strong>{clientName} ({cliforId})</strong></Typography>
@@ -277,7 +277,7 @@ function CopyDialog({ cliforId, onNavigate, clientName, userId }: CopiarModeloCl
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={() => setOpen(false)} disabled={sending}>Fechar</Button>
-                    {!operation && <Button onClick={submit} variant="contained" sx={{ bgcolor: "#55081d" }}
+                    {!operation && <Button onClick={submit} variant="contained" sx={{ bgcolor: "#141414" }}
                         disabled={Boolean(restored.error) || loadingModels || sending || (!request && (!modeloId || !confirmed))}>
                         {sending ? "Enviando..." : request ? "Tentar novamente com a mesma chave" : "Confirmar cópia"}
                     </Button>}

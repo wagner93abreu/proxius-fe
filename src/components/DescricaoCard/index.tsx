@@ -17,13 +17,13 @@ const Container = styled(Box)`
     overflow-y: auto;
     margin-top: 16px;
     padding: 16px;
-    background: rgba(85, 8, 29, 0.025);
-    border: 1px solid rgba(85, 8, 29, 0.1);
+    background: rgba(20, 20, 20, 0.025);
+    border: 1px solid rgba(20, 20, 20, 0.1);
     border-radius: 14px;
-    color: #35252b;
+    color: #242424;
 
     /* Ensure scrollbar colors apply across browsers */
-    scrollbar-color: rgba(85, 8, 29, 0.25) transparent;
+    scrollbar-color: rgba(20, 20, 20, 0.25) transparent;
     scrollbar-width: thin;
 
     @media (max-width: 1024px) {
@@ -37,19 +37,19 @@ const Container = styled(Box)`
     }
 
     &&::-webkit-scrollbar-track {
-        background: #f7f1e9;
+        background: #f5f5f5;
         border-radius: 10px;
         margin: 4px 2px;
     }
 
     &&::-webkit-scrollbar-thumb {
-        background: rgba(85, 8, 29, 0.25);
+        background: rgba(20, 20, 20, 0.25);
         border-radius: 10px;
-        border: 2px solid #f7f1e9;
+        border: 2px solid #f5f5f5;
     }
 
     &&::-webkit-scrollbar-thumb:hover {
-        background: rgba(85, 8, 29, 0.4);
+        background: rgba(20, 20, 20, 0.4);
     }
 `;
 
@@ -62,7 +62,7 @@ const CommentRow = styled(Box)`
 
 const Meta = styled(Typography)`
     font-size: 12px;
-    color: #75656b;
+    color: #666666;
 `;
 
 interface DescricaoCardProps {
@@ -253,7 +253,7 @@ export default function DescricaoCard({ cardId, usuarioNome, usuarioId }: Descri
                     variant="contained"
                     color="primary"
                     onClick={() => setShowForm((v) => !v)}
-                    sx={{ backgroundColor: "#55081d", color: "#fff", fontWeight: 700, px: "7px", "&:hover": { backgroundColor: "#6f102a" } }}
+                    sx={{ backgroundColor: "#141414", color: "#fff", fontWeight: 700, px: "7px", "&:hover": { backgroundColor: "#383838" } }}
                 >
                     {showForm ? "Fechar" : "Adicionar novo"}
                 </Button>
@@ -268,7 +268,7 @@ export default function DescricaoCard({ cardId, usuarioNome, usuarioId }: Descri
                         value={novoComentario}
                         onChange={(e) => setNovoComentario(e.target.value)}
                         placeholder="Digite seu comentário"
-                        InputProps={{ style: { color: "#35252b" } }}
+                        InputProps={{ style: { color: "#242424" } }}
                         sx={{ background: "rgba(255,255,255,0.06)" }}
                     />
                     <Button
@@ -276,7 +276,7 @@ export default function DescricaoCard({ cardId, usuarioNome, usuarioId }: Descri
                         color="primary"
                         onClick={handleAddComentario}
                         disabled={isSaving}
-                        sx={{ alignSelf: "flex-end", backgroundColor: "#55081d", color: "#fffdfa", fontWeight: 700, "&:hover": { backgroundColor: "#6f102a" } }}
+                        sx={{ alignSelf: "flex-end", backgroundColor: "#141414", color: "#ffffff", fontWeight: 700, "&:hover": { backgroundColor: "#383838" } }}
                     >
                         {isSaving ? "Salvando..." : "Salvar"}
                     </Button>
@@ -285,12 +285,12 @@ export default function DescricaoCard({ cardId, usuarioNome, usuarioId }: Descri
 
             {loading ? (
                 <Box display="flex" justifyContent="center" py={3}>
-                    <CircularProgress sx={{ color: "#55081d" }} />
+                    <CircularProgress sx={{ color: "#141414" }} />
                 </Box>
             ) : (
                 <Box display="flex" flexDirection="column" gap={1}>
                     {comentarios.length === 0 && (
-                        <Typography variant="body2" color="#75656b">Nenhum comentário ainda.</Typography>
+                        <Typography variant="body2" color="#666666">Nenhum comentário ainda.</Typography>
                     )}
                     {comentarios.map((c, idx) => (
                         <React.Fragment key={c.id}>
@@ -305,12 +305,12 @@ export default function DescricaoCard({ cardId, usuarioNome, usuarioId }: Descri
                                     </Typography>
                                     <Box display="flex" gap={1}>
                                         {canEdit(c) && (
-                                            <IconButton size="small" aria-label="Editar comentário" onClick={() => handleRequestEdit(c)} sx={{ color: "#75656b" }}>
+                                            <IconButton size="small" aria-label="Editar comentário" onClick={() => handleRequestEdit(c)} sx={{ color: "#666666" }}>
                                                 ✎
                                             </IconButton>
                                         )}
                                         {canDelete(c) && (
-                                            <IconButton size="small" aria-label="Excluir comentário" onClick={() => handleRequestDelete(c)} sx={{ color: "#75656b" }}>
+                                            <IconButton size="small" aria-label="Excluir comentário" onClick={() => handleRequestDelete(c)} sx={{ color: "#666666" }}>
                                                 x
                                             </IconButton>
                                         )}
@@ -320,7 +320,7 @@ export default function DescricaoCard({ cardId, usuarioNome, usuarioId }: Descri
                                     {formatDate(c.createdAt)} • {c.usuario}
                                 </Meta>
                             </CommentRow>
-                            {idx < comentarios.length - 1 && <Divider sx={{ borderColor: "rgba(85, 8, 29, 0.04)" }} />}
+                            {idx < comentarios.length - 1 && <Divider sx={{ borderColor: "rgba(20, 20, 20, 0.04)" }} />}
                         </React.Fragment>
                     ))}
                     
@@ -332,15 +332,15 @@ export default function DescricaoCard({ cardId, usuarioNome, usuarioId }: Descri
                 onClose={() => setDeleteTarget(null)}
                 fullWidth
                 maxWidth="xs"
-                PaperProps={{ sx: { backgroundColor: "#fffdfa", color: "#35252b" } }}
+                PaperProps={{ sx: { backgroundColor: "#ffffff", color: "#242424" } }}
             >
-                <DialogTitle sx={{ color: "#35252b" }}>Confirmar exclusão</DialogTitle>
+                <DialogTitle sx={{ color: "#242424" }}>Confirmar exclusão</DialogTitle>
                 <DialogContent>
                     <Typography color="text.primary">Deseja remover este comentário?</Typography>
                 </DialogContent>
                 <DialogActions sx={{ display: "flex", gap: 1 }}>
-                    <Button onClick={() => setDeleteTarget(null)} disabled={isDeleting} sx={{ color: "#35252b" }}>Cancelar</Button>
-                    <Button onClick={handleConfirmDelete} color="primary" disabled={isDeleting} sx={{ fontWeight: 700, color: "#55081d" }}>
+                    <Button onClick={() => setDeleteTarget(null)} disabled={isDeleting} sx={{ color: "#242424" }}>Cancelar</Button>
+                    <Button onClick={handleConfirmDelete} color="primary" disabled={isDeleting} sx={{ fontWeight: 700, color: "#141414" }}>
                         {isDeleting ? "Removendo..." : "Remover"}
                     </Button>
                 </DialogActions>
@@ -351,9 +351,9 @@ export default function DescricaoCard({ cardId, usuarioNome, usuarioId }: Descri
                 onClose={() => setEditTarget(null)}
                 fullWidth
                 maxWidth="sm"
-                PaperProps={{ sx: { backgroundColor: "#fffdfa", color: "#35252b" } }}
+                PaperProps={{ sx: { backgroundColor: "#ffffff", color: "#242424" } }}
             >
-                <DialogTitle sx={{ color: "#35252b" }}>Editar comentário</DialogTitle>
+                <DialogTitle sx={{ color: "#242424" }}>Editar comentário</DialogTitle>
                 <DialogContent>
                     <TextField
                         fullWidth
@@ -362,13 +362,13 @@ export default function DescricaoCard({ cardId, usuarioNome, usuarioId }: Descri
                         value={editText}
                         onChange={(e) => setEditText(e.target.value)}
                         autoFocus
-                        InputProps={{ style: { color: "#35252b" } }}
+                        InputProps={{ style: { color: "#242424" } }}
                         sx={{ background: "rgba(255,255,255,0.06)" }}
                     />
                 </DialogContent>
                 <DialogActions sx={{ display: "flex", gap: 1 }}>
-                    <Button onClick={() => setEditTarget(null)} disabled={isEditing} sx={{ color: "#35252b" }}>Cancelar</Button>
-                    <Button onClick={handleConfirmEdit} color="primary" disabled={isEditing || !editText.trim()} sx={{ fontWeight: 700, color: "#55081d" }}>
+                    <Button onClick={() => setEditTarget(null)} disabled={isEditing} sx={{ color: "#242424" }}>Cancelar</Button>
+                    <Button onClick={handleConfirmEdit} color="primary" disabled={isEditing || !editText.trim()} sx={{ fontWeight: 700, color: "#141414" }}>
                         {isEditing ? "Salvando..." : "Salvar"}
                     </Button>
                 </DialogActions>

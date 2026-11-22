@@ -16,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     .cards-hover {
-    background-color: rgba(85, 8, 29, 0.08);
+    background-color: rgba(20, 20, 20, 0.08);
     border-radius: 8px;
 }
 `;
@@ -25,19 +25,19 @@ const KanbanCardStyle = styled.div`
     display: flex;
     flex-direction: column;
     gap: 8px;
-    background-color: #fffdfa;
-    color: #35252b;
-    border: 1px solid rgba(85, 8, 29, 0.1);
+    background-color: #ffffff;
+    color: #242424;
+    border: 1px solid rgba(20, 20, 20, 0.1);
     border-radius: 14px;
     padding: 14px;
-    box-shadow: 0 4px 12px rgba(85, 8, 29, 0.04);
+    box-shadow: 0 4px 12px rgba(20, 20, 20, 0.04);
     cursor: pointer;
-    &:hover { border-color: rgba(85, 8, 29, 0.3); }
-    &:focus-visible { outline: 2px solid #55081d; outline-offset: 2px; }
+    &:hover { border-color: rgba(20, 20, 20, 0.3); }
+    &:focus-visible { outline: 2px solid #141414; outline-offset: 2px; }
 `
 const Badge = styled.div`
     color:rgb(255, 255, 255);
-    background-color: #92a5fb;
+    background-color: #777777;
     width: fit-content;
     font-size: 12px;
     padding: 4px 8px;
@@ -50,7 +50,7 @@ const CardTitle = styled.p`
     justify-content: space-between;
     padding: 0 2px;
     margin: 2px;
-    color: #35252b;
+    color: #242424;
     font-size: 14px;
     font-weight: 700;
     overflow-wrap: anywhere;
@@ -66,8 +66,8 @@ const CardInfos = styled.div`
 const CardIcons = styled.div`
     display: flex;
     gap: 18px;
-    color: #75656b;
-    p { display: flex; align-items: center; gap: 4px; font-size: 12px; margin: 0; color: #75656b; }
+    color: #666666;
+    p { display: flex; align-items: center; gap: 4px; font-size: 12px; margin: 0; color: #666666; }
     svg { font-size: 17px; }
 `
 
@@ -77,7 +77,7 @@ img{
     height: 38px;
     border-radius: 100%;
     object-fit: cover;
-    border: 2px solid rgba(85, 8, 29, 0.1);
+    border: 2px solid rgba(20, 20, 20, 0.1);
 }    
 `
 
@@ -128,14 +128,13 @@ export default function KanbanCardList({nome, data, onCardUpdate, colunas, tagsD
             <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
                 {tagsSelecionadas.map((tagId) => {
                     const tag = tagsDisponiveis.find((t) => t.id === tagId);
-                    const [bg = '#444', fg = '#fff'] = (tag?.color || '').split(';');
                     return (
                         <Chip
                             key={tagId}
                             label={tag?.name || `Tag ${tagId}`}
                             sx={{
-                                backgroundColor: bg,
-                                color: fg,
+                                backgroundColor: '#ededed',
+                                color: '#242424',
                                 fontWeight: 700,
                                 height: 20,
                                 fontSize: 10,

@@ -41,15 +41,15 @@ const BoxCustomizado = styled(Box)`
         max-height: 85vh;
         overflow-y: auto;
         scrollbar-width: thin;
-        scrollbar-color: rgba(85, 8, 29, 0.25) #fffdfa;
-        background-color: #fffdfa;
+        scrollbar-color: rgba(20, 20, 20, 0.25) #ffffff;
+        background-color: #ffffff;
         border: none;
         border-radius: 20px;
         padding: 24px;
     box-sizing: border-box;
-    border: 1px solid rgba(85, 8, 29, 0.12);
-    box-shadow: 0 24px 60px rgba(85, 8, 29, 0.18);
-    color: #35252b;
+    border: 1px solid rgba(20, 20, 20, 0.12);
+    box-shadow: 0 24px 60px rgba(20, 20, 20, 0.18);
+    color: #242424;
 
         @media (max-width: 768px) {
                 width: 95vw; 
@@ -276,7 +276,7 @@ export default function ModalAtividades({ open, handleClose, refreshCards, colun
                 <Box>
                     <BoxCustomizado role="dialog" aria-labelledby="crm-atividades-titulo">
                         <Box display="flex" justifyContent="space-between" alignItems="center" flexWrap="wrap" gap={1} mb={2}>
-                            <Typography id="crm-atividades-titulo" variant="h6" align="left" gutterBottom style={{ color: "#55081d", margin: 0 }}>
+                            <Typography id="crm-atividades-titulo" variant="h6" align="left" gutterBottom style={{ color: "#141414", margin: 0 }}>
                                 Minhas Atividades
                             </Typography>
                             <Select
@@ -284,14 +284,14 @@ export default function ModalAtividades({ open, handleClose, refreshCards, colun
                                 value={responsavelId}
                                 onChange={(e) => handleResponsavelChange(e.target.value as string | number)}
                                 displayEmpty
-                                sx={{ minWidth: 200, background: 'rgba(85, 8, 29, 0.04)', color: "#35252b" }}
+                                sx={{ minWidth: 200, background: 'rgba(20, 20, 20, 0.04)', color: "#242424" }}
                             >
                                 <MenuItem value="" disabled>Responsável</MenuItem>
                                 {colaboradores.filter((colab) => colab.papel !== 'CLIENTE').map((colab) => (
                                     <MenuItem key={colab.id} value={colab.id}>{colab.nome}</MenuItem>
                                 ))}
                             </Select>
-                            <IconButton aria-label="Fechar atividades" onClick={handleClose} sx={{ color: "#55081d" }}>
+                            <IconButton aria-label="Fechar atividades" onClick={handleClose} sx={{ color: "#141414" }}>
                                 <CloseOutlinedIcon />
                             </IconButton>
                         </Box>
@@ -305,53 +305,53 @@ export default function ModalAtividades({ open, handleClose, refreshCards, colun
                                     <Table
                                         size="small"
                                         sx={{
-                                            backgroundColor: 'rgba(0, 0, 26, 0)',
-                                            color: "#35252b",
+                                            backgroundColor: 'rgba(0, 0, 0, 0)',
+                                            color: "#242424",
                                             borderCollapse: 'collapse',
                                             tableLayout: 'fixed',
                                             width: '100%',
                                             minWidth: '1280px',
-                                            '& td, & th': { borderBottom: '1px solid rgba(85, 8, 29, 0.16)', fontSize: '13px' },
-                                            '& th': { borderBottom: '1px solid rgba(85, 8, 29, 0.16)', fontSize: '13px' },
+                                            '& td, & th': { borderBottom: '1px solid rgba(20, 20, 20, 0.16)', fontSize: '13px' },
+                                            '& th': { borderBottom: '1px solid rgba(20, 20, 20, 0.16)', fontSize: '13px' },
                                         }}
                                     >
                                         <TableHead>
                                             <TableRow>
-                                                <TableCell align="center" style={{ color: "#35252b", width: '56px', minWidth: '56px' }}>Feito</TableCell>
-                                                <TableCell style={{ color: "#35252b", width: '34%' }}>Descrição</TableCell>
-                                                <TableCell style={{ color: "#35252b", width: '16%' }}>Card Nome</TableCell>
-                                                <TableCell style={{ color: "#35252b", width: '15%' }}>Status do Card</TableCell>
-                                                <TableCell align="center" style={{ color: "#35252b", width: '110px' }}>Card</TableCell>
-                                                <TableCell align="center" style={{ color: "#35252b", width: '14%', minWidth: '125px' }}>Prazo</TableCell>
-                                                <TableCell align="center" style={{ color: "#35252b", width: '14%', minWidth: '125px' }}>Realizado em</TableCell>
-                                                {/* <TableCell style={{ color: "#35252b", width: '16%' }}>Responsável</TableCell> */}
-                                                {/* <TableCell style={{ color: "#35252b" }}>Criada em</TableCell> */}
+                                                <TableCell align="center" style={{ color: "#242424", width: '56px', minWidth: '56px' }}>Feito</TableCell>
+                                                <TableCell style={{ color: "#242424", width: '34%' }}>Descrição</TableCell>
+                                                <TableCell style={{ color: "#242424", width: '16%' }}>Card Nome</TableCell>
+                                                <TableCell style={{ color: "#242424", width: '15%' }}>Status do Card</TableCell>
+                                                <TableCell align="center" style={{ color: "#242424", width: '110px' }}>Card</TableCell>
+                                                <TableCell align="center" style={{ color: "#242424", width: '14%', minWidth: '125px' }}>Prazo</TableCell>
+                                                <TableCell align="center" style={{ color: "#242424", width: '14%', minWidth: '125px' }}>Realizado em</TableCell>
+                                                {/* <TableCell style={{ color: "#242424", width: '16%' }}>Responsável</TableCell> */}
+                                                {/* <TableCell style={{ color: "#242424" }}>Criada em</TableCell> */}
                                             </TableRow>
                                         </TableHead>
                                         <TableBody>
                                             {tasks.map((task, index) => (
                                                 <TableRow key={task.id || `task-${index}`}
-                                                    sx={{ '& td': { color: "#35252b" } }}
+                                                    sx={{ '& td': { color: "#242424" } }}
                                                 >
                                                     <TableCell align="center" sx={{ width: '56px', minWidth: '56px', px: 0.5 }}>
                                                         <Checkbox
-                                                            sx={{ color: '#55081d', '&.Mui-checked': { color: '#55081d' } }}
+                                                            sx={{ color: '#141414', '&.Mui-checked': { color: '#141414' } }}
                                                             checked={task.done}
                                                             onChange={(e) => handleDoneToggle(index, e.target.checked)}
                                                         />
                                                     </TableCell>
                                                     <TableCell>
-                                                        <Typography variant="body2" sx={{ color: "#35252b", fontSize: '13px', whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
+                                                        <Typography variant="body2" sx={{ color: "#242424", fontSize: '13px', whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
                                                             {task.description || ''}
                                                         </Typography>
                                                     </TableCell>
                                                     <TableCell>
-                                                        <Typography variant="body2" sx={{ color: "#35252b", fontSize: '13px' }}>
+                                                        <Typography variant="body2" sx={{ color: "#242424", fontSize: '13px' }}>
                                                             {task.cardNome || ''}
                                                         </Typography>
                                                     </TableCell>
                                                     <TableCell>
-                                                        <Typography variant="body2" sx={{ color: "#35252b", fontSize: '13px' }}>
+                                                        <Typography variant="body2" sx={{ color: "#242424", fontSize: '13px' }}>
                                                             {formatCardStatus(task.cardStatusId) || ''}
                                                         </Typography>
                                                     </TableCell>
@@ -360,7 +360,7 @@ export default function ModalAtividades({ open, handleClose, refreshCards, colun
                                                             variant="contained"
                                                             color="primary"
                                                             size="small"
-                                                            sx={{ backgroundColor: '#55081d', color: '#fff', fontWeight: 700, '&:hover': { backgroundColor: '#6f102a' } }}
+                                                            sx={{ backgroundColor: '#141414', color: '#fff', fontWeight: 700, '&:hover': { backgroundColor: '#383838' } }}
                                                             onClick={() => handleOpenCard(task.cardId)}
                                                         >
                                                             Abrir card
@@ -375,12 +375,13 @@ export default function ModalAtividades({ open, handleClose, refreshCards, colun
                                                             value={formatDateDisplay(task.estimatedDate)}
                                                             onChange={(e) => updateLocalTask(index, { estimatedDate: e.target.value })}
                                                             onBlur={(e) => handleEstimatedChange(index, e.target.value)}
-                                                            InputProps={{ style: { color: isOverdue(task) ? '#c62828' : "#35252b", fontSize: '13px', textAlign: 'center' } }}
+                                                            InputProps={{ style: { color: isOverdue(task) ? '#303030' : "#242424", fontSize: '13px', textAlign: 'center' } }}
                                                             sx={{
                                                                 minWidth: '125px',
                                                                 '& .MuiInputBase-input': { textAlign: 'center' },
                                                             }}
                                                         />
+                                                        {isOverdue(task) && <Typography variant="caption" display="block">Atrasado</Typography>}
                                                     </TableCell>
                                                     <TableCell align="center">
                                                         <TextField
@@ -388,7 +389,7 @@ export default function ModalAtividades({ open, handleClose, refreshCards, colun
                                                             variant="outlined"
                                                             size="small"
                                                             value={formatDateDisplay(task.conclusionDate)}
-                                                            InputProps={{ readOnly: true, style: { color: "#35252b", fontSize: '13px', textAlign: 'center' } }}
+                                                            InputProps={{ readOnly: true, style: { color: "#242424", fontSize: '13px', textAlign: 'center' } }}
                                                             sx={{
                                                                 minWidth: '125px',
                                                                 '& .MuiInputBase-input': { textAlign: 'center' },
@@ -402,7 +403,7 @@ export default function ModalAtividades({ open, handleClose, refreshCards, colun
                                                             value={task.assignedToId ?? ''}
                                                             onChange={(e) => handleAssignedChange(index, e.target.value as number | string)}
                                                             displayEmpty
-                                                            sx={{ color: "#35252b", fontSize: '13px' }}
+                                                            sx={{ color: "#242424", fontSize: '13px' }}
                                                         >
                                                             <MenuItem value="">
                                                                 <em>Cliente</em>

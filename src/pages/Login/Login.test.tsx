@@ -48,6 +48,12 @@ function renderLogin() {
     fireEvent.change(screen.getByPlaceholderText("*******"), { target: { value: "senha" } });
 }
 
+test("apresenta a marca ProxiUs na entrada", () => {
+    renderLogin();
+    expect(screen.getByRole("img", { name: "ProxiUs" })).toHaveTextContent("P.");
+    expect(screen.getByRole("heading", { name: "ProxiUs" })).toBeInTheDocument();
+});
+
 test("shows captcha validation in a persistent modal and restores focus after closing", async () => {
     renderLogin();
     const submit = screen.getByRole("button", { name: "Entrar" });

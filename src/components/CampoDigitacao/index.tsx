@@ -19,7 +19,7 @@ display: block;
 font-weight: 700;
 font-size: 16px;
 line-height: 19px;
-color: ${({ theme }) => theme.palette?.mode === "light" ? "#35252b" : "var(--cinza-claro)"};
+color: ${({ theme }) => theme.palette?.mode === "light" ? "#242424" : "var(--cinza-claro)"};
 `
 
 const Container = styled.div`

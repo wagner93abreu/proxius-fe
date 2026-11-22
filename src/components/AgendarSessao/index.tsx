@@ -29,10 +29,10 @@ export default function AgendarSessao({ atendenteId, atendente, fotoAtendente }:
         <Box
             sx={{
                 backgroundColor: "rgba(255,255,255,0.6)",
-                border: "1px solid rgba(85, 8, 29, 0.16)",
+                border: "1px solid rgba(20, 20, 20, 0.16)",
                 borderRadius: 2,
                 padding: 2,
-                color: "#55081d",
+                color: "#141414",
                 width: "95%",
             }}
         >
@@ -42,18 +42,18 @@ export default function AgendarSessao({ atendenteId, atendente, fotoAtendente }:
                         component="img"
                         src={bucketName + fotoAtendente}
                         alt={"Foto da consultoria"}
-                        sx={{ width: 72, height: 72, borderRadius: "50%", objectFit: "cover", border: "2px solid #55081d" }}
+                        sx={{ width: 72, height: 72, borderRadius: "50%", objectFit: "cover", border: "2px solid #141414" }}
                     />
                 )}
                 <Stack spacing={1} alignItems="flex-start">
-                    <Typography variant="h6" align="left" gutterBottom sx={{ color: "#55081d", marginBottom: 0 }}>
+                    <Typography variant="h6" align="left" gutterBottom sx={{ color: "#141414", marginBottom: 0 }}>
                         {`Agende sua sessão com ${atendente}`}
                     </Typography>
                     <Button
                         variant="outlined"
                         onClick={() => handleOpen(staticLink)}
                         title="Aqui você encontra os arquivos para consulta."
-                        sx={{ borderColor: "#55081d", color: "#55081d", fontWeight: 700, "&:hover": { borderColor: "#6f102a", color: "#6f102a" } }}
+                        sx={{ borderColor: "#141414", color: "#141414", fontWeight: 700, "&:hover": { borderColor: "#383838", color: "#383838" } }}
                     >
                         Agende aqui!
                     </Button>

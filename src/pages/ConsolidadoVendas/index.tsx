@@ -14,7 +14,7 @@ const Titulo = styled.h2`
   font-weight: 700;
   font-size: 24px;
   line-height: 28px;
-  color: #55081d;
+  color: #141414;
 
   @media (max-width: 600px) {
     font-size: 20px;
@@ -27,7 +27,7 @@ display: block;
 font-weight: 700;
 font-size: 20px;
 line-height: 19px;
-color: #35252b;
+color: #242424;
 margin-top: 17px;
 
 @media (max-width: 600px) {
@@ -37,7 +37,7 @@ margin-top: 17px;
 `
 
 const GridCustomizado = styled(Grid)`
-  border: 1px solid rgba(85, 8, 29, 0.12);
+  border: 1px solid rgba(20, 20, 20, 0.12);
   border-radius: 12px;
   width: 90%;
   padding: 2px;
@@ -46,7 +46,7 @@ const GridCustomizado = styled(Grid)`
 `
 const H2cstm = styled.h2`
   font-size: 30px;
-  color: #35252b;
+  color: #242424;
 
   @media (max-width: 600px) {
     font-size: 20px;
@@ -169,10 +169,10 @@ export default function ConsolidadoFinanceiro() {
 
     return (
         <Grid container spacing={1} 
-        style={{border: "1px solid rgba(85, 8, 29, 0.12)",
+        style={{border: "1px solid rgba(20, 20, 20, 0.12)",
                 borderRadius: "20px",
-                backgroundColor: "#fffdfa",
-                boxShadow: "0 4px 20px rgba(85, 8, 29, 0.04)",
+                backgroundColor: "#ffffff",
+                boxShadow: "0 4px 20px rgba(20, 20, 20, 0.04)",
                 width: "100%",
                 padding: "1em",
                 marginBottom: "2em",
@@ -202,32 +202,32 @@ export default function ConsolidadoFinanceiro() {
             
           
 
-          <GridCustomizado item xs={12} md={3} style={{backgroundColor: '#fce9e7'}}>
+          <GridCustomizado item xs={12} md={3} style={{backgroundColor: '#eeeeee'}}>
           <Rotulo>Meta Minima (80%)</Rotulo>
             <H2cstm>{formataMoeda(meta?.valorMinimo,"REAL")}</H2cstm>
           </GridCustomizado>
 
-          <GridCustomizado item xs={12} md={3} style={{backgroundColor: '#fff3d6'}}>
+          <GridCustomizado item xs={12} md={3} style={{backgroundColor: '#f2f2f2'}}>
           <Rotulo>Meta Média (100%)</Rotulo>
             <H2cstm>{formataMoeda(meta?.valorPadrao,"REAL")}</H2cstm>
           </GridCustomizado>
 
-          <GridCustomizado item xs={12} md={3} style={{backgroundColor: '#e6eff8'}}>
+          <GridCustomizado item xs={12} md={3} style={{backgroundColor: '#e5e5e5'}}>
           <Rotulo>Meta Máxima (120%)</Rotulo>
             <H2cstm>{formataMoeda(meta?.valorMaximo,"REAL")}</H2cstm>
           </GridCustomizado>
 
-          <GridCustomizado item xs={12} md={3} style={{backgroundColor: '#f7f1e9'}}>
+          <GridCustomizado item xs={12} md={3} style={{backgroundColor: '#f5f5f5'}}>
           <Rotulo>Valor Comprador</Rotulo>
             <H2cstm>{formataMoeda(totais.valorcomprador,"REAL")}</H2cstm>
           </GridCustomizado>
 
-          <GridCustomizado item xs={12} md={3} style={{backgroundColor: '#f7f1e9'}}>
+          <GridCustomizado item xs={12} md={3} style={{backgroundColor: '#f5f5f5'}}>
           <Rotulo>Valor Produto</Rotulo>
             <H2cstm>{formataMoeda(totais.valorbase,"REAL")}</H2cstm>
           </GridCustomizado>          
 
-          <GridCustomizado item xs={12} md={3} style={{backgroundColor: '#f7f1e9'}}>
+          <GridCustomizado item xs={12} md={3} style={{backgroundColor: '#f5f5f5'}}>
           <Rotulo>Comissão</Rotulo>
             <H2cstm>{formataMoeda(totais.comissao,"REAL")}</H2cstm>
           </GridCustomizado>

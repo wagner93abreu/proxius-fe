@@ -31,7 +31,7 @@ const BoxCustomizado = styled(Box)`
   max-height: 90vh;
   min-height: 40vh;
   overflow-y: auto;
-  background-color: #fffdfa;
+  background-color: #ffffff;
   border: none;
   border-radius: 12px;
   padding: 1em 5em;
@@ -65,7 +65,7 @@ const Rotulo = styled.label`
     font-weight: 700;
     font-size: 16px;
     line-height: 19px;
-    color: #35252b
+    color: #242424
 `
 
 const SelectCustomizado = styled(Select)`
@@ -80,7 +80,7 @@ const SelectCustomizado = styled(Select)`
 
 const SpanErro = styled.span`
     float: left;
-    color: #b3261e;
+    color: #303030;
     font-size: 14px;
     margin-top: -25px;
 `
@@ -438,7 +438,7 @@ export default function ModalComissao({ open, handleClose, comissoes, id, tipo, 
                             <Grid item xs={12} md={2}>
                             {/* <CampoLeitura  tipo="text" label="Taxa/Valor" valor={taxaValor}/> */}
                             <Rotulo>Taxa/Valor</Rotulo>
-                                <Campo type="text" placeholder="" value={taxaValor} readOnly style={{backgroundColor: "#f7f1e9"}}/>
+                                <Campo type="text" placeholder="" value={taxaValor} readOnly style={{backgroundColor: "#f5f5f5"}}/>
                             </Grid>
                             {!taxaPorcentagem && (
                                 <React.Fragment>
@@ -484,7 +484,7 @@ export default function ModalComissao({ open, handleClose, comissoes, id, tipo, 
                                     <CampoLeitura  tipo="text" label="Data da Venda" valor={transformDateBR(datavenda)}/>
                                     </Grid>
                                     <Grid container spacing={1} 
-                                    style={{border: "1px solid rgba(85, 8, 29, 0.12)",
+                                    style={{border: "1px solid rgba(20, 20, 20, 0.12)",
                                             borderRadius: "5px",
                                             marginTop: "1em",
                                             marginBottom: "2em",
@@ -493,7 +493,7 @@ export default function ModalComissao({ open, handleClose, comissoes, id, tipo, 
                                             marginLeft: "1em",
                                     }}>
                                     <Grid item xs={12}>
-                                        <h2 style={{textAlign: "center", color: "#35252b"}}>Pagamento</h2>
+                                        <h2 style={{textAlign: "center", color: "#242424"}}>Pagamento</h2>
                                     </Grid>
                                     {meiopagamento.map((item: any, index: any) => (
                                         <React.Fragment key={index}>
@@ -520,7 +520,7 @@ export default function ModalComissao({ open, handleClose, comissoes, id, tipo, 
                                                     <CampoLeitura tipo="text" label={`Liquido`} valor={formataMoeda(item.comissao, item.moeda)} />   
                                                 </Grid>
                                                 <Grid item xs={6} md={2}>
-                                                    <CampoLeitura background="rgba(57, 163, 41, 0.5)" tipo="text" label={`Comissão`} valor={comissaoVenda(item.comissao, item.moeda)} />   
+                                                    <CampoLeitura background="rgba(120, 120, 120, 0.5)" tipo="text" label={`Comissão`} valor={comissaoVenda(item.comissao, item.moeda)} />
                                                 </Grid>
                                                 <Grid item xs={6} md={1}>
                                                     <CampoLeitura tipo="text" label={`Data Pgto`} valor={transformDateBR(item.datapagamento)} />

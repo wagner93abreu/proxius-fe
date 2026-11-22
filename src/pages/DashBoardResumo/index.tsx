@@ -16,7 +16,7 @@ const Titulo = styled.h2`
   font-weight: 700;
   font-size: 24px;
   line-height: 28px;
-  color: #55081d;
+  color: #141414;
   display: flex;
   align-items: center;
   gap: 12px;

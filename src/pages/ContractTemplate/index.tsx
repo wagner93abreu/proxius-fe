@@ -99,7 +99,7 @@ export default function ContractTemplate() {
       <div style={{ height: '100%', width: '100%' }}>
         <Botao onClick={() => handleOpen("cadastra")}><AddOutlined aria-hidden="true" />Cadastrar</Botao>
         <Botao onClick={() => handleOpen("edita")}><EditOutlined aria-hidden="true" />Editar</Botao>
-        <Botao onClick={() => excluir()} style={{ backgroundColor: "#c50000", borderColor: "#c50000" }}><DeleteOutline aria-hidden="true" />Excluir</Botao>
+        <Botao onClick={() => excluir()} style={{ backgroundColor: "#303030", borderColor: "#303030" }}><DeleteOutline aria-hidden="true" />Excluir</Botao>
 
         <ModalContractTemplate
           open={open}
@@ -111,11 +111,11 @@ export default function ContractTemplate() {
 
         <DataGrid
           style={{
-            backgroundColor: "#fffdfa",
-            borderBottomColor: "rgba(85, 8, 29, 0.12)",
-            borderTopColor: "rgba(85, 8, 29, 0.12)",
-            color: "#35252b",
-            borderColor: "rgba(85, 8, 29, 0.12)",
+            backgroundColor: "#ffffff",
+            borderBottomColor: "rgba(20, 20, 20, 0.12)",
+            borderTopColor: "rgba(20, 20, 20, 0.12)",
+            color: "#242424",
+            borderColor: "rgba(20, 20, 20, 0.12)",
           }}
           rows={templates.map(item => ({
             ...item,

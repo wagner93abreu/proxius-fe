@@ -35,7 +35,7 @@ const BoxCustomizado = styled(Box)`
     width: 80vw;
     max-height: 90vh;
     overflow-y: auto;
-    background-color: #fffdfa;
+    background-color: #ffffff;
     border: none;
     border-radius: 12px;
     padding: 1em 5em;
@@ -99,10 +99,10 @@ const BotaoRemoverLinha = styled(Botao)`
     padding: 8px 16px;
     margin: 0;
     white-space: nowrap;
-    background-color: rgb(197, 0, 0);
+    background-color: rgb(48, 48, 48);
 `
 const LinhaItem = styled(Grid)`
-    background: #fffdfa;
+    background: #ffffff;
     border-radius: 12px;
     margin: 0 0 25px 0;
     padding: 15px 15px 5px 15px;
@@ -123,7 +123,7 @@ const Rotulo = styled.label`
     font-weight: 700;
     font-size: 16px;
     line-height: 19px;
-    color: #35252b
+    color: #242424
 `
 
 const CampoSelect = styled.select`
@@ -143,7 +143,7 @@ const ContainerInput = styled.div`
 `
 const SpanErro = styled.span`
     float: left;
-    color: #b3261e;
+    color: #303030;
     font-size: 14px;
     margin-top: -25px;
 `
@@ -937,7 +937,7 @@ export default function ModalVenda({ open, handleClose, venda, id, tipo }: { ope
                             </Grid>                           
 
                             <Grid item xs={12} style={{marginTop: "10px", marginBottom: "10px"}}>
-                                <BotaoAcao style={{backgroundColor: "green"}} onClick={() => addItem()}>Adicionar Item</BotaoAcao>
+                                <BotaoAcao style={{backgroundColor: "#303030"}} onClick={() => addItem()}>Adicionar Item</BotaoAcao>
                             </Grid>
 
                             {itensVenda.map((itemVenda, indexItem) => (
@@ -1011,7 +1011,7 @@ export default function ModalVenda({ open, handleClose, venda, id, tipo }: { ope
                                         allowedDecimalSeparators={[".", ","]}
                                         customInput={Campo}
                                         readOnly
-                                        style={{backgroundColor: "#f7f1e9"}}
+                                        style={{backgroundColor: "#f5f5f5"}}
                                     />
                                 </Grid>
 
@@ -1025,7 +1025,7 @@ export default function ModalVenda({ open, handleClose, venda, id, tipo }: { ope
                             ))}
 
                             <Grid item xs={12} style={{marginTop: "10px", marginBottom: "10px"}}>
-                                <BotaoAcao style={{backgroundColor: "green"}} onClick={() => addMeioPagamento()}>Adicionar Método de Pagamento</BotaoAcao>
+                                <BotaoAcao style={{backgroundColor: "#303030"}} onClick={() => addMeioPagamento()}>Adicionar Método de Pagamento</BotaoAcao>
                             </Grid>
                                   
                                  
@@ -1215,7 +1215,7 @@ export default function ModalVenda({ open, handleClose, venda, id, tipo }: { ope
                                                 onValueChange={(values) => onChange(values.floatValue)}                               
                                                 customInput={Campo}     
                                                 readOnly            
-                                                style={{backgroundColor: "#f7f1e9"}}
+                                                style={{backgroundColor: "#f5f5f5"}}
                                             />
                                                 );
                                             }}
@@ -1243,7 +1243,7 @@ export default function ModalVenda({ open, handleClose, venda, id, tipo }: { ope
                                                 onValueChange={(values) => onChange(values.floatValue)}                               
                                                 customInput={Campo}     
                                                 readOnly            
-                                                style={{backgroundColor: "#f7f1e9"}}
+                                                style={{backgroundColor: "#f5f5f5"}}
                                             />
                                             )}
                                         />
@@ -1270,7 +1270,7 @@ export default function ModalVenda({ open, handleClose, venda, id, tipo }: { ope
                                                 onValueChange={(values) => onChange(values.floatValue)}                               
                                                 customInput={Campo}     
                                                 readOnly            
-                                                style={{backgroundColor: "#f7f1e9"}}
+                                                style={{backgroundColor: "#f5f5f5"}}
                                             />
                                             )}
                                         />
@@ -1311,7 +1311,7 @@ export default function ModalVenda({ open, handleClose, venda, id, tipo }: { ope
                                                 allowedDecimalSeparators={[".", ","]}                            
                                                 customInput={Campo}     
                                                 readOnly            
-                                                style={{backgroundColor: "#f7f1e9"}}
+                                                style={{backgroundColor: "#f5f5f5"}}
                                             />                                
                                     </Grid> 
                                     <Grid item xs={12} md={3}>
@@ -1328,7 +1328,7 @@ export default function ModalVenda({ open, handleClose, venda, id, tipo }: { ope
                                                 allowedDecimalSeparators={[".", ","]}                            
                                                 customInput={Campo}     
                                                 readOnly            
-                                                style={{backgroundColor: "#f7f1e9"}}
+                                                style={{backgroundColor: "#f5f5f5"}}
                                             />                              
                                     </Grid> 
                                     <Grid item xs={12} md={3}>
@@ -1345,7 +1345,7 @@ export default function ModalVenda({ open, handleClose, venda, id, tipo }: { ope
                                                 allowedDecimalSeparators={[".", ","]}                            
                                                 customInput={Campo}     
                                                 readOnly            
-                                                style={{backgroundColor: "#f7f1e9"}}
+                                                style={{backgroundColor: "#f5f5f5"}}
                                             />                            
                                     </Grid>
                             </Grid>      

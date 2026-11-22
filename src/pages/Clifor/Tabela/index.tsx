@@ -162,14 +162,14 @@ export default function DataTable() {
       <Botao onClick={() =>  handleOpen()}><AddOutlined aria-hidden="true" />Cadastrar</Botao>
       <Botao onClick={() =>  editaHandleOpen()}><EditOutlined aria-hidden="true" />Editar</Botao>
       <Botao onClick={() =>  ativaDesativa()}><ToggleOnOutlined aria-hidden="true" />Ativar/Desativar</Botao>
-      <Botao onClick={() =>  excluir()} style={{backgroundColor: "#c50000", borderColor: "#c50000"}}><DeleteOutline aria-hidden="true" />Excluir</Botao>
+      <Botao onClick={() =>  excluir()} style={{backgroundColor: "#303030", borderColor: "#303030"}}><DeleteOutline aria-hidden="true" />Excluir</Botao>
       <ModalCadastro open={open} handleClose={handleClose} />
       <ModalEdita editaOpen={editaOpen} editaHandleClose={editaHandleClose} clientefornecedor={clifor} id={selectedRows}/>
-      <DataGrid style={{ backgroundColor: "#fffdfa",
-                        borderBottomColor: "rgba(85, 8, 29, 0.12)",
-                        borderTopColor: "rgba(85, 8, 29, 0.12)",
-                        color: "#35252b",
-                        borderColor:"rgba(85, 8, 29, 0.12)",
+      <DataGrid style={{ backgroundColor: "#ffffff",
+                        borderBottomColor: "rgba(20, 20, 20, 0.12)",
+                        borderTopColor: "rgba(20, 20, 20, 0.12)",
+                        color: "#242424",
+                        borderColor:"rgba(20, 20, 20, 0.12)",
 
                       }}
         rows={clifor.map(item => {

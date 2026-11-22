@@ -591,14 +591,14 @@ export default function ProcessoVendasCRM({ cardId }: ProcessoVendasCRMProps) {
     return (
         <Box
             sx={{
-                backgroundColor: "#fffdfa",
+                backgroundColor: "#ffffff",
                 borderRadius: "14px",
-                border: "1px solid rgba(85, 8, 29, 0.1)",
+                border: "1px solid rgba(20, 20, 20, 0.1)",
                 padding: "12px",
             }}
         >
             <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
-                <Typography variant="h6" align="left" gutterBottom style={{ color: "#35252b", margin: 0 }}>
+                <Typography variant="h6" align="left" gutterBottom style={{ color: "#242424", margin: 0 }}>
                     Processo de Vendas
                 </Typography>
                 <Button
@@ -606,13 +606,13 @@ export default function ProcessoVendasCRM({ cardId }: ProcessoVendasCRMProps) {
                     disabled={loading}
                     sx={{
                         backgroundColor: "transparent",
-                        border: "2px solid #55081d",
-                        color: "#55081d",
+                        border: "2px solid #141414",
+                        color: "#141414",
                         boxShadow: "none",
                         padding: "5px 16px",
                         fontWeight: 700,
                         textTransform: "none",
-                        "&:hover": { backgroundColor: "rgba(85, 8, 29, 0.06)" },
+                        "&:hover": { backgroundColor: "rgba(20, 20, 20, 0.06)" },
                     }}
                 >
                     Cadastrar processo
@@ -623,29 +623,29 @@ export default function ProcessoVendasCRM({ cardId }: ProcessoVendasCRMProps) {
                 <Table
                     size="small"
                     sx={{
-                        backgroundColor: "rgba(0, 0, 26, 0)",
-                        color: "#35252b",
+                        backgroundColor: "rgba(0, 0, 0, 0)",
+                        color: "#242424",
                         borderCollapse: "collapse",
                         tableLayout: "fixed",
                         width: "100%",
                         minWidth: "1120px",
-                        "& td, & th": { borderBottom: "1px solid rgba(85, 8, 29, 0.16)", fontSize: "13px" },
-                        "& th": { borderBottom: "1px solid rgba(85, 8, 29, 0.16)", fontSize: "13px" },
+                        "& td, & th": { borderBottom: "1px solid rgba(20, 20, 20, 0.16)", fontSize: "13px" },
+                        "& th": { borderBottom: "1px solid rgba(20, 20, 20, 0.16)", fontSize: "13px" },
                     }}
                 >
                     <TableHead>
                         <TableRow>
-                            <TableCell style={{ color: "#35252b", width: "20%" }}>Precificacao</TableCell>
-                            <TableCell style={{ color: "#35252b", width: "10%" }}>Status</TableCell>
-                            <TableCell style={{ color: "#35252b", width: "10%" }}>Coupon</TableCell>
-                            <TableCell style={{ color: "#35252b", width: "26%" }}>Link temporario</TableCell>
-                            <TableCell align="center" style={{ color: "#35252b", width: "12%" }}>
+                            <TableCell style={{ color: "#242424", width: "20%" }}>Precificacao</TableCell>
+                            <TableCell style={{ color: "#242424", width: "10%" }}>Status</TableCell>
+                            <TableCell style={{ color: "#242424", width: "10%" }}>Coupon</TableCell>
+                            <TableCell style={{ color: "#242424", width: "26%" }}>Link temporario</TableCell>
+                            <TableCell align="center" style={{ color: "#242424", width: "12%" }}>
                                 Pagamento Status
                             </TableCell>
-                            <TableCell align="center" style={{ color: "#35252b", width: "12%" }}>
+                            <TableCell align="center" style={{ color: "#242424", width: "12%" }}>
                                 Criado em
                             </TableCell>
-                            <TableCell align="center" style={{ color: "#35252b", width: "10%" }}>
+                            <TableCell align="center" style={{ color: "#242424", width: "10%" }}>
                                 Ações
                             </TableCell>
                         </TableRow>
@@ -653,13 +653,13 @@ export default function ProcessoVendasCRM({ cardId }: ProcessoVendasCRMProps) {
                     <TableBody>
                         {processos.length === 0 ? (
                             <TableRow>
-                                <TableCell colSpan={7} sx={{ color: "#75656b" }}>
+                                <TableCell colSpan={7} sx={{ color: "#666666" }}>
                                     {loading ? "Carregando..." : "Nenhum processo de venda cadastrado."}
                                 </TableCell>
                             </TableRow>
                         ) : (
                             processos.map((processo) => (
-                                <TableRow key={processo.id} sx={{ "& td": { color: "#35252b" } }}>
+                                <TableRow key={processo.id} sx={{ "& td": { color: "#242424" } }}>
                                     <TableCell>{formataValor("REAL", getTotalItensValor(processo))}</TableCell>
                                     <TableCell>{processo.status || "-"}</TableCell>
                                     <TableCell>{processo.coupon || "-"}</TableCell>
@@ -669,7 +669,7 @@ export default function ProcessoVendasCRM({ cardId }: ProcessoVendasCRMProps) {
                                                 href={processo.temporaryAccessUrl}
                                                 target="_blank"
                                                 rel="noreferrer"
-                                                style={{ color: "#55081d", wordBreak: "break-all" }}
+                                                style={{ color: "#141414", wordBreak: "break-all" }}
                                             >
                                                 {processo.temporaryAccessUrl}
                                             </a>
@@ -680,18 +680,18 @@ export default function ProcessoVendasCRM({ cardId }: ProcessoVendasCRMProps) {
                                     <TableCell align="center">{getPagamentoStatus(processo)}</TableCell>
                                     <TableCell align="center">{formatDateDisplay(processo.createdAt)}</TableCell>
                                     <TableCell align="center">
-                                        <IconButton onClick={() => handleOpenEditModal(processo, true)} sx={{ color: "#55081d" }}>
+                                        <IconButton onClick={() => handleOpenEditModal(processo, true)} sx={{ color: "#141414" }}>
                                             <VisibilityOutlinedIcon fontSize="small" />
                                         </IconButton>
                                         {!STATUS_SEM_EDICAO_EXCLUSAO.includes((processo.status || "").toUpperCase()) && (
                                             <>
-                                                <IconButton onClick={() => handleOpenEditModal(processo)} sx={{ color: "#55081d" }}>
+                                                <IconButton onClick={() => handleOpenEditModal(processo)} sx={{ color: "#141414" }}>
                                                     <EditOutlinedIcon fontSize="small" />
                                                 </IconButton>
                                                 <IconButton
                                                     onClick={() => handleExcluirProcesso(processo)}
                                                     disabled={excluindoId === processo.id}
-                                                    sx={{ color: "#c50000" }}
+                                                    sx={{ color: "#303030" }}
                                                 >
                                                     <DeleteOutlineIcon fontSize="small" />
                                                 </IconButton>
@@ -709,14 +709,14 @@ export default function ProcessoVendasCRM({ cardId }: ProcessoVendasCRMProps) {
                 open={openModal}
                 onClose={() => setOpenModal(false)}
                 maxWidth={false}
-                PaperProps={{ sx: { backgroundColor: "#fffdfa", color: "#35252b", width: { xs: "95vw", md: "75vw" }, maxWidth: { xs: "95vw", md: "75vw" }, m: 1 } }}
+                PaperProps={{ sx: { backgroundColor: "#ffffff", color: "#242424", width: { xs: "95vw", md: "75vw" }, maxWidth: { xs: "95vw", md: "75vw" }, m: 1 } }}
             >
-                <DialogTitle sx={{ color: "#35252b" }}>
+                <DialogTitle sx={{ color: "#242424" }}>
                     {modoSomenteLeitura ? "Visualizar processo de vendas" : modoEdicao ? "Editar processo de vendas" : "Cadastrar processo de vendas"}
                 </DialogTitle>
                 <DialogContent sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
                     {carregandoDetalhes ? (
-                        <Typography sx={{ color: "#75656b" }}>Carregando detalhes...</Typography>
+                        <Typography sx={{ color: "#666666" }}>Carregando detalhes...</Typography>
                     ) : (
                     <>
                     {modoEdicao && (
@@ -726,8 +726,8 @@ export default function ProcessoVendasCRM({ cardId }: ProcessoVendasCRMProps) {
                                 value={editStatus}
                                 onChange={(e) => setEditStatus(e.target.value)}
                                 disabled={modoSomenteLeitura}
-                                InputLabelProps={{ sx: { color: "#55081d" } }}
-                                InputProps={{ sx: { color: "#35252b" } }}
+                                InputLabelProps={{ sx: { color: "#141414" } }}
+                                InputProps={{ sx: { color: "#242424" } }}
                                 sx={{ background: "rgba(255,255,255,0.06)", flex: 1 }}
                             />
                             <TextField
@@ -735,15 +735,15 @@ export default function ProcessoVendasCRM({ cardId }: ProcessoVendasCRMProps) {
                                 value={editCoupon}
                                 onChange={(e) => setEditCoupon(e.target.value)}
                                 disabled={modoSomenteLeitura}
-                                InputLabelProps={{ sx: { color: "#55081d" } }}
-                                InputProps={{ sx: { color: "#35252b" } }}
+                                InputLabelProps={{ sx: { color: "#141414" } }}
+                                InputProps={{ sx: { color: "#242424" } }}
                                 sx={{ background: "rgba(255,255,255,0.06)", flex: 1 }}
                             />
                         </Box>
                     )}
 
                     <Box>
-                        <Typography variant="body2" sx={{ color: "#55081d", mb: 0.5 }}>
+                        <Typography variant="body2" sx={{ color: "#141414", mb: 0.5 }}>
                             Template de contrato
                         </Typography>
                         <Select
@@ -758,23 +758,23 @@ export default function ProcessoVendasCRM({ cardId }: ProcessoVendasCRMProps) {
                             menuPosition="fixed"
                         />
                         {buscandoVersaoTemplate && (
-                            <Typography variant="caption" sx={{ color: "#75656b" }}>
+                            <Typography variant="caption" sx={{ color: "#666666" }}>
                                 Buscando versao ativa do template...
                             </Typography>
                         )}
                         {!buscandoVersaoTemplate && templateSelecionado && templateVersionId && (
-                            <Typography variant="caption" sx={{ color: "#75656b" }}>
+                            <Typography variant="caption" sx={{ color: "#666666" }}>
                                 Versao ativa selecionada: #{templateVersionId}
                             </Typography>
                         )}
                     </Box>
 
                     <Box display="flex" justifyContent="space-between" alignItems="center">
-                        <Typography variant="body2" sx={{ color: "#55081d" }}>
+                        <Typography variant="body2" sx={{ color: "#141414" }}>
                             Produtos
                         </Typography>
                         {!modoSomenteLeitura && (
-                            <Button onClick={adicionarItem} sx={{ color: "#55081d" }}>
+                            <Button onClick={adicionarItem} sx={{ color: "#141414" }}>
                                 + Adicionar produto
                             </Button>
                         )}
@@ -783,19 +783,19 @@ export default function ProcessoVendasCRM({ cardId }: ProcessoVendasCRMProps) {
                     <Table
                         size="small"
                         sx={{
-                            color: "#35252b",
-                            "& td, & th": { borderBottom: "1px solid rgba(85, 8, 29, 0.16)", fontSize: "13px", color: "#35252b" },
+                            color: "#242424",
+                            "& td, & th": { borderBottom: "1px solid rgba(20, 20, 20, 0.16)", fontSize: "13px", color: "#242424" },
                         }}
                     >
                         <TableHead>
                             <TableRow>
-                                <TableCell style={{ color: "#35252b" }}>Produto</TableCell>
-                                <TableCell style={{ color: "#35252b" }}>Precificacao</TableCell>
-                                <TableCell style={{ color: "#35252b", width: "110px" }}>Quantidade</TableCell>
-                                <TableCell style={{ color: "#35252b", width: "150px" }}>Tipo desconto</TableCell>
-                                <TableCell style={{ color: "#35252b", width: "120px" }}>Desconto</TableCell>
-                                <TableCell style={{ color: "#35252b", width: "120px" }}>Total</TableCell>
-                                <TableCell style={{ color: "#35252b", width: "48px" }} />
+                                <TableCell style={{ color: "#242424" }}>Produto</TableCell>
+                                <TableCell style={{ color: "#242424" }}>Precificacao</TableCell>
+                                <TableCell style={{ color: "#242424", width: "110px" }}>Quantidade</TableCell>
+                                <TableCell style={{ color: "#242424", width: "150px" }}>Tipo desconto</TableCell>
+                                <TableCell style={{ color: "#242424", width: "120px" }}>Desconto</TableCell>
+                                <TableCell style={{ color: "#242424", width: "120px" }}>Total</TableCell>
+                                <TableCell style={{ color: "#242424", width: "48px" }} />
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -836,7 +836,7 @@ export default function ProcessoVendasCRM({ cardId }: ProcessoVendasCRMProps) {
                                                 value={linha.quantidade}
                                                 onChange={(e) => atualizarItem(indice, { quantidade: e.target.value })}
                                                 disabled={modoSomenteLeitura}
-                                                InputProps={{ sx: { color: "#35252b" } }}
+                                                InputProps={{ sx: { color: "#242424" } }}
                                                 sx={{ background: "rgba(255,255,255,0.06)" }}
                                             />
                                         </TableCell>
@@ -846,7 +846,7 @@ export default function ProcessoVendasCRM({ cardId }: ProcessoVendasCRMProps) {
                                                 value={linha.discountType}
                                                 onChange={(e) => atualizarItem(indice, { discountType: e.target.value })}
                                                 disabled={modoSomenteLeitura}
-                                                SelectProps={{ sx: { color: "#35252b" } }}
+                                                SelectProps={{ sx: { color: "#242424" } }}
                                                 sx={{ background: "rgba(255,255,255,0.06)" }}
                                             >
                                                 <MenuItem value="VALUE">Valor</MenuItem>
@@ -859,14 +859,14 @@ export default function ProcessoVendasCRM({ cardId }: ProcessoVendasCRMProps) {
                                                 value={linha.discountValue}
                                                 onChange={(e) => atualizarItem(indice, { discountValue: e.target.value })}
                                                 disabled={modoSomenteLeitura}
-                                                InputProps={{ sx: { color: "#35252b" } }}
+                                                InputProps={{ sx: { color: "#242424" } }}
                                                 sx={{ background: "rgba(255,255,255,0.06)" }}
                                             />
                                         </TableCell>
                                         <TableCell>{formataValor("REAL", finalPrice)}</TableCell>
                                         <TableCell>
                                             {!modoSomenteLeitura && (
-                                                <IconButton onClick={() => removerItem(indice)} disabled={itensVenda.length === 1} sx={{ color: "#c50000" }}>
+                                                <IconButton onClick={() => removerItem(indice)} disabled={itensVenda.length === 1} sx={{ color: "#303030" }}>
                                                     <DeleteOutlineIcon />
                                                 </IconButton>
                                             )}
@@ -891,11 +891,11 @@ export default function ProcessoVendasCRM({ cardId }: ProcessoVendasCRMProps) {
                     </Table>
 
                     <Box display="flex" justifyContent="space-between" alignItems="center">
-                        <Typography variant="body2" sx={{ color: "#55081d" }}>
+                        <Typography variant="body2" sx={{ color: "#141414" }}>
                             Opcoes de pagamento
                         </Typography>
                         {!modoSomenteLeitura && (
-                            <Button onClick={adicionarPagamento} sx={{ color: "#55081d" }}>
+                            <Button onClick={adicionarPagamento} sx={{ color: "#141414" }}>
                                 + Adicionar pagamento
                             </Button>
                         )}
@@ -904,11 +904,11 @@ export default function ProcessoVendasCRM({ cardId }: ProcessoVendasCRMProps) {
                     {pagamentos.map((linha, indice) => (
                         <Box
                             key={indice}
-                            sx={{ backgroundColor: "rgba(85, 8, 29, 0.03)", border: "1px solid rgba(85, 8, 29, 0.1)", borderRadius: "14px", padding: "12px", display: "flex", flexDirection: "column", gap: 1.5 }}
+                            sx={{ backgroundColor: "rgba(20, 20, 20, 0.03)", border: "1px solid rgba(20, 20, 20, 0.1)", borderRadius: "14px", padding: "12px", display: "flex", flexDirection: "column", gap: 1.5 }}
                         >
                             <Box display="flex" gap={2} alignItems="center">
                                 <Box flex={1}>
-                                    <Typography variant="body2" sx={{ color: "#55081d", mb: 0.5 }}>
+                                    <Typography variant="body2" sx={{ color: "#141414", mb: 0.5 }}>
                                         Tipo de pagamento
                                     </Typography>
                                     <Select
@@ -931,7 +931,7 @@ export default function ProcessoVendasCRM({ cardId }: ProcessoVendasCRMProps) {
                                 </Box>
 
                                 {!modoSomenteLeitura && (
-                                    <IconButton onClick={() => removerPagamento(indice)} disabled={pagamentos.length === 1} sx={{ color: "#c50000" }}>
+                                    <IconButton onClick={() => removerPagamento(indice)} disabled={pagamentos.length === 1} sx={{ color: "#303030" }}>
                                         <DeleteOutlineIcon />
                                     </IconButton>
                                 )}
@@ -945,8 +945,8 @@ export default function ProcessoVendasCRM({ cardId }: ProcessoVendasCRMProps) {
                                     value={linha.tipopagamento?.value === "PIX" ? "1" : linha.parcelas}
                                     onChange={(e) => atualizarPagamento(indice, { parcelas: e.target.value })}
                                     disabled={modoSomenteLeitura || linha.tipopagamento?.value === "PIX"}
-                                    InputLabelProps={{ sx: { color: "#55081d" } }}
-                                    InputProps={{ sx: { color: "#35252b" } }}
+                                    InputLabelProps={{ sx: { color: "#141414" } }}
+                                    InputProps={{ sx: { color: "#242424" } }}
                                     sx={{ background: "rgba(255,255,255,0.06)", flex: 1 }}
                                 />
                                 <TextField
@@ -955,8 +955,8 @@ export default function ProcessoVendasCRM({ cardId }: ProcessoVendasCRMProps) {
                                     value={linha.tipoDesconto}
                                     onChange={(e) => atualizarPagamento(indice, { tipoDesconto: e.target.value })}
                                     disabled={modoSomenteLeitura}
-                                    InputLabelProps={{ sx: { color: "#55081d" } }}
-                                    SelectProps={{ sx: { color: "#35252b" } }}
+                                    InputLabelProps={{ sx: { color: "#141414" } }}
+                                    SelectProps={{ sx: { color: "#242424" } }}
                                     sx={{ background: "rgba(255,255,255,0.06)", flex: 1 }}
                                 >
                                     <MenuItem value="VALUE">Valor</MenuItem>
@@ -968,8 +968,8 @@ export default function ProcessoVendasCRM({ cardId }: ProcessoVendasCRMProps) {
                                     value={linha.valorDesconto}
                                     onChange={(e) => atualizarPagamento(indice, { valorDesconto: e.target.value })}
                                     disabled={modoSomenteLeitura}
-                                    InputLabelProps={{ sx: { color: "#55081d" } }}
-                                    InputProps={{ sx: { color: "#35252b" } }}
+                                    InputLabelProps={{ sx: { color: "#141414" } }}
+                                    InputProps={{ sx: { color: "#242424" } }}
                                     sx={{ background: "rgba(255,255,255,0.06)", flex: 1 }}
                                 />
                                 <TextField
@@ -979,8 +979,8 @@ export default function ProcessoVendasCRM({ cardId }: ProcessoVendasCRMProps) {
                                     value={linha.tipopagamento?.value === "PIX" ? "" : linha.parcelaMaxDesconto}
                                     onChange={(e) => atualizarPagamento(indice, { parcelaMaxDesconto: e.target.value })}
                                     disabled={modoSomenteLeitura || linha.tipopagamento?.value === "PIX"}
-                                    InputLabelProps={{ sx: { color: "#55081d" } }}
-                                    InputProps={{ sx: { color: "#35252b" } }}
+                                    InputLabelProps={{ sx: { color: "#141414" } }}
+                                    InputProps={{ sx: { color: "#242424" } }}
                                     sx={{ background: "rgba(255,255,255,0.06)", flex: 1 }}
                                 />
                             </Box>
@@ -990,7 +990,7 @@ export default function ProcessoVendasCRM({ cardId }: ProcessoVendasCRMProps) {
                     )}
                 </DialogContent>
                 <DialogActions sx={{ display: "flex", gap: 1 }}>
-                    <Button onClick={() => setOpenModal(false)} sx={{ color: "#35252b" }}>
+                    <Button onClick={() => setOpenModal(false)} sx={{ color: "#242424" }}>
                         {modoSomenteLeitura ? "Fechar" : "Cancelar"}
                     </Button>
                     {!modoSomenteLeitura && (
@@ -1003,7 +1003,7 @@ export default function ProcessoVendasCRM({ cardId }: ProcessoVendasCRMProps) {
                                 !templateVersionId ||
                                 !itensVenda.some((linha) => linha.produto && linha.precificacao)
                             }
-                            sx={{ fontWeight: 700, color: "#55081d" }}
+                            sx={{ fontWeight: 700, color: "#141414" }}
                         >
                             {saving ? "Salvando..." : "Salvar"}
                         </Button>

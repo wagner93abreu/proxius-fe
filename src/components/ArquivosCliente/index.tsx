@@ -46,12 +46,12 @@ export function formatBytes(bytes?: number | null) {
 
 const formatDate = (iso?: string | null) => (iso ? new Date(iso).toLocaleString("pt-BR") : "");
 
-const iconSx = { color: "#55081d" };
+const iconSx = { color: "#141414" };
 const outlinedSx = {
-    borderColor: "#55081d",
-    color: "#55081d",
+    borderColor: "#141414",
+    color: "#141414",
     fontWeight: 700,
-    "&:hover": { borderColor: "#6f102a", color: "#6f102a" },
+    "&:hover": { borderColor: "#383838", color: "#383838" },
 };
 
 interface ArquivosClienteProps {
@@ -227,15 +227,15 @@ function FileExplorer({ cliforId, titulo = "Meus arquivos" }: ArquivosClientePro
         <Box
             sx={{
                 backgroundColor: "rgba(255,255,255,0.6)",
-                border: "1px solid rgba(85, 8, 29, 0.16)",
+                border: "1px solid rgba(20, 20, 20, 0.16)",
                 borderRadius: 2,
                 padding: 2,
-                color: "#55081d",
+                color: "#141414",
                 width: "95%",
             }}
         >
             <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ mb: 1 }}>
-                <Typography variant="h6" style={{ color: "#55081d" }}>
+                <Typography variant="h6" style={{ color: "#141414" }}>
                     {titulo}
                 </Typography>
                 <Stack direction="row" spacing={1} alignItems="center">
@@ -281,7 +281,7 @@ function FileExplorer({ cliforId, titulo = "Meus arquivos" }: ArquivosClientePro
                     size="small"
                     onClick={() => setFolderPath([])}
                     disabled={folderPath.length === 0 || folderActionBusy}
-                    sx={{ color: "#55081d", textTransform: "none" }}
+                    sx={{ color: "#141414", textTransform: "none" }}
                 >
                     Arquivos Editáveis
                 </Button>
@@ -293,7 +293,7 @@ function FileExplorer({ cliforId, titulo = "Meus arquivos" }: ArquivosClientePro
                             onClick={() => setFolderPath((path) => path.slice(0, index + 1))}
                             disabled={index === folderPath.length - 1 || folderActionBusy}
                             aria-current={index === folderPath.length - 1 ? "location" : undefined}
-                            sx={{ color: "#55081d", textTransform: "none" }}
+                            sx={{ color: "#141414", textTransform: "none" }}
                         >
                             {folderDisplayName(folder.name)}
                         </Button>
@@ -316,7 +316,7 @@ function FileExplorer({ cliforId, titulo = "Meus arquivos" }: ArquivosClientePro
                 {currentFolder && canManageFolders && (
                     <FolderActionButtons
                         name={folderDisplayName(currentFolder.name)}
-                        color="#55081d"
+                        color="#141414"
                         disabled={folderActionBusy || loading || uploading}
                         onRename={() => openFolderAction("rename", currentFolder)}
                         onDelete={() => openFolderAction("delete", currentFolder)}
@@ -359,7 +359,7 @@ function FileExplorer({ cliforId, titulo = "Meus arquivos" }: ArquivosClientePro
                                     secondaryAction={canManageFolders ? (
                                         <FolderActionButtons
                                             name={folderDisplayName(file.name)}
-                                            color="#55081d"
+                                            color="#141414"
                                             disabled={folderActionBusy || uploading}
                                             onRename={() => openFolderAction("rename", file)}
                                             onDelete={() => openFolderAction("delete", file)}
@@ -375,7 +375,7 @@ function FileExplorer({ cliforId, titulo = "Meus arquivos" }: ArquivosClientePro
                                         sx={{
                                             justifyContent: "flex-start",
                                             py: 1.25,
-                                            color: "#55081d",
+                                            color: "#141414",
                                             textTransform: "none",
                                             fontWeight: 700,
                                         }}
@@ -447,7 +447,7 @@ function FileExplorer({ cliforId, titulo = "Meus arquivos" }: ArquivosClientePro
                                             sx={{
                                                 all: "unset",
                                                 cursor: "pointer",
-                                                color: "#55081d",
+                                                color: "#141414",
                                                 display: "block",
                                                 overflow: "hidden",
                                                 textOverflow: "ellipsis",
@@ -468,7 +468,7 @@ function FileExplorer({ cliforId, titulo = "Meus arquivos" }: ArquivosClientePro
             )}
 
             <Dialog open={Boolean(preview)} onClose={() => setPreview(null)} fullWidth maxWidth="lg">
-                <DialogTitle sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", color: "#55081d" }}>
+                <DialogTitle sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", color: "#141414" }}>
                     <Typography noWrap component="span" variant="h6">{preview?.name}</Typography>
                     <IconButton aria-label="Fechar visualização" onClick={() => setPreview(null)} sx={iconSx}>
                         <CloseIcon />
@@ -488,18 +488,18 @@ function FileExplorer({ cliforId, titulo = "Meus arquivos" }: ArquivosClientePro
             </Dialog>
 
             <Dialog open={Boolean(toDelete)} onClose={() => setToDelete(null)}>
-                <DialogTitle sx={{ color: "#55081d" }}>Excluir arquivo</DialogTitle>
+                <DialogTitle sx={{ color: "#141414" }}>Excluir arquivo</DialogTitle>
                 <DialogContent>
                     <Typography>
                         Deseja excluir "{toDelete?.name}"? O arquivo irá para a lixeira do contêiner.
                     </Typography>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={() => setToDelete(null)} sx={{ color: "#55081d" }}>Cancelar</Button>
+                    <Button onClick={() => setToDelete(null)} sx={{ color: "#141414" }}>Cancelar</Button>
                     <Button
                         onClick={confirmDelete}
                         variant="contained"
-                        sx={{ backgroundColor: "#55081d", "&:hover": { backgroundColor: "#6f102a" } }}
+                        sx={{ backgroundColor: "#141414", "&:hover": { backgroundColor: "#383838" } }}
                     >
                         Excluir
                     </Button>

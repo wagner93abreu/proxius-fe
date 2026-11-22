@@ -21,7 +21,7 @@ const BoxCustomizado = styled(Box)`
     width: 60vw;
     max-height: 90vh;
     overflow-y: auto;
-    background-color: #fffdfa;
+    background-color: #ffffff;
     border: none;
     border-radius: 12px;
     padding: 1.5em;
@@ -37,7 +37,7 @@ const Formulario = styled.form`
 `;
 
 const Titulo = styled.h2`
-    color: #35252b;
+    color: #242424;
     margin-top: 0;
     text-align: center;
 `;
@@ -47,7 +47,7 @@ const Rotulo = styled.label`
     font-weight: 700;
     font-size: 16px;
     line-height: 19px;
-    color: #35252b;
+    color: #242424;
 `;
 
 const CampoContainer = styled.div`
@@ -100,17 +100,17 @@ const Rodape = styled.div`
 
 const Mensagem = styled.p<{ tipo: "sucesso" | "erro" }>`
     margin: 0;
-    color: ${({ tipo }) => (tipo === "sucesso" ? "#357844" : "#b3261e")};
+    color: ${({ tipo }) => (tipo === "sucesso" ? "#777777" : "#303030")};
     font-weight: 700;
 `;
 
 const BotaoSecundario = styled(Botao)`
     background-color: transparent;
-    border-color: #55081d;
-    color: #55081d;
+    border-color: #141414;
+    color: #141414;
 
     &:hover {
-        background-color: rgba(85, 8, 29, 0.06);
+        background-color: rgba(20, 20, 20, 0.06);
     }
 `;
 
@@ -363,13 +363,13 @@ export default function PrecrmCadastro({ open, handleClose, tipo, registro, onSa
                                     required
                                     style={{
                                         background: '#fff',
-                                        color: '#35252b',
+                                        color: '#242424',
                                         marginTop: '3px',
                                         marginBottom: '25px',
                                         boxSizing: 'border-box',
                                         boxShadow: 'none',
                                         borderRadius: '10px',
-                                        border: '1px solid rgba(85, 8, 29, 0.2)',
+                                        border: '1px solid rgba(20, 20, 20, 0.2)',
                                         width: '100%',
                                         padding: '10px'
                                     }}

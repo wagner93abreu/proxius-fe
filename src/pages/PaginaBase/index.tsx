@@ -2,25 +2,18 @@ import { Outlet, useLocation } from "react-router-dom";
 import Cabecalho from "../../components/Cabecalho";
 import Rodape from "../../components/Rodape";
 import styled from "styled-components";
-import wallpaper from "./wallpaper.png"
-import wallpaperLogin from "../Login/wallpaper.png"
 import { ThemeProvider } from "@mui/material/styles";
 import { ThemeProvider as StyledThemeProvider, css } from "styled-components";
 import managementTheme from "../../styles/managementTheme";
 
-const ContainerPrincipal = styled.div<{ $isClientArea: boolean; $isCrmPage: boolean; $light: boolean; $loginWallpaper: boolean }>`
-    background-image: ${({ $isClientArea, $light, $loginWallpaper }) => ($loginWallpaper
-        ? `linear-gradient(180deg, rgba(239, 229, 216, 0.72) 0%, rgba(226, 216, 204, 0.72) 100%), url(${wallpaperLogin})`
-        : $isClientArea || $light ? "none" : `url(${wallpaper})`)};
-    background-position: center center;
-    background-color: ${({ $isClientArea, $light }) => ($light ? "#efe5d8" : $isClientArea ? "#370617" : "#1b1b1b")};
-    background-size: cover;
+const ContainerPrincipal = styled.div<{ $isClientArea: boolean; $isCrmPage: boolean; $light: boolean }>`
+    background-color: ${({ $isClientArea, $light }) => ($light ? "#f6f6f6" : $isClientArea ? "#222222" : "#1b1b1b")};
     width: 100vw;
     height: 100vh;
     overflow: ${({ $isCrmPage }) => ($isCrmPage ? "hidden" : "auto")};
     ${({ $light }) => $light && css`
-        scrollbar-color: #b78c9a #f7f1e9;
-        &::-webkit-scrollbar-thumb { background-color: #b78c9a; }
+        scrollbar-color: #858585 #f5f5f5;
+        &::-webkit-scrollbar-thumb { background-color: #858585; }
     `}
 
 `
@@ -45,7 +38,7 @@ export default function PaginaBase(){
 
     return(
         <>
-        <ContainerPrincipal $isCrmPage={isCrmPage} $isClientArea={isClientArea} $light={light} $loginWallpaper={isHomePage}>
+        <ContainerPrincipal $isCrmPage={isCrmPage} $isClientArea={isClientArea} $light={light}>
         {!isCrmPage && !isClientArea && <Cabecalho light={light} />}
         <main>
             {isManagementPage ? (

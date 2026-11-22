@@ -36,7 +36,7 @@ const task = (id: string, overrides: Record<string, unknown>) => ({
 });
 
 const tasks = [
-    task("p1", {}),
+    task("p1", { estimatedDate: "2000-01-01" }),
     task("arq", { cardStatusId: "98" }),
     ...Array.from({ length: 7 }, (_, i) => task(`d${i}`, { done: true, conclusionDate: `2026-02-0${i + 1}T10:00:00` })),
 ];
@@ -87,6 +87,7 @@ test("mostra saudação, relógio, atividades pendentes + 5 últimas concluídas
 
     const atividades = screen.getByRole("region", { name: "Minhas Atividades" });
     expect(await within(atividades).findByText("Atividade p1")).toBeInTheDocument();
+    expect(within(atividades).getByText("Atrasado")).toBeInTheDocument();
     expect(within(atividades).queryByText("Atividade arq")).not.toBeInTheDocument();
     expect(within(atividades).getByText("Atividade d6")).toBeInTheDocument();
     expect(within(atividades).getByText("Atividade d2")).toBeInTheDocument();

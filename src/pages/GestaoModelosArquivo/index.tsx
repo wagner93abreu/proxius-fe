@@ -75,8 +75,8 @@ function canPreviewModelFile(item: ISharePointFile) {
 }
 
 const ContainerClaro = styled(Container)`
-    background: linear-gradient(180deg, #efe5d8 0%, #e2d8cc 100%);
-    color: #55081d;
+    background: linear-gradient(180deg, #f6f6f6 0%, #e8e8e8 100%);
+    color: #141414;
     min-height: calc(100dvh - 48px);
     box-sizing: border-box;
     margin: 0;
@@ -88,17 +88,17 @@ const ContainerClaro = styled(Container)`
 `;
 
 const panelSx = {
-    p: { xs: 2, sm: 3 }, border: "1px solid rgba(85, 8, 29, 0.16)", borderRadius: "20px",
-    bgcolor: "rgba(255,255,255,0.72)", boxShadow: "0 16px 48px rgba(85, 8, 29, 0.06)",
+    p: { xs: 2, sm: 3 }, border: "1px solid rgba(20, 20, 20, 0.16)", borderRadius: "20px",
+    bgcolor: "rgba(255,255,255,0.72)", boxShadow: "0 16px 48px rgba(20, 20, 20, 0.06)",
 };
-const chipSx = { bgcolor: "rgba(85, 8, 29, 0.06)", color: "primary.main" };
+const chipSx = { bgcolor: "rgba(20, 20, 20, 0.06)", color: "primary.main" };
 const emptySx = {
     p: { xs: 3, sm: 6 }, textAlign: "center", border: "1px dashed", borderColor: "divider",
     borderRadius: 3, bgcolor: "rgba(255,255,255,0.5)", color: "text.secondary",
 } as const;
 const iconTileSx = {
     display: "grid", placeItems: "center", width: 44, height: 44, flexShrink: 0,
-    borderRadius: 2, bgcolor: "rgba(85, 8, 29, 0.06)", color: "primary.main",
+    borderRadius: 2, bgcolor: "rgba(20, 20, 20, 0.06)", color: "primary.main",
 };
 
 function fileTypeLabel(name: string) {
@@ -541,10 +541,10 @@ export default function GestaoModelosArquivo() {
                                                             <Card component="li" key={model.id} variant="outlined" sx={{
                                                                 display: "flex", flexDirection: "column", p: 3, gap: 2,
                                                                 borderColor: isSelected ? "primary.main" : "divider",
-                                                                boxShadow: isSelected ? "0 8px 24px rgba(85, 8, 29, 0.1)" : "none",
+                                                                boxShadow: isSelected ? "0 8px 24px rgba(20, 20, 20, 0.1)" : "none",
                                                                 opacity: model.ativo ? 1 : 0.72,
                                                                 transition: "border-color 160ms ease, box-shadow 160ms ease",
-                                                                "&:hover": { borderColor: "primary.main", boxShadow: "0 8px 24px rgba(85, 8, 29, 0.08)" },
+                                                                "&:hover": { borderColor: "primary.main", boxShadow: "0 8px 24px rgba(20, 20, 20, 0.08)" },
                                                                 "@media (prefers-reduced-motion: reduce)": { transition: "none" },
                                                             }}>
                                                                 <Stack direction="row" alignItems="flex-start" justifyContent="space-between" gap={1}>
@@ -552,8 +552,8 @@ export default function GestaoModelosArquivo() {
                                                                         <DescriptionOutlinedIcon aria-hidden="true" />
                                                                     </Box>
                                                                     <Chip size="small" label={model.ativo ? "Ativo" : "Inativo"} sx={model.ativo
-                                                                        ? { bgcolor: "rgba(46, 125, 50, 0.1)", color: "#1b5e20" }
-                                                                        : { bgcolor: "rgba(117, 101, 107, 0.12)", color: "text.secondary" }} />
+                                                                        ? { bgcolor: "rgba(90, 90, 90, 0.1)", color: "#303030" }
+                                                                        : { bgcolor: "rgba(102, 102, 102, 0.12)", color: "text.secondary" }} />
                                                                 </Stack>
                                                                 <Box sx={{ flexGrow: 1, minWidth: 0 }}>
                                                                     <Button disabled={busy} onClick={() => selectModel(model)} aria-pressed={isSelected}
@@ -623,7 +623,7 @@ export default function GestaoModelosArquivo() {
                                                 <Stack component="nav" aria-label="Caminho do modelo" direction="row" alignItems="center"
                                                     flexWrap="wrap" gap={0.5} sx={{
                                                         mb: 2, px: 1, py: 0.5, borderRadius: 2,
-                                                        bgcolor: "rgba(85, 8, 29, 0.04)", border: "1px solid", borderColor: "divider",
+                                                        bgcolor: "rgba(20, 20, 20, 0.04)", border: "1px solid", borderColor: "divider",
                                                     }}>
                                                     {folderPath.length > 0 && (
                                                         <IconButton size="small" disabled={busy} aria-label="Voltar para pasta anterior" onClick={() => {

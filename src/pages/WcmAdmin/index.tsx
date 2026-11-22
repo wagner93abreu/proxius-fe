@@ -23,7 +23,7 @@ function message(error: unknown): string {
         if (data && typeof data === "object" && "error" in data && typeof data.error === "string") return data.error;
         if (error.response?.status === 400) return "Confira os campos. As senhas devem ter entre 14 e 72 caracteres ASCII sem espacos.";
         if (error.response?.status === 401) return "Sessao expirada ou credenciais invalidas.";
-        return "Nao foi possivel concluir a operacao. Verifique a API local na porta 8081 e atualize a sessao.";
+        return "Nao foi possivel concluir a operacao. Verifique a API local na porta 8080 e atualize a sessao.";
     }
     return "Nao foi possivel concluir a operacao.";
 }
@@ -266,10 +266,9 @@ export default function WcmAdmin() {
                         <Stack spacing={2}>
                             <Stack direction="row" spacing={1} alignItems="center">
                                 <Typography variant="h6" component="h2">Armazenamento por empresa</Typography>
-                                <Chip label="SIMULATED" color="info" size="small" />
                             </Stack>
                             <Alert severity="info">
-                                Medição técnica simulada; não representa cobrança, preços ou limites.
+                                Ambientes SIMULATED e Microsoft TEST separados; não representa cobrança, preços ou limites.
                                 GiB usa a base binária: 1 GiB = 1.073.741.824 bytes. A coleta manual é registrada pela API na auditoria.
                             </Alert>
                             {storageError && <Alert severity="error">{storageError}</Alert>}
@@ -282,7 +281,7 @@ export default function WcmAdmin() {
                                     </TableRow></TableHead>
                                     <TableBody>
                                         {storageRows.map(row => <TableRow key={row.tenantId}>
-                                            <TableCell>{row.name} ({row.slug} · {row.tenantStatus})</TableCell>
+                                            <TableCell>{row.name} ({row.slug} · {row.tenantStatus}) <Chip label={row.simulated ? "SIMULATED" : "Microsoft TEST"} size="small" /></TableCell>
                                             <TableCell>{stateLabel(row.state)}{row.stale ? " · Desatualizada" : ""}</TableCell>
                                             <TableCell>{measuredUsage(row)}</TableCell>
                                             <TableCell>{row.lastCompleteBytes === null
@@ -314,6 +313,7 @@ export default function WcmAdmin() {
                                             {storageDetail.summary.name} — detalhamento
                                         </Typography>
                                         <Typography>{measuredUsage(storageDetail.summary)}</Typography>
+                                        <Chip label={storageDetail.summary.simulated ? "SIMULATED" : "Microsoft TEST"} size="small" />
                                         <Typography variant="body2">Estado: {stateLabel(storageDetail.summary.state)} · Containers coletados: {storageDetail.summary.collectedContainers}/{storageDetail.summary.expectedContainers}</Typography>
                                         <Typography variant="body2">Coleta mais recente: {formatTimestamp(storageDetail.summary.collectedAt)}</Typography>
                                         <Typography variant="body2">Última medição completa: {storageDetail.summary.lastCompleteBytes === null

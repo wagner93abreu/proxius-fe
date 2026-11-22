@@ -86,11 +86,11 @@ export default function Armazenamento() {
         <Stack spacing={3}>
             <Stack direction="row" spacing={2} alignItems="baseline" flexWrap="wrap">
                 <Typography component="h1" variant="h4">Armazenamento</Typography>
-                <Chip label="SIMULATED" color="info" size="small" />
+                {detail && <Chip label={detail.summary.simulated ? "SIMULATED" : "Microsoft TEST"} color="info" size="small" />}
                 <MuiLink component={Link} to="/painelDeControle">Voltar ao Painel de Controle</MuiLink>
             </Stack>
             <Alert severity="info">
-                Medição técnica simulada para acompanhamento. Não representa cobrança, preço ou limite de armazenamento.
+                Medição técnica por ambiente, SIMULATED ou Microsoft TEST. Não representa cobrança, preço ou limite de armazenamento.
                 GiB usa a base binária: 1 GiB = 1.073.741.824 bytes. Esta tela somente consulta dados; não inicia coletas.
             </Alert>
             {error && <Alert severity="error">{error}</Alert>}

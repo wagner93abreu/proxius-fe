@@ -36,7 +36,7 @@ const BoxCustomizado = styled(Box)`
     margin: 0px 0 0 0;
     overflow-y: auto;
     background-color: rgba(255,255,255,0.6);
-    border: 1px solid rgba(85, 8, 29, 0.16);
+    border: 1px solid rgba(20, 20, 20, 0.16);
     border-radius: 5px;
     padding: 1em 1em;
     padding-bottom: 0;
@@ -47,7 +47,7 @@ const BoxCustomizado = styled(Box)`
     }
 
         /* Ensure scrollbar colors apply across browsers */
-    scrollbar-color: rgba(85, 8, 29, 0.35) #efe5d8;
+    scrollbar-color: rgba(20, 20, 20, 0.35) #f6f6f6;
     scrollbar-width: thin;
 
     @media (max-width: 1024px) {
@@ -61,19 +61,19 @@ const BoxCustomizado = styled(Box)`
     }
 
     &&::-webkit-scrollbar-track {
-        background: #efe5d8;
+        background: #f6f6f6;
         border-radius: 10px;
         margin: 4px 2px;
     }
 
     &&::-webkit-scrollbar-thumb {
-        background: rgba(85, 8, 29, 0.35);
+        background: rgba(20, 20, 20, 0.35);
         border-radius: 10px;
-        border: 2px solid #efe5d8;
+        border: 2px solid #f6f6f6;
     }
 
     &&::-webkit-scrollbar-thumb:hover {
-        background: rgba(85, 8, 29, 0.5);
+        background: rgba(20, 20, 20, 0.5);
     }
 `;
 
@@ -89,7 +89,7 @@ const TableScroll = styled(Box)`
         height: 0px;
     }
 
-    scrollbar-color: rgba(85, 8, 29, 0.35) #efe5d8;
+    scrollbar-color: rgba(20, 20, 20, 0.35) #f6f6f6;
 `;
 
 const FixedScrollBar = styled(Box)`
@@ -100,10 +100,10 @@ const FixedScrollBar = styled(Box)`
     overflow-x: auto;
     overflow-y: hidden;
     padding-top: 4px;
-    background: linear-gradient(180deg, rgba(239, 229, 216, 0) 0%, rgba(239, 229, 216, 0.85) 60%, rgba(239, 229, 216, 1) 100%);
+    background: linear-gradient(180deg, rgba(245, 245, 245, 0) 0%, rgba(245, 245, 245, 0.85) 60%, rgba(245, 245, 245, 1) 100%);
     z-index: 2;
 
-    scrollbar-color: rgba(85, 8, 29, 0.5) #efe5d8;
+    scrollbar-color: rgba(20, 20, 20, 0.5) #f6f6f6;
     scrollbar-width: thin;
 
     &&::-webkit-scrollbar {
@@ -111,19 +111,19 @@ const FixedScrollBar = styled(Box)`
     }
 
     &&::-webkit-scrollbar-track {
-        background: #efe5d8;
+        background: #f6f6f6;
         border-radius: 10px;
         margin: 4px 2px;
     }
 
     &&::-webkit-scrollbar-thumb {
-        background: rgba(85, 8, 29, 0.5);
+        background: rgba(20, 20, 20, 0.5);
         border-radius: 10px;
-        border: 2px solid #efe5d8;
+        border: 2px solid #f6f6f6;
     }
 
     &&::-webkit-scrollbar-thumb:hover {
-        background: rgba(85, 8, 29, 0.65);
+        background: rgba(20, 20, 20, 0.65);
     }
 `;
 
@@ -434,14 +434,14 @@ export default function MinhasAtividades() {
     return (
         <BoxCustomizado>
             <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
-                <Typography variant="h6" align="left" gutterBottom style={{ color: "#55081d", margin: 0 }}>
+                <Typography variant="h6" align="left" gutterBottom style={{ color: "#141414", margin: 0 }}>
                     To Do's / Entregáveis
                 </Typography>
             </Box>
 
             {loading ? (
                 <Box display="flex" justifyContent="center" alignItems="center" py={4}>
-                    <CircularProgress sx={{ color: "#55081d" }} />
+                    <CircularProgress sx={{ color: "#141414" }} />
                 </Box>
             ) : (
                 <>
@@ -450,12 +450,12 @@ export default function MinhasAtividades() {
                             size="small"
                             sx={{
                                 backgroundColor: "rgba(255,255,255,0.45)",
-                                color: "#55081d",
+                                color: "#141414",
                                 borderCollapse: "collapse",
                                 tableLayout: "fixed",
                                 width: "100%",
                                 minWidth: tableMinWidth,
-                                "& td, & th": { borderBottom: "1px solid rgba(85, 8, 29, 0.15)" },
+                                "& td, & th": { borderBottom: "1px solid rgba(20, 20, 20, 0.15)" },
                                 "@media (max-width: 768px)": {
                                     "& td, & th": { fontSize: "13px" },
                                     "& .MuiTypography-root": { fontSize: "13px" },
@@ -464,14 +464,14 @@ export default function MinhasAtividades() {
                             }}
                         >
                     <TableHead>
-                        <TableRow sx={{ "& th": { borderBottom: "1px solid #55081d" } }}>
-                            <TableCell align="center" style={{ color: "#55081d", width: "30px" }}>
+                        <TableRow sx={{ "& th": { borderBottom: "1px solid #141414" } }}>
+                            <TableCell align="center" style={{ color: "#141414", width: "30px" }}>
                                 Feito
                             </TableCell>
-                            <TableCell style={{ color: "#55081d", width: "400px" }}>Descrição</TableCell>
-                            {/* <TableCell style={{ color: "#55081d", width: "120px" }}>Prazo</TableCell> */}
-                            <TableCell style={{ color: "#55081d", width: "120px" }}>Responsável</TableCell>
-                            <TableCell style={{ color: "#55081d", width: "110px" }}>Data Realizado</TableCell>
+                            <TableCell style={{ color: "#141414", width: "400px" }}>Descrição</TableCell>
+                            {/* <TableCell style={{ color: "#141414", width: "120px" }}>Prazo</TableCell> */}
+                            <TableCell style={{ color: "#141414", width: "120px" }}>Responsável</TableCell>
+                            <TableCell style={{ color: "#141414", width: "110px" }}>Data Realizado</TableCell>
                             
                         </TableRow>
                     </TableHead>
@@ -483,13 +483,13 @@ export default function MinhasAtividades() {
                                     <TableRow>
                                         <TableCell
                                             colSpan={4}
-                                            sx={{ color: "#55081d", fontWeight: 700, borderBottom: "1px solid #55081d", whiteSpace: "pre-line" }}
+                                            sx={{ color: "#141414", fontWeight: 700, borderBottom: "1px solid #141414", whiteSpace: "pre-line" }}
                                         >
                                             {sessao || "Sem sessão"}
                                             {sessaoConclusion && (
                                                 <>
                                                     {"\n"}
-                                                    <span style={{ color: "rgba(85, 8, 29, 0.65)", fontWeight: 400 }}>
+                                                    <span style={{ color: "rgba(20, 20, 20, 0.65)", fontWeight: 400 }}>
                                                         {`Reunião realizada no dia ${formatDateDisplay(sessaoConclusion)}`}
                                                     </span>
                                                 </>
@@ -499,29 +499,28 @@ export default function MinhasAtividades() {
                                     {list.map((task, index) => (
                                     <TableRow
                                         key={task.id || `task-${sessao}-${index}`}
-                                        sx={{ "& td": { color: "#55081d", borderBottom: "1px solid rgba(85, 8, 29, 0.15)" } }}
+                                        sx={{ "& td": { color: "#141414", borderBottom: "1px solid rgba(20, 20, 20, 0.15)" } }}
                                     >
                                         <TableCell align="center">
                                             <Checkbox
-                                                sx={{ color: "#55081d", "&.Mui-checked": { color: "#55081d" } }}
+                                                sx={{ color: "#141414", "&.Mui-checked": { color: "#141414" } }}
                                                 checked={task.done}
                                                 onChange={(e) => handleDoneToggle(tasks.indexOf(task), e.target.checked)}
                                             />
                                         </TableCell>
                                         <TableCell>
-                                            <TextField
-                                                fullWidth
-                                                variant="outlined"
-                                                size="small"
-                                                multiline
-                                                minRows={1}
-                                                value={task.description || ""}
-                                                InputProps={{ readOnly: true, style: { color: "#55081d", whiteSpace: "pre-wrap" } }}
+                                            <Typography
+                                                component="div"
                                                 sx={{
-                                                    "& .MuiOutlinedInput-notchedOutline": { border: "none" },
-                                                    "& .MuiOutlinedInput-root": { padding: 0 },
+                                                    color: "#141414",
+                                                    fontSize: "1rem",
+                                                    lineHeight: "1.4375em",
+                                                    whiteSpace: "pre-wrap",
+                                                    overflowWrap: "anywhere",
                                                 }}
-                                            />
+                                            >
+                                                {task.description || ""}
+                                            </Typography>
                                         </TableCell>
                                         {/* <TableCell>
                                             <TextField
@@ -530,7 +529,7 @@ export default function MinhasAtividades() {
                                                 size="small"
                                                 placeholder="dd/mm/aaaa"
                                                 value={formatDateDisplay(task.estimatedDate)}
-                                                InputProps={{ readOnly: true, style: { color: isOverdue(task) ? "#ff5c5c" : "white" } }}
+                                                InputProps={{ readOnly: true, style: { color: isOverdue(task) ? "#b0b0b0" : "white" } }}
                                                 sx={{
                                                     "& .MuiOutlinedInput-notchedOutline": { border: "none" },
                                                     "& .MuiOutlinedInput-root": { padding: 0 },
@@ -538,7 +537,7 @@ export default function MinhasAtividades() {
                                             />
                                         </TableCell> */}
                                         <TableCell>
-                                            <Typography variant="body2" sx={{ color: "#55081d" }}>
+                                            <Typography variant="body2" sx={{ color: "#141414" }}>
                                                 {getResponsavelNome(task)}
                                             </Typography>
                                         </TableCell>
@@ -548,7 +547,7 @@ export default function MinhasAtividades() {
                                                 variant="outlined"
                                                 size="small"
                                                 value={formatDateDisplay(task.conclusionDate)}
-                                                InputProps={{ readOnly: true, style: { color: "#55081d" } }}
+                                                InputProps={{ readOnly: true, style: { color: "#141414" } }}
                                                 sx={{
                                                     "& .MuiOutlinedInput-notchedOutline": { border: "none" },
                                                     "& .MuiOutlinedInput-root": { padding: 0 },
@@ -574,17 +573,17 @@ export default function MinhasAtividades() {
                 onClose={handleCancelDoneToggle}
                 fullWidth
                 maxWidth="xs"
-                PaperProps={{ sx: { backgroundColor: "#f7efe4", color: "#55081d" } }}
+                PaperProps={{ sx: { backgroundColor: "#f5f5f5", color: "#141414" } }}
             >
-                <DialogTitle sx={{ color: "#55081d" }}>Confirmar</DialogTitle>
+                <DialogTitle sx={{ color: "#141414" }}>Confirmar</DialogTitle>
                 <DialogContent>
-                    <Typography color="#55081d">
+                    <Typography color="#141414">
                         {confirmChecked ? "Deseja marcar a tarefa como finalizada?" : "Deseja retornar a tarefa para pendente?"}
                     </Typography>
                 </DialogContent>
                 <DialogActions sx={{ display: "flex", gap: 1 }}>
-                    <Button onClick={handleCancelDoneToggle} sx={{ color: "#55081d" }}>Cancelar</Button>
-                    <Button onClick={handleConfirmDoneToggle} sx={{ fontWeight: 700, color: "#55081d" }}>
+                    <Button onClick={handleCancelDoneToggle} sx={{ color: "#141414" }}>Cancelar</Button>
+                    <Button onClick={handleConfirmDoneToggle} sx={{ fontWeight: 700, color: "#141414" }}>
                         Confirmar
                     </Button>
                 </DialogActions>

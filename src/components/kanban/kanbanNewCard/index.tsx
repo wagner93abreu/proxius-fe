@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     .cards-hover {
-    background-color: rgba(85, 8, 29, 0.08);
+    background-color: rgba(20, 20, 20, 0.08);
     border-radius: 8px;
 }
 `
@@ -21,15 +21,15 @@ const KanbanCardStyle = styled.div`
     flex-direction: column;
     gap: 8px;
     position: relative;
-    background-color: #fffdfa;
-    border: 1px solid rgba(85, 8, 29, 0.18);
+    background-color: #ffffff;
+    border: 1px solid rgba(20, 20, 20, 0.18);
     border-radius: 14px;
     padding: 14px;
-    box-shadow: 0 8px 24px rgba(85, 8, 29, 0.06);
+    box-shadow: 0 8px 24px rgba(20, 20, 20, 0.06);
 `
 const Badge = styled.div`
-    color: #55081d;
-    background-color: rgba(85, 8, 29, 0.07);
+    color: #141414;
+    background-color: rgba(20, 20, 20, 0.07);
     width: fit-content;
     font-size: 12px;
     padding: 4px 8px;
@@ -39,7 +39,7 @@ const Badge = styled.div`
 
 const BotaoCustomizado = styled.button`
     width: 50%!important;
-    background-color: #55081d;
+    background-color: #141414;
     border-radius: 10px;
     padding: 5px 16px;
     color: var(--branco);
@@ -50,10 +50,10 @@ const BotaoCustomizado = styled.button`
     line-height: 19px;
     margin-right: 2em;
     &:hover {
-        background-color: #6f102a;
+        background-color: #383838;
     }
     &:active{
-        border: solid #55081d;
+        border: solid #141414;
     }
 `
 const Close = styled.button`
@@ -63,31 +63,31 @@ const Close = styled.button`
     position: absolute;
     width: 24px;
     height: 24px;
-    background-color: rgba(85, 8, 29, 0.06);
+    background-color: rgba(20, 20, 20, 0.06);
     border-radius: 3px;
-    color: #55081d;
+    color: #141414;
     border: solid transparent;
     font-weight: 700;
     line-height: 19px;
     padding: 0;
     &:hover {
-        background-color: rgba(85, 8, 29, 0.12);
+        background-color: rgba(20, 20, 20, 0.12);
     }
     &:active{
-        border: solid #55081d;
+        border: solid #141414;
     }
 `
 
 const Campo = styled.input`
-    color: #35252b;
+    color: #242424;
     font-size: 15px;
-    background: #fffdfa;
+    background: #ffffff;
     margin-top: 3px;
     margin-bottom: 0px;
     box-sizing: border-box;
     border-radius: 10px;
-    border: 1px solid rgba(85, 8, 29, 0.2);
-    &:focus-visible { outline: 2px solid #55081d; }
+    border: 1px solid rgba(20, 20, 20, 0.2);
+    &:focus-visible { outline: 2px solid #141414; }
     width: 100%;
     padding: 10px;
 `

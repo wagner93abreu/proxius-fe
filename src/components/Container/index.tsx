@@ -16,7 +16,7 @@ ${({ theme }) => theme.palette?.mode === "light" && css`
     min-width: 0;
     margin: 72px auto 64px;
     padding: clamp(16px, 3vw, 40px);
-    color: #35252b;
+    color: #242424;
 `}
 `
 

@@ -31,19 +31,19 @@ const User = styled.div`
         height: clamp(96px, 28vw, 120px);
         border-radius: 10px;
         object-fit: cover;
-        border: 2px solid #55081d;
+        border: 2px solid #141414;
     }
 `;
 
 const Campo = styled.input`
-    color: #55081d;
+    color: #141414;
     font-size: 15px;
     background: rgba(255, 255, 255, 0.78);
     margin-top: 6px;
     box-sizing: border-box;
-    box-shadow: 2px 2px 6px rgba(85, 8, 29, 0.1);
+    box-shadow: 2px 2px 6px rgba(20, 20, 20, 0.1);
     border-radius: 3px;
-    border: 1px solid rgba(85, 8, 29, 0.16);
+    border: 1px solid rgba(20, 20, 20, 0.16);
     width: 100%;
     padding: 10px;
 `;
@@ -53,7 +53,7 @@ const Rotulo = styled.label`
     font-weight: 700;
     font-size: 14px;
     line-height: 18px;
-    color: #55081d;
+    color: #141414;
 `;
 
 const CampoWrapper = styled.div`
@@ -64,9 +64,9 @@ const UploadButton = styled.button`
     font-size: 14px;
     font-weight: 700;
     background-color: transparent;
-    color: #55081d;
+    color: #141414;
     padding: 6px 16px;
-    border: 2px solid #55081d;
+    border: 2px solid #141414;
     border-radius: 4px;
     cursor: pointer;
 `;
@@ -256,9 +256,9 @@ export default function ModalPerfilAreaCliente({ open, onClose, onUpdated, userI
                 onClose={handleClose}
                 fullWidth
                 maxWidth="sm"
-                PaperProps={{ sx: { backgroundColor: "#f7efe4", color: "#55081d", borderRadius: "8px" } }}
+                PaperProps={{ sx: { backgroundColor: "#f5f5f5", color: "#141414", borderRadius: "8px" } }}
             >
-                <DialogTitle sx={{ color: "#55081d", fontWeight: 700 }}>Meu Perfil</DialogTitle>
+                <DialogTitle sx={{ color: "#141414", fontWeight: 700 }}>Meu Perfil</DialogTitle>
                 <DialogContent>
                     <Box display="flex" flexDirection="column" gap={1}>
                         <User>
@@ -305,17 +305,17 @@ export default function ModalPerfilAreaCliente({ open, onClose, onUpdated, userI
                     </Box>
                 </DialogContent>
                 <DialogActions sx={{ px: 3, pb: 2, justifyContent: "space-between" }}>
-                    <Typography variant="caption" color="rgba(85, 8, 29, 0.65)">
+                    <Typography variant="caption" color="rgba(20, 20, 20, 0.65)">
                         Atualize seus dados para manter o cadastro em dia.
                     </Typography>
                     <Box display="flex" gap={1}>
-                        <Button onClick={handleClose} sx={{ color: "#55081d" }}>
+                        <Button onClick={handleClose} sx={{ color: "#141414" }}>
                             Cancelar
                         </Button>
                         <Button
                             onClick={handleSalvar}
                             variant="outlined"
-                            sx={{ borderColor: "#55081d", color: "#55081d", fontWeight: 700, "&:hover": { borderColor: "#6f102a", color: "#6f102a" } }}
+                            sx={{ borderColor: "#141414", color: "#141414", fontWeight: 700, "&:hover": { borderColor: "#383838", color: "#383838" } }}
                         >
                             Salvar
                         </Button>

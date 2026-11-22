@@ -15,9 +15,9 @@ const Card = styled.div`
   flex-direction: column;
   align-items: center;
   background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(85, 8, 29, 0.14);
+  border: 1px solid rgba(20, 20, 20, 0.14);
   border-radius: 24px;
-  box-shadow: 0 24px 60px rgba(85, 8, 29, 0.12);
+  box-shadow: 0 24px 60px rgba(20, 20, 20, 0.12);
   padding: 40px 32px;
 `;
 
@@ -25,13 +25,13 @@ const Titulo = styled.h2`
   font-weight: 700;
   font-size: 24px;
   line-height: 28px;
-  color: #55081d;
+  color: #141414;
   margin: 0;
 `;
 
 const Subtitulo = styled.p`
   font-size: 14px;
-  color: rgba(85, 8, 29, 0.68);
+  color: rgba(20, 20, 20, 0.68);
   margin: 0.4em 0 1.5em;
   text-align: center;
 `;
@@ -43,21 +43,21 @@ const Formulario = styled.form`
   align-items: center;
 
   label {
-    color: #55081d;
+    color: #141414;
   }
 `;
 
 const BotaoCustomizado = styled(Botao)`
   width: 100%;
   margin-right: 0;
-  background-color: #55081d;
+  background-color: #141414;
 
   &:hover {
-    background-color: #6f102a;
+    background-color: #383838;
   }
 
   &:active {
-    border-color: #55081d;
+    border-color: #141414;
   }
 `;
 
@@ -65,7 +65,7 @@ const LinkVoltar = styled.a`
   margin-top: 0.8em;
   font-size: 13px;
   font-weight: 700;
-  color: #55081d;
+  color: #141414;
   text-decoration: underline;
   cursor: pointer;
 `;

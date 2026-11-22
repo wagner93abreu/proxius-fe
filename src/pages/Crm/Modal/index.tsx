@@ -46,14 +46,14 @@ const BoxCustomizado = styled(Box)`
     max-height: 90vh;
     overflow-y: auto;
     scrollbar-width: thin;
-    scrollbar-color: rgba(85, 8, 29, 0.25) #fffdfa;
-    background-color: #fffdfa;
+    scrollbar-color: rgba(20, 20, 20, 0.25) #ffffff;
+    background-color: #ffffff;
     border-radius: 20px;
     padding: 24px;
     box-sizing: border-box;
-    border: 1px solid rgba(85, 8, 29, 0.12);
-    box-shadow: 0 24px 60px rgba(85, 8, 29, 0.18);
-    color: #35252b;
+    border: 1px solid rgba(20, 20, 20, 0.12);
+    box-shadow: 0 24px 60px rgba(20, 20, 20, 0.18);
+    color: #242424;
 
     @media (max-width: 768px) {
         width: 95vw; 
@@ -63,25 +63,25 @@ const BoxCustomizado = styled(Box)`
 
 const SpanErro = styled.span`
     float: left;
-    color: #c62828;
+    color: #303030;
     font-size: 14px;
     margin-top: -25px;
 `
 
 const Campo = styled.input`
-    color: #35252b;
+    color: #242424;
     font-size: 15px;
-    background:#fffdfa;
+    background:#ffffff;
     margin-top: 3px;
     margin-bottom: 0px;
     box-sizing: border-box;
-    box-shadow: 0 4px 16px rgba(85, 8, 29, 0.04);
+    box-shadow: 0 4px 16px rgba(20, 20, 20, 0.04);
     border-radius: 10px;
-    border: 1px solid rgba(85, 8, 29, 0.2);
+    border: 1px solid rgba(20, 20, 20, 0.2);
     width: 100%;
     padding: 10px;
-    &:focus-visible { outline: 2px solid #55081d; outline-offset: 1px; }
-    &::placeholder { color: #75656b; }
+    &:focus-visible { outline: 2px solid #141414; outline-offset: 1px; }
+    &::placeholder { color: #666666; }
 `
 
 const Rotulo = styled.label`
@@ -89,36 +89,36 @@ const Rotulo = styled.label`
     font-weight: 700;
     font-size: 16px;
     line-height: 19px;
-    color: #35252b
+    color: #242424
 `
 
 const InputMaskCustomizado = styled(InputMask)`
-    color: #35252b;
+    color: #242424;
     font-size: 15px;
-    background:#fffdfa;
+    background:#ffffff;
     margin-top: 3px;
     margin-bottom: 0px;
     box-sizing: border-box;
-    box-shadow: 0 4px 16px rgba(85, 8, 29, 0.04);
+    box-shadow: 0 4px 16px rgba(20, 20, 20, 0.04);
     border-radius: 10px;
-    border: 1px solid rgba(85, 8, 29, 0.2);
+    border: 1px solid rgba(20, 20, 20, 0.2);
     width: 100%;
     padding: 10px;
-    &:focus-visible { outline: 2px solid #55081d; outline-offset: 1px; }
-    &::placeholder { color: #75656b; }
+    &:focus-visible { outline: 2px solid #141414; outline-offset: 1px; }
+    &::placeholder { color: #666666; }
 `
 
 const CampoTextoLongo = styled.textarea`
-    color: #35252b;
-    background:#fffdfa;
+    color: #242424;
+    background:#ffffff;
     width: 100%;
     padding: 8px;
     margin-top: 3px;
     border-radius: 10px;
-    border: 1px solid rgba(85, 8, 29, 0.2);
-    &:focus-visible { outline: 2px solid #55081d; }
+    border: 1px solid rgba(20, 20, 20, 0.2);
+    &:focus-visible { outline: 2px solid #141414; }
     box-sizing: border-box;
-    box-shadow: 0 4px 16px rgba(85, 8, 29, 0.04);
+    box-shadow: 0 4px 16px rgba(20, 20, 20, 0.04);
     min-height: 100px; /* Ajuste a altura mínima conforme necessário */
 `;
 
@@ -126,28 +126,28 @@ const BotaoCustomizado = styled(Botao)`
     width: 50%;
     display: block;
     margin: 0 auto;
-    background: #55081d;
+    background: #141414;
     border: 1px solid transparent;
     border-radius: 10px;
-    color: #fffdfa;
-    &:hover { background: #6f102a; }
-    box-shadow: 0 4px 16px rgba(85, 8, 29, 0.04);
+    color: #ffffff;
+    &:hover { background: #383838; }
+    box-shadow: 0 4px 16px rgba(20, 20, 20, 0.04);
     cursor: pointer;    
 `
 const BotaoDownload = styled.button`
-    background-color: #55081d;
+    background-color: #141414;
     border-radius: 10px;
     padding: 5px 9px;
     color: var(--branco);
-    border: 1px solid #55081d;
+    border: 1px solid #141414;
     margin-top: 5px;
     font-weight: 700;
     line-height: 19px;
     &:hover {
-        background-color: #6f102a;
+        background-color: #383838;
     }
     &:active{
-        border: 1px solid #55081d;
+        border: 1px solid #141414;
     }
 `
 
@@ -167,14 +167,14 @@ const Overlay = styled.div`
 const BotaoCustom = styled.button`
   font-size: 14px;
   font-weight: 500;
-  background-color: #55081d;
-  color: #fffdfa;
+  background-color: #141414;
+  color: #ffffff;
   padding: 8px 16px;
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  &:hover { background: #6f102a; }
-  box-shadow: 0 4px 16px rgba(85, 8, 29, 0.04);
+  &:hover { background: #383838; }
+  box-shadow: 0 4px 16px rgba(20, 20, 20, 0.04);
 `;
 
 const SelectCustomizado = styled(Select)`
@@ -205,8 +205,8 @@ interface FloatingAlertProps {
 }
 
 const Badge = styled.div`
-    color: #35252b;
-    background-color: #92a5fb;
+    color: #242424;
+    background-color: #777777;
     width: fit-content;
     font-size: 12px;
     padding: 4px 8px;
@@ -782,9 +782,7 @@ export default function ModalCRM({ open, handleClose, dados, colunas, arquivado}
                         mostrarMensagem("Cliente nao definido", "warning");
                         return;
                 }
-                const isProductionApp = window.location.hostname !== "localhost";
-                const baseAppUrl = isProductionApp ? "https://rhintegrado.com.br" : "http://localhost:3000";
-                const url = `${baseAppUrl}/AreaClienteAtendente/${encodeURIComponent(String(codCliente))}`;
+                const url = `${window.location.origin}/AreaClienteAtendente/${encodeURIComponent(String(codCliente))}`;
                 window.open(url, "_blank", "noopener,noreferrer");
             };
 
@@ -958,8 +956,8 @@ export default function ModalCRM({ open, handleClose, dados, colunas, arquivado}
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <Grid item xs={12}>
                             <Box display="flex" alignItems="center" position="relative">
-                                <h2 id="crm-card-titulo" style={{flex: 1, color: "#55081d", margin: 0}}>Cliente/Lead</h2>
-                                <IconButton aria-label="Fechar card" onClick={handleClose} sx={{ color: "#55081d" }}>
+                                <h2 id="crm-card-titulo" style={{flex: 1, color: "#141414", margin: 0}}>Cliente/Lead</h2>
+                                <IconButton aria-label="Fechar card" onClick={handleClose} sx={{ color: "#141414" }}>
                                     <CloseIcon />
                                 </IconButton>
                                 {/* {clientePreenchido && (
@@ -980,26 +978,25 @@ export default function ModalCRM({ open, handleClose, dados, colunas, arquivado}
                             
                             <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
                                 {tagsSelecionadas.length === 0 && (
-                                    <span style={{ color: '#55081d' }}>Nenhuma tag selecionada</span>
+                                    <span style={{ color: '#141414' }}>Nenhuma tag selecionada</span>
                                 )}
                                 {tagsSelecionadas.map((tagId) => {
                                     const tag = tagsDisponiveis.find((t) => t.id === tagId);
-                                    const [bg = '#444', fg = '#fff'] = (tag?.color || '').split(';');
                                     return (
                                         <Chip
                                             key={tagId}
                                             label={tag?.name || `Tag ${tagId}`}
                                             onDelete={() => handleRemoveTag(tagId)}
-                                            deleteIcon={<CloseIcon sx={{ color: fg || '#fff' }} />}
+                                            deleteIcon={<CloseIcon sx={{ color: '#242424' }} />}
                                             sx={{
-                                                backgroundColor: bg || '#444',
-                                                color: fg || '#fff',
+                                                backgroundColor: '#ededed',
+                                                color: '#242424',
                                                 fontWeight: 400,
                                                 borderRadius: '4px',
                                                 fontSize:'10',
-                                                '& .MuiChip-deleteIcon': { color: fg || '#fff', opacity: 0.8 },
+                                                '& .MuiChip-deleteIcon': { color: '#242424', opacity: 0.8 },
                                                 '&:hover': {
-                                                    backgroundColor: bg || '#555',
+                                                    backgroundColor: '#d8d8d8',
                                                 },
                                             }}
                                         />
@@ -1010,7 +1007,7 @@ export default function ModalCRM({ open, handleClose, dados, colunas, arquivado}
                                     color="primary"
                                     size="small"
                                     onClick={() => setOpenSelecionarTags(true)}
-                                    sx={{ borderColor: '#55081d', color: '#55081d' }}
+                                    sx={{ borderColor: '#141414', color: '#141414' }}
                                 >
                                     Selecionar tags
                                 </Button>
@@ -1159,9 +1156,9 @@ export default function ModalCRM({ open, handleClose, dados, colunas, arquivado}
                                                 };
                                                 onInputblur(card);
                                             }}
-                                            inputStyle={{ width: '100%', height: 40, borderRadius: 10, borderColor: 'rgba(85, 8, 29, 0.2)', backgroundColor: '#fffdfa', color: '#35252b' }}
-                                            buttonStyle={{ borderColor: 'rgba(85, 8, 29, 0.2)', backgroundColor: '#fffdfa', borderRadius: '10px 0 0 10px' }}
-                                            dropdownStyle={{ backgroundColor: '#fffdfa', color: '#35252b' }}
+                                            inputStyle={{ width: '100%', height: 40, borderRadius: 10, borderColor: 'rgba(20, 20, 20, 0.2)', backgroundColor: '#ffffff', color: '#242424' }}
+                                            buttonStyle={{ borderColor: 'rgba(20, 20, 20, 0.2)', backgroundColor: '#ffffff', borderRadius: '10px 0 0 10px' }}
+                                            dropdownStyle={{ backgroundColor: '#ffffff', color: '#242424' }}
                                             specialLabel=""
                                         />
                                     )}
@@ -1470,22 +1467,22 @@ export default function ModalCRM({ open, handleClose, dados, colunas, arquivado}
                                 
                             </Grid> 
                             <Grid item xs={12} md={12} style={{ marginLeft: "10px" }}>
-                                <Box sx={{ borderBottom: "1px solid rgba(85, 8, 29, 0.12)", mb: 1 }}>
+                                <Box sx={{ borderBottom: "1px solid rgba(20, 20, 20, 0.12)", mb: 1 }}>
                                     <Tabs
                                         variant="scrollable"
                                         scrollButtons="auto"
                                         value={crmAbaAtiva}
                                         onChange={(_, newValue) => setCrmAbaAtiva(newValue)}
                                         textColor="inherit"
-                                        TabIndicatorProps={{ style: { backgroundColor: '#55081d' } }}
+                                        TabIndicatorProps={{ style: { backgroundColor: '#141414' } }}
                                         sx={{
                                             '& .MuiTab-root': {
-                                                color: '#75656b',
+                                                color: '#666666',
                                                 textTransform: 'none',
                                                 fontWeight: 700,
                                             },
                                             '& .Mui-selected': {
-                                                color: '#55081d',
+                                                color: '#141414',
                                             },
                                         }}
                                     >
@@ -1504,8 +1501,8 @@ export default function ModalCRM({ open, handleClose, dados, colunas, arquivado}
                                     <BotaoCustomizado
                                         onClick={handleOpenAreaClienteAtendente}
                                         style={{
-                                            backgroundColor: "#55081d",
-                                            border: "2px solid #55081d",
+                                            backgroundColor: "#141414",
+                                            border: "2px solid #141414",
                                             color: "#ffffff",
                                             boxShadow: "none",
                                             padding: "5px 16px",
@@ -1551,7 +1548,7 @@ export default function ModalCRM({ open, handleClose, dados, colunas, arquivado}
                                                 <BotaoDownload onClick={() => handleDownloadFile(indexArquivo)}>Download</BotaoDownload>
                                                 </Grid>                                                
                                                 <Grid item xs={1} md={1}> 
-                                                <BotaoCustomizado style={{backgroundColor: "rgb(134, 0, 0)", marginTop: "12px", padding: "0px", width: "23px", height: "23px"}} onClick={() => handleOpenFileConfirm(indexArquivo)}>X</BotaoCustomizado>
+                                                <BotaoCustomizado style={{backgroundColor: "rgb(48, 48, 48)", marginTop: "12px", padding: "0px", width: "23px", height: "23px"}} onClick={() => handleOpenFileConfirm(indexArquivo)}>X</BotaoCustomizado>
                                                 </Grid>
                                     </React.Fragment>   
                                 ))}  
@@ -1564,7 +1561,7 @@ export default function ModalCRM({ open, handleClose, dados, colunas, arquivado}
                             <Grid item md={3}></Grid>
                             <Grid item xs={12} md={6}>
 
-                                <BotaoCustomizado style={{backgroundColor: "rgb(134, 0, 0)", marginTop: "12px", padding: "0px", height: "23px"}} onClick={() => handleOpenRemoveCardConfirm()}>Remover Card</BotaoCustomizado>
+                                <BotaoCustomizado style={{backgroundColor: "rgb(48, 48, 48)", marginTop: "12px", padding: "0px", height: "23px"}} onClick={() => handleOpenRemoveCardConfirm()}>Remover Card</BotaoCustomizado>
 
                             </Grid>
                             <Grid item md={3}></Grid>
@@ -1581,13 +1578,13 @@ export default function ModalCRM({ open, handleClose, dados, colunas, arquivado}
                         maxWidth="md"
                     >
                         
-                        <DialogContent style={{ backgroundColor: '#fffdfa' }}>
+                        <DialogContent style={{ backgroundColor: '#ffffff' }}>
                             <Comentarios cardId={dados.id} usuarioNome={usuarioNomeAtual} usuarioId={usuarioIdAtual} origemTipo={comentariosOrigemTipo} $light />
                         </DialogContent>
-                        <DialogActions style={{ backgroundColor: '#fffdfa' }}>
+                        <DialogActions style={{ backgroundColor: '#ffffff' }}>
                             <Button
                                 onClick={() => setOpenComentarios(false)}
-                                sx={{ backgroundColor: '#55081d', color: "#fffdfa", fontWeight: 700, '&:hover': { backgroundColor: '#6f102a' } }}
+                                sx={{ backgroundColor: '#141414', color: "#ffffff", fontWeight: 700, '&:hover': { backgroundColor: '#383838' } }}
                             >
                                 Fechar
                             </Button>
@@ -1600,14 +1597,13 @@ export default function ModalCRM({ open, handleClose, dados, colunas, arquivado}
                         fullWidth
                         maxWidth="sm"
                     >
-                        <DialogTitle style={{ backgroundColor: '#fffdfa', color: "#35252b" }}>Selecionar tags</DialogTitle>
-                        <DialogContent style={{ backgroundColor: '#fffdfa', color: "#35252b" }}>
+                        <DialogTitle style={{ backgroundColor: '#ffffff', color: "#242424" }}>Selecionar tags</DialogTitle>
+                        <DialogContent style={{ backgroundColor: '#ffffff', color: "#242424" }}>
                             <Stack spacing={1}>
                                 {tagsDisponiveis.map((tag) => {
-                                    const [bg = '#444', fg = '#fff'] = (tag.color || '').split(';');
                                     const checked = tagsSelecionadas.includes(tag.id);
                                     return (
-                                        <Box key={tag.id} display="flex" alignItems="center" justifyContent="space-between" sx={{ backgroundColor: 'rgba(85, 8, 29, 0.04)', borderRadius: '8px', padding: '8px 12px' }}>
+                                        <Box key={tag.id} display="flex" alignItems="center" justifyContent="space-between" sx={{ backgroundColor: 'rgba(20, 20, 20, 0.04)', borderRadius: '8px', padding: '8px 12px' }}>
                                             <MuiFormControlLabel
                                                 control={<Checkbox checked={checked} onChange={(e) => {
                                                     const next = e.target.checked
@@ -1616,26 +1612,26 @@ export default function ModalCRM({ open, handleClose, dados, colunas, arquivado}
                                                     setTagsSelecionadas(next);
                                                 }} />}
                                                 label={tag.name}
-                                                sx={{ color: "#35252b" }}
+                                                sx={{ color: "#242424" }}
                                             />
                                             <Chip
                                                 label={tag.name}
-                                                sx={{ backgroundColor: bg, color: fg, fontWeight: 700 }}
+                                                sx={{ backgroundColor: '#ededed', color: '#242424', fontWeight: 700 }}
                                             />
                                         </Box>
                                     );
                                 })}
                                 {tagsDisponiveis.length === 0 && (
-                                    <Box sx={{ color: '#55081d', textAlign: 'center' }}>Nenhuma tag cadastrada.</Box>
+                                    <Box sx={{ color: '#141414', textAlign: 'center' }}>Nenhuma tag cadastrada.</Box>
                                 )}
                             </Stack>
                         </DialogContent>
-                        <DialogActions style={{ backgroundColor: '#fffdfa' }}>
-                            <Button onClick={() => setOpenSelecionarTags(false)} sx={{ color: '#55081d' }}>Cancelar</Button>
-                            <Button onClick={() => { salvarTags(tagsSelecionadas); setOpenSelecionarTags(false); }} sx={{ backgroundColor: '#55081d', color: "#fffdfa", fontWeight: 700, '&:hover': { backgroundColor: '#6f102a' } }}>
+                        <DialogActions style={{ backgroundColor: '#ffffff' }}>
+                            <Button onClick={() => setOpenSelecionarTags(false)} sx={{ color: '#141414' }}>Cancelar</Button>
+                            <Button onClick={() => { salvarTags(tagsSelecionadas); setOpenSelecionarTags(false); }} sx={{ backgroundColor: '#141414', color: "#ffffff", fontWeight: 700, '&:hover': { backgroundColor: '#383838' } }}>
                                 Salvar
                             </Button>
-                            <Button onClick={() => setOpenEditarEtiquetas(true)} sx={{ color: '#55081d' }}>
+                            <Button onClick={() => setOpenEditarEtiquetas(true)} sx={{ color: '#141414' }}>
                                 Editar etiquetas
                             </Button>
                         </DialogActions>
@@ -1649,17 +1645,17 @@ export default function ModalCRM({ open, handleClose, dados, colunas, arquivado}
                         aria-labelledby="alert-dialog-title"
                         aria-describedby="alert-dialog-description"
                     >
-                        <DialogTitle style={{backgroundColor: '#fffdfa' , color: "#35252b"}} id="alert-dialog-title">{"Confirmar criação de usuário"}</DialogTitle>
-                        <DialogContent style={{backgroundColor: '#fffdfa' , color: "#35252b"}}>
-                            <DialogContentText style={{backgroundColor: '#fffdfa' , color: "#35252b"}} id="alert-dialog-description">
+                        <DialogTitle style={{backgroundColor: '#ffffff' , color: "#242424"}} id="alert-dialog-title">{"Confirmar criação de usuário"}</DialogTitle>
+                        <DialogContent style={{backgroundColor: '#ffffff' , color: "#242424"}}>
+                            <DialogContentText style={{backgroundColor: '#ffffff' , color: "#242424"}} id="alert-dialog-description">
                                 O nome de exibição e o email para criação de usuário são os mesmos que estão nesse card. Você tem certeza que deseja criar esse usuário? Clique em voltar para ajustar os campos.
                             </DialogContentText >
                         </DialogContent>
-                        <DialogActions style={{backgroundColor: '#fffdfa'}}>
-                            <Button style={{backgroundColor: '#fffdfa'}} onClick={handleCloseCriarUsuarioConfirm} color="success">
+                        <DialogActions style={{backgroundColor: '#ffffff'}}>
+                            <Button style={{backgroundColor: '#ffffff'}} onClick={handleCloseCriarUsuarioConfirm} color="success">
                                 Voltar
                             </Button>
-                            <Button style={{backgroundColor: '#fffdfa'}} onClick={handleConfirmCriarUsuario} color="primary" autoFocus>
+                            <Button style={{backgroundColor: '#ffffff'}} onClick={handleConfirmCriarUsuario} color="primary" autoFocus>
                                 Criar usuário
                             </Button>
                         </DialogActions>
@@ -1674,20 +1670,20 @@ export default function ModalCRM({ open, handleClose, dados, colunas, arquivado}
                         fullWidth
                         maxWidth="sm"
                     >
-                        <DialogTitle style={{ backgroundColor: '#fffdfa', color: "#35252b", display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                        <DialogTitle style={{ backgroundColor: '#ffffff', color: "#242424", display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                             Mensagem para o cliente
-                            <IconButton onClick={handleRequestCloseUsuarioInfo} size="small" sx={{ color: '#55081d' }}>
+                            <IconButton onClick={handleRequestCloseUsuarioInfo} size="small" sx={{ color: '#141414' }}>
                                 <CloseIcon />
                             </IconButton>
                         </DialogTitle>
-                        <DialogContent style={{ backgroundColor: '#fffdfa', color: "#35252b" }}>
-                            <Box component="pre" sx={{ whiteSpace: 'pre-wrap', color: "#35252b", fontFamily: 'inherit', fontSize: '16px' }}>
+                        <DialogContent style={{ backgroundColor: '#ffffff', color: "#242424" }}>
+                            <Box component="pre" sx={{ whiteSpace: 'pre-wrap', color: "#242424", fontFamily: 'inherit', fontSize: '16px' }}>
                                 {senhaGerada && usuarioInfoEmail ? buildWelcomeMessage(usuarioInfoNome || 'Cliente', usuarioInfoEmail, senhaGerada) : ''}
                             </Box>
                             <Box display="flex" justifyContent="flex-end" mt={2}>
                                 <Button
                                     onClick={handleCopyWelcomeText}
-                                    sx={{ backgroundColor: '#55081d', color: "#fffdfa", fontWeight: 700, '&:hover': { backgroundColor: '#6f102a' } }}
+                                    sx={{ backgroundColor: '#141414', color: "#ffffff", fontWeight: 700, '&:hover': { backgroundColor: '#383838' } }}
                                 >
                                     Copiar texto
                                 </Button>
@@ -1701,17 +1697,17 @@ export default function ModalCRM({ open, handleClose, dados, colunas, arquivado}
                         aria-labelledby="alert-dialog-title"
                         aria-describedby="alert-dialog-description"
                     >
-                        <DialogTitle style={{backgroundColor: '#fffdfa' , color: "#35252b"}} id="alert-dialog-title">{"Confirmar fechamento"}</DialogTitle>
-                        <DialogContent style={{backgroundColor: '#fffdfa' , color: "#35252b"}}>
-                            <DialogContentText style={{backgroundColor: '#fffdfa' , color: "#35252b"}} id="alert-dialog-description">
+                        <DialogTitle style={{backgroundColor: '#ffffff' , color: "#242424"}} id="alert-dialog-title">{"Confirmar fechamento"}</DialogTitle>
+                        <DialogContent style={{backgroundColor: '#ffffff' , color: "#242424"}}>
+                            <DialogContentText style={{backgroundColor: '#ffffff' , color: "#242424"}} id="alert-dialog-description">
                                 Tem certeza que deseja fechar essa tela? a senha será perdida!
                             </DialogContentText >
                         </DialogContent>
-                        <DialogActions style={{backgroundColor: '#fffdfa'}}>
-                            <Button style={{backgroundColor: '#fffdfa'}} onClick={handleCancelCloseUsuarioInfo} color="success">
+                        <DialogActions style={{backgroundColor: '#ffffff'}}>
+                            <Button style={{backgroundColor: '#ffffff'}} onClick={handleCancelCloseUsuarioInfo} color="success">
                                 Cancelar
                             </Button>
-                            <Button style={{backgroundColor: '#fffdfa'}} onClick={handleConfirmCloseUsuarioInfo} color="primary" autoFocus>
+                            <Button style={{backgroundColor: '#ffffff'}} onClick={handleConfirmCloseUsuarioInfo} color="primary" autoFocus>
                                 Confirmar
                             </Button>
                         </DialogActions>
@@ -1722,17 +1718,17 @@ export default function ModalCRM({ open, handleClose, dados, colunas, arquivado}
                 onClose={handleCloseFileConfirm}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description">
-                    <DialogTitle style={{backgroundColor: '#fffdfa' , color: "#35252b"}} id="alert-dialog-title">{"Confirmar Remoção"}</DialogTitle>
-                    <DialogContent style={{backgroundColor: '#fffdfa' , color: "#35252b"}}>
-                    <DialogContentText style={{backgroundColor: '#fffdfa' , color: "#35252b"}} id="alert-dialog-description">
+                    <DialogTitle style={{backgroundColor: '#ffffff' , color: "#242424"}} id="alert-dialog-title">{"Confirmar Remoção"}</DialogTitle>
+                    <DialogContent style={{backgroundColor: '#ffffff' , color: "#242424"}}>
+                    <DialogContentText style={{backgroundColor: '#ffffff' , color: "#242424"}} id="alert-dialog-description">
                         Tem certeza que deseja remover este arquivo?
                     </DialogContentText >
                     </DialogContent>
-                    <DialogActions style={{backgroundColor: '#fffdfa'}}>
-                    <Button style={{backgroundColor: '#fffdfa'}} onClick={handleCloseFileConfirm} color="success">
+                    <DialogActions style={{backgroundColor: '#ffffff'}}>
+                    <Button style={{backgroundColor: '#ffffff'}} onClick={handleCloseFileConfirm} color="success">
                         Cancelar
                     </Button>
-                    <Button style={{backgroundColor: '#fffdfa'}} onClick={confirmRemoveFile} color="primary" autoFocus>
+                    <Button style={{backgroundColor: '#ffffff'}} onClick={confirmRemoveFile} color="primary" autoFocus>
                         Confirmar
                     </Button>
                     </DialogActions>
@@ -1743,17 +1739,17 @@ export default function ModalCRM({ open, handleClose, dados, colunas, arquivado}
                 onClose={handleCloseRemoveCardConfirm}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description">
-                    <DialogTitle style={{backgroundColor: '#fffdfa' , color: "#35252b"}} id="alert-dialog-title">{"Confirmar Remoção"}</DialogTitle>
-                    <DialogContent style={{backgroundColor: '#fffdfa' , color: "#35252b"}}>
-                    <DialogContentText style={{backgroundColor: '#fffdfa' , color: "#35252b"}} id="alert-dialog-description">
+                    <DialogTitle style={{backgroundColor: '#ffffff' , color: "#242424"}} id="alert-dialog-title">{"Confirmar Remoção"}</DialogTitle>
+                    <DialogContent style={{backgroundColor: '#ffffff' , color: "#242424"}}>
+                    <DialogContentText style={{backgroundColor: '#ffffff' , color: "#242424"}} id="alert-dialog-description">
                         Tem certeza que deseja excluir permanentemente?
                     </DialogContentText >
                     </DialogContent>
-                    <DialogActions style={{backgroundColor: '#fffdfa'}}>
-                    <Button style={{backgroundColor: '#fffdfa'}} onClick={handleCloseRemoveCardConfirm} color="success">
+                    <DialogActions style={{backgroundColor: '#ffffff'}}>
+                    <Button style={{backgroundColor: '#ffffff'}} onClick={handleCloseRemoveCardConfirm} color="success">
                         Cancelar
                     </Button>
-                    <Button style={{backgroundColor: '#fffdfa'}} onClick={confirmRemoveCard} color="primary" autoFocus>
+                    <Button style={{backgroundColor: '#ffffff'}} onClick={confirmRemoveCard} color="primary" autoFocus>
                         Confirmar
                     </Button>
                     </DialogActions>

@@ -40,16 +40,16 @@ const Painel = styled.div`
 `;
 
 const Card = styled.section`
-    background: #fffdfa;
-    border: 1px solid rgba(85, 8, 29, 0.12);
+    background: #ffffff;
+    border: 1px solid rgba(20, 20, 20, 0.12);
     border-radius: 12px;
     padding: 16px;
     min-width: 0;
-    box-shadow: 0 4px 20px rgba(85, 8, 29, 0.04);
+    box-shadow: 0 4px 20px rgba(20, 20, 20, 0.04);
 `;
 
 const CardTitulo = styled.h3`
-    color: #35252b;
+    color: #242424;
     margin-top: 0;
     margin-bottom: 16px;
 `;
@@ -82,7 +82,7 @@ const Rotulo = styled.label`
     font-weight: 700;
     font-size: 16px;
     line-height: 19px;
-    color: #35252b;
+    color: #242424;
 `;
 
 const Metricas = styled.div`
@@ -97,20 +97,20 @@ const Metricas = styled.div`
 `;
 
 const Metrica = styled.div`
-    background: #f7f1e9;
+    background: #f5f5f5;
     border-radius: 12px;
     padding: 12px;
 `;
 
 const MetricaRotulo = styled.span`
     display: block;
-    color: #75656b;
+    color: #666666;
     font-size: 0.85rem;
     margin-bottom: 6px;
 `;
 
 const MetricaValor = styled.strong`
-    color: #35252b;
+    color: #242424;
     font-size: 1.4rem;
 `;
 
@@ -125,7 +125,7 @@ const CheckboxLabel = styled.label`
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    color: #35252b;
+    color: #242424;
     font-size: 0.95rem;
     cursor: pointer;
 `;
@@ -133,7 +133,7 @@ const CheckboxLabel = styled.label`
 const CheckboxInput = styled.input`
     width: 16px;
     height: 16px;
-    accent-color: #55081d;
+    accent-color: #141414;
     ${managementFieldStyles}
 `;
 
@@ -147,13 +147,13 @@ const Vazio = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #75656b;
+    color: #666666;
     text-align: center;
     padding: 24px;
 `;
 
 const Descricao = styled.p`
-    color: #35252b;
+    color: #242424;
     max-width: 720px;
     line-height: 1.5;
     margin-top: 0;
@@ -413,7 +413,7 @@ export default function Precrm() {
             <Acoes>
                 <Botao onClick={() => handleOpen("cadastra")}><AddOutlined aria-hidden="true" />Cadastrar</Botao>
                 <Botao onClick={() => handleOpen("edita")}><EditOutlined aria-hidden="true" />Editar</Botao>
-                <Botao onClick={excluir} style={{ backgroundColor: "#c50000", borderColor: "#c50000" }}><DeleteOutline aria-hidden="true" />
+                <Botao onClick={excluir} style={{ backgroundColor: "#303030", borderColor: "#303030" }}><DeleteOutline aria-hidden="true" />
                     Excluir
                 </Botao>
             </Acoes>
@@ -459,11 +459,11 @@ export default function Precrm() {
                     <TabelaContainer>
                         <DataGrid
                             style={{
-                                backgroundColor: "#fffdfa",
-                                borderBottomColor: "rgba(85, 8, 29, 0.12)",
-                                borderTopColor: "rgba(85, 8, 29, 0.12)",
-                                color: "#35252b",
-                                borderColor: "rgba(85, 8, 29, 0.12)",
+                                backgroundColor: "#ffffff",
+                                borderBottomColor: "rgba(20, 20, 20, 0.12)",
+                                borderTopColor: "rgba(20, 20, 20, 0.12)",
+                                color: "#242424",
+                                borderColor: "rgba(20, 20, 20, 0.12)",
                             }}
                             rows={rows}
                             columns={columns}
@@ -526,22 +526,22 @@ export default function Precrm() {
                     ) : (
                         <ResponsiveContainer width="100%" height={420}>
                             <LineChart data={chartData} margin={{ top: 10, right: 20, left: 0, bottom: 10 }}>
-                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(85, 8, 29, 0.12)" />
-                                <XAxis dataKey="label" stroke="#75656b" />
-                                <YAxis stroke="#75656b" />
+                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(20, 20, 20, 0.12)" />
+                                <XAxis dataKey="label" stroke="#666666" />
+                                <YAxis stroke="#666666" />
                                 <Tooltip
-                                    contentStyle={{ backgroundColor: "#fffdfa", border: "1px solid rgba(85, 8, 29, 0.12)", borderRadius: 12 }}
-                                    labelStyle={{ color: "#35252b" }}
+                                    contentStyle={{ backgroundColor: "#ffffff", border: "1px solid rgba(20, 20, 20, 0.12)", borderRadius: 12 }}
+                                    labelStyle={{ color: "#242424" }}
                                 />
                                 <Legend />
                                 {showAbordado && (
-                                    <Line type="monotone" dataKey="abordado" name="Abordado" stroke="#55081d" strokeWidth={3} dot={{ r: 3 }} />
+                                    <Line type="monotone" dataKey="abordado" name="Abordado" stroke="#141414" strokeWidth={3} dot={{ r: 3 }} />
                                 )}
                                 {showResposta && (
-                                    <Line type="monotone" dataKey="resposta" name="Resposta" stroke="#286b8a" strokeWidth={3} dot={{ r: 3 }} />
+                                    <Line type="monotone" dataKey="resposta" name="Resposta" stroke="#555555" strokeWidth={3} dot={{ r: 3 }} />
                                 )}
                                 {showPositiva && (
-                                    <Line type="monotone" dataKey="positivo" name="Positiva" stroke="#357844" strokeWidth={3} dot={{ r: 3 }} />
+                                    <Line type="monotone" dataKey="positivo" name="Positiva" stroke="#777777" strokeWidth={3} dot={{ r: 3 }} />
                                 )}
                             </LineChart>
                         </ResponsiveContainer>

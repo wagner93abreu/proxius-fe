@@ -41,17 +41,17 @@ function RelogioHome() {
         py: 1.25,
         borderRadius: "16px",
         bgcolor: "rgba(255, 255, 255, 0.78)",
-        border: "1px solid rgba(85, 8, 29, 0.1)",
-        boxShadow: "0 10px 30px rgba(85, 8, 29, 0.06)",
+        border: "1px solid rgba(20, 20, 20, 0.1)",
+        boxShadow: "0 10px 30px rgba(20, 20, 20, 0.06)",
         backdropFilter: "blur(6px)",
       }}
     >
-      <CalendarTodayOutlinedIcon aria-hidden="true" sx={{ color: "#55081d" }} />
+      <CalendarTodayOutlinedIcon aria-hidden="true" sx={{ color: "#141414" }} />
       <Box sx={{ textAlign: "right" }}>
-        <Typography component="time" dateTime={agora.toISOString()} sx={{ display: "block", fontSize: 26, fontWeight: 800, lineHeight: 1.1, color: "#55081d", fontVariantNumeric: "tabular-nums" }}>
+        <Typography component="time" dateTime={agora.toISOString()} sx={{ display: "block", fontSize: 26, fontWeight: 800, lineHeight: 1.1, color: "#141414", fontVariantNumeric: "tabular-nums" }}>
           {hora}
         </Typography>
-        <Typography sx={{ fontSize: 13, color: "#75656b" }}>{data}</Typography>
+        <Typography sx={{ fontSize: 13, color: "#666666" }}>{data}</Typography>
       </Box>
     </Stack>
   );
@@ -145,7 +145,7 @@ export default function Home() {
           px: { xs: 2, md: 4 },
           pt: { xs: 3, md: 4 },
           pb: { xs: 6, md: 8 },
-          color: "#35252b",
+          color: "#242424",
         }}
       >
         <Box sx={{ maxWidth: 1600, mx: "auto" }}>
@@ -166,17 +166,17 @@ export default function Home() {
                   height: { xs: 64, md: 80 },
                   borderRadius: "18px",
                   objectFit: "cover",
-                  border: "3px solid #fffdfa",
-                  boxShadow: "0 10px 30px rgba(85, 8, 29, 0.16)",
-                  bgcolor: "#fffdfa",
+                  border: "3px solid #ffffff",
+                  boxShadow: "0 10px 30px rgba(20, 20, 20, 0.16)",
+                  bgcolor: "#ffffff",
                   flexShrink: 0,
                 }}
               />
               <Box sx={{ minWidth: 0 }}>
-                <Typography component="span" sx={{ display: "block", fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#75656b" }}>
+                <Typography component="span" sx={{ display: "block", fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#666666" }}>
                   Bem-vindo(a) de volta
                 </Typography>
-                <Typography component="h1" sx={{ fontSize: { xs: 26, md: 32 }, fontWeight: 800, lineHeight: 1.15, color: "#55081d", wordBreak: "break-word" }}>
+                <Typography component="h1" sx={{ fontSize: { xs: 26, md: 32 }, fontWeight: 800, lineHeight: 1.15, color: "#141414", wordBreak: "break-word" }}>
                   Olá, {primeiroNome}
                 </Typography>
               </Box>

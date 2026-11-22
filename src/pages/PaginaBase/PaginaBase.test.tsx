@@ -33,11 +33,11 @@ test.each([
             </MemoryRouter>
         );
         expect(screen.getByRole("banner")).toHaveStyle({
-            backgroundColor: "rgba(255,255,255,0.72)",
+            backgroundColor: "#f6f6f6",
             zIndex: 1100,
         });
-        expect(screen.getByRole("button", { name: "Abrir menu" })).toHaveStyle({ background: "#55081d" });
-        expect(screen.getByRole("contentinfo")).toHaveStyle({ color: "#55081d", backgroundColor: "#f7f1e9" });
+        expect(screen.getByRole("button", { name: "Abrir menu" })).toHaveStyle({ background: "#f5f5f5" });
+        expect(screen.getByRole("contentinfo")).toHaveStyle({ color: "#141414", backgroundColor: "#f5f5f5" });
     }
 );
 
@@ -51,6 +51,6 @@ test("preserves the existing dark shell outside management routes", () => {
             </Routes>
         </MemoryRouter>
     );
-    expect(screen.getByRole("banner")).toHaveStyle({ backgroundColor: "rgb(20, 3, 9)", zIndex: 2000 });
-    expect(screen.getByRole("contentinfo")).toHaveStyle({ color: "white", backgroundColor: "rgb(20, 3, 9)" });
+    expect(screen.getByRole("banner")).toHaveStyle({ backgroundColor: "#f6f6f6", zIndex: 2000 });
+    expect(screen.getByRole("contentinfo")).toHaveStyle({ color: "white", backgroundColor: "rgb(20, 20, 20)" });
 });

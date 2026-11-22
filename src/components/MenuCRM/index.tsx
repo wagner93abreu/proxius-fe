@@ -14,8 +14,8 @@ const DropdownContainer = styled.div`
 `;
 
 const DropdownButton = styled.button`
-  background-color: rgba(85, 8, 29, 0.06);
-  color: #55081d;
+  background-color: rgba(20, 20, 20, 0.06);
+  color: #141414;
   padding: 10px;
   font-size: 16px;
   border: none;
@@ -24,8 +24,8 @@ const DropdownButton = styled.button`
   align-items: center;
   justify-content: center;
   border-radius: 12px;
-  &:hover { background: rgba(85, 8, 29, 0.12); }
-  &:focus-visible { outline: 2px solid #55081d; outline-offset: 2px; }
+  &:hover { background: rgba(20, 20, 20, 0.12); }
+  &:focus-visible { outline: 2px solid #141414; outline-offset: 2px; }
 `;
 
 const fadeIn = keyframes`
@@ -49,8 +49,8 @@ const fadeOut = keyframes`
 const DropdownContent = styled.div<{ $show: boolean }>`
   display: ${({ $show }) => ($show ? 'block' : 'none')};
   position: absolute;
-  background-color: #fffdfa;
-  border: 1px solid rgba(85, 8, 29, 0.12);
+  background-color: #ffffff;
+  border: 1px solid rgba(20, 20, 20, 0.12);
   border-radius: 16px;
   width: 280px;
   max-width: calc(100vw - 32px);
@@ -58,7 +58,7 @@ const DropdownContent = styled.div<{ $show: boolean }>`
   overflow-y: auto;
   padding: 8px;
   box-sizing: border-box;
-  box-shadow: 0 16px 48px rgba(85, 8, 29, 0.16);
+  box-shadow: 0 16px 48px rgba(20, 20, 20, 0.16);
   z-index: 1;
   top: calc(100% + 14px);
   right: 0; /* Alinha a lateral direita do menu com a lateral direita do botão */
@@ -67,7 +67,7 @@ const DropdownContent = styled.div<{ $show: boolean }>`
 `;
 
 const DropdownItem = styled.button`
-  color: #35252b;
+  color: #242424;
   border: none;
   width: 100%;
   cursor: pointer;
@@ -80,16 +80,16 @@ const DropdownItem = styled.button`
   align-items: center;
   gap: 12px;
   background-color: transparent;
-  > svg { color: #55081d; font-size: 20px; }
+  > svg { color: #141414; font-size: 20px; }
   &:hover {
-    background-color: rgba(85, 8, 29, 0.06);
+    background-color: rgba(20, 20, 20, 0.06);
   }
-  &:focus-visible { outline: 2px solid #55081d; outline-offset: -2px; }
+  &:focus-visible { outline: 2px solid #141414; outline-offset: -2px; }
 `;
 
 const FilterGroup = styled.div`
   padding: 12px 16px;
-  border-top: 1px solid rgba(85, 8, 29, 0.12);
+  border-top: 1px solid rgba(20, 20, 20, 0.12);
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -97,19 +97,19 @@ const FilterGroup = styled.div`
 `;
 
 const FilterLabel = styled.label`
-  color: #75656b;
+  color: #666666;
   font-weight: 600;
   font-size: 0.85rem;
 `;
 
 const FilterSelect = styled.select`
   width: 100%;
-  border: 1px solid rgba(85, 8, 29, 0.2);
+  border: 1px solid rgba(20, 20, 20, 0.2);
   border-radius: 10px;
   padding: 8px 10px;
-  background: #fffdfa;
-  color: #35252b;
-  &:focus-visible { outline: 2px solid #55081d; }
+  background: #ffffff;
+  color: #242424;
+  &:focus-visible { outline: 2px solid #141414; }
 `;
 
 interface TagOption {

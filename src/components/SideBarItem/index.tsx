@@ -11,8 +11,8 @@ const Container = styled.a<{ $nested: boolean; $active: boolean }>`
   margin: 0 12px 2px ${({ $nested }) => ($nested ? '32px' : '12px')};
   padding: 8px 12px;
   border-radius: 10px;
-  background-color: ${({ $active }) => ($active ? 'rgba(85, 8, 29, 0.09)' : 'transparent')};
-  color: ${({ $active }) => ($active ? '#55081d' : '#35252b')};
+  background-color: ${({ $active }) => ($active ? 'rgba(20, 20, 20, 0.09)' : 'transparent')};
+  color: ${({ $active }) => ($active ? '#141414' : '#242424')};
   font-size: ${({ $nested }) => ($nested ? '14px' : '15px')};
   font-weight: ${({ $active }) => ($active ? 700 : 500)};
   text-decoration: none;
@@ -30,28 +30,28 @@ const Container = styled.a<{ $nested: boolean; $active: boolean }>`
       bottom: 8px;
       width: 3px;
       border-radius: 0 3px 3px 0;
-      background: #55081d;
+      background: #141414;
     }
   `}
 
   > svg {
     flex-shrink: 0;
     font-size: ${({ $nested }) => ($nested ? '18px' : '20px')};
-    color: ${({ $active }) => ($active ? '#55081d' : '#75656b')};
+    color: ${({ $active }) => ($active ? '#141414' : '#666666')};
     transition: color 160ms ease;
   }
 
   &:hover {
-    background-color: rgba(85, 8, 29, 0.06);
-    color: #55081d;
+    background-color: rgba(20, 20, 20, 0.06);
+    color: #141414;
   }
 
   &:hover > svg {
-    color: #55081d;
+    color: #141414;
   }
 
   &:focus-visible {
-    outline: 2px solid #55081d;
+    outline: 2px solid #141414;
     outline-offset: 2px;
   }
 

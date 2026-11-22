@@ -78,7 +78,7 @@ test("opens editable files independently and provides the same light dialog them
     expect(screen.queryByText(/Arquivos editáveis SPE/)).not.toBeInTheDocument();
     fireEvent.click(screen.getByRole("button", { name: "Arquivos Editáveis" }));
     const dialog = await screen.findByRole("dialog", { name: "Arquivos Editáveis" });
-    expect(dialog).toHaveStyle({ backgroundColor: "#fffdfa" });
+    expect(dialog).toHaveStyle({ backgroundColor: "#ffffff" });
     expect(within(dialog).getByText("Arquivos editáveis SPE 198")).toBeInTheDocument();
     expect(screen.queryByText(/Biblioteca autenticada/)).not.toBeInTheDocument();
     fireEvent.click(within(dialog).getByRole("button", { name: "Fechar arquivos" }));

@@ -38,6 +38,7 @@ describe('Sidebar', () => {
     );
 
     const painel = await screen.findByRole('link', { name: 'Painel de Controle' });
+    expect(screen.getByRole('img', { name: 'ProxiUs' })).toHaveTextContent('P.');
     expect(painel).toHaveAttribute('aria-current', 'page');
     expect(within(painel).getByTestId('AdminPanelSettingsOutlinedIcon')).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Home' })).not.toHaveAttribute('aria-current');

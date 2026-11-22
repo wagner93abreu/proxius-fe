@@ -32,13 +32,13 @@ const panelSx = {
     p: { xs: 2, md: 3 },
     borderRadius: "20px",
     bgcolor: "rgba(255, 255, 255, 0.78)",
-    border: "1px solid rgba(85, 8, 29, 0.1)",
-    boxShadow: "0 16px 48px rgba(85, 8, 29, 0.06)",
+    border: "1px solid rgba(20, 20, 20, 0.1)",
+    boxShadow: "0 16px 48px rgba(20, 20, 20, 0.06)",
     backdropFilter: "blur(6px)",
     minWidth: 0,
 };
 
-const chipSx = { bgcolor: "rgba(85, 8, 29, 0.07)", color: "#55081d", fontWeight: 700 };
+const chipSx = { bgcolor: "rgba(20, 20, 20, 0.07)", color: "#141414", fontWeight: 700 };
 
 interface AtividadesHomeProps {
     colunas: IColumn[];
@@ -212,9 +212,9 @@ export default function AtividadesHome({ colunas, colunasCarregadas, onCardsChan
     const renderSecao = (titulo: string, lista: ITaskUser[], vazio: string) => (
         <>
             <TableRow>
-                <TableCell colSpan={7} sx={{ bgcolor: "rgba(85, 8, 29, 0.04)", py: 1 }}>
+                <TableCell colSpan={7} sx={{ bgcolor: "rgba(20, 20, 20, 0.04)", py: 1 }}>
                     <Stack direction="row" spacing={1} alignItems="center">
-                        <Typography component="span" sx={{ fontSize: 12, fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase", color: "#55081d" }}>
+                        <Typography component="span" sx={{ fontSize: 12, fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase", color: "#141414" }}>
                             {titulo}
                         </Typography>
                         <Chip size="small" label={lista.length} sx={{ ...chipSx, height: 20 }} />
@@ -223,7 +223,7 @@ export default function AtividadesHome({ colunas, colunasCarregadas, onCardsChan
             </TableRow>
             {lista.length === 0 && (
                 <TableRow>
-                    <TableCell colSpan={7} sx={{ color: "#75656b !important", fontStyle: "italic", py: 2 }}>{vazio}</TableCell>
+                    <TableCell colSpan={7} sx={{ color: "#666666 !important", fontStyle: "italic", py: 2 }}>{vazio}</TableCell>
                 </TableRow>
             )}
             {lista.map((task, index) => (
@@ -233,11 +233,11 @@ export default function AtividadesHome({ colunas, colunasCarregadas, onCardsChan
                             checked={task.done}
                             onChange={(e) => handleDoneToggle(task, e.target.checked)}
                             inputProps={{ "aria-label": `Marcar "${task.description || "atividade"}" como feita` }}
-                            sx={{ color: "rgba(85, 8, 29, 0.45)", "&.Mui-checked": { color: "#55081d" } }}
+                            sx={{ color: "rgba(20, 20, 20, 0.45)", "&.Mui-checked": { color: "#141414" } }}
                         />
                     </TableCell>
                     <TableCell>
-                        <Typography variant="body2" sx={{ fontSize: 13, whiteSpace: "pre-wrap", wordBreak: "break-word", color: task.done ? "#75656b" : "#35252b" }}>
+                        <Typography variant="body2" sx={{ fontSize: 13, whiteSpace: "pre-wrap", wordBreak: "break-word", color: task.done ? "#666666" : "#242424" }}>
                             {task.description || ""}
                         </Typography>
                     </TableCell>
@@ -245,7 +245,7 @@ export default function AtividadesHome({ colunas, colunasCarregadas, onCardsChan
                         <Typography variant="body2" sx={{ fontSize: 13, fontWeight: 600, wordBreak: "break-word" }}>{task.cardNome || ""}</Typography>
                     </TableCell>
                     <TableCell>
-                        <Typography variant="body2" sx={{ fontSize: 12, color: "#75656b", wordBreak: "break-word" }}>
+                        <Typography variant="body2" sx={{ fontSize: 12, color: "#666666", wordBreak: "break-word" }}>
                             {columnStatusMap.get(String(task.cardStatusId)) || ""}
                         </Typography>
                     </TableCell>
@@ -270,12 +270,13 @@ export default function AtividadesHome({ colunas, colunasCarregadas, onCardsChan
                             inputProps={{ "aria-label": "Prazo", style: { textAlign: "center", fontSize: 13 } }}
                             sx={{
                                 width: 120,
-                                "& .MuiOutlinedInput-root": { bgcolor: "#fffdfa", borderRadius: "10px" },
-                                "& input": { color: isOverdue(task) ? "#c62828" : "#35252b", fontWeight: isOverdue(task) ? 700 : 400 },
+                                "& .MuiOutlinedInput-root": { bgcolor: "#ffffff", borderRadius: "10px" },
+                                "& input": { color: isOverdue(task) ? "#303030" : "#242424", fontWeight: isOverdue(task) ? 700 : 400 },
                             }}
                         />
+                        {isOverdue(task) && <Typography variant="caption" display="block">Atrasado</Typography>}
                     </TableCell>
-                    <TableCell align="center" sx={{ color: "#75656b !important" }}>
+                    <TableCell align="center" sx={{ color: "#666666 !important" }}>
                         {formatDateDisplay(task.conclusionDate) || "—"}
                     </TableCell>
                 </TableRow>
@@ -287,11 +288,11 @@ export default function AtividadesHome({ colunas, colunasCarregadas, onCardsChan
         <Box component="section" aria-labelledby="minhas-atividades-titulo" sx={panelSx}>
             <Stack direction="row" spacing={1.5} alignItems="center" justifyContent="space-between" sx={{ mb: 2 }} flexWrap="wrap" useFlexGap>
                 <Stack direction="row" spacing={1.5} alignItems="center">
-                    <Box sx={{ width: 44, height: 44, borderRadius: "14px", display: "grid", placeItems: "center", bgcolor: "rgba(85, 8, 29, 0.07)", color: "#55081d" }}>
+                    <Box sx={{ width: 44, height: 44, borderRadius: "14px", display: "grid", placeItems: "center", bgcolor: "rgba(20, 20, 20, 0.07)", color: "#141414" }}>
                         <ChecklistRtlOutlinedIcon aria-hidden="true" />
                     </Box>
                     <Box>
-                        <Typography id="minhas-atividades-titulo" component="h2" variant="h6" sx={{ color: "#55081d", lineHeight: 1.2 }}>
+                        <Typography id="minhas-atividades-titulo" component="h2" variant="h6" sx={{ color: "#141414", lineHeight: 1.2 }}>
                             Minhas Atividades
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
@@ -304,13 +305,13 @@ export default function AtividadesHome({ colunas, colunasCarregadas, onCardsChan
 
             {loading && tasks.length === 0 ? (
                 <Box display="flex" justifyContent="center" alignItems="center" py={6}>
-                    <CircularProgress sx={{ color: "#55081d" }} aria-label="Carregando atividades" />
+                    <CircularProgress sx={{ color: "#141414" }} aria-label="Carregando atividades" />
                 </Box>
             ) : (
-                <Box sx={{ width: "100%", overflowX: "auto", borderRadius: "14px", border: "1px solid rgba(85, 8, 29, 0.1)", bgcolor: "#fffdfa", position: "relative" }}>
+                <Box sx={{ width: "100%", overflowX: "auto", borderRadius: "14px", border: "1px solid rgba(20, 20, 20, 0.1)", bgcolor: "#ffffff", position: "relative" }}>
                     {loading && (
-                        <Box sx={{ position: "absolute", inset: 0, display: "grid", placeItems: "center", bgcolor: "rgba(255, 253, 250, 0.6)", zIndex: 1 }}>
-                            <CircularProgress size={32} sx={{ color: "#55081d" }} aria-label="Atualizando atividades" />
+                        <Box sx={{ position: "absolute", inset: 0, display: "grid", placeItems: "center", bgcolor: "rgba(255, 255, 255, 0.6)", zIndex: 1 }}>
+                            <CircularProgress size={32} sx={{ color: "#141414" }} aria-label="Atualizando atividades" />
                         </Box>
                     )}
                     <Table
@@ -319,9 +320,9 @@ export default function AtividadesHome({ colunas, colunasCarregadas, onCardsChan
                             tableLayout: "fixed",
                             width: "100%",
                             minWidth: 900,
-                            "& td, & th": { borderBottom: "1px solid rgba(85, 8, 29, 0.08)", fontSize: 13, color: "#35252b" },
-                            "& th": { fontWeight: 700, color: "#75656b", fontSize: 12, textTransform: "uppercase", letterSpacing: "0.04em", bgcolor: "#fffdfa" },
-                            "& tbody tr.MuiTableRow-hover:hover": { bgcolor: "rgba(85, 8, 29, 0.03)" },
+                            "& td, & th": { borderBottom: "1px solid rgba(20, 20, 20, 0.08)", fontSize: 13, color: "#242424" },
+                            "& th": { fontWeight: 700, color: "#666666", fontSize: 12, textTransform: "uppercase", letterSpacing: "0.04em", bgcolor: "#ffffff" },
+                            "& tbody tr.MuiTableRow-hover:hover": { bgcolor: "rgba(20, 20, 20, 0.03)" },
                         }}
                     >
                         <TableHead>

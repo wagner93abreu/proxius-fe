@@ -35,14 +35,14 @@ export default function PastasCliente({ linkCliente, cliforId, sharePointEmbedde
         <Box
             sx={{
                 backgroundColor: "rgba(255,255,255,0.6)",
-                border: "1px solid rgba(85, 8, 29, 0.16)",
+                border: "1px solid rgba(20, 20, 20, 0.16)",
                 borderRadius: 2,
                 padding: 2,
-                color: "#55081d",
+                color: "#141414",
                 width: "95%",
             }}
         >
-            <Typography variant="h6" align="left" gutterBottom style={{ color: "#55081d", marginBottom: 10 }}>
+            <Typography variant="h6" align="left" gutterBottom style={{ color: "#141414", marginBottom: 10 }}>
                 Arquivos
             </Typography>
             
@@ -59,7 +59,7 @@ export default function PastasCliente({ linkCliente, cliforId, sharePointEmbedde
                     disabled={!usarBiblioteca && !allowLegacyLinks}
                     aria-haspopup={usarBiblioteca ? "dialog" : undefined}
                     title="Aqui você encontra os arquivos para consulta."
-                    sx={{ alignSelf: "flex-start", borderColor: "#55081d", color: "#55081d", fontWeight: 700, "&:hover": { borderColor: "#6f102a", color: "#6f102a" } }}
+                    sx={{ alignSelf: "flex-start", borderColor: "#141414", color: "#141414", fontWeight: 700, "&:hover": { borderColor: "#383838", color: "#383838" } }}
                 >
                     Biblioteca RH sem Complicações
                 </Button>
@@ -69,7 +69,7 @@ export default function PastasCliente({ linkCliente, cliforId, sharePointEmbedde
                     disabled={!usarSharePoint && (!allowLegacyLinks || !linkCliente)}
                     aria-haspopup={usarSharePoint ? "dialog" : undefined}
                     title="Aqui você encontra todos os arquivos personalizados e exclusivos para você."
-                    sx={{ alignSelf: "flex-start", borderColor: "#55081d", color: "#55081d", fontWeight: 700, "&:hover": { borderColor: "#6f102a", color: "#6f102a" } }}
+                    sx={{ alignSelf: "flex-start", borderColor: "#141414", color: "#141414", fontWeight: 700, "&:hover": { borderColor: "#383838", color: "#383838" } }}
                 >
                     Arquivos Editáveis
                 </Button>

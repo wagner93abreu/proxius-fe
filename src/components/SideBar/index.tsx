@@ -16,7 +16,6 @@ import {
   HubOutlined,
   Inventory2Outlined,
   LogoutOutlined,
-  MenuOpenOutlined,
   PaidOutlined,
   PersonOutline,
   PersonSearchOutlined,
@@ -25,10 +24,11 @@ import {
   ShoppingCartOutlined,
 } from '@mui/icons-material';
 import { mostrarMensagem } from "../../stores/mensagem.store";
+import LogoProxiUs from "../LogoProxiUs";
 
 
 const Container = styled.div<{ active: boolean }>`
-  background: linear-gradient(180deg, #fffdfa 0%, #f7f0e8 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #f5f5f5 100%);
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -40,9 +40,9 @@ const Container = styled.div<{ active: boolean }>`
   max-width: 85vw;
   animation: showSidebar .3s ease-out;
   z-index: 1999;
-  border-right: 1px solid rgba(85, 8, 29, 0.12);
-  box-shadow: 12px 0 40px rgba(85, 8, 29, 0.12);
-  color: #35252b;
+  border-right: 1px solid rgba(20, 20, 20, 0.12);
+  box-shadow: 12px 0 40px rgba(20, 20, 20, 0.12);
+  color: #242424;
 
   @keyframes showSidebar {
     from {
@@ -66,7 +66,7 @@ const Topo = styled.div`
   align-items: center;
   gap: 12px;
   padding: 24px 24px 18px;
-  border-bottom: 1px solid rgba(85, 8, 29, 0.1);
+  border-bottom: 1px solid rgba(20, 20, 20, 0.1);
 `;
 
 const TopoIcone = styled.div`
@@ -75,12 +75,9 @@ const TopoIcone = styled.div`
   width: 40px;
   height: 40px;
   border-radius: 12px;
-  background: #55081d;
-  color: #fffdfa;
+  background: #141414;
+  color: #ffffff;
 
-  > svg {
-    font-size: 22px;
-  }
 `;
 
 const TopoTexto = styled.div`
@@ -93,12 +90,12 @@ const TopoTexto = styled.div`
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: #75656b;
+    color: #666666;
   }
 
   > strong {
     font-size: 16px;
-    color: #35252b;
+    color: #242424;
   }
 `;
 
@@ -109,19 +106,19 @@ const Content = styled.nav`
   padding: 4px 0 16px;
 
   scrollbar-width: thin;
-  scrollbar-color: rgba(85, 8, 29, 0.22) transparent;
+  scrollbar-color: rgba(20, 20, 20, 0.22) transparent;
 
   &::-webkit-scrollbar {
     width: 8px;
   }
 
   &::-webkit-scrollbar-thumb {
-    background: rgba(85, 8, 29, 0.22);
+    background: rgba(20, 20, 20, 0.22);
     border-radius: 10px;
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: rgba(85, 8, 29, 0.36);
+    background: rgba(20, 20, 20, 0.36);
   }
 `;
 
@@ -131,7 +128,7 @@ const Secao = styled.div`
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #75656b;
+  color: #666666;
 `;
 
 const Submenu = styled.div`
@@ -144,14 +141,14 @@ const Submenu = styled.div`
     top: 4px;
     bottom: 6px;
     width: 1px;
-    background: rgba(85, 8, 29, 0.14);
+    background: rgba(20, 20, 20, 0.14);
   }
 `;
 
 const Rodape = styled.div`
   flex: 0 0 auto;
   padding: 12px;
-  border-top: 1px solid rgba(85, 8, 29, 0.1);
+  border-top: 1px solid rgba(20, 20, 20, 0.1);
 `;
 
 const LinkEstilizado = styled.a`
@@ -160,7 +157,7 @@ const LinkEstilizado = styled.a`
   gap: 12px;
   padding: 10px 12px;
   border-radius: 10px;
-  color: #55081d;
+  color: #141414;
   font-weight: 700;
   font-size: 15px;
   text-decoration: none;
@@ -173,11 +170,11 @@ const LinkEstilizado = styled.a`
   }
 
   &:hover {
-    background-color: rgba(85, 8, 29, 0.06);
+    background-color: rgba(20, 20, 20, 0.06);
   }
 
   &:focus-visible {
-    outline: 2px solid #55081d;
+    outline: 2px solid #141414;
     outline-offset: 2px;
   }
 `;
@@ -230,9 +227,9 @@ const Sidebar = ({ active, setActive }: Props) => {
   return (
     <Container ref={sidebarRef} active={active}>
       <Topo>
-        <TopoIcone><MenuOpenOutlined aria-hidden="true" /></TopoIcone>
+        <TopoIcone><LogoProxiUs /></TopoIcone>
         <TopoTexto>
-          <span>RH Sem Complicações</span>
+          <span>ProxiUs</span>
           <strong>Menu</strong>
         </TopoTexto>
       </Topo>

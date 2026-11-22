@@ -16,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     .cards-hover {
-    background-color: rgba(85, 8, 29, 0.08);
+    background-color: rgba(20, 20, 20, 0.08);
     border-radius: 8px;
 }
 `;
@@ -28,10 +28,10 @@ const Column = styled.div`
     height: 100%;
     box-sizing: border-box;
     flex: 0 0 320px;
-    background-color: rgba(255, 253, 250, 0.65);
-    border: 1px solid rgba(85, 8, 29, 0.1);
+    background-color: rgba(255, 255, 255, 0.65);
+    border: 1px solid rgba(20, 20, 20, 0.1);
     border-radius: 18px;
-    box-shadow: 0 10px 30px rgba(85, 8, 29, 0.04);
+    box-shadow: 0 10px 30px rgba(20, 20, 20, 0.04);
     padding: 14px;
     overflow: hidden;
     position: relative;
@@ -52,29 +52,29 @@ const Title = styled.div`
     align-items: center;
     gap: 8px;
     padding: 0 2px 12px;
-    border-bottom: 1px solid rgba(85, 8, 29, 0.1);
+    border-bottom: 1px solid rgba(20, 20, 20, 0.1);
     h2 {
         font-size: 16px;
-        color: #55081d;
+        color: #141414;
         font-weight: 700;
         margin: 0;
         flex: 1;
     }
-    span { color: #75656b; background: rgba(85, 8, 29, 0.06); border-radius: 8px; padding: 3px 8px; font-size: 12px; font-weight: 700; }
+    span { color: #666666; background: rgba(20, 20, 20, 0.06); border-radius: 8px; padding: 3px 8px; font-size: 12px; font-weight: 700; }
 `
 
 const AddCard = styled.button`
-    background-color: rgba(85, 8, 29, 0.06);
-    border: 1px solid rgba(85, 8, 29, 0.14);
+    background-color: rgba(20, 20, 20, 0.06);
+    border: 1px solid rgba(20, 20, 20, 0.14);
     width: 36px;
     height: 36px;
     border-radius: 10px;
     cursor: pointer;
-    &:hover { background: rgba(85, 8, 29, 0.12); }
-    &:focus-visible { outline: 2px solid #55081d; outline-offset: 2px; }
+    &:hover { background: rgba(20, 20, 20, 0.12); }
+    &:focus-visible { outline: 2px solid #141414; outline-offset: 2px; }
     i {
         font-size: 30px;
-        color: #55081d;
+        color: #141414;
         font-style: normal;
         line-height: 1;
     }
@@ -89,7 +89,7 @@ const KanbanCards = styled.div`
     overflow-y: auto;
     overflow-x: hidden;
     scrollbar-width: thin;
-    scrollbar-color: rgba(85, 8, 29, 0.22) transparent;
+    scrollbar-color: rgba(20, 20, 20, 0.22) transparent;
     padding: 2px;
 `
 interface ICardStatus{

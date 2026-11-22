@@ -1,18 +1,18 @@
 :root {
-  --azul-claro: #339CFF;
-  --azul-escuro: #0B3B60;
+  --azul-claro: #666666;
+  --azul-escuro: #333333;
   --branco: #FFFFFF;
-  --cinza: #6B6E71;
-  --cinza-escuro: #292a2b;
-  --cinza-claro: #E7EBEF;
+  --cinza: #6b6b6b;
+  --cinza-escuro: #292929;
+  --cinza-claro: #e7e7e7;
   --transparente: #646464bf;
-  --bege: #E0D5C5;
-  --amarelo: #F4A925;
-  --amarelo-escuro: #c07e0c;
-  --laranja: #EE540B;
-  --vinho: #980000;
-  --fonte-principal: 'Public Sans', sans-serif;
-  --fonte-secundaria: 'Archivo', sans-serif;
+  --bege: #e5e5e5;
+  --amarelo: #333333;
+  --amarelo-escuro: #555555;
+  --laranja: #555555;
+  --vinho: #222222;
+  --fonte-principal: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --fonte-secundaria: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 body {

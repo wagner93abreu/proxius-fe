@@ -7,7 +7,7 @@ export interface StorageSummary {
     slug: string;
     name: string;
     tenantStatus: string;
-    simulated: true;
+    simulated: boolean;
     state: StorageState;
     usedBytes: number | null;
     knownBytes: number;
@@ -68,6 +68,7 @@ export function stateLabel(state: StorageState | string): string {
 }
 
 export function measuredUsage(summary: StorageSummary): string {
+    if (!summary.simulated && summary.expectedContainers === 0) return "Nenhum container Microsoft TEST validado; consumo indisponível";
     if (summary.state === "NEVER") return "Ainda não medido";
     if (summary.state === "FAILED") return "Falha na coleta; consumo indisponível";
     if (summary.state === "PARTIAL") return `Subtotal conhecido: ${formatBytes(summary.knownBytes)} (não é o total)`;

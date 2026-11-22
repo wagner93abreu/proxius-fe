@@ -100,9 +100,9 @@ test.each([
     ["/categoriasFinanceiro", <CategoriasFinanceiro />, "Categorias Financeiro"],
 ] as const)("aplica o tema claro à tabela de %s sem enviar alterações", async (path, element, title) => {
     renderPage(path, element);
-    expect(screen.getByRole("heading", { name: title })).toHaveStyle({ color: "#55081d" });
+    expect(screen.getByRole("heading", { name: title })).toHaveStyle({ color: "#141414" });
     const grid = await screen.findByRole("grid");
-    expect(grid).toHaveStyle({ backgroundColor: "#fffdfa", color: "#35252b" });
+    expect(grid).toHaveStyle({ backgroundColor: "#ffffff", color: "#242424" });
     expect(within(grid).getAllByRole("columnheader")[0]).toBeVisible();
     await waitFor(() => expect(http.get).toHaveBeenCalled());
     expect(http.post).not.toHaveBeenCalled();
@@ -114,7 +114,7 @@ test.each([
 test("mantém o carregamento e a atualização do perfil com campos claros", async () => {
     renderPage("/meuPerfil", <MeuPerfil />);
     const nome = await screen.findByDisplayValue(usuario.nome);
-    expect(nome).toHaveStyle({ backgroundColor: "#fff", color: "#35252b" });
+    expect(nome).toHaveStyle({ backgroundColor: "#fff", color: "#242424" });
     fireEvent.change(nome, { target: { value: "Maria Atualizada" } });
     fireEvent.click(screen.getByRole("button", { name: "Atualizar" }));
     await waitFor(() => expect(http.put).toHaveBeenCalledWith(
@@ -125,15 +125,15 @@ test("mantém o carregamento e a atualização do perfil com campos claros", asy
 
 test("mantém os consolidados do dashboard no tema claro", async () => {
     renderPage("/dashboardResumo", <DashBoardResumo />);
-    expect(await screen.findByRole("heading", { name: "Olá, Maria" })).toHaveStyle({ color: "#55081d" });
-    expect(await screen.findByRole("heading", { name: "CONSOLIDADO FINANCEIRO" })).toHaveStyle({ color: "#55081d" });
+    expect(await screen.findByRole("heading", { name: "Olá, Maria" })).toHaveStyle({ color: "#141414" });
+    expect(await screen.findByRole("heading", { name: "CONSOLIDADO FINANCEIRO" })).toHaveStyle({ color: "#141414" });
     expect(screen.getByRole("heading", { name: "VENDAS" })).toBeVisible();
     expect(window.alert).not.toHaveBeenCalled();
 });
 
 test("mantém as seções e os filtros do funil de vendas", async () => {
     renderPage("/metricasVendas", <MetricasVendas />);
-    expect(screen.getByRole("heading", { name: "FUNIL DE VENDAS" })).toHaveStyle({ color: "#55081d" });
+    expect(screen.getByRole("heading", { name: "FUNIL DE VENDAS" })).toHaveStyle({ color: "#141414" });
     expect(await screen.findByText("Funil Comercial")).toBeVisible();
     expect(screen.getByText("Meta Mensal")).toBeVisible();
     expect(screen.getByText("Realizado")).toBeVisible();
@@ -154,7 +154,7 @@ test.each([
     renderPage(path, element);
     fireEvent.click(screen.getByRole("button", { name: button }));
     expect(await screen.findByRole("heading", { name: formText })).toBeVisible();
-    expect(screen.getByRole("dialog", { name: dialogName })).toHaveStyle({ backgroundColor: "#fffdfa" });
+    expect(screen.getByRole("dialog", { name: dialogName })).toHaveStyle({ backgroundColor: "#ffffff" });
     expect(http.post).not.toHaveBeenCalled();
     expect(window.alert).not.toHaveBeenCalled();
 });
@@ -169,8 +169,8 @@ test.each([
     fireEvent.click(await within(grid).findByRole("checkbox", { name: "Select row" }));
     fireEvent.click(screen.getByRole("button", { name: button }));
     const dialog = await screen.findByRole("dialog", { name: dialogName });
-    expect(dialog).toHaveStyle({ backgroundColor: "#fffdfa" });
-    expect(within(dialog).getByDisplayValue(value)).toHaveStyle({ backgroundColor: "#fff", color: "#35252b" });
+    expect(dialog).toHaveStyle({ backgroundColor: "#ffffff" });
+    expect(within(dialog).getByDisplayValue(value)).toHaveStyle({ backgroundColor: "#fff", color: "#242424" });
     expect(http.put).not.toHaveBeenCalled();
     expect(window.alert).not.toHaveBeenCalled();
 });

@@ -36,7 +36,7 @@ const Rotulo = styled.label`
     font-weight: 700;
     font-size: 16px;
     line-height: 19px;
-    color: #35252b
+    color: #242424
 `
 
 const Campo = styled.input`
@@ -409,7 +409,7 @@ export default function Comissao(){
           
           <div style={{ height: '100%', width: '100%'}}>
             <Botao onClick={() =>  handleOpen("cadastra")}><AddOutlined aria-hidden="true" />Nova Comissão</Botao>
-            <Botao onClick={() =>  excluir()} style={{backgroundColor: "#c50000", borderColor: "#c50000"}}><DeleteOutline aria-hidden="true" />Excluir</Botao>
+            <Botao onClick={() =>  excluir()} style={{backgroundColor: "#303030", borderColor: "#303030"}}><DeleteOutline aria-hidden="true" />Excluir</Botao>
 
             {startDate && endDate && colaborador && open &&(
               
@@ -419,11 +419,11 @@ export default function Comissao(){
             )}
             
 
-            <DataGrid style={{ backgroundColor: "#fffdfa",
-                              borderBottomColor: "rgba(85, 8, 29, 0.12)",
-                              borderTopColor: "rgba(85, 8, 29, 0.12)",
-                              color: "#35252b",
-                              borderColor:"rgba(85, 8, 29, 0.12)",
+            <DataGrid style={{ backgroundColor: "#ffffff",
+                              borderBottomColor: "rgba(20, 20, 20, 0.12)",
+                              borderTopColor: "rgba(20, 20, 20, 0.12)",
+                              color: "#242424",
+                              borderColor:"rgba(20, 20, 20, 0.12)",
 
                             }}
               rows={newComissoesTable}
@@ -448,7 +448,7 @@ export default function Comissao(){
               {papel === 'ADMIN' &&(
                 <React.Fragment> 
                   <Grid item xs={12} md={2} style={{paddingTop: '25px'}}>
-                    <Botao style={{backgroundColor: "green"}} onClick={() =>  geraFinanceiro()}><AccountBalanceWalletOutlined aria-hidden="true" />Gerar Financeiro</Botao>
+                    <Botao style={{backgroundColor: "#303030"}} onClick={() =>  geraFinanceiro()}><AccountBalanceWalletOutlined aria-hidden="true" />Gerar Financeiro</Botao>
                   </Grid>
                 </React.Fragment>
               )}

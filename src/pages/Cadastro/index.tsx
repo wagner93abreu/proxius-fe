@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import logo from "./logo.png";
+import LogoProxiUs from "../../components/LogoProxiUs";
 import { Step, StepLabel, Stepper } from "@mui/material";
 import { useState } from 'react';
 import Botao from "../../components/Botao";
@@ -9,7 +9,7 @@ import usePost from "../../usePost";
 import { useNavigate } from "react-router-dom";
 import { mostrarMensagem } from "../../stores/mensagem.store";
 
-const Imagem = styled.img`
+const Imagem = styled(LogoProxiUs)`
   padding: 2em 0;
 `;
 
@@ -104,19 +104,19 @@ export default function Cadastro() {
 
     return (
         <>
-        <Imagem src={logo} alt="Logo da Voll" />
+        <Imagem />
         <Stepper activeStep={etapaAtiva}>
             <Step>
                 <StepLabel 
                 StepIconComponent={(props) => (
-                    <StepCustomizada cor={props.active ? 'lightblue' : 'lightgray'} />
+                    <StepCustomizada cor={props.active ? '#333' : 'lightgray'} />
                 )}
                 />
             </Step>
             <Step>
             <StepLabel 
                 StepIconComponent={(props) => (
-                    <StepCustomizada cor={props.active ? 'lightblue' : 'lightgray'} />
+                    <StepCustomizada cor={props.active ? '#333' : 'lightgray'} />
                 )}
                 />
             </Step>

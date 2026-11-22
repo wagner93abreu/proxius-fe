@@ -18,8 +18,8 @@ import lightTheme from '../../styles/lightTheme';
 import { mostrarMensagem } from "../../stores/mensagem.store";
 
 const ContainerClaro = styled(Container)`
-  background: linear-gradient(180deg, #efe5d8 0%, #e2d8cc 100%);
-  color: #55081d;
+  background: linear-gradient(180deg, #f6f6f6 0%, #e8e8e8 100%);
+  color: #141414;
   min-height: calc(100dvh - 48px);
   box-sizing: border-box;
   margin: 0;
@@ -148,8 +148,8 @@ export default function Meta(){
             </Box>
           </Stack>
           <Box component="section" aria-labelledby="metas-cadastradas-title" sx={{
-            p: { xs: 2, sm: 3 }, border: "1px solid rgba(85, 8, 29, 0.16)", borderRadius: "20px",
-            bgcolor: "rgba(255,255,255,0.72)", boxShadow: "0 16px 48px rgba(85, 8, 29, 0.06)",
+            p: { xs: 2, sm: 3 }, border: "1px solid rgba(20, 20, 20, 0.16)", borderRadius: "20px",
+            bgcolor: "rgba(255,255,255,0.72)", boxShadow: "0 16px 48px rgba(20, 20, 20, 0.06)",
           }}>
             <Stack direction={{ xs: "column", md: "row" }} alignItems={{ xs: "stretch", md: "center" }}
               justifyContent="space-between" gap={2} sx={{ mb: 3 }}>
@@ -157,7 +157,7 @@ export default function Meta(){
                 <Stack direction="row" alignItems="center" spacing={1.5} flexWrap="wrap" useFlexGap>
                   <Typography id="metas-cadastradas-title" component="h2" variant="h6">Metas cadastradas</Typography>
                   <Chip size="small" label={`${metas.length} ${metas.length === 1 ? "meta" : "metas"}`}
-                    sx={{ bgcolor: "rgba(85, 8, 29, 0.06)", color: "primary.main" }} />
+                    sx={{ bgcolor: "rgba(20, 20, 20, 0.06)", color: "primary.main" }} />
                   {selectedRows.length > 0 && (
                     <Chip size="small" color="primary" variant="outlined"
                       label={`${selectedRows.length} ${selectedRows.length === 1 ? "selecionada" : "selecionadas"}`} />
@@ -180,15 +180,15 @@ export default function Meta(){
                 localeText={ptBR.components.MuiDataGrid.defaultProps.localeText}
                 sx={{
                   bgcolor: "background.paper", color: "text.primary", borderColor: "divider", borderRadius: "12px",
-                  "& .MuiDataGrid-columnHeaders": { bgcolor: "rgba(85, 8, 29, 0.04)", borderColor: "divider" },
+                  "& .MuiDataGrid-columnHeaders": { bgcolor: "rgba(20, 20, 20, 0.04)", borderColor: "divider" },
                   "& .MuiDataGrid-columnHeaderTitle": { fontWeight: 700, color: "primary.main" },
                   "& .MuiDataGrid-cell": { borderColor: "divider" },
-                  "& .MuiDataGrid-row:hover": { bgcolor: "rgba(85, 8, 29, 0.03)" },
-                  "& .MuiDataGrid-row.Mui-selected": { bgcolor: "rgba(85, 8, 29, 0.07)" },
-                  "& .MuiDataGrid-row.Mui-selected:hover": { bgcolor: "rgba(85, 8, 29, 0.1)" },
+                  "& .MuiDataGrid-row:hover": { bgcolor: "rgba(20, 20, 20, 0.03)" },
+                  "& .MuiDataGrid-row.Mui-selected": { bgcolor: "rgba(20, 20, 20, 0.07)" },
+                  "& .MuiDataGrid-row.Mui-selected:hover": { bgcolor: "rgba(20, 20, 20, 0.1)" },
                   "& .MuiCheckbox-root.Mui-checked, & .MuiCheckbox-indeterminate": { color: "primary.main" },
                   "& .MuiDataGrid-footerContainer": { borderColor: "divider" },
-                  "& .MuiDataGrid-cell:focus, & .MuiDataGrid-columnHeader:focus": { outline: "2px solid rgba(85, 8, 29, 0.35)", outlineOffset: -2 },
+                  "& .MuiDataGrid-cell:focus, & .MuiDataGrid-columnHeader:focus": { outline: "2px solid rgba(20, 20, 20, 0.35)", outlineOffset: -2 },
                 }}
                 rows={metas}
                 columns={columns}

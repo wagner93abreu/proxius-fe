@@ -19,7 +19,7 @@ const BoxCustomizado = styled(Box)`
   width: 65vw;
   max-height: 90vh;
   overflow-y: auto;
-  background-color: #fffdfa;
+  background-color: #ffffff;
   border: none;
   border-radius: 12px;
   padding: 1em 3em;
@@ -68,30 +68,30 @@ const Rotulo = styled.label`
     font-weight: 700;
     font-size: 16px;
     line-height: 19px;
-    color: #35252b
+    color: #242424
 `;
 
 const SpanErro = styled.span`
     float: left;
-    color: #b3261e;
+    color: #303030;
     font-size: 14px;
     margin-top: -25px;
 `;
 
 const InstrucaoPlaceholders = styled.div`
-    background: #f7f1e9;
-    border: 1px dashed rgba(85, 8, 29, 0.2);
+    background: #f5f5f5;
+    border: 1px dashed rgba(20, 20, 20, 0.2);
     border-radius: 12px;
     padding: 10px 14px;
     margin-top: 3px;
     margin-bottom: 12px;
     font-size: 13px;
-    color: #35252b;
+    color: #242424;
     line-height: 1.8;
 
     code {
         font-family: Consolas, monospace;
-        background: #fffdfa;
+        background: #ffffff;
         padding: 1px 5px;
         border-radius: 12px;
         margin-right: 6px;

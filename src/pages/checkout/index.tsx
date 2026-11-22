@@ -21,9 +21,9 @@ const ContainerPrincipal = styled.div<SurfaceProps>`
     min-height: 100vh;
     padding: 32px 16px;
     background: ${({ $light }) => $light
-        ? 'linear-gradient(180deg, #efe5d8 0%, #e2d8cc 100%)'
-        : 'radial-gradient(circle at top left, rgba(225, 169, 95, 0.18), transparent 34%), radial-gradient(circle at top right, rgba(123, 27, 43, 0.24), transparent 28%), linear-gradient(180deg, #1b0d12 0%, #290511 48%, #16070c 100%)'};
-    color: ${({ $light }) => $light ? '#55081d' : '#fff'};
+        ? 'linear-gradient(180deg, #f6f6f6 0%, #e8e8e8 100%)'
+        : 'radial-gradient(circle at top left, rgba(190, 190, 190, 0.18), transparent 34%), radial-gradient(circle at top right, rgba(45, 45, 45, 0.24), transparent 28%), linear-gradient(180deg, #171717 0%, #222222 48%, #141414 100%)'};
+    color: ${({ $light }) => $light ? '#141414' : '#fff'};
 `;
 
 const Layout = styled.div`
@@ -38,10 +38,10 @@ const Hero = styled.section<SurfaceProps>`
     background: ${({ $light }) => $light
         ? 'linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.5))'
         : 'linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03))'};
-    border: 1px solid ${({ $light }) => $light ? 'rgba(85, 8, 29, 0.14)' : 'rgba(225, 169, 95, 0.18)'};
+    border: 1px solid ${({ $light }) => $light ? 'rgba(20, 20, 20, 0.14)' : 'rgba(190, 190, 190, 0.18)'};
     border-radius: 20px;
     padding: 32px;
-    color: ${({ $light }) => $light ? '#55081d' : '#fff'};
+    color: ${({ $light }) => $light ? '#141414' : '#fff'};
 `;
 
 const HeroHeader = styled.div`
@@ -76,7 +76,7 @@ const HeroTitleBlock = styled.div<SurfaceProps>`
     transform: translate(-50%, -50%);
 
     h2 {
-        color: ${({ $light }) => $light ? '#55081d' : 'var(--cinza-claro)'};
+        color: ${({ $light }) => $light ? '#141414' : 'var(--cinza-claro)'};
         margin: 0;
     }
 
@@ -87,9 +87,9 @@ const HeroTitleBlock = styled.div<SurfaceProps>`
 `;
 
 const HeroToggleButton = styled.button<SurfaceProps>`
-    border: 1px solid ${({ $light }) => $light ? 'rgba(85, 8, 29, 0.18)' : 'rgba(225, 169, 95, 0.28)'};
-    background: ${({ $light }) => $light ? 'rgba(85, 8, 29, 0.08)' : 'rgba(225, 169, 95, 0.12)'};
-    color: ${({ $light }) => $light ? '#55081d' : '#f3d2a4'};
+    border: 1px solid ${({ $light }) => $light ? 'rgba(20, 20, 20, 0.18)' : 'rgba(190, 190, 190, 0.28)'};
+    background: ${({ $light }) => $light ? 'rgba(20, 20, 20, 0.08)' : 'rgba(190, 190, 190, 0.12)'};
+    color: ${({ $light }) => $light ? '#141414' : '#dedede'};
     border-radius: 999px;
     padding: 10px 16px;
     font-size: 13px;
@@ -98,7 +98,7 @@ const HeroToggleButton = styled.button<SurfaceProps>`
     transition: background 0.2s ease, transform 0.2s ease;
 
     &:hover {
-        background: ${({ $light }) => $light ? 'rgba(85, 8, 29, 0.14)' : 'rgba(225, 169, 95, 0.2)'};
+        background: ${({ $light }) => $light ? 'rgba(20, 20, 20, 0.14)' : 'rgba(190, 190, 190, 0.2)'};
         transform: translateY(-1px);
     }
 
@@ -114,16 +114,16 @@ const HeroContent = styled.div`
 
 const Panel = styled.section<SurfaceProps>`
     background: ${({ $light }) => $light ? 'rgba(255,255,255,0.62)' : 'rgba(255,255,255,0.04)'};
-    border: 1px solid ${({ $light }) => $light ? 'rgba(85, 8, 29, 0.12)' : 'rgba(255,255,255,0.08)'};
+    border: 1px solid ${({ $light }) => $light ? 'rgba(20, 20, 20, 0.12)' : 'rgba(255,255,255,0.08)'};
     border-radius: 20px;
     padding: 28px;
-    box-shadow: ${({ $light }) => $light ? '0 24px 60px rgba(85, 8, 29, 0.12)' : '0 24px 60px rgba(0,0,0,0.25)'};
-    color: ${({ $light }) => $light ? '#55081d' : '#fff'};
+    box-shadow: ${({ $light }) => $light ? '0 24px 60px rgba(20, 20, 20, 0.12)' : '0 24px 60px rgba(0,0,0,0.25)'};
+    color: ${({ $light }) => $light ? '#141414' : '#fff'};
 `;
 
 const SectionTitle = styled.h3<SurfaceProps>`
     margin: 24px 0 10px;
-    color: ${({ $light }) => $light ? '#55081d' : '#f4e7d2'};
+    color: ${({ $light }) => $light ? '#141414' : '#eeeeee'};
     font-size: 18px;
 `;
 
@@ -133,8 +133,8 @@ const Badge = styled.div<SurfaceProps>`
     gap: 8px;
     padding: 8px 12px;
     border-radius: 999px;
-    background: ${({ $light }) => $light ? 'rgba(85, 8, 29, 0.08)' : 'rgba(225, 169, 95, 0.14)'};
-    color: ${({ $light }) => $light ? '#55081d' : '#f3d2a4'};
+    background: ${({ $light }) => $light ? 'rgba(20, 20, 20, 0.08)' : 'rgba(190, 190, 190, 0.14)'};
+    color: ${({ $light }) => $light ? '#141414' : '#dedede'};
     font-size: 13px;
     margin-bottom: 16px;
 `;
@@ -143,18 +143,18 @@ const SuccessBox = styled.div<SurfaceProps>`
     margin-top: 20px;
     padding: 16px;
     border-radius: 14px;
-    background: ${({ $light }) => $light ? 'rgba(123, 166, 126, 0.16)' : 'rgba(64, 136, 87, 0.16)'};
-    border: 1px solid ${({ $light }) => $light ? 'rgba(87, 119, 89, 0.28)' : 'rgba(64, 136, 87, 0.35)'};
-    color: ${({ $light }) => $light ? '#31503a' : '#dff6e6'};
+    background: ${({ $light }) => $light ? 'rgba(150, 150, 150, 0.16)' : 'rgba(110, 110, 110, 0.16)'};
+    border: 1px solid ${({ $light }) => $light ? 'rgba(110, 110, 110, 0.28)' : 'rgba(110, 110, 110, 0.35)'};
+    color: ${({ $light }) => $light ? '#333333' : '#eeeeee'};
 `;
 
 const ErrorBox = styled.div<SurfaceProps>`
     margin-top: 20px;
     padding: 16px;
     border-radius: 14px;
-    background: ${({ $light }) => $light ? 'rgba(131, 42, 61, 0.08)' : 'rgba(156, 58, 58, 0.18)'};
-    border: 1px solid ${({ $light }) => $light ? 'rgba(131, 42, 61, 0.22)' : 'rgba(214, 99, 99, 0.35)'};
-    color: ${({ $light }) => $light ? '#7a2037' : '#ffe2e2'};
+    background: ${({ $light }) => $light ? 'rgba(65, 65, 65, 0.08)' : 'rgba(80, 80, 80, 0.18)'};
+    border: 1px solid ${({ $light }) => $light ? 'rgba(65, 65, 65, 0.22)' : 'rgba(130, 130, 130, 0.35)'};
+    color: ${({ $light }) => $light ? '#333333' : '#eeeeee'};
 `;
 
 const InfoBox = styled.div<SurfaceProps>`
@@ -162,8 +162,8 @@ const InfoBox = styled.div<SurfaceProps>`
     padding: 16px;
     border-radius: 16px;
     background: ${({ $light }) => $light ? 'rgba(255,255,255,0.5)' : 'rgba(255,255,255,0.05)'};
-    border: 1px solid ${({ $light }) => $light ? 'rgba(85, 8, 29, 0.12)' : 'rgba(255,255,255,0.08)'};
-    color: ${({ $light }) => $light ? '#55081d' : 'inherit'};
+    border: 1px solid ${({ $light }) => $light ? 'rgba(20, 20, 20, 0.12)' : 'rgba(255,255,255,0.08)'};
+    color: ${({ $light }) => $light ? '#141414' : 'inherit'};
 `;
 
 const AsaasBrandRow = styled.div`
@@ -181,7 +181,7 @@ const AsaasLogoBadge = styled.span`
     padding: 6px 14px;
     border-radius: 999px;
     background: #ffffff;
-    color: #384ca3;
+    color: #555555;
     font-weight: 800;
     font-size: 15px;
     font-style: italic;
@@ -195,7 +195,7 @@ const LoadingShell = styled.div<SurfaceProps>`
     justify-content: center;
     flex-direction: column;
     gap: 16px;
-    color: ${({ $light }) => $light ? 'rgba(85, 8, 29, 0.82)' : 'rgba(255,255,255,0.76)'};
+    color: ${({ $light }) => $light ? 'rgba(20, 20, 20, 0.82)' : 'rgba(255,255,255,0.76)'};
 `;
 
 const ContractHeader = styled.div<SurfaceProps>`
@@ -204,10 +204,10 @@ const ContractHeader = styled.div<SurfaceProps>`
     gap: 16px;
     margin-bottom: 20px;
     flex-wrap: wrap;
-    color: ${({ $light }) => $light ? '#55081d' : '#fff'};
+    color: ${({ $light }) => $light ? '#141414' : '#fff'};
 
     h2 {
-        color: ${({ $light }) => $light ? '#55081d' : 'var(--cinza-claro)'};
+        color: ${({ $light }) => $light ? '#141414' : 'var(--cinza-claro)'};
     }
 `;
 
@@ -226,19 +226,19 @@ const MetaCard = styled.div<SurfaceProps>`
     padding: 14px;
     border-radius: 16px;
     background: ${({ $light }) => $light ? 'rgba(255,255,255,0.45)' : 'rgba(255,255,255,0.04)'};
-    border: 1px solid ${({ $light }) => $light ? 'rgba(85, 8, 29, 0.1)' : 'rgba(255,255,255,0.07)'};
+    border: 1px solid ${({ $light }) => $light ? 'rgba(20, 20, 20, 0.1)' : 'rgba(255,255,255,0.07)'};
 
     strong {
         display: block;
         font-size: 12px;
         text-transform: uppercase;
         letter-spacing: 0.08em;
-        color: ${({ $light }) => $light ? 'rgba(85, 8, 29, 0.62)' : 'rgba(255,255,255,0.55)'};
+        color: ${({ $light }) => $light ? 'rgba(20, 20, 20, 0.62)' : 'rgba(255,255,255,0.55)'};
         margin-bottom: 8px;
     }
 
     span {
-        color: ${({ $light }) => $light ? '#55081d' : '#fff'};
+        color: ${({ $light }) => $light ? '#141414' : '#fff'};
         line-height: 1.5;
     }
 `;
@@ -250,15 +250,15 @@ const ContractDocument = styled.article<SurfaceProps>`
     background: ${({ $light }) => $light
         ? 'linear-gradient(180deg, rgba(255,255,255,0.58), rgba(255,255,255,0.42))'
         : 'linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03))'};
-    border: 1px solid ${({ $light }) => $light ? 'rgba(85, 8, 29, 0.1)' : 'rgba(255,255,255,0.08)'};
-    color: ${({ $light }) => $light ? '#55081d' : 'rgba(255,255,255,0.9)'};
+    border: 1px solid ${({ $light }) => $light ? 'rgba(20, 20, 20, 0.1)' : 'rgba(255,255,255,0.08)'};
+    color: ${({ $light }) => $light ? '#141414' : 'rgba(255,255,255,0.9)'};
     line-height: 1.7;
     overflow: hidden;
 
     h2 {
         margin: 0 0 8px;
         font-size: 28px;
-        color: ${({ $light }) => $light ? '#55081d' : '#fff'};
+        color: ${({ $light }) => $light ? '#141414' : '#fff'};
     }
 
     h3 {
@@ -266,7 +266,7 @@ const ContractDocument = styled.article<SurfaceProps>`
         font-size: 16px;
         text-transform: uppercase;
         letter-spacing: 0.08em;
-        color: ${({ $light }) => $light ? '#7a2037' : '#f3d2a4'};
+        color: ${({ $light }) => $light ? '#333333' : '#dedede'};
     }
 
     p {
@@ -310,7 +310,7 @@ const AcceptanceBox = styled.div<SurfaceProps>`
     padding: 20px;
     border-radius: 18px;
     background: ${({ $light }) => $light ? 'rgba(255,255,255,0.45)' : 'rgba(255,255,255,0.04)'};
-    border: 1px solid ${({ $light }) => $light ? 'rgba(85, 8, 29, 0.1)' : 'rgba(255,255,255,0.08)'};
+    border: 1px solid ${({ $light }) => $light ? 'rgba(20, 20, 20, 0.1)' : 'rgba(255,255,255,0.08)'};
 `;
 
 const CheckboxRow = styled.label<SurfaceProps>`
@@ -318,7 +318,7 @@ const CheckboxRow = styled.label<SurfaceProps>`
     align-items: flex-start;
     gap: 12px;
     cursor: pointer;
-    color: ${({ $light }) => $light ? '#55081d' : 'rgba(255,255,255,0.88)'};
+    color: ${({ $light }) => $light ? '#141414' : 'rgba(255,255,255,0.88)'};
     line-height: 1.5;
 
     input {
@@ -336,13 +336,13 @@ const PaymentOptionCard = styled.label<SurfaceProps & { $selected?: boolean }>`
     border-radius: 14px;
     cursor: pointer;
     margin-bottom: 12px;
-    color: ${({ $light }) => $light ? '#55081d' : '#fff'};
+    color: ${({ $light }) => $light ? '#141414' : '#fff'};
     background: ${({ $light, $selected }) => $selected
-        ? ($light ? 'rgba(85, 8, 29, 0.12)' : 'rgba(225, 169, 95, 0.16)')
+        ? ($light ? 'rgba(20, 20, 20, 0.12)' : 'rgba(190, 190, 190, 0.16)')
         : ($light ? 'rgba(255,255,255,0.45)' : 'rgba(255,255,255,0.04)')};
     border: 1px solid ${({ $light, $selected }) => $selected
-        ? ($light ? 'rgba(85, 8, 29, 0.35)' : 'rgba(225, 169, 95, 0.5)')
-        : ($light ? 'rgba(85, 8, 29, 0.12)' : 'rgba(255,255,255,0.08)')};
+        ? ($light ? 'rgba(20, 20, 20, 0.35)' : 'rgba(190, 190, 190, 0.5)')
+        : ($light ? 'rgba(20, 20, 20, 0.12)' : 'rgba(255,255,255,0.08)')};
 
     input {
         margin-top: 4px;
@@ -350,37 +350,37 @@ const PaymentOptionCard = styled.label<SurfaceProps & { $selected?: boolean }>`
 `;
 
 const Campo = styled.input<SurfaceProps>`
-    color: ${({ $light }) => $light ? '#55081d' : 'rgb(255, 255, 255)'};
+    color: ${({ $light }) => $light ? '#141414' : 'rgb(255, 255, 255)'};
     font-size: 15px;
     background: ${({ $light }) => $light ? 'rgba(255, 255, 255, 0.78)' : 'rgba(240, 240, 240, 0.08)'};
     margin-top: 3px;
     margin-bottom: 0px;
     box-sizing: border-box;
-    box-shadow: ${({ $light }) => $light ? '0 8px 24px rgba(85, 8, 29, 0.08)' : '2px 2px 6px rgba(0,0,0,0.25)'};
+    box-shadow: ${({ $light }) => $light ? '0 8px 24px rgba(20, 20, 20, 0.08)' : '2px 2px 6px rgba(0,0,0,0.25)'};
     border-radius: 3px;
-    border: ${({ $light }) => $light ? '1px solid rgba(85, 8, 29, 0.12)' : 'none'};
+    border: ${({ $light }) => $light ? '1px solid rgba(20, 20, 20, 0.12)' : 'none'};
     width: 100%;
     padding: 10px;
     &::placeholder {
-        color: ${({ $light }) => $light ? 'rgba(85, 8, 29, 0.45)' : '#aaa'};
+        color: ${({ $light }) => $light ? 'rgba(20, 20, 20, 0.45)' : '#aaa'};
     }
 `;
 
 const CampoSelect = styled.select<SurfaceProps>`
     background: ${({ $light }) => $light ? 'rgba(255, 255, 255, 0.78)' : 'rgba(240, 240, 240, 0.08)'};
-    color: ${({ $light }) => $light ? '#55081d' : '#fff'};
+    color: ${({ $light }) => $light ? '#141414' : '#fff'};
     margin-top: 3px;
     margin-bottom: 0px;
     box-sizing: border-box;
-    box-shadow: ${({ $light }) => $light ? '0 8px 24px rgba(85, 8, 29, 0.08)' : '2px 2px 6px rgba(0,0,0,0.25)'};
+    box-shadow: ${({ $light }) => $light ? '0 8px 24px rgba(20, 20, 20, 0.08)' : '2px 2px 6px rgba(0,0,0,0.25)'};
     border-radius: 3px;
-    border: ${({ $light }) => $light ? '1px solid rgba(85, 8, 29, 0.12)' : 'none'};
+    border: ${({ $light }) => $light ? '1px solid rgba(20, 20, 20, 0.12)' : 'none'};
     width: 100%;
     padding: 10px;
 `;
 
 const ValorTotalTexto = styled.div<SurfaceProps>`
-    color: ${({ $light }) => $light ? '#55081d' : '#fff'};
+    color: ${({ $light }) => $light ? '#141414' : '#fff'};
     font-size: 15px;
     font-weight: 700;
     margin-top: 3px;
@@ -388,19 +388,19 @@ const ValorTotalTexto = styled.div<SurfaceProps>`
 `;
 
 const InputMaskCustomizado = styled(InputMask)<SurfaceProps>`
-    color: ${({ $light }) => $light ? '#55081d' : 'rgb(255, 255, 255)'};
+    color: ${({ $light }) => $light ? '#141414' : 'rgb(255, 255, 255)'};
     font-size: 15px;
     background: ${({ $light }) => $light ? 'rgba(255, 255, 255, 0.78)' : 'rgba(240, 240, 240, 0.08)'};
     margin-top: 3px;
     margin-bottom: 0px;
     box-sizing: border-box;
-    box-shadow: ${({ $light }) => $light ? '0 8px 24px rgba(85, 8, 29, 0.08)' : '2px 2px 6px rgba(0,0,0,0.25)'};
+    box-shadow: ${({ $light }) => $light ? '0 8px 24px rgba(20, 20, 20, 0.08)' : '2px 2px 6px rgba(0,0,0,0.25)'};
     border-radius: 3px;
-    border: ${({ $light }) => $light ? '1px solid rgba(85, 8, 29, 0.12)' : 'none'};
+    border: ${({ $light }) => $light ? '1px solid rgba(20, 20, 20, 0.12)' : 'none'};
     width: 100%;
     padding: 10px;
     &::placeholder {
-        color: ${({ $light }) => $light ? 'rgba(85, 8, 29, 0.45)' : '#aaa'};
+        color: ${({ $light }) => $light ? 'rgba(20, 20, 20, 0.45)' : '#aaa'};
     }
 `;
 
@@ -409,7 +409,7 @@ const Rotulo = styled.label<SurfaceProps>`
     font-weight: 700;
     font-size: 16px;
     line-height: 19px;
-    color: ${({ $light }) => $light ? '#55081d' : '#f2e9db'};
+    color: ${({ $light }) => $light ? '#141414' : '#eeeeee'};
 `;
 
 const ContainerInput = styled.div`
@@ -418,7 +418,7 @@ const ContainerInput = styled.div`
 
 const SpanErro = styled.span<SurfaceProps>`
     display: block;
-    color: ${({ $light }) => $light ? '#8a2640' : '#f2d3d3'};
+    color: ${({ $light }) => $light ? '#444444' : '#dddddd'};
     font-size: 13px;
     margin-top: 6px;
 `;
@@ -1349,16 +1349,16 @@ export default function Checkout() {
 
                     {!heroCollapsed && (
                         <HeroContent>
-                            <p style={{ color: temaClaroCheckout ? 'rgba(85, 8, 29, 0.8)' : 'rgba(255,255,255,0.78)', lineHeight: 1.6, marginTop: 8 }}>
+                            <p style={{ color: temaClaroCheckout ? 'rgba(20, 20, 20, 0.8)' : 'rgba(255,255,255,0.78)', lineHeight: 1.6, marginTop: 8 }}>
                                 {/* {etapaContrato
                                     ? 'Os dados abaixo foram carregados a partir do cadastro do cliente e das configuracoes do card do CRM.'
                                     : 'Preencha os dados abaixo para concluir seu cadastro.'} */}
                             </p>
                             {(salesProcess?.cardId || cardId) && (
-                                <div style={{ display: 'none', marginTop: 18, padding: '14px 16px', borderRadius: 14, background: temaClaroCheckout ? 'rgba(255,255,255,0.45)' : 'rgba(255,255,255,0.05)', border: temaClaroCheckout ? '1px solid rgba(85, 8, 29, 0.12)' : '1px solid rgba(255,255,255,0.08)' }}>
-                                    <div style={{ fontSize: 13, color: temaClaroCheckout ? '#7a2037' : '#e1a95f', marginBottom: 8 }}>Vinculo do cadastro</div>
+                                <div style={{ display: 'none', marginTop: 18, padding: '14px 16px', borderRadius: 14, background: temaClaroCheckout ? 'rgba(255,255,255,0.45)' : 'rgba(255,255,255,0.05)', border: temaClaroCheckout ? '1px solid rgba(20, 20, 20, 0.12)' : '1px solid rgba(255,255,255,0.08)' }}>
+                                    <div style={{ fontSize: 13, color: temaClaroCheckout ? '#333333' : '#dddddd', marginBottom: 8 }}>Vinculo do cadastro</div>
                                     <div style={{ fontWeight: 700, marginBottom: 8 }}>Card {salesProcess?.cardId || cardId}</div>
-                                    {resumo && <div style={{ color: temaClaroCheckout ? 'rgba(85, 8, 29, 0.72)' : 'rgba(255,255,255,0.72)' }}>{resumo}</div>}
+                                    {resumo && <div style={{ color: temaClaroCheckout ? 'rgba(20, 20, 20, 0.72)' : 'rgba(255,255,255,0.72)' }}>{resumo}</div>}
                                 </div>
                             )}
                             <ContractMeta>
@@ -1403,7 +1403,7 @@ export default function Checkout() {
                 <Panel $light={temaClaroCheckout}>
                     {loadingContext ? (
                         <LoadingShell $light={temaClaroCheckout}>
-                            <CircularProgress sx={{ color: temaClaroCheckout ? '#7a2037' : '#e1a95f' }} />
+                            <CircularProgress sx={{ color: temaClaroCheckout ? '#333333' : '#dddddd' }} />
                             <div>Carregando dados do checkout...</div>
                         </LoadingShell>
                     ) : exibirCadastro ? (
@@ -1411,7 +1411,7 @@ export default function Checkout() {
                             {cadastroEtapa === 'cpf' && (
                                 <>
                                     <SectionTitle $light={temaClaroCheckout}>Identifique-se pelo CPF</SectionTitle>
-                                    <p style={{ color: temaClaroCheckout ? 'rgba(85, 8, 29, 0.72)' : 'rgba(255,255,255,0.72)' }}>
+                                    <p style={{ color: temaClaroCheckout ? 'rgba(20, 20, 20, 0.72)' : 'rgba(255,255,255,0.72)' }}>
                                         Informe seu CPF para verificarmos se voce ja possui cadastro.
                                     </p>
                                     <Grid container spacing={2}>
@@ -1428,7 +1428,7 @@ export default function Checkout() {
                                     </Grid>
                                     {erroEtapaCpf && <ErrorBox $light={temaClaroCheckout}>{erroEtapaCpf}</ErrorBox>}
                                     <Box sx={{ mt: 2 }}>
-                                        <Button type="button" variant="contained" size="large" disabled={verificandoCpf} onClick={handleVerificarCpf} sx={{ backgroundColor: '#55081d', color: '#f7efe4', fontWeight: 700, '&:hover': { backgroundColor: '#6f102a' } }}>
+                                        <Button type="button" variant="contained" size="large" disabled={verificandoCpf} onClick={handleVerificarCpf} sx={{ backgroundColor: '#141414', color: '#f5f5f5', fontWeight: 700, '&:hover': { backgroundColor: '#383838' } }}>
                                             {verificandoCpf ? 'Verificando...' : 'Continuar'}
                                         </Button>
                                     </Box>
@@ -1438,7 +1438,7 @@ export default function Checkout() {
                             {cadastroEtapa === 'codigo' && (
                                 <>
                                     <SectionTitle $light={temaClaroCheckout}>Digite o codigo recebido</SectionTitle>
-                                    <p style={{ color: temaClaroCheckout ? 'rgba(85, 8, 29, 0.72)' : 'rgba(255,255,255,0.72)' }}>
+                                    <p style={{ color: temaClaroCheckout ? 'rgba(20, 20, 20, 0.72)' : 'rgba(255,255,255,0.72)' }}>
                                         Enviamos um codigo de 6 digitos para {emailMascarado || 'seu email cadastrado'}, valido por 5 minutos.
                                     </p>
                                     <Grid container spacing={2}>
@@ -1455,7 +1455,7 @@ export default function Checkout() {
                                     </Grid>
                                     {erroEtapaCodigo && <ErrorBox $light={temaClaroCheckout}>{erroEtapaCodigo}</ErrorBox>}
                                     <Box sx={{ mt: 2, display: 'flex', gap: 2, flexWrap: 'wrap' }}>
-                                        <Button type="button" variant="contained" disabled={confirmandoCodigo} onClick={handleConfirmarCodigoEmail} sx={{ backgroundColor: '#55081d', color: '#f7efe4', fontWeight: 700, '&:hover': { backgroundColor: '#6f102a' } }}>
+                                        <Button type="button" variant="contained" disabled={confirmandoCodigo} onClick={handleConfirmarCodigoEmail} sx={{ backgroundColor: '#141414', color: '#f5f5f5', fontWeight: 700, '&:hover': { backgroundColor: '#383838' } }}>
                                             {confirmandoCodigo ? 'Confirmando...' : 'Confirmar codigo'}
                                         </Button>
                                         <Button type="button" variant="outlined" disabled={verificandoCpf} onClick={handleVerificarCpf}>
@@ -1516,7 +1516,7 @@ export default function Checkout() {
                                         </Grid>
                                     </Grid>
                                     <Box sx={{ mt: 2 }}>
-                                        <Button type="button" variant="contained" size="large" onClick={handleAvancarIdentificacao} sx={{ backgroundColor: '#55081d', color: '#f7efe4', fontWeight: 700, '&:hover': { backgroundColor: '#6f102a' } }}>
+                                        <Button type="button" variant="contained" size="large" onClick={handleAvancarIdentificacao} sx={{ backgroundColor: '#141414', color: '#f5f5f5', fontWeight: 700, '&:hover': { backgroundColor: '#383838' } }}>
                                             Continuar
                                         </Button>
                                     </Box>
@@ -1526,7 +1526,7 @@ export default function Checkout() {
                             {cadastroEtapa === 'endereco' && !enderecoCepPesquisado && (
                                 <>
                                     <SectionTitle $light={temaClaroCheckout}>Dados Endereço</SectionTitle>
-                                    <p style={{ color: temaClaroCheckout ? 'rgba(85, 8, 29, 0.72)' : 'rgba(255,255,255,0.72)' }}>
+                                    <p style={{ color: temaClaroCheckout ? 'rgba(20, 20, 20, 0.72)' : 'rgba(255,255,255,0.72)' }}>
                                         Informe seu CEP para localizarmos o seu endereço.
                                     </p>
                                     <Grid container spacing={2}>
@@ -1542,7 +1542,7 @@ export default function Checkout() {
                                         <Button type="button" variant="outlined" onClick={() => setCadastroEtapa('identificacao')}>
                                             Voltar
                                         </Button>
-                                        <Button type="button" variant="contained" size="large" disabled={buscandoCep} onClick={handlePesquisarCep} sx={{ backgroundColor: '#55081d', color: '#f7efe4', fontWeight: 700, '&:hover': { backgroundColor: '#6f102a' } }}>
+                                        <Button type="button" variant="contained" size="large" disabled={buscandoCep} onClick={handlePesquisarCep} sx={{ backgroundColor: '#141414', color: '#f5f5f5', fontWeight: 700, '&:hover': { backgroundColor: '#383838' } }}>
                                             {buscandoCep ? 'Pesquisando...' : 'Pesquisar CEP'}
                                         </Button>
                                     </Box>
@@ -1591,7 +1591,7 @@ export default function Checkout() {
                                         <Button type="button" variant="outlined" onClick={() => setEnderecoCepPesquisado(false)}>
                                             Alterar CEP
                                         </Button>
-                                        <Button type="submit" variant="contained" size="large" sx={{ backgroundColor: '#55081d', color: '#f7efe4', fontWeight: 700, '&:hover': { backgroundColor: '#6f102a' } }}>
+                                        <Button type="submit" variant="contained" size="large" sx={{ backgroundColor: '#141414', color: '#f5f5f5', fontWeight: 700, '&:hover': { backgroundColor: '#383838' } }}>
                                             Concluir cadastro
                                         </Button>
                                     </Box>
@@ -1602,7 +1602,7 @@ export default function Checkout() {
                         <>
                             <ContractHeader $light={temaClaroCheckout}>
                                 <div>
-                                    <div style={{ color: temaClaroCheckout ? '#7a2037' : '#f3d2a4', fontSize: 13, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 8 }}>
+                                    <div style={{ color: temaClaroCheckout ? '#333333' : '#dedede', fontSize: 13, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 8 }}>
                                         Fechamento do pedido
                                     </div>
                                     <Titulo>Selecione a forma de pagamento</Titulo>
@@ -1615,7 +1615,7 @@ export default function Checkout() {
                             </InfoBox>
 
                             {cobrancaAtual?.cobrancaUrl && (
-                                <InfoBox $light={temaClaroCheckout} style={{ backgroundColor: '#384ca3', marginBottom: 12 }}>
+                                <InfoBox $light={temaClaroCheckout} style={{ backgroundColor: '#555555', marginBottom: 12 }}>
                                     <AsaasBrandRow style={{ marginBottom: 12 }}>
                                         <AsaasLogoBadge>asaas</AsaasLogoBadge>
                                         <a
@@ -1715,7 +1715,7 @@ export default function Checkout() {
                                             variant="contained"
                                             disabled={!confirmarPagamentoHabilitado || gerandoCobranca}
                                             onClick={handleConfirmarFormaPagamento}
-                                            sx={{ backgroundColor: '#55081d', color: '#f7efe4', fontWeight: 700, '&:hover': { backgroundColor: '#6f102a' }, '&.Mui-disabled': { backgroundColor: 'rgba(255,255,255,0.16)', color: 'rgba(255,255,255,0.45)' } }}
+                                            sx={{ backgroundColor: '#141414', color: '#f5f5f5', fontWeight: 700, '&:hover': { backgroundColor: '#383838' }, '&.Mui-disabled': { backgroundColor: 'rgba(255,255,255,0.16)', color: 'rgba(255,255,255,0.45)' } }}
                                         >
                                             {gerandoCobranca ? 'Gerando cobrança...' : 'Confirmar forma de pagamento'}
                                         </Button>
@@ -1727,7 +1727,7 @@ export default function Checkout() {
                                         type="button"
                                         variant="text"
                                         onClick={() => setAlterarFormaPagamento(true)}
-                                        sx={{ color: '#55081d', fontWeight: 700, textTransform: 'none' }}
+                                        sx={{ color: '#141414', fontWeight: 700, textTransform: 'none' }}
                                     >
                                         Selecionar outra forma de pagamento/parcelamento
                                     </Button>
@@ -1738,7 +1738,7 @@ export default function Checkout() {
                         <>
                             <ContractHeader $light={temaClaroCheckout} style={{ justifyContent: 'center' }}>
                                 <div style={{ textAlign: 'center' }}>
-                                    <div style={{ color: temaClaroCheckout ? '#7a2037' : '#f3d2a4', fontSize: 13, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 8 }}>
+                                    <div style={{ color: temaClaroCheckout ? '#333333' : '#dedede', fontSize: 13, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 8 }}>
                                         Pagamento confirmado
                                     </div>
                                     <Titulo>Crie seu acesso ao sistema</Titulo>
@@ -1804,7 +1804,7 @@ export default function Checkout() {
                                         disabled={criandoLogin}
                                         onClick={handleCriarLogin}
                                         startIcon={criandoLogin ? <CircularProgress size={16} sx={{ color: 'inherit' }} /> : undefined}
-                                        sx={{ backgroundColor: '#55081d', color: '#f7efe4', fontWeight: 700, '&:hover': { backgroundColor: '#6f102a' }, '&.Mui-disabled': { backgroundColor: 'rgba(85, 8, 29, 0.3)', color: 'rgba(85, 8, 29, 0.65)' } }}
+                                        sx={{ backgroundColor: '#141414', color: '#f5f5f5', fontWeight: 700, '&:hover': { backgroundColor: '#383838' }, '&.Mui-disabled': { backgroundColor: 'rgba(20, 20, 20, 0.3)', color: 'rgba(20, 20, 20, 0.65)' } }}
                                     >
                                         {criandoLogin ? 'Criando acesso...' : 'Criar login e senha'}
                                     </Button>
@@ -1813,7 +1813,7 @@ export default function Checkout() {
                         </>
                     ) : etapaConcluida ? (
                         <InfoBox $light={temaClaroCheckout}>
-                            Cadastro de acesso já concluído. Acesse o <a href="/login" style={{ color: '#55081d', fontWeight: 700 }}>login do sistema</a> com o e-mail e senha cadastrados.
+                            Cadastro de acesso já concluído. Acesse o <a href="/login" style={{ color: '#141414', fontWeight: 700 }}>login do sistema</a> com o e-mail e senha cadastrados.
                         </InfoBox>
                     ) : processoCancelado ? (
                         <ErrorBox $light={temaClaroCheckout}>
@@ -1823,14 +1823,14 @@ export default function Checkout() {
                         <>
                             <ContractHeader $light={temaClaroCheckout}>
                                 <div>
-                                    <div style={{ color: temaClaroCheckout ? '#7a2037' : '#f3d2a4', fontSize: 13, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 8 }}>
+                                    <div style={{ color: temaClaroCheckout ? '#333333' : '#dedede', fontSize: 13, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 8 }}>
                                         Documento comercial
                                     </div>
                                     <Titulo>{contratoHabilitado ? 'Contrato em HTML para aceite digital' : 'Contrato pendente de liberação'}</Titulo>
                                 </div>
-                                <div style={{ textAlign: 'right', color: temaClaroCheckout ? 'rgba(85, 8, 29, 0.75)' : 'rgba(255,255,255,0.75)' }}>
+                                <div style={{ textAlign: 'right', color: temaClaroCheckout ? 'rgba(20, 20, 20, 0.75)' : 'rgba(255,255,255,0.75)' }}>
                                     <div>Data de emissao</div>
-                                    <strong style={{ color: temaClaroCheckout ? '#55081d' : '#fff' }}>{new Date().toLocaleDateString('pt-BR')}</strong>
+                                    <strong style={{ color: temaClaroCheckout ? '#141414' : '#fff' }}>{new Date().toLocaleDateString('pt-BR')}</strong>
                                 </div>
                             </ContractHeader>
 
@@ -1881,7 +1881,7 @@ export default function Checkout() {
                                         disabled={!aceiteMarcado || !contratoHabilitado || !contratoTemplateDisponivel || enviandoAceite}
                                         onClick={handleAceite}
                                         startIcon={enviandoAceite ? <CircularProgress size={16} sx={{ color: 'inherit' }} /> : undefined}
-                                        sx={{ backgroundColor: '#55081d', color: '#f7efe4', fontWeight: 700, '&:hover': { backgroundColor: '#6f102a' }, '&.Mui-disabled': { backgroundColor: temaClaroCheckout ? 'rgba(85, 8, 29, 0.3)' : 'rgba(255,255,255,0.16)', color: temaClaroCheckout ? 'rgba(85, 8, 29, 0.65)' : 'rgba(255,255,255,0.45)' } }}
+                                        sx={{ backgroundColor: '#141414', color: '#f5f5f5', fontWeight: 700, '&:hover': { backgroundColor: '#383838' }, '&.Mui-disabled': { backgroundColor: temaClaroCheckout ? 'rgba(20, 20, 20, 0.3)' : 'rgba(255,255,255,0.16)', color: temaClaroCheckout ? 'rgba(20, 20, 20, 0.65)' : 'rgba(255,255,255,0.45)' } }}
                                     >                                        
                                         {enviandoAceite ? 'Enviando aceite...' : 'Aceitar contrato'}
                                     </Button>
@@ -1890,10 +1890,10 @@ export default function Checkout() {
                                 {aceiteMensagem && <SuccessBox $light={temaClaroCheckout}>{aceiteMensagem}</SuccessBox>}
 
                                 <Dialog open={aceiteErroModalAberto} onClose={() => setAceiteErroModalAberto(false)}>
-                                    <DialogTitle sx={{ color: '#55081d', fontWeight: 700 }}>Erro ao aceitar contrato</DialogTitle>
+                                    <DialogTitle sx={{ color: '#141414', fontWeight: 700 }}>Erro ao aceitar contrato</DialogTitle>
                                     <DialogContent>{aceiteErro}</DialogContent>
                                     <DialogActions>
-                                        <Button onClick={() => setAceiteErroModalAberto(false)} sx={{ color: '#55081d' }}>
+                                        <Button onClick={() => setAceiteErroModalAberto(false)} sx={{ color: '#141414' }}>
                                             Fechar
                                         </Button>
                                     </DialogActions>

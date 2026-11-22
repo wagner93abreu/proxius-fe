@@ -52,7 +52,7 @@ export default function ModalErro({ open, message, onClose, title, severity = "e
                             height: 48,
                             mb: 2,
                             borderRadius: "50%",
-                            bgcolor: "rgba(85, 8, 29, 0.08)",
+                            bgcolor: "rgba(20, 20, 20, 0.08)",
                             color: "primary.main",
                         }}
                     >

@@ -48,16 +48,16 @@ const Page = styled(Container)`
 `;
 
 const Header = styled.section`
-    background: linear-gradient(120deg, #fffdfa 0%, #f7f1e9 100%);
+    background: linear-gradient(120deg, #ffffff 0%, #f5f5f5 100%);
     border-radius: 18px;
     padding: 18px 28px;
-    border: 1px solid rgba(85, 8, 29, 0.12);
-    box-shadow: 0 4px 20px rgba(85, 8, 29, 0.04);
+    border: 1px solid rgba(20, 20, 20, 0.12);
+    box-shadow: 0 4px 20px rgba(20, 20, 20, 0.04);
 `;
 
 const Title = styled.h1`
     margin: 0;
-    color: #55081d;
+    color: #141414;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -99,11 +99,11 @@ const BottomGrid = styled.section`
 `;
 
 const Card = styled.section`
-    background: #fffdfa;
+    background: #ffffff;
     border-radius: 14px;
     padding: 18px;
-    box-shadow: 0 4px 20px rgba(85, 8, 29, 0.04);
-    border: 1px solid rgba(85, 8, 29, 0.12);
+    box-shadow: 0 4px 20px rgba(20, 20, 20, 0.04);
+    border: 1px solid rgba(20, 20, 20, 0.12);
     min-width: 0;
     overflow-x: auto;
 `;
@@ -114,8 +114,8 @@ const CardTitle = styled.div`
     margin: 0 0 18px;
     padding: 6px 22px;
     border-radius: 10px;
-    background: #f7f1e9;
-    color: #55081d;
+    background: #f5f5f5;
+    color: #141414;
     font-size: 0.95rem;
     font-weight: 700;
     text-align: center;
@@ -147,7 +147,7 @@ const FunnelRow = styled.div`
 `;
 
 const FunnelLabel = styled.div`
-    color: #35252b;
+    color: #242424;
     font-weight: 600;
     font-size: 0.98rem;
 `;
@@ -156,7 +156,7 @@ const FunnelBarWrap = styled.div`
     display: flex;
     align-items: center;
     min-height: 60px;
-    border-top: 1px solid rgba(85, 8, 29, 0.12);
+    border-top: 1px solid rgba(20, 20, 20, 0.12);
 `;
 
 const FunnelBar = styled.div<{ $width: number; $color: string }>`
@@ -181,9 +181,9 @@ const FunnelValue = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    color: #75656b;
+    color: #666666;
     font-weight: 700;
-    border-top: 1px solid rgba(85, 8, 29, 0.12);
+    border-top: 1px solid rgba(20, 20, 20, 0.12);
 `;
 
 const MetaWrapper = styled.div`
@@ -203,8 +203,8 @@ const MetaGrid = styled.div`
 `;
 
 const MetaCard = styled.div`
-    background: #f7f1e9;
-    color: #55081d;
+    background: #f5f5f5;
+    color: #141414;
     border-radius: 22px;
     min-height: 108px;
     display: flex;
@@ -226,13 +226,13 @@ const MetaValue = styled.span`
 `;
 
 const RealizadoCard = styled.div`
-    background: linear-gradient(120deg, #55081d 0%, #6f102a 100%);
+    background: linear-gradient(120deg, #141414 0%, #383838 100%);
     min-height: 120px;
     border-radius: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fffdfa;
+    color: #ffffff;
     font-size: 2rem;
     font-weight: 700;
     text-align: center;
@@ -242,19 +242,19 @@ const RealizadoCard = styled.div`
 const Table = styled.table`
     width: 100%;
     border-collapse: collapse;
-    background: #fffdfa;
+    background: #ffffff;
 
     th,
     td {
-        border: 1px solid rgba(85, 8, 29, 0.12);
+        border: 1px solid rgba(20, 20, 20, 0.12);
         padding: 12px 14px;
         text-align: center;
-        color: #35252b;
+        color: #242424;
     }
 
     th {
-        background: #f7f1e9;
-        color: #55081d;
+        background: #f5f5f5;
+        color: #141414;
         font-size: 1rem;
     }
 
@@ -270,7 +270,7 @@ const ChartBox = styled.div`
 `;
 
 const Summary = styled.div`
-    color: #75656b;
+    color: #666666;
     font-size: 0.92rem;
     margin-top: 12px;
     display: flex;
@@ -280,7 +280,7 @@ const Summary = styled.div`
 `;
 
 const LoadingText = styled.div`
-    color: #35252b;
+    color: #242424;
     font-weight: 700;
     text-align: center;
 `;
@@ -290,7 +290,7 @@ const EmptyChart = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #75656b;
+    color: #666666;
     text-align: center;
 `;
 
@@ -318,9 +318,9 @@ const monthOptions: Option[] = [
     { value: 12, label: "DEZEMBRO" },
 ];
 
-const funnelColors = ["#990000", "#c24607", "#f7a400", "#ffca57", "#ffd98a"];
+const funnelColors = ["#222222", "#555555", "#888888", "#aaaaaa", "#cccccc"];
 const funnelFixedWidths = [100, 82, 64, 46, 28];
-const chartColors = ["#55081d", "#286b8a", "#357844", "#9b7028", "#b78c9a"];
+const chartColors = ["#141414", "#4a4a4a", "#777777", "#aaaaaa", "#d1d1d1"];
 
 const extractList = <T,>(data: unknown): T[] => {
     if (Array.isArray(data)) return data as T[];

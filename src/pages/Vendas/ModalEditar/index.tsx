@@ -23,7 +23,7 @@ const BoxCustomizado = styled(Box)`
   width: 85vw; 
   max-height: 90vh;
   overflow-y: auto;
-  background-color: #fffdfa;
+  background-color: #ffffff;
   border: none;
   border-radius: 12px;
   padding: 1em 5em;
@@ -142,7 +142,7 @@ export default function ModalEdita({ editaOpen, editaHandleClose, editaVenda, id
                             <CampoLeitura  tipo="text" label="Data da Venda" valor={transformDateBR(datavenda)}/>
                             </Grid>
                             <Grid container spacing={1} 
-                            style={{border: "1px solid rgba(85, 8, 29, 0.12)",
+                            style={{border: "1px solid rgba(20, 20, 20, 0.12)",
                                     borderRadius: "5px",
                                     marginTop: "1em",
                                     marginBottom: "2em",
@@ -151,7 +151,7 @@ export default function ModalEdita({ editaOpen, editaHandleClose, editaVenda, id
                                     marginLeft: "1em",
                             }}>
                                 <Grid item xs={12}>
-                                    <h2 style={{textAlign: "center", color: "#35252b"}}>Itens</h2>
+                                    <h2 style={{textAlign: "center", color: "#242424"}}>Itens</h2>
                                 </Grid>
                                 {itens.map((item: IItem, index: number) => (
                                     <React.Fragment key={index}>
@@ -176,7 +176,7 @@ export default function ModalEdita({ editaOpen, editaHandleClose, editaVenda, id
                                 ))}
                             </Grid>
                             <Grid container spacing={1} 
-                            style={{border: "1px solid rgba(85, 8, 29, 0.12)",
+                            style={{border: "1px solid rgba(20, 20, 20, 0.12)",
                                     borderRadius: "5px",
                                     marginTop: "1em",
                                     marginBottom: "2em",
@@ -185,7 +185,7 @@ export default function ModalEdita({ editaOpen, editaHandleClose, editaVenda, id
                                     marginLeft: "1em",
                             }}>
                                 <Grid item xs={12}>
-                                    <h2 style={{textAlign: "center", color: "#35252b"}}>Pagamento</h2>
+                                    <h2 style={{textAlign: "center", color: "#242424"}}>Pagamento</h2>
                                 </Grid>
                                 {meiopagamento.map((item: any, index: any) => (
                                     <React.Fragment key={index}>

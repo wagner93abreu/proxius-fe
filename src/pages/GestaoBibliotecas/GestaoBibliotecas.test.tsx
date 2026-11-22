@@ -41,8 +41,8 @@ test("presents an accessible page heading and scopes the light wine theme to man
     render(<GestaoBibliotecas />);
     expect(screen.getByRole("heading", { level: 1, name: "Gestão de bibliotecas" })).toBeInTheDocument();
     expect(await screen.findByText("Gestão admin: nenhum cliente")).toHaveStyle({
-        color: "#55081d",
-        backgroundColor: "#fffdfa",
+        color: "#141414",
+        backgroundColor: "#ffffff",
     });
 });
 

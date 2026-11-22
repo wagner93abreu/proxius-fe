@@ -150,10 +150,10 @@ export default function Vendas() {
       <div style={{ height: '100%', width: '100%' }}>
         <Botao onClick={() => handleOpen("cadastra")}><AddOutlined aria-hidden="true" />Cadastrar</Botao>
         <Botao onClick={() => editaHandleOpen()}><VisibilityOutlined aria-hidden="true" />Visualizar</Botao>
-        <Botao onClick={() => excluir()} style={{ backgroundColor: "#c50000", borderColor: "#c50000" }}><DeleteOutline aria-hidden="true" />Excluir</Botao>
+        <Botao onClick={() => excluir()} style={{ backgroundColor: "#303030", borderColor: "#303030" }}><DeleteOutline aria-hidden="true" />Excluir</Botao>
         <Botao
           onClick={() => setMentoriaGratuitaOpen(true)}
-          style={{ backgroundColor: "#ffffff", borderColor: "#ffffff", color: "#6d213c" }}
+          style={{ backgroundColor: "#ffffff", borderColor: "#ffffff", color: "#444444" }}
         ><SchoolOutlined aria-hidden="true" />
           Mentoria Gratuita
         </Botao>
@@ -161,11 +161,11 @@ export default function Vendas() {
         <ModalEdita editaOpen={editaOpen} editaHandleClose={editaHandleClose} editaVenda={vendas} id={selectedRows}/>
         <ModalMentoriaGratuita open={mentoriaGratuitaOpen} handleClose={mentoriaGratuitaHandleClose} />
         <DataGrid style={{
-          backgroundColor: "#fffdfa",
-          borderBottomColor: "rgba(85, 8, 29, 0.12)",
-          borderTopColor: "rgba(85, 8, 29, 0.12)",
-          color: "#35252b",
-          borderColor: "rgba(85, 8, 29, 0.12)",
+          backgroundColor: "#ffffff",
+          borderBottomColor: "rgba(20, 20, 20, 0.12)",
+          borderTopColor: "rgba(20, 20, 20, 0.12)",
+          color: "#242424",
+          borderColor: "rgba(20, 20, 20, 0.12)",
         }}
           rows={newVendasTable}
           columns={columns}

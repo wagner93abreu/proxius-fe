@@ -11,7 +11,7 @@ test.each(["/Login", "/home", "/checkout", "/produtos"])("keeps %s off the opera
     localStorage.setItem("authToken", "old-token");
     try {
         render(<AppRoutes />);
-        expect(await screen.findByRole("heading", { name: "RH Integrado" })).toBeInTheDocument();
+        expect(await screen.findByRole("heading", { name: /Seu negócio, mais próximo do que importa/i })).toBeInTheDocument();
         expect(window.location.pathname).toBe("/");
         expect(screen.queryByPlaceholderText("login")).not.toBeInTheDocument();
     } finally {

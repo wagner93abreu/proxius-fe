@@ -5,15 +5,16 @@ import autenticaStore from '../../stores/autentica.store';
 import { useState } from 'react';
 import { set } from 'mobx';
 import Sidebar from '../SideBar';
+import LogoProxiUs from '../LogoProxiUs';
 
 
 const CabecalhoEstilizado = styled.header<{ $light: boolean }>`
-    background-color: #efe5d8;
+    background-color: #f6f6f6;
     ${({ $light }) => $light && `
         box-sizing: border-box;
         min-height: 48px;
-        border-bottom: 1px solid rgba(85, 8, 29, 0.12);
-        button:focus-visible { outline: 2px solid #55081d; outline-offset: 3px; }
+        border-bottom: 1px solid rgba(20, 20, 20, 0.12);
+        button:focus-visible { outline: 2px solid #141414; outline-offset: 3px; }
     `}
     display:flex;
     align-items: center;
@@ -87,12 +88,8 @@ const Dropdown = styled.div`
   padding: 10px;
 `;
 
-const Logo = styled.img`
-    width: 23px;
-`
-
 const LogoButton = styled.button<{ $light: boolean }>`
-    background: ${({ $light }) => $light ? "#f7f0e8" : "transparent"};
+    background: ${({ $light }) => $light ? "#f5f5f5" : "transparent"};
     border: none;
     padding: ${({ $light }) => $light ? "6px" : "0"};
     border-radius: ${({ $light }) => $light ? "8px" : "0"};
@@ -117,7 +114,7 @@ function Cabecalho({ light = false }: { light?: boolean }) {
         <CabecalhoEstilizado $light={light}>
             <div>
                 <LogoButton $light={light} type="button" onClick={showSideBar} aria-label="Abrir menu">
-                    <Logo src={`${process.env.PUBLIC_URL}/logo_vinho_192.png`} alt="logo RH" />
+                    <LogoProxiUs />
                 </LogoButton>
                 {sideBar && <Sidebar active={sideBar}  setActive={setSideBar} />} 
             </div>

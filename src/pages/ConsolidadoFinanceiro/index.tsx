@@ -12,7 +12,7 @@ const Titulo = styled.h2`
   font-weight: 700;
   font-size: 24px;
   line-height: 28px;
-  color: #55081d
+  color: #141414
 `;
 
 const Rotulo = styled.label`
@@ -20,7 +20,7 @@ display: block;
 font-weight: 700;
 font-size: 20px;
 line-height: 19px;
-color: #35252b;
+color: #242424;
 margin-top: 17px;
 @media (max-width: 600px) {
     line-height: 1.4;
@@ -28,7 +28,7 @@ margin-top: 17px;
 `
 
 const GridCustomizado = styled(Grid)`
-  border: 1px solid rgba(85, 8, 29, 0.12);
+  border: 1px solid rgba(20, 20, 20, 0.12);
   border-radius: 12px;
   width: 100%;
   padding: 10px;
@@ -37,7 +37,7 @@ const GridCustomizado = styled(Grid)`
 `
 const H2cstm = styled.h2`
   font-size: clamp(24px, 2.5vw, 36px);
-  color: #35252b;
+  color: #242424;
 
   @media (max-width: 600px) {
     font-size: 30px;
@@ -77,10 +77,10 @@ export default function ConsolidadoFinanceiro() {
 
   return (
       <Grid container spacing={1} 
-      style={{border: "1px solid rgba(85, 8, 29, 0.12)",
+      style={{border: "1px solid rgba(20, 20, 20, 0.12)",
               borderRadius: "20px",
-              backgroundColor: "#fffdfa",
-              boxShadow: "0 4px 20px rgba(85, 8, 29, 0.04)",
+              backgroundColor: "#ffffff",
+              boxShadow: "0 4px 20px rgba(20, 20, 20, 0.04)",
               width: "100%",
               padding: "1em",
               marginBottom: "2em",
@@ -90,17 +90,17 @@ export default function ConsolidadoFinanceiro() {
       }}>
         <Grid item xs={12}><Titulo>CONSOLIDADO FINANCEIRO</Titulo></Grid>
         
-        <GridCustomizado item xs={12} md={3} style={{backgroundColor: '#e7f3e8'}}>
+        <GridCustomizado item xs={12} md={3} style={{backgroundColor: '#ededed'}}>
         <Rotulo>Total Entradas</Rotulo>
           <H2cstm>{formataMoeda(consolidadoFin?.totalEntradas, 'BRL')}</H2cstm>
         </GridCustomizado>
 
-        <GridCustomizado item xs={12} md={3} style={{backgroundColor: '#fce9e7'}}>
+        <GridCustomizado item xs={12} md={3} style={{backgroundColor: '#eeeeee'}}>
         <Rotulo>Total Saídas</Rotulo>
           <H2cstm>{formataMoeda(consolidadoFin?.totalSaidas, 'BRL')}</H2cstm>
         </GridCustomizado>
 
-        <GridCustomizado item xs={12} md={3} style={{backgroundColor: '#e6eff8'}}>
+        <GridCustomizado item xs={12} md={3} style={{backgroundColor: '#e5e5e5'}}>
         <Rotulo>Total</Rotulo>
           <H2cstm>{total}</H2cstm>
         </GridCustomizado>

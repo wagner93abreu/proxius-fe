@@ -22,15 +22,15 @@ const BoxCustomizado = styled(Box)`
     max-height: 90vh;
     overflow-y: auto;
     scrollbar-width: thin;
-    scrollbar-color: rgba(85, 8, 29, 0.25) #fffdfa;
-    background-color: #fffdfa;
+    scrollbar-color: rgba(20, 20, 20, 0.25) #ffffff;
+    background-color: #ffffff;
     border: none;
     border-radius: 20px;
     padding: 24px;
     box-sizing: border-box;
-    border: 1px solid rgba(85, 8, 29, 0.12);
-    box-shadow: 0 24px 60px rgba(85, 8, 29, 0.18);
-    color: #35252b;
+    border: 1px solid rgba(20, 20, 20, 0.12);
+    box-shadow: 0 24px 60px rgba(20, 20, 20, 0.18);
+    color: #242424;
 
     @media (max-width: 768px) {
         width: 95vw; 
@@ -42,7 +42,7 @@ export default function ModalEtiquetas({ open, handleClose}: { open: boolean, ha
     const [tags, setTags] = useState<ITag[]>([]);
     const [loading, setLoading] = useState(false);
     const [editingId, setEditingId] = useState<number | null>(null);
-    const bgColor = watch("bgColor") || "#E33F30";
+    const bgColor = watch("bgColor") || "#303030";
     const fontColor = watch("fontColor") || "#FFFFFF";
     
     const axiosConfig = {
@@ -53,7 +53,7 @@ export default function ModalEtiquetas({ open, handleClose}: { open: boolean, ha
     };
 
     const parseColor = (color?: string) => {
-        const [bg = "#E33F30", fg = "#FFFFFF"] = (color || "").split(";");
+        const [bg = "#303030", fg = "#FFFFFF"] = (color || "").split(";");
         return { bg, fg };
     };
 
@@ -88,7 +88,7 @@ export default function ModalEtiquetas({ open, handleClose}: { open: boolean, ha
     };
 
     const resetForm = () => {
-        reset({ name: "", bgColor: "#E33F30", fontColor: "#FFFFFF" });
+        reset({ name: "", bgColor: "#303030", fontColor: "#FFFFFF" });
         setEditingId(null);
     };
 
@@ -157,8 +157,8 @@ export default function ModalEtiquetas({ open, handleClose}: { open: boolean, ha
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <Grid item xs={12}>
                             <Box display="flex" alignItems="center" justifyContent="space-between" mb={2}>
-                                <h2 id="crm-etiquetas-titulo" style={{ color: "#55081d", margin: 0 }}>Etiquetas</h2>
-                                <IconButton aria-label="Fechar etiquetas" onClick={handleClose} sx={{ color: "#55081d" }}>
+                                <h2 id="crm-etiquetas-titulo" style={{ color: "#141414", margin: 0 }}>Etiquetas</h2>
+                                <IconButton aria-label="Fechar etiquetas" onClick={handleClose} sx={{ color: "#141414" }}>
                                     <CloseOutlinedIcon />
                                 </IconButton>
                             </Box>
@@ -169,37 +169,37 @@ export default function ModalEtiquetas({ open, handleClose}: { open: boolean, ha
                                     label="Nome da tag"
                                     fullWidth
                                     {...register("name", { required: true })}
-                                    InputLabelProps={{ style: { color: "#55081d" } }}
-                                    inputProps={{ style: { color: "#35252b" } }}
+                                    InputLabelProps={{ style: { color: "#141414" } }}
+                                    inputProps={{ style: { color: "#242424" } }}
                                     sx={{
                                         '& .MuiOutlinedInput-root': {
-                                            '& fieldset': { borderColor: '#55081d' },
-                                            '&:hover fieldset': { borderColor: '#55081d' },
-                                            '&.Mui-focused fieldset': { borderColor: '#55081d' },
+                                            '& fieldset': { borderColor: '#141414' },
+                                            '&:hover fieldset': { borderColor: '#141414' },
+                                            '&.Mui-focused fieldset': { borderColor: '#141414' },
                                         },
-                                        '& .MuiInputLabel-root.Mui-focused': { color: '#55081d' },
+                                        '& .MuiInputLabel-root.Mui-focused': { color: '#141414' },
                                     }}
                                 />
                             </Grid>
 
                             <Grid item xs={6} md={3}>
                                 <Box display="flex" flexDirection="column" gap={1}>
-                                    <label style={{ color: "#55081d" }}>Cor de fundo</label>
+                                    <label style={{ color: "#141414" }}>Cor de fundo</label>
                                     <input type="color" {...register("bgColor", { required: true })} style={{ width: "100%", height: "40px", border: "none", padding: 0 }} />
                                     <TextField
                                         label="Hex fundo"
                                         fullWidth
                                         value={bgColor}
                                         onChange={(e) => setValue("bgColor", e.target.value)}
-                                        InputLabelProps={{ style: { color: "#55081d" } }}
-                                        inputProps={{ style: { color: "#35252b" } }}
+                                        InputLabelProps={{ style: { color: "#141414" } }}
+                                        inputProps={{ style: { color: "#242424" } }}
                                         sx={{
                                             '& .MuiOutlinedInput-root': {
-                                                '& fieldset': { borderColor: '#55081d' },
-                                                '&:hover fieldset': { borderColor: '#55081d' },
-                                                '&.Mui-focused fieldset': { borderColor: '#55081d' },
+                                                '& fieldset': { borderColor: '#141414' },
+                                                '&:hover fieldset': { borderColor: '#141414' },
+                                                '&.Mui-focused fieldset': { borderColor: '#141414' },
                                             },
-                                            '& .MuiInputLabel-root.Mui-focused': { color: '#55081d' },
+                                            '& .MuiInputLabel-root.Mui-focused': { color: '#141414' },
                                         }}
                                     />
                                 </Box>
@@ -207,22 +207,22 @@ export default function ModalEtiquetas({ open, handleClose}: { open: boolean, ha
 
                             <Grid item xs={6} md={3}>
                                 <Box display="flex" flexDirection="column" gap={1}>
-                                    <label style={{ color: "#55081d" }}>Cor da fonte</label>
+                                    <label style={{ color: "#141414" }}>Cor da fonte</label>
                                     <input type="color" {...register("fontColor", { required: true })} style={{ width: "100%", height: "40px", border: "none", padding: 0 }} />
                                     <TextField
                                         label="Hex fonte"
                                         fullWidth
                                         value={fontColor}
                                         onChange={(e) => setValue("fontColor", e.target.value)}
-                                        InputLabelProps={{ style: { color: "#55081d" } }}
-                                        inputProps={{ style: { color: "#35252b" } }}
+                                        InputLabelProps={{ style: { color: "#141414" } }}
+                                        inputProps={{ style: { color: "#242424" } }}
                                         sx={{
                                             '& .MuiOutlinedInput-root': {
-                                                '& fieldset': { borderColor: '#55081d' },
-                                                '&:hover fieldset': { borderColor: '#55081d' },
-                                                '&.Mui-focused fieldset': { borderColor: '#55081d' },
+                                                '& fieldset': { borderColor: '#141414' },
+                                                '&:hover fieldset': { borderColor: '#141414' },
+                                                '&.Mui-focused fieldset': { borderColor: '#141414' },
                                             },
-                                            '& .MuiInputLabel-root.Mui-focused': { color: '#55081d' },
+                                            '& .MuiInputLabel-root.Mui-focused': { color: '#141414' },
                                         }}
                                     />
                                 </Box>
@@ -248,34 +248,34 @@ export default function ModalEtiquetas({ open, handleClose}: { open: boolean, ha
                             </Grid>
 
                             <Grid item xs={12}>
-                                <Table size="small" sx={{ backgroundColor: "#fffdfa", color: "#35252b" }}>
+                                <Table size="small" sx={{ backgroundColor: "#ffffff", color: "#242424" }}>
                                     <TableHead>
                                         <TableRow>
-                                            <TableCell style={{ color: "#55081d" }}>Nome</TableCell>
-                                            <TableCell style={{ color: "#55081d" }}>Prévia</TableCell>
-                                            <TableCell align="right" style={{ color: "#55081d" }}>Ações</TableCell>
+                                            <TableCell style={{ color: "#141414" }}>Nome</TableCell>
+                                            <TableCell style={{ color: "#141414" }}>Prévia</TableCell>
+                                            <TableCell align="right" style={{ color: "#141414" }}>Ações</TableCell>
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
                                         {tags.map((tag) => (
                                             <TableRow key={tag.id}>
-                                                <TableCell style={{ color: "#35252b" }}>{tag.name}</TableCell>
+                                                <TableCell style={{ color: "#242424" }}>{tag.name}</TableCell>
                                                 <TableCell>
                                                     <TagPreview name={tag.name} color={tag.color} />
                                                 </TableCell>
                                                 <TableCell align="right">
                                                     <IconButton size="small" onClick={() => handleEdit(tag)}>
-                                                        <EditIcon sx={{ color: "#55081d" }} />
+                                                        <EditIcon sx={{ color: "#141414" }} />
                                                     </IconButton>
                                                     <IconButton size="small" onClick={() => handleDelete(tag.id)}>
-                                                        <DeleteIcon sx={{ color: "#55081d" }} />
+                                                        <DeleteIcon sx={{ color: "#141414" }} />
                                                     </IconButton>
                                                 </TableCell>
                                             </TableRow>
                                         ))}
                                         {tags.length === 0 && (
                                             <TableRow>
-                                                <TableCell colSpan={3} style={{ color: "#35252b", textAlign: "center" }}>
+                                                <TableCell colSpan={3} style={{ color: "#242424", textAlign: "center" }}>
                                                     Nenhuma tag cadastrada.
                                                 </TableCell>
                                             </TableRow>

@@ -1,10 +1,10 @@
 import http from ".";
 
 test.each([
-    ["localhost", "http://localhost:8081/"],
-    ["rhsc.localhost", "http://rhsc.localhost:8081/"],
-    ["a.localhost", "http://a.localhost:8081/"],
-    ["nova-empresa.localhost", "http://nova-empresa.localhost:8081/"],
+    ["localhost", "http://localhost:8080/"],
+    ["rhsc.localhost", "http://rhsc.localhost:8080/"],
+    ["a.localhost", "http://a.localhost:8080/"],
+    ["nova-empresa.localhost", "http://nova-empresa.localhost:8080/"],
     ["rhintegrado.com.br", "https://api.rhintegrado.com.br/"],
 ])("routes %s to its expected API without changing production behavior", (hostname, expected) => {
     const original = window.location;

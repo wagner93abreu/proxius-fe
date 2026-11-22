@@ -6,10 +6,10 @@ import styled from 'styled-components';
 
 const RodapeEstilizado = styled.footer<{ $light: boolean }>`
 height: 25px;
-color: ${({ $light }) => $light ? "#55081d" : "white"};
+color: ${({ $light }) => $light ? "#141414" : "white"};
 padding: 0.5px;
-background-color: ${({ $light }) => $light ? "#f7f1e9" : "rgb(20, 3, 9)"};
-${({ $light }) => $light && "border-top: 1px solid rgba(85, 8, 29, 0.12);"}
+background-color: ${({ $light }) => $light ? "#f5f5f5" : "rgb(20, 20, 20)"};
+${({ $light }) => $light && "border-top: 1px solid rgba(20, 20, 20, 0.12);"}
 text-align: center;
 position: fixed;
 width: 100%;
@@ -60,7 +60,7 @@ function Rodape({ light = false }: { light?: boolean }) {
                     </a>
                 </ItemEstilizado>
             </ListaEstilizada> */}
-            <Paragrafo>2024 © Desenvolvido por RH sem Complicações.</Paragrafo>
+            <Paragrafo>© {new Date().getFullYear()} ProxiUs.</Paragrafo>
         </RodapeEstilizado>
     )
 }
