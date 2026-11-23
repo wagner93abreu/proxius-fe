@@ -2,6 +2,15 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Publicação no AWS Amplify
+
+O arquivo `amplify.yml` instala as dependências com `npm ci` e publica a pasta
+`build`. O comando de build usa `CI=false` porque o projeto ainda possui avisos
+de lint que o Create React App trata como erros em CI; os avisos continuam sendo
+exibidos no log. Ao alterar dependências, atualize e versione também o
+`package-lock.json`. O arquivo `amplify.yml` no repositório tem precedência
+sobre as configurações de build salvas no console do Amplify.
+
 ## Página inicial ProxiUs
 
 Em `localhost`, a página inicial apresenta o ProxiUs e mantém o acesso ao
