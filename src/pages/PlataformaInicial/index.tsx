@@ -46,7 +46,9 @@ const etapas = [
 ];
 
 export default function PlataformaInicial() {
-    const acessoEmpresa = `${window.location.protocol}//rhsc.localhost${window.location.port ? `:${window.location.port}` : ""}/login`;
+    const acessoEmpresa = window.location.hostname === "localhost"
+        ? `${window.location.protocol}//rhsc.localhost${window.location.port ? `:${window.location.port}` : ""}/login`
+        : "/login";
 
     useEffect(() => {
         const tituloAnterior = document.title;

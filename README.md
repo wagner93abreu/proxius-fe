@@ -13,15 +13,24 @@ sobre as configurações de build salvas no console do Amplify.
 
 ## Página inicial ProxiUs
 
-Em `localhost`, a página inicial apresenta o ProxiUs e mantém o acesso ao
-ambiente local RH Sem Complicações e à administração da plataforma. O link de
-acesso usa a mesma porta do servidor de desenvolvimento. O domínio público
-`proxius.com.br` ainda precisa ser configurado para exibir essa página.
+A rota raiz apresenta a página inicial do ProxiUs sem redirecionar ao login.
+Em `localhost`, o link de acesso abre o ambiente local RH Sem Complicações na
+mesma porta; nos demais domínios, abre `/login`. A configuração de domínio e
+DNS no Amplify continua necessária para usar `proxius.com.br`.
 
 As telas do sistema usam uma identidade monocromática e a marca `P.`. Imagens
 e marcas de clientes e parceiros são preservadas. As cores configuradas nas
 etiquetas também são preservadas e podem ser editadas; no CRM, as etiquetas são
 exibidas em tons neutros e identificadas pelo nome.
+
+## reCAPTCHA no login
+
+O reCAPTCHA está temporariamente desativado no login enquanto o novo domínio é
+configurado. Nesse período, o login não conta com essa proteção contra robôs.
+Para reativá-lo, configure a chave para o domínio, atualize a chave no componente
+de login e descomente a integração e a verificação. A integração anterior não
+enviava o token ao backend; para proteção efetiva, o backend também deve validar
+o token com o Google antes de autenticar o usuário.
 
 ## Modais de mensagens
 
@@ -34,9 +43,9 @@ As mensagens são enfileiradas, permanecem abertas até serem fechadas e continu
 visíveis mesmo que o formulário de origem seja fechado ou a rota mude.
 O antigo `AlertPortal` também usa esse serviço, sem fechamento automático.
 
-Para visualizar sem chamar o backend, preencha login e senha e clique em
-**Entrar** sem marcar o reCAPTCHA. O modal permanece aberto até ser fechado pelo
-botão **Entendi**, pelo ícone de fechar, pela tecla Escape ou clicando fora dele.
+Erros de login retornados pelo backend são apresentados no modal, que permanece
+aberto até ser fechado pelo botão **Entendi**, pelo ícone de fechar, pela tecla
+Escape ou clicando fora dele.
 
 Para novas mensagens, use `mostrarMensagem(erro)` ou
 `mostrarMensagem("Registro salvo!", "success")`. As outras severidades são

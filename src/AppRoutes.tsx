@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Usuarios from "./pages/Usuarios";
 import PaginaBase from "./pages/PaginaBase";
-import PaginaInicial from "./pages/PaginaInicial";
 import PaginaBaseFormulario from "./pages/PaginaBaseFormulario";
 import Login from "./pages/Login";
 import Cadastro from "./pages/Cadastro";
@@ -49,8 +48,8 @@ function AppRoutes(){
         <BrowserRouter>
         <Routes>
             <Route path="/wcmadmin" element={<WcmAdmin />} />
+            <Route path="/" element={<PlataformaInicial />} />
             <Route path="/" element={<PaginaBase/>}>
-                <Route index element={<PaginaInicial />} />
                 <Route element={<RotaPrivada />}>
                     <Route path="/usuarios" element={<Usuarios />} />
                     <Route path="/home" element={<Home />} />

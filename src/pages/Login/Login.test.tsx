@@ -13,11 +13,8 @@ jest.mock("../../http", () => ({
 }));
 jest.mock("react-google-recaptcha", () => ({
     __esModule: true,
-    default: ({ onChange }: { onChange: (token: string) => void }) => (
-        <button type="button" onClick={() => onChange("test-captcha")}>Verificar reCAPTCHA</button>
-    ),
+    default: () => <div>Verificar reCAPTCHA</div>,
 }));
-
 const mockedHttp = http as jest.Mocked<typeof http>;
 
 beforeEach(() => {
@@ -54,14 +51,18 @@ test("apresenta a marca ProxiUs na entrada", () => {
     expect(screen.getByRole("heading", { name: "ProxiUs" })).toBeInTheDocument();
 });
 
-test("shows captcha validation in a persistent modal and restores focus after closing", async () => {
+test("shows backend errors in a persistent modal and restores focus after closing", async () => {
+    mockedHttp.post.mockRejectedValue({
+        isAxiosError: true,
+        response: { data: { message: "Login ou senha inválidos." } },
+    });
     renderLogin();
     const submit = screen.getByRole("button", { name: "Entrar" });
     submit.focus();
     fireEvent.click(submit);
 
-    const dialog = screen.getByRole("alertdialog");
-    expect(within(dialog).getByText("reCAPTCHA não verificado")).toBeInTheDocument();
+    const dialog = await screen.findByRole("alertdialog");
+    expect(within(dialog).getByText("Login ou senha inválidos.")).toBeInTheDocument();
     jest.useFakeTimers();
     act(() => jest.advanceTimersByTime(6000));
     expect(dialog).toBeVisible();
@@ -70,11 +71,11 @@ test("shows captcha validation in a persistent modal and restores focus after cl
 
     await waitFor(() => expect(screen.queryByRole("alertdialog")).not.toBeInTheDocument());
     expect(submit).toHaveFocus();
-    expect(mockedHttp.post).not.toHaveBeenCalled();
+    expect(mockedHttp.post).toHaveBeenCalledWith("login", { login: "usuario", senha: "senha" }, expect.any(Object));
     expect(window.alert).not.toHaveBeenCalled();
 });
 
-test.each(["a.localhost", "b.localhost", "nova-empresa.localhost"])("allows local demo login without reCAPTCHA on %s", async (hostname) => {
+test.each(["a.localhost", "b.localhost", "nova-empresa.localhost", "proxius.com.br", "main.example.amplifyapp.com"])("allows login without reCAPTCHA on %s", async (hostname) => {
     const originalLocation = window.location;
     Object.defineProperty(window, "location", {
         configurable: true,
@@ -86,7 +87,7 @@ test.each(["a.localhost", "b.localhost", "nova-empresa.localhost"])("allows loca
     });
     try {
         renderLogin();
-        expect(screen.queryByRole("button", { name: "Verificar reCAPTCHA" })).not.toBeInTheDocument();
+        expect(screen.queryByText("Verificar reCAPTCHA")).not.toBeInTheDocument();
         fireEvent.click(screen.getByRole("button", { name: "Entrar" }));
         expect(await screen.findByRole("alertdialog")).toHaveTextContent("Erro de teste");
         expect(mockedHttp.post).toHaveBeenCalledWith("login", { login: "usuario", senha: "senha" }, expect.any(Object));
@@ -101,7 +102,6 @@ test("shows the backend login error without calling browser alert", async () => 
         response: { data: { message: "Login ou senha inválidos." } },
     });
     renderLogin();
-    fireEvent.click(screen.getByRole("button", { name: "Verificar reCAPTCHA" }));
     fireEvent.click(screen.getByRole("button", { name: "Entrar" }));
 
     expect(await screen.findByRole("alertdialog")).toHaveTextContent("Login ou senha inválidos.");
@@ -116,7 +116,6 @@ test("keeps login unauthenticated and shows an error when loading user data fail
         response: { data: { message: "Erro ao buscar dados do usuário." } },
     });
     renderLogin();
-    fireEvent.click(screen.getByRole("button", { name: "Verificar reCAPTCHA" }));
     fireEvent.click(screen.getByRole("button", { name: "Entrar" }));
 
     expect(await screen.findByRole("alertdialog")).toHaveTextContent("Erro ao buscar dados do usuário.");
@@ -159,7 +158,6 @@ test("persists the session and navigates only after successfully loading user da
 
     try {
         renderLogin();
-        fireEvent.click(screen.getByRole("button", { name: "Verificar reCAPTCHA" }));
         fireEvent.click(screen.getByRole("button", { name: "Entrar" }));
 
         expect(await screen.findByText("Página inicial")).toBeInTheDocument();

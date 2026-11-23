@@ -5,7 +5,7 @@ import Botao from "../../components/Botao";
 import { useNavigate } from "react-router-dom";
 import autenticaStore from "../../stores/autentica.store";
 import http from "../../http";
-import ReCAPTCHA from "react-google-recaptcha";
+// import ReCAPTCHA from "react-google-recaptcha";
 import AlertPortal from "../../components/AlertPortal";
 import axios from "axios";
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Typography } from "@mui/material";
@@ -110,11 +110,11 @@ interface ILogin {
 }
 
 export default function Login() {
-    const tenantPoc = /^[a-z0-9](?:[a-z0-9-]{0,48}[a-z0-9])?\.localhost$/.test(window.location.hostname);
+    // const tenantPoc = /^[a-z0-9](?:[a-z0-9-]{0,48}[a-z0-9])?\.localhost$/.test(window.location.hostname);
   const [login, setLogin] = useState("");
   const [senha, setSenha] = useState("");
     const navigate = useNavigate();
-    const [verified, setVerified] = useState(false);
+    // const [verified, setVerified] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [showError, setShowError] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
@@ -135,10 +135,9 @@ export default function Login() {
       }
     }, [navigate]);
 
-    function onChange(value: any) {
-      //console.log("Captcha value:", value);
-      setVerified(true);
-    }
+    // function onChange(value: string | null) {
+    //   setVerified(Boolean(value));
+    // }
 
     const getBackendErrorMessage = (error: unknown) => {
       if (axios.isAxiosError(error)) {
@@ -204,23 +203,24 @@ export default function Login() {
 
     const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      if(verified || tenantPoc){
-        const usuario: ILogin = {
-          login: login,
-          senha: senha
-        }
+      // Temporariamente desativado até configurar o reCAPTCHA para o novo domínio.
+      // if (!verified && !tenantPoc) {
+      //   showErrorAlert("reCAPTCHA não verificado");
+      //   return;
+      // }
+      const usuario: ILogin = {
+        login: login,
+        senha: senha
+      }
   
-        http.post('login', usuario, axiosConfig)
+      http.post('login', usuario, axiosConfig)
         .then(async resposta => {
-            await autenticaStore.login({login: login, token: resposta.data.token})
-            resposta && navigate('/home')
+          await autenticaStore.login({login: login, token: resposta.data.token})
+          resposta && navigate('/home')
         })
         .catch(erro => {
-            showErrorAlert(getBackendErrorMessage(erro));
+          showErrorAlert(getBackendErrorMessage(erro));
         })
-      }else{
-        showErrorAlert("reCAPTCHA não verificado");
-      }
       
 
 
@@ -238,8 +238,8 @@ export default function Login() {
             <CampoDigitacao required={true} tipo="login" label="Login" valor={login} placeholder="login" onChange={setLogin} />
             <CampoDigitacao required={true} tipo="password" label="Senha" valor={senha} placeholder="*******" onChange={setSenha} />
             <LinkEsqueciSenha type="button" onClick={handleAbrirEsqueciSenha}>Esqueceu sua senha?</LinkEsqueciSenha>
-            {!tenantPoc &&
-              <ReCAPTCHA sitekey="6Lf10zsqAAAAAFLQBmVCZKH81pE1LpzUOSBny_dl" onChange={onChange} />}
+            {/* {!tenantPoc &&
+              <ReCAPTCHA sitekey="6Lf10zsqAAAAAFLQBmVCZKH81pE1LpzUOSBny_dl" onChange={onChange} />} */}
             <BotaoCustomizado type="submit" >Entrar</BotaoCustomizado>
         </Formulario>
       </Card>
