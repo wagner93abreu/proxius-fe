@@ -8,10 +8,11 @@ import InputMask from "react-input-mask";
 import axios from "axios";
 import http from "../../http";
 import Titulo from "../../components/Titulo";
-import logoCheckout from "./logo04.png";
+import LogoProxiUs from "../../components/LogoProxiUs";
 import IClifor from "../../types/IClifor";
 import { removeNotNumber } from "../../customFunctions/mascarasFormatacao";
 import { mostrarMensagem } from "../../stores/mensagem.store";
+import { centralRegistrationPreviewEnabled, centralRootOrigin } from "../../centralIdentity";
 
 type SurfaceProps = {
     $light?: boolean;
@@ -58,10 +59,14 @@ const HeroHeader = styled.div`
     }
 `;
 
-const HeroLogo = styled.img`
-    width: 250px;
-    height: auto;
-    object-fit: contain;
+const HeroLogo = styled.div`
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: #141414;
+    color: #fff;
     flex-shrink: 0;
 `;
 
@@ -423,7 +428,7 @@ const SpanErro = styled.span<SurfaceProps>`
     margin-top: 6px;
 `;
 
-type CadastroEtapa = 'cpf' | 'codigo' | 'identificacao' | 'endereco';
+type CadastroEtapa = 'cpf' | 'email' | 'codigo' | 'identificacao' | 'endereco';
 
 type CheckoutFormValues = {
     cpfcnpj: string;
@@ -473,8 +478,15 @@ type SalesProcessCheckoutResponse = {
     temporaryLinkExpiresAt: string;
     temporaryAccessUrl: string;
     createdCustomerId: number | null;
+    createdUserId?: number | null;
     cliente: IClifor | null;
     htmlTemplate?: string | null;
+};
+
+type CheckoutInvitationStatus = {
+    status: string;
+    invitationSent: boolean;
+    pendingAcceptance: boolean;
 };
 
 type DadosCriacaoCobrancaSalesProcess = {
@@ -761,6 +773,10 @@ export default function Checkout() {
     const [verificandoCpf, setVerificandoCpf] = useState(false);
     const [erroEtapaCpf, setErroEtapaCpf] = useState('');
     const [emailMascarado, setEmailMascarado] = useState('');
+    const [emailVerificado, setEmailVerificado] = useState('');
+    const [emailDestinoCodigo, setEmailDestinoCodigo] = useState('');
+    const [codigoCpfExistente, setCodigoCpfExistente] = useState(false);
+    const [retornoCodigo, setRetornoCodigo] = useState<'identificacao' | 'endereco'>('identificacao');
     const [codigoVerificacao, setCodigoVerificacao] = useState('');
     const [confirmandoCodigo, setConfirmandoCodigo] = useState(false);
     const [erroEtapaCodigo, setErroEtapaCodigo] = useState('');
@@ -780,6 +796,8 @@ export default function Checkout() {
     const [loginConfirmarSenha, setLoginConfirmarSenha] = useState('');
     const [loginErro, setLoginErro] = useState('');
     const [criandoLogin, setCriandoLogin] = useState(false);
+    const [reenviandoConvite, setReenviandoConvite] = useState(false);
+    const [convitePendenteAceite, setConvitePendenteAceite] = useState<boolean | null>(null);
     const [pagamentoSelecionadoIndex, setPagamentoSelecionadoIndex] = useState<number | null>(null);
     const [parcelasSelecionadas, setParcelasSelecionadas] = useState<Record<number, number | ''>>({});
     const [cobrancaAtual, setCobrancaAtual] = useState<CobrancaAtiva | null>(null);
@@ -799,6 +817,7 @@ export default function Checkout() {
     });
 
     const maskCpfCnpj = '999.999.999-99';
+    const centralCheckoutRegistration = centralRegistrationPreviewEnabled();
 
     const loadSalesProcessContext = useCallback(async () => {
         if (!salesProcessUuid) {
@@ -821,6 +840,19 @@ export default function Checkout() {
             });
 
             setSalesProcess(data);
+            if (centralCheckoutRegistration && data.createdUserId) {
+                try {
+                    const invitation = await http.get<CheckoutInvitationStatus>(
+                        `sales-process/${salesProcessUuid}/user-registration/invitation-status`,
+                        { headers: { 'X-Sales-Process-Token': salesProcessToken } }
+                    );
+                    setConvitePendenteAceite(invitation.data.pendingAcceptance);
+                } catch {
+                    setLoginErro('Não foi possível consultar o estado do convite. Atualize a página para tentar novamente.');
+                }
+            } else {
+                setConvitePendenteAceite(false);
+            }
             const normalizedStatus = (data.status || '').trim().toUpperCase();
             const templateFromProcess = typeof data.htmlTemplate === 'string' ? data.htmlTemplate : '';
 
@@ -844,7 +876,7 @@ export default function Checkout() {
             setContractTemplate('');
             return null;
         }
-    }, [salesProcessToken, salesProcessUuid]);
+    }, [centralCheckoutRegistration, salesProcessToken, salesProcessUuid]);
 
     useEffect(() => {
         const load = async () => {
@@ -949,7 +981,7 @@ export default function Checkout() {
 
             await loadSalesProcessContext();
         } catch (erro) {
-            mostrarMensagem('ERRO: ' + erro, "error");
+            mostrarMensagem(erro, "error");
         }
     };
 
@@ -971,15 +1003,44 @@ export default function Checkout() {
             });
 
             if (data?.cadastrado) {
+                setCodigoCpfExistente(true);
+                setRetornoCodigo('identificacao');
                 setEmailMascarado(data.emailMascarado ?? '');
                 setCodigoVerificacao('');
                 setErroEtapaCodigo('');
                 setCadastroEtapa('codigo');
             } else {
-                setCadastroEtapa('identificacao');
+                setEmailVerificado('');
+                setCadastroEtapa('email');
             }
-        } catch {
-            setErroEtapaCpf('Nao foi possivel verificar o CPF informado. Tente novamente.');
+        } catch (erro) {
+            const mensagem = axios.isAxiosError(erro) && typeof erro.response?.data === 'string'
+                ? erro.response.data : 'Não foi possível verificar o CPF informado. Tente novamente.';
+            if (cadastroEtapa === 'codigo') setErroEtapaCodigo(mensagem);
+            else setErroEtapaCpf(mensagem);
+        } finally {
+            setVerificandoCpf(false);
+        }
+    };
+
+    const handleEnviarCodigoEmail = async (retorno: 'identificacao' | 'endereco') => {
+        if (!(await trigger('email')) || !salesProcessUuid || !salesProcessToken) return;
+        const email = getValues('email').trim();
+        setVerificandoCpf(true);
+        setErroEtapaCodigo('');
+        try {
+            await http.post('customer-verification/check-email',
+                { email, salesProcessUuid },
+                { headers: { 'X-Sales-Process-Token': salesProcessToken } });
+            setEmailDestinoCodigo(email);
+            setEmailMascarado(email);
+            setCodigoCpfExistente(false);
+            setRetornoCodigo(retorno);
+            setCodigoVerificacao('');
+            setCadastroEtapa('codigo');
+        } catch (erro) {
+            setErroEtapaCodigo(axios.isAxiosError(erro) && typeof erro.response?.data === 'string'
+                ? erro.response.data : 'Não foi possível enviar o código. Tente novamente.');
         } finally {
             setVerificandoCpf(false);
         }
@@ -999,6 +1060,7 @@ export default function Checkout() {
                 'customer-verification/confirm-email-code',
                 {
                     code: codigoVerificacao.trim(),
+                    salesProcessUuid,
                 },
                 {
                     headers: {
@@ -1007,8 +1069,9 @@ export default function Checkout() {
                 }
             );
 
-            const telefoneFormatado = buildPhone(data);
-            reset({
+            if (data) {
+                const telefoneFormatado = buildPhone(data);
+                reset({
                 cpfcnpj: data.cpfcnpj ?? getValues('cpfcnpj'),
                 nomesocial: data.nomesocial ?? '',
                 nomecomercial: data.nomecomercial ?? '',
@@ -1021,13 +1084,17 @@ export default function Checkout() {
                 uf: data.endereco?.uf ?? '',
                 numero: data.endereco?.numero ?? '',
                 complemento: data.endereco?.complemento ?? '',
-            });
-            setEnderecoCepPesquisado(Boolean(data.endereco?.cep));
-            setCadastroEtapa('identificacao');
+                });
+                setEnderecoCepPesquisado(Boolean(data.endereco?.cep));
+            }
+            setEmailVerificado((data?.email ?? emailDestinoCodigo).trim().toLowerCase());
+            setCadastroEtapa(retornoCodigo);
         } catch (erro: any) {
             const status = erro?.response?.status;
             if (status === 400) {
                 setErroEtapaCodigo('Codigo invalido ou expirado. Solicite um novo codigo.');
+            } else if (status === 429) {
+                setErroEtapaCodigo('Muitas tentativas. Aguarde antes de tentar novamente.');
             } else if (status === 404) {
                 setErroEtapaCodigo('Cliente nao encontrado para este email.');
             } else {
@@ -1041,7 +1108,11 @@ export default function Checkout() {
     const handleAvancarIdentificacao = async () => {
         const valido = await trigger(['nomesocial', 'nomecomercial', 'email', 'telefone']);
         if (valido) {
-            setCadastroEtapa('endereco');
+            if (getValues('email').trim().toLowerCase() !== emailVerificado) {
+                await handleEnviarCodigoEmail('endereco');
+            } else {
+                setCadastroEtapa('endereco');
+            }
         }
     };
 
@@ -1290,12 +1361,12 @@ export default function Checkout() {
             return;
         }
 
-        if (loginSenha.length < 8) {
+        if (!centralCheckoutRegistration && loginSenha.length < 8) {
             setLoginErro('A senha deve conter pelo menos 8 dígitos.');
             return;
         }
 
-        if (loginSenha !== loginConfirmarSenha) {
+        if (!centralCheckoutRegistration && loginSenha !== loginConfirmarSenha) {
             setLoginErro('A confirmação de senha não confere.');
             return;
         }
@@ -1308,36 +1379,89 @@ export default function Checkout() {
         setCriandoLogin(true);
 
         try {
-            await http.post(
-                `sales-process/${salesProcessUuid}/user-registration`,
-                {
-                    login: loginEmailUsuario.trim(),
-                    email: loginEmailUsuario.trim(),
-                    password: loginSenha,
-                    nome: loginNome.trim(),
-                },
-                {
-                    headers: {
-                        'X-Sales-Process-Token': salesProcessToken,
-                        'Content-Type': 'application/json',
+            if (centralCheckoutRegistration) {
+                await http.post(
+                    `sales-process/${salesProcessUuid}/user-registration/invitation`,
+                    {
+                        login: loginEmailUsuario.trim(),
+                        email: loginEmailUsuario.trim(),
+                        nome: loginNome.trim(),
                     },
-                }
-            );
-
-            navigate('/login');
-        } catch {
-            setLoginErro('Nao foi possivel concluir o cadastro de acesso neste momento. Tente novamente.');
+                    {
+                        headers: {
+                            'X-Sales-Process-Token': salesProcessToken,
+                            'Content-Type': 'application/json',
+                        },
+                    }
+                );
+                setLoginErro('');
+                await loadSalesProcessContext();
+            } else {
+                await http.post(
+                    `sales-process/${salesProcessUuid}/user-registration`,
+                    {
+                        login: loginEmailUsuario.trim(),
+                        email: loginEmailUsuario.trim(),
+                        password: loginSenha,
+                        nome: loginNome.trim(),
+                    },
+                    {
+                        headers: {
+                            'X-Sales-Process-Token': salesProcessToken,
+                            'Content-Type': 'application/json',
+                        },
+                    }
+                );
+                navigate('/login');
+            }
+        } catch (failure) {
+            if (centralCheckoutRegistration && axios.isAxiosError(failure)
+                && failure.response?.status === 502
+                && failure.response.data?.status === 'PENDING_DELIVERY') {
+                setLoginErro('O usuário foi criado, mas o convite não foi enviado. Use “Reenviar convite”; não refaça o cadastro.');
+                await loadSalesProcessContext();
+            } else if (centralCheckoutRegistration && axios.isAxiosError(failure)
+                && failure.response?.status === 429) {
+                setLoginErro('Aguarde antes de solicitar outro envio do convite.');
+            } else if (centralCheckoutRegistration && axios.isAxiosError(failure)
+                && failure.response?.status === 409) {
+                setLoginErro('Este processo já iniciou o cadastro. Atualize a página para conferir o estado do convite.');
+                await loadSalesProcessContext();
+            } else {
+                setLoginErro('Nao foi possivel concluir o cadastro de acesso neste momento. Tente novamente.');
+            }
         } finally {
             setCriandoLogin(false);
         }
     };
 
+    const handleReenviarConvite = async () => {
+        if (!salesProcessUuid || !salesProcessToken) return;
+        setLoginErro('');
+        setReenviandoConvite(true);
+        try {
+            await http.post(
+                `sales-process/${salesProcessUuid}/user-registration/retry-invitation`,
+                {},
+                { headers: { 'X-Sales-Process-Token': salesProcessToken } }
+            );
+            setLoginErro('Convite reenviado. Verifique a caixa de entrada e o spam.');
+        } catch (failure) {
+            if (axios.isAxiosError(failure) && failure.response?.status === 429) {
+                setLoginErro('Aguarde antes de solicitar outro envio do convite.');
+            } else {
+                setLoginErro('Não foi possível reenviar o convite. O cadastro permanece salvo; tente novamente mais tarde.');
+            }
+        } finally {
+            setReenviandoConvite(false);
+        }
+    };
     return (
         <ContainerPrincipal $light={temaClaroCheckout}>
             <Layout>
                 <Hero $light={temaClaroCheckout}>
                     <HeroHeader>
-                        <HeroLogo src={logoCheckout} alt="Logo da empresa" />
+                        <HeroLogo><LogoProxiUs /></HeroLogo>
                         <HeroTitleBlock $light={temaClaroCheckout}>
                             <Badge $light={temaClaroCheckout}>{etapaPagamento ? 'Selecione a forma de pagamento' : etapaCriarLogin ? 'Pagamento confirmado' : etapaConcluida ? 'Cadastro concluído' : processoCancelado ? 'Link indisponível' : etapaContrato ? 'Aceite de contrato' : 'Cadastro publico sem autenticacao'}</Badge>
                             <Titulo>{etapaPagamento ? 'Pagamento do pedido' : etapaCriarLogin ? 'Crie seu acesso ao sistema' : etapaConcluida ? 'Cadastro concluído com sucesso' : processoCancelado ? 'Processo indisponível' : etapaContrato ? 'Contrato para aceite' : 'Cadastro de Cliente/Fornecedor'}</Titulo>
@@ -1435,6 +1559,28 @@ export default function Checkout() {
                                 </>
                             )}
 
+                            {cadastroEtapa === 'email' && (
+                                <>
+                                    <SectionTitle $light={temaClaroCheckout}>Confirme seu e-mail</SectionTitle>
+                                    <p>Informe o endereço para receber o código de verificação.</p>
+                                    <Grid container spacing={2}>
+                                        <Grid item xs={12} md={4}>
+                                            <Rotulo $light={temaClaroCheckout}>E-mail *</Rotulo>
+                                            <Campo $light={temaClaroCheckout} type="email" maxLength={100} {...register('email', {
+                                                required: 'Email obrigatório',
+                                                pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i, message: 'Favor digitar um email válido' }
+                                            })} />
+                                            {errors.email && <SpanErro $light={temaClaroCheckout}>{errors.email.message}</SpanErro>}
+                                        </Grid>
+                                    </Grid>
+                                    {erroEtapaCodigo && <ErrorBox $light={temaClaroCheckout}>{erroEtapaCodigo}</ErrorBox>}
+                                    <Button type="button" disabled={verificandoCpf} onClick={() => handleEnviarCodigoEmail('identificacao')}>
+                                        {verificandoCpf ? 'Enviando...' : 'Enviar código'}
+                                    </Button>
+                                    <Button type="button" onClick={() => setCadastroEtapa('cpf')}>Voltar</Button>
+                                </>
+                            )}
+
                             {cadastroEtapa === 'codigo' && (
                                 <>
                                     <SectionTitle $light={temaClaroCheckout}>Digite o codigo recebido</SectionTitle>
@@ -1458,10 +1604,10 @@ export default function Checkout() {
                                         <Button type="button" variant="contained" disabled={confirmandoCodigo} onClick={handleConfirmarCodigoEmail} sx={{ backgroundColor: '#141414', color: '#f5f5f5', fontWeight: 700, '&:hover': { backgroundColor: '#383838' } }}>
                                             {confirmandoCodigo ? 'Confirmando...' : 'Confirmar codigo'}
                                         </Button>
-                                        <Button type="button" variant="outlined" disabled={verificandoCpf} onClick={handleVerificarCpf}>
+                                        <Button type="button" variant="outlined" disabled={verificandoCpf} onClick={() => codigoCpfExistente ? handleVerificarCpf() : handleEnviarCodigoEmail(retornoCodigo)}>
                                             Reenviar codigo
                                         </Button>
-                                        <Button type="button" variant="text" onClick={() => setCadastroEtapa('cpf')}>
+                                        <Button type="button" variant="text" onClick={() => setCadastroEtapa(codigoCpfExistente ? 'cpf' : retornoCodigo === 'endereco' ? 'identificacao' : 'email')}>
                                             Voltar
                                         </Button>
                                     </Box>
@@ -1475,6 +1621,21 @@ export default function Checkout() {
                                         <Grid item xs={12} md={2}>
                                             <Rotulo $light={temaClaroCheckout}>CPF</Rotulo>
                                             <InputMaskCustomizado $light={temaClaroCheckout} mask={maskCpfCnpj} maskChar={null} value={watch('cpfcnpj')} disabled />
+                                            <Button
+                                                type="button"
+                                                variant="text"
+                                                size="small"
+                                                onClick={() => {
+                                                    setErroEtapaCpf('');
+                                                    setErroEtapaCodigo('');
+                                                    setCodigoVerificacao('');
+                                                    setEmailMascarado('');
+                                                    setCadastroEtapa('cpf');
+                                                }}
+                                                sx={{ px: 0, textTransform: 'none' }}
+                                            >
+                                                Alterar CPF
+                                            </Button>
                                         </Grid>
                                         <Grid item xs={12} md={3}>
                                             <Rotulo $light={temaClaroCheckout}>Nome *</Rotulo>
@@ -1500,7 +1661,7 @@ export default function Checkout() {
                                             <Campo $light={temaClaroCheckout} type="text" maxLength={100} {...register('email', {
                                                 required: 'Email obrigatório',
                                                 pattern: {
-                                                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                                                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                                                     message: 'Favor digitar um email válido'
                                                 }
                                             })} />
@@ -1515,8 +1676,9 @@ export default function Checkout() {
                                             {errors.telefone && typeof errors.telefone.message === 'string' && <SpanErro $light={temaClaroCheckout}>{errors.telefone.message}</SpanErro>}
                                         </Grid>
                                     </Grid>
+                                    {erroEtapaCodigo && <ErrorBox $light={temaClaroCheckout}>{erroEtapaCodigo}</ErrorBox>}
                                     <Box sx={{ mt: 2 }}>
-                                        <Button type="button" variant="contained" size="large" onClick={handleAvancarIdentificacao} sx={{ backgroundColor: '#141414', color: '#f5f5f5', fontWeight: 700, '&:hover': { backgroundColor: '#383838' } }}>
+                                        <Button type="button" variant="contained" size="large" disabled={verificandoCpf} onClick={handleAvancarIdentificacao} sx={{ backgroundColor: '#141414', color: '#f5f5f5', fontWeight: 700, '&:hover': { backgroundColor: '#383838' } }}>
                                             Continuar
                                         </Button>
                                     </Box>
@@ -1746,7 +1908,9 @@ export default function Checkout() {
                             </ContractHeader>
 
                             <InfoBox $light={temaClaroCheckout} style={{ textAlign: 'center' }}>
-                                Defina um nome de exibição, e-mail e senha para acessar sua área de cliente.
+                                {centralCheckoutRegistration
+                                    ? 'Informe seu e-mail e nome. Enviaremos um convite para confirmar o endereço, definir sua senha e ativar o acesso.'
+                                    : 'Defina um nome de exibição, e-mail e senha para acessar sua área de cliente.'}
                             </InfoBox>
 
                             <Box sx={{ width: { xs: '100%', md: '33.3333%' }, mx: { xs: 0, md: 'auto' } }}>
@@ -1770,7 +1934,7 @@ export default function Checkout() {
                                             onChange={(event) => setLoginNome(event.target.value)}
                                         />
                                     </Grid>
-                                    <Grid item xs={12}>
+                                    {!centralCheckoutRegistration && <Grid item xs={12}>
                                         <Rotulo $light={temaClaroCheckout}>Senha *</Rotulo>
                                         <Campo
                                             $light={temaClaroCheckout}
@@ -1780,8 +1944,8 @@ export default function Checkout() {
                                             onChange={(event) => setLoginSenha(event.target.value)}
                                         />
                                         <SpanErro $light={temaClaroCheckout}>É necessário ter pelo menos 8 caracteres.</SpanErro>
-                                    </Grid>
-                                    <Grid item xs={12}>
+                                    </Grid>}
+                                    {!centralCheckoutRegistration && <Grid item xs={12}>
                                         <Rotulo $light={temaClaroCheckout}>Confirmar senha *</Rotulo>
                                         <Campo
                                             $light={temaClaroCheckout}
@@ -1790,7 +1954,7 @@ export default function Checkout() {
                                             value={loginConfirmarSenha}
                                             onChange={(event) => setLoginConfirmarSenha(event.target.value)}
                                         />
-                                    </Grid>
+                                    </Grid>}
                                 </Grid>
                             </Box>
 
@@ -1806,15 +1970,42 @@ export default function Checkout() {
                                         startIcon={criandoLogin ? <CircularProgress size={16} sx={{ color: 'inherit' }} /> : undefined}
                                         sx={{ backgroundColor: '#141414', color: '#f5f5f5', fontWeight: 700, '&:hover': { backgroundColor: '#383838' }, '&.Mui-disabled': { backgroundColor: 'rgba(20, 20, 20, 0.3)', color: 'rgba(20, 20, 20, 0.65)' } }}
                                     >
-                                        {criandoLogin ? 'Criando acesso...' : 'Criar login e senha'}
+                                        {criandoLogin ? 'Processando...' : centralCheckoutRegistration ? 'Enviar convite' : 'Criar login e senha'}
                                     </Button>
                                 </Box>
                             </Box>
                         </>
                     ) : etapaConcluida ? (
-                        <InfoBox $light={temaClaroCheckout}>
-                            Cadastro de acesso já concluído. Acesse o <a href="/login" style={{ color: '#141414', fontWeight: 700 }}>login do sistema</a> com o e-mail e senha cadastrados.
-                        </InfoBox>
+                        centralCheckoutRegistration ? (
+                            <>
+                                <InfoBox $light={temaClaroCheckout}>
+                                    {convitePendenteAceite === null
+                                        ? 'Estamos consultando o estado do convite. Atualize esta página se a mensagem não aparecer.'
+                                        : convitePendenteAceite
+                                            ? 'O acesso está pendente. Confira seu e-mail e siga as instruções para confirmar o endereço, definir ou usar sua senha e aceitar o convite da empresa.'
+                                            : <>O acesso à empresa foi ativado. Entre pelo <a href={`${centralRootOrigin()}/login`} style={{ color: '#141414', fontWeight: 700 }}>login central</a> com sua conta.</>}
+                                </InfoBox>
+                                {convitePendenteAceite && (
+                                    <Box sx={{ width: { xs: '100%', md: '33.3333%' }, mx: { xs: 0, md: 'auto' }, mt: 2 }}>
+                                        {loginErro && <ErrorBox $light={temaClaroCheckout}>{loginErro}</ErrorBox>}
+                                        <Button
+                                            type="button"
+                                            variant="contained"
+                                            disabled={reenviandoConvite}
+                                            onClick={handleReenviarConvite}
+                                            startIcon={reenviandoConvite ? <CircularProgress size={16} sx={{ color: 'inherit' }} /> : undefined}
+                                            sx={{ backgroundColor: '#141414', color: '#f5f5f5', fontWeight: 700, '&:hover': { backgroundColor: '#383838' }, '&.Mui-disabled': { backgroundColor: 'rgba(20, 20, 20, 0.3)', color: 'rgba(20, 20, 20, 0.65)' } }}
+                                        >
+                                            {reenviandoConvite ? 'Enviando...' : 'Reenviar convite'}
+                                        </Button>
+                                    </Box>
+                                )}
+                            </>
+                        ) : (
+                            <InfoBox $light={temaClaroCheckout}>
+                                Cadastro de acesso já concluído. Acesse o <a href="/login" style={{ color: '#141414', fontWeight: 700 }}>login do sistema</a> com o e-mail e senha cadastrados.
+                            </InfoBox>
+                        )
                     ) : processoCancelado ? (
                         <ErrorBox $light={temaClaroCheckout}>
                             {statusContrato === 'CANCELLED' ? 'Este processo de vendas foi cancelado.' : 'Este link de checkout expirou.'} Entre em contato para gerar um novo link.
@@ -1906,4 +2097,3 @@ export default function Checkout() {
         </ContainerPrincipal>
     );
 }
-

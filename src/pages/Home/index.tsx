@@ -15,8 +15,7 @@ import AtividadesHome from "../../components/AtividadesHome";
 import MentoradosHome from "../../components/MentoradosHome";
 import fotoPadrao from "../MeuPerfil/perfil.png";
 import { mostrarMensagem } from "../../stores/mensagem.store";
-
-const bucketName = "https://rhsc-bucket-public.s3.us-east-1.amazonaws.com/";
+import { usePublicPhotoBaseUrl } from "../../PublicPhotoConfig";
 
 function RelogioHome() {
   const [agora, setAgora] = useState(() => new Date());
@@ -58,6 +57,7 @@ function RelogioHome() {
 }
 
 export default function Home() {
+  const bucketName = usePublicPhotoBaseUrl();
   const { usuario } = autenticaStore;
   const [nome, setNome] = useState<string | null>("");
   const [papel, setPapel] = useState<string | null>("");
@@ -159,7 +159,7 @@ export default function Home() {
             <Stack direction="row" spacing={2} alignItems="center" sx={{ minWidth: 0 }}>
               <Box
                 component="img"
-                src={foto ? `${bucketName}${foto.replaceAll(" ", "+")}` : fotoPadrao}
+                src={foto && bucketName ? `${bucketName}${foto.replaceAll(" ", "+")}` : fotoPadrao}
                 alt="Sua foto de perfil"
                 sx={{
                   width: { xs: 64, md: 80 },

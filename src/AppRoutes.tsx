@@ -33,6 +33,10 @@ import WcmAdmin from "./pages/WcmAdmin";
 import PlataformaInicial from "./pages/PlataformaInicial";
 import IntegracaoAsaas from "./pages/IntegracaoAsaas";
 import Armazenamento from "./pages/Armazenamento";
+import CentralLogin from "./pages/CentralLogin";
+import CentralTransfer from "./pages/CentralTransfer";
+import CentralInvitation from "./pages/CentralInvitation";
+import { centralPreviewEnabled, invitationPreviewEnabled, isLocalTenant } from "./centralIdentity";
 
 
 
@@ -41,6 +45,12 @@ function AppRoutes(){
         return <BrowserRouter><Routes>
             <Route path="/" element={<PlataformaInicial />} />
             <Route path="/wcmadmin" element={<WcmAdmin />} />
+            {centralPreviewEnabled() && <Route path="/login" element={<CentralLogin />} />}
+            {invitationPreviewEnabled() && <>
+                <Route path="/verificar-email" element={<CentralInvitation key="verify" mode="verify" />} />
+                <Route path="/aceitar-convite" element={<CentralInvitation key="accept" mode="accept" />} />
+                <Route path="/definir-senha-inicial" element={<CentralInvitation key="setup" mode="setup" />} />
+            </>}
             <Route path="*" element={<Navigate to="/" replace />} />
         </Routes></BrowserRouter>;
     }
@@ -80,6 +90,8 @@ function AppRoutes(){
             </Route>
             <Route path="/" element={<PaginaBaseFormulario/>}>
                 <Route path="/login" element={<Login />} />
+                {centralPreviewEnabled() && isLocalTenant(window.location.hostname) &&
+                    <Route path="/central-transfer" element={<CentralTransfer />} />}
                 <Route path="/redefinir-senha" element={<RedefinirSenha />} />
                 {/* <Route path="/cadastro" element={<Cadastro />} />    */}             
             </Route>    

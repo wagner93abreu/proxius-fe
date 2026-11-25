@@ -32,10 +32,11 @@ interface Props {
     placeholder: string,
     onChange: (value: string) => void,
     label?: string,
-    required: boolean
+    required: boolean,
+    maxLength?: number
 }
 
-export default function CampoDigitacao({ valor, tipo, placeholder, onChange, label, required} : Props) {
+export default function CampoDigitacao({ valor, tipo, placeholder, onChange, label, required, maxLength = 50} : Props) {
     return (
         <Container>
         <Rotulo>{label}</Rotulo>
@@ -45,7 +46,7 @@ export default function CampoDigitacao({ valor, tipo, placeholder, onChange, lab
         placeholder={placeholder}
         onChange={(e) => onChange(e.target.value)}
         required={required}
-        maxLength={50}
+        maxLength={maxLength}
         />
         </Container>
     )

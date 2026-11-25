@@ -3,6 +3,7 @@ import AppRoutes from './AppRoutes';
 import ModalMensagens from './components/ModalMensagens';
 import { ThemeProvider } from '@mui/material/styles';
 import lightTheme from './styles/lightTheme';
+import { PublicPhotoConfigProvider } from './PublicPhotoConfig';
 
 
 
@@ -10,8 +11,10 @@ function App() {
 
     return(
         <ThemeProvider theme={lightTheme}>
-            <AppRoutes />
-            <ModalMensagens />
+            <PublicPhotoConfigProvider>
+                <AppRoutes />
+                <ModalMensagens />
+            </PublicPhotoConfigProvider>
         </ThemeProvider>
     )
 }

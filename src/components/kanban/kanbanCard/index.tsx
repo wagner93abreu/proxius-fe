@@ -8,6 +8,7 @@ import foto from './perfil.png';
 import IColumn from '../../../types/IColumn';
 import ITag from '../../../types/ITag';
 import { Chip, Stack } from '@mui/material';
+import { usePublicPhotoBaseUrl } from '../../../PublicPhotoConfig';
 
 
 const GlobalStyle = createGlobalStyle`
@@ -92,7 +93,7 @@ interface KanbanCardProps {
 export default function KanbanCard({nome, data, onCardUpdate, colunas, tagsDisponiveis}: KanbanCardProps) {
     const [open, setOpen] = useState(false);
     const [tagsSelecionadas, setTagsSelecionadas] = useState<number[]>([]);
-    const bucketName = "https://rhsc-bucket-public.s3.us-east-1.amazonaws.com/";
+    const bucketName = usePublicPhotoBaseUrl();
     const handleOpen = () => {
         setOpen(true);
     };
@@ -154,7 +155,7 @@ export default function KanbanCard({nome, data, onCardUpdate, colunas, tagsDispo
                     <p><AttachFileIcon/>{data.arquivos.length}</p>
                 </CardIcons>                 
                 <User>
-                    {data.fotoAtendente == '' || data.fotoAtendente == null ? <img src={foto} alt="Avatar"/> : <img src={`${bucketName}${data.fotoAtendente!.replaceAll(" ", "+")}`} alt="Avatar"/>}
+                    {!data.fotoAtendente || !bucketName ? <img src={foto} alt="Avatar"/> : <img src={`${bucketName}${data.fotoAtendente.replaceAll(" ", "+")}`} alt="Avatar"/>}
                 </User>
             </CardInfos>                
         </KanbanCardStyle>

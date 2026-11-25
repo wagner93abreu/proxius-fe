@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Button, Stack, Typography } from "@mui/material";
+import { usePublicPhotoBaseUrl } from "../../PublicPhotoConfig";
+import http from "../../http";
 
 interface AtendenteProps {
     atendenteId: number | null;
@@ -8,21 +10,40 @@ interface AtendenteProps {
 }
 
 export default function AgendarSessao({ atendenteId, atendente, fotoAtendente }: AtendenteProps) {
-    const bucketName = "https://rhsc-bucket-public.s3.us-east-1.amazonaws.com/";
+    const bucketName = usePublicPhotoBaseUrl();
+    const [agenda, setAgenda] = useState<{ atendenteId: number; url: string } | null>(null);
+    const [status, setStatus] = useState<"loading" | "ready" | "error">("loading");
+    const link = agenda?.atendenteId === atendenteId ? agenda.url : null;
 
-    const atendimentoLinks: Record<number, string> = {
-        2: "https://outlook.office365.com/book/RHsemComplicaes1@rhsemcomplicacoes.onmicrosoft.com/s/Ba2mBsXoR06HqNu2Z8u7tQ2", // Bella
-        16: "https://outlook.office.com/book/RHsemComplicaes1@rhsemcomplicacoes.onmicrosoft.com/s/LyqMhAQSckG7n3j0L5M4CA2?ismsaljsauthenabled", // Clara
-        14: "https://outlook.office.com/book/RHsemComplicaes1@rhsemcomplicacoes.onmicrosoft.com/s/zGcUHyH1zkamHoj_7-MWHg2?ismsaljsauthenabled", // Thamires
-        3: "https://outlook.office365.com/book/RHsemComplicaes1@rhsemcomplicacoes.onmicrosoft.com/s/c1j7ANJtpEWky7cvmAS-yw2", // Maria Alice
-        40: "https://outlook.office.com/book/RHsemComplicaes1@rhsemcomplicacoes.onmicrosoft.com/s/SWfYvZG1dEKIZrIkFIuatg2?ismsaljsauthenabled", // Caroline Rosa
-    };
-
-    const staticLink = atendenteId ? atendimentoLinks[atendenteId] : undefined;
+    useEffect(() => {
+        let active = true;
+        setAgenda(null);
+        if (!atendenteId) {
+            setStatus("ready");
+            return () => { active = false; };
+        }
+        setStatus("loading");
+        http.get<{ linkAgenda: string | null }>(`usuarios/${atendenteId}/agenda`, {
+            headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
+        }).then(({ data }) => {
+            if (!active) return;
+            try {
+                const url = data.linkAgenda ? new URL(data.linkAgenda) : null;
+                setAgenda(url?.protocol === "https:" && !url.username && !url.password
+                    ? { atendenteId, url: url.href } : null);
+            } catch {
+                setAgenda(null);
+            }
+            setStatus("ready");
+        }).catch(() => {
+            if (active) setStatus("error");
+        });
+        return () => { active = false; };
+    }, [atendenteId]);
 
     const handleOpen = (url?: string | null) => {
         if (!url) return;
-        window.open(url, "_blank");
+        window.open(url, "_blank", "noopener,noreferrer");
     };
 
     return (
@@ -37,7 +58,7 @@ export default function AgendarSessao({ atendenteId, atendente, fotoAtendente }:
             }}
         >
             <Stack direction="row" spacing={1.5} alignItems="center" justifyContent="flex-start">
-                {fotoAtendente && (
+                {fotoAtendente && bucketName && (
                     <Box
                         component="img"
                         src={bucketName + fotoAtendente}
@@ -51,12 +72,15 @@ export default function AgendarSessao({ atendenteId, atendente, fotoAtendente }:
                     </Typography>
                     <Button
                         variant="outlined"
-                        onClick={() => handleOpen(staticLink)}
-                        title="Aqui você encontra os arquivos para consulta."
+                        onClick={() => handleOpen(link)}
+                        disabled={!link || status !== "ready"}
                         sx={{ borderColor: "#141414", color: "#141414", fontWeight: 700, "&:hover": { borderColor: "#383838", color: "#383838" } }}
                     >
                         Agende aqui!
                     </Button>
+                    {status === "loading" && <Typography>Carregando agenda...</Typography>}
+                    {status === "error" && <Typography role="alert">Não foi possível carregar a agenda.</Typography>}
+                    {status === "ready" && !link && <Typography>Agenda não configurada.</Typography>}
                 </Stack>
             </Stack>
         </Box>

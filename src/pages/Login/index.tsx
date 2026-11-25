@@ -10,6 +10,7 @@ import AlertPortal from "../../components/AlertPortal";
 import axios from "axios";
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Typography } from "@mui/material";
 import LogoProxiUs from "../../components/LogoProxiUs";
+import { centralPreviewEnabled, isLocalTenant } from "../../centralIdentity";
 
 const Card = styled.div`
   width: 100%;
@@ -110,6 +111,7 @@ interface ILogin {
 }
 
 export default function Login() {
+  const central = centralPreviewEnabled() && isLocalTenant(window.location.hostname);
     // const tenantPoc = /^[a-z0-9](?:[a-z0-9-]{0,48}[a-z0-9])?\.localhost$/.test(window.location.hostname);
   const [login, setLogin] = useState("");
   const [senha, setSenha] = useState("");
@@ -212,6 +214,17 @@ export default function Login() {
         login: login,
         senha: senha
       }
+      if (central) {
+        try {
+          const resposta = await http.post<{ token: string }>("central-login", { email: login, password: senha }, axiosConfig);
+          await autenticaStore.loginCentral(resposta.data.token);
+          setSenha("");
+          window.location.assign("/home");
+        } catch (erro) {
+          showErrorAlert(getBackendErrorMessage(erro));
+        }
+        return;
+      }
   
       http.post('login', usuario, axiosConfig)
         .then(async resposta => {
@@ -235,9 +248,9 @@ export default function Login() {
         <Titulo>ProxiUs</Titulo>
         <Subtitulo>Acesse sua conta para continuar</Subtitulo>
         <Formulario onSubmit={handleLogin}>
-            <CampoDigitacao required={true} tipo="login" label="Login" valor={login} placeholder="login" onChange={setLogin} />
-            <CampoDigitacao required={true} tipo="password" label="Senha" valor={senha} placeholder="*******" onChange={setSenha} />
-            <LinkEsqueciSenha type="button" onClick={handleAbrirEsqueciSenha}>Esqueceu sua senha?</LinkEsqueciSenha>
+            <CampoDigitacao required={true} tipo={central ? "email" : "login"} label={central ? "E-mail" : "Login"} valor={login} placeholder={central ? "seuemail@exemplo.com" : "login"} onChange={setLogin} maxLength={central ? 254 : 50} />
+            <CampoDigitacao required={true} tipo="password" label="Senha" valor={senha} placeholder="*******" onChange={setSenha} maxLength={central ? 1024 : 50} />
+            {!central && <LinkEsqueciSenha type="button" onClick={handleAbrirEsqueciSenha}>Esqueceu sua senha?</LinkEsqueciSenha>}
             {/* {!tenantPoc &&
               <ReCAPTCHA sitekey="6Lf10zsqAAAAAFLQBmVCZKH81pE1LpzUOSBny_dl" onChange={onChange} />} */}
             <BotaoCustomizado type="submit" >Entrar</BotaoCustomizado>

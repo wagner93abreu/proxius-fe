@@ -11,8 +11,7 @@ import IUser from "../../types/IUser";
 import ModalCRM from "../../pages/Crm/Modal";
 import fotoPadrao from "../../pages/MeuPerfil/perfil.png";
 import { mostrarMensagem } from "../../stores/mensagem.store";
-
-const bucketName = "https://rhsc-bucket-public.s3.us-east-1.amazonaws.com/";
+import { usePublicPhotoBaseUrl } from "../../PublicPhotoConfig";
 
 const panelSx = {
     p: { xs: 2, md: 3 },
@@ -36,6 +35,7 @@ interface MentoradosHomeProps {
 const capitalizar = (valor: string) => (valor ? valor.charAt(0).toUpperCase() + valor.slice(1) : valor);
 
 export default function MentoradosHome({ cards, colunas, loading, onCardsChanged }: MentoradosHomeProps) {
+    const bucketName = usePublicPhotoBaseUrl();
     const { usuario } = autenticaStore;
     const [fotos, setFotos] = useState<Record<string, string>>({});
     const [selectedCard, setSelectedCard] = useState<ICard | null>(null);
@@ -80,7 +80,7 @@ export default function MentoradosHome({ cards, colunas, loading, onCardsChanged
 
     const fotoDoCard = (card: ICard) => {
         const foto = card.cliente != null ? fotos[String(card.cliente)] : "";
-        return foto ? `${bucketName}${foto.replaceAll(" ", "+")}` : fotoPadrao;
+        return foto && bucketName ? `${bucketName}${foto.replaceAll(" ", "+")}` : fotoPadrao;
     };
 
     const handleOpenCard = async (cardId: string) => {

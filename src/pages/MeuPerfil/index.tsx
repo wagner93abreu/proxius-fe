@@ -11,6 +11,7 @@ import http from "../../http";
 import foto from './perfil.png';
 import AlertPortal from "../../components/AlertPortal";
 import axios from "axios";
+import { usePublicPhotoBaseUrl } from "../../PublicPhotoConfig";
 
 const PageWrapper = styled.div`
     display: flex;
@@ -116,7 +117,8 @@ interface IUsuarioPut {
     login: string,
     email: string,
     password: string | null,
-    nome: string
+    nome: string,
+    linkAgenda?: string
 }
 
 export default function MeuPerfil() {
@@ -124,6 +126,8 @@ export default function MeuPerfil() {
     const [login, setLogin] = useState("");
     const [email, setEmail] = useState("");
     const [nome, setNome] = useState("");
+    const [papel, setPapel] = useState<string | null>(null);
+    const [linkAgenda, setLinkAgenda] = useState("");
     const [password, setPassword] = useState("");
     const [senhaVerificada, setSenhaVerificada] = useState("");
     const {usuario} = autenticaStore;
@@ -135,7 +139,7 @@ export default function MeuPerfil() {
     const [showError, setShowError] = useState(false);
     const [successMessage, setSuccessMessage] = useState("");
     const [showSuccess, setShowSuccess] = useState(false);
-    const bucketName = "https://rhsc-bucket-public.s3.us-east-1.amazonaws.com/";
+    const bucketName = usePublicPhotoBaseUrl();
     const axiosConfig = {
         headers: {
             'Content-Type': 'application/json',
@@ -151,6 +155,8 @@ export default function MeuPerfil() {
                 setLogin(resposta.data.login)
                 setEmail(resposta.data.email)
                 setNome(resposta.data.nome)  
+                setPapel(resposta.data.papel)
+                setLinkAgenda(resposta.data.linkAgenda || "")
                 setImageUrl(resposta.data.foto)          
             })
             .catch(erro => {            
@@ -249,6 +255,15 @@ export default function MeuPerfil() {
                 return
             }
         }
+        if (papel && papel !== "CLIENTE" && linkAgenda.trim()) {
+            try {
+                const url = new URL(linkAgenda.trim());
+                if (url.protocol !== "https:" || url.username || url.password) throw new Error("URL inválida");
+            } catch {
+                showErrorAlert("Informe uma URL HTTPS valida para a agenda.");
+                return;
+            }
+        }
         const user: IUsuarioPut = {
             id: idUser,
             login: login,
@@ -256,6 +271,7 @@ export default function MeuPerfil() {
             password: passwordTrimmed == "" ? null : passwordTrimmed,
             nome: nome
         }        
+        if (papel && papel !== "CLIENTE") user.linkAgenda = linkAgenda.trim();
         http.put("usuarios",user ,axiosConfig)
         .then(resposta => {       
             showSuccessAlert("Alteracao efetuada com sucesso!");
@@ -280,7 +296,7 @@ export default function MeuPerfil() {
                 <Header>
                     <Titulo icone={<AccountCircleOutlined />}>Meu Perfil</Titulo>
                     <User>
-                    {imageUrl == '' || imageUrl == null ? <img src={foto} alt="Avatar"/> : <img src={`${bucketName}${imageUrl.replaceAll(" ", "+")}?${imageKey}`} alt="Avatar"/>}
+                    {!imageUrl || !bucketName ? <img src={foto} alt="Avatar"/> : <img src={`${bucketName}${imageUrl.replaceAll(" ", "+")}?${imageKey}`} alt="Avatar"/>}
                     </User>
                     <BotaoCustom as="label">
                         {`${imageUrl == '' ? "Adicionar" : "Alterar"} Foto`}
@@ -292,6 +308,10 @@ export default function MeuPerfil() {
                         <CampoDigitacao required={true} tipo="text" label="Login" valor={login} placeholder="Digite seu login" onChange={setLogin} />
                         <CampoDigitacao required={true} tipo="text" label="Nome" valor={nome} placeholder="Digite seu nome" onChange={setNome} />
                         <CampoDigitacao required={true} tipo="email" label="Email" valor={email} placeholder="Digite seu email" onChange={setEmail} />
+                        {papel && papel !== "CLIENTE" && (
+                            <CampoDigitacao required={false} tipo="url" label="Link da agenda" valor={linkAgenda}
+                                placeholder="https://..." onChange={setLinkAgenda} maxLength={2048} />
+                        )}
                         <CampoDigitacao required={false} tipo="password" label="Alterar senha" valor={password} placeholder="******" onChange={setPassword} />
                         <CampoDigitacao required={false} tipo="password" label="Repita a nova senha" valor={senhaVerificada} placeholder="******" onChange={setSenhaVerificada} />
                         <BotaoCustomizado>Atualizar</BotaoCustomizado>

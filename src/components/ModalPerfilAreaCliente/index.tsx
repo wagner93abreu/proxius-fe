@@ -6,6 +6,7 @@ import autenticaStore from "../../stores/autentica.store";
 import http from "../../http";
 import AlertPortal from "../AlertPortal";
 import fotoPadrao from "../../pages/MeuPerfil/perfil.png";
+import { usePublicPhotoBaseUrl } from "../../PublicPhotoConfig";
 
 type ModalPerfilAreaClienteProps = {
     open: boolean;
@@ -100,7 +101,7 @@ export default function ModalPerfilAreaCliente({ open, onClose, onUpdated, userI
     const [successMessage, setSuccessMessage] = useState("");
     const [showSuccess, setShowSuccess] = useState(false);
 
-    const bucketName = "https://rhsc-bucket-public.s3.us-east-1.amazonaws.com/";
+    const bucketName = usePublicPhotoBaseUrl();
 
     const axiosConfig = {
         headers: {
@@ -262,7 +263,7 @@ export default function ModalPerfilAreaCliente({ open, onClose, onUpdated, userI
                 <DialogContent>
                     <Box display="flex" flexDirection="column" gap={1}>
                         <User>
-                            {imageUrl ? (
+                            {imageUrl && bucketName ? (
                                 <img src={`${bucketName}${imageUrl.replaceAll(" ", "+")}?${imageKey}`} alt="Avatar" />
                             ) : (
                                 <img src={fotoPadrao} alt="Avatar" />

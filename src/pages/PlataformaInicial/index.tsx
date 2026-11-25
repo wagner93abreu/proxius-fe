@@ -11,6 +11,7 @@ import InsightsRoundedIcon from "@mui/icons-material/InsightsRounded";
 import LayersOutlinedIcon from "@mui/icons-material/LayersOutlined";
 import NorthEastRoundedIcon from "@mui/icons-material/NorthEastRounded";
 import "./styles.css";
+import { centralPreviewEnabled } from "../../centralIdentity";
 
 const recursos = [
     {
@@ -46,7 +47,7 @@ const etapas = [
 ];
 
 export default function PlataformaInicial() {
-    const acessoEmpresa = window.location.hostname === "localhost"
+    const acessoEmpresa = window.location.hostname === "localhost" && !centralPreviewEnabled()
         ? `${window.location.protocol}//rhsc.localhost${window.location.port ? `:${window.location.port}` : ""}/login`
         : "/login";
 

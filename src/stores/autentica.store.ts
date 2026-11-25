@@ -67,6 +67,26 @@ class AutenticaStore {
         
     }
 
+    async loginCentral(token: string) {
+        if (typeof token !== "string" || !token) throw new Error("Sessão inválida.");
+        const resposta = await http.get<{ login: string; userId: number }>("tenant-poc/me", {
+            headers: { Authorization: `Bearer ${token}` },
+            timeout: 15000
+        });
+        if (!resposta.data.login || !Number.isSafeInteger(resposta.data.userId) || resposta.data.userId <= 0) {
+            throw new Error("Não foi possível identificar o usuário da empresa.");
+        }
+        const login = resposta.data.login;
+        localStorage.setItem("userID", String(resposta.data.userId));
+        localStorage.setItem("authToken", token);
+        localStorage.setItem("user", login);
+        localStorage.setItem("loginTime", Date.now().toString());
+        runInAction(() => {
+            this.estaAutenticado = true;
+            this.usuario = { login, token };
+        });
+    }
+
     logout(recarregar = true) {
         this.estaAutenticado = false;
         this.usuario = {login: "", token: ""}

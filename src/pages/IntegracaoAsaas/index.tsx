@@ -20,6 +20,9 @@ function errorMessage(error: unknown) {
             case 401: return "Sua sessao expirou. Entre novamente.";
             case 403: return "Apenas administradores da empresa podem configurar o Asaas, e a empresa precisa estar ativa.";
             case 404: return "Configuracao indisponivel neste ambiente.";
+            case 422: return "O Sandbox Asaas recusou a chave ou sua permissao de consultar saldo. Nenhuma alteracao foi salva.";
+            case 429: return "Limite de consultas do Sandbox Asaas atingido. Nenhuma alteracao foi salva; tente novamente.";
+            case 503: return "Nao foi possivel validar a chave no Sandbox Asaas. Nenhuma alteracao foi salva; tente novamente.";
         }
     }
     return "Nao foi possivel acessar a configuracao. Verifique a API e as migrations locais.";
@@ -57,7 +60,9 @@ export default function IntegracaoAsaas() {
             }, config());
             setSettings(data); setEnvironment(data.environment);
             setApiKey(""); setWebhookToken("");
-            setNotice("Configuracao salva com segredos criptografados. As chamadas externas continuam bloqueadas.");
+            setNotice(data.environment === "SANDBOX"
+                ? "Chave validada no Sandbox e configuracao salva com segredos criptografados. O webhook local usa o token desta empresa; o checkout continua desativado."
+                : "Configuracao de producao armazenada sem validacao. Chamadas de producao continuam desativadas.");
         } catch (e) {
             setError(errorMessage(e));
         } finally { setBusy(false); }
@@ -78,7 +83,7 @@ export default function IntegracaoAsaas() {
         <Paper sx={{ p: 3 }}><Stack spacing={3}>
             <Typography component="h1" variant="h4">Integracao Asaas</Typography>
             <Button component={Link} to="/painelDeControle">Voltar ao Painel de Controle</Button>
-            <Alert severity="warning">Somente cadastro local. Salvar credenciais nao ativa cobrancas, consultas ou webhooks no Asaas. Utilize credenciais de teste.</Alert>
+            <Alert severity="warning">Ao salvar no Sandbox, a chave sera validada com uma consulta de saldo. O token autentica o webhook local desta empresa, mas nao e validado junto ao Asaas. O checkout continua desativado.</Alert>
             {!localTenant && <Alert severity="error">Esta configuracao esta disponivel somente no subdominio local de uma empresa.</Alert>}
             {error && <Alert severity="error">{error}</Alert>}
             {notice && <Alert severity="success">{notice}</Alert>}

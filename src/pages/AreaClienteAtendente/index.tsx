@@ -17,6 +17,7 @@ import IUser from "../../types/IUser";
 import fotoPadrao from "../MeuPerfil/perfil.png";
 import ModalPerfilAreaCliente from "../../components/ModalPerfilAreaCliente";
 import { mostrarMensagem } from "../../stores/mensagem.store";
+import { usePublicPhotoBaseUrl } from "../../PublicPhotoConfig";
 
 const Container = styled.section`
   width: 100%;
@@ -88,6 +89,7 @@ const InfoCliente = styled.div`
 `;
 
 export default function AreaClienteAtendente() {
+  const bucketName = usePublicPhotoBaseUrl();
   const { codCliente } = useParams<{ codCliente: string }>();
   const { usuario } = autenticaStore;
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -107,7 +109,6 @@ export default function AreaClienteAtendente() {
   const [imageKey, setImageKey] = useState(Date.now());
   const [openPlanejamento, setOpenPlanejamento] = useState(false);
   const [openPerfilModal, setOpenPerfilModal] = useState(false);
-  const bucketName = "https://rhsc-bucket-public.s3.us-east-1.amazonaws.com/";
 
   const axiosConfig = React.useMemo(
     () => ({
@@ -210,7 +211,7 @@ export default function AreaClienteAtendente() {
     <Container>
       <CabecalhoCliente>
         <NomeWrapper>
-          {fotoCliente ? (
+          {fotoCliente && bucketName ? (
             <img src={`${bucketName}${fotoCliente.replaceAll(" ", "+")}?${imageKey}`} alt="Foto do cliente" />
           ) : (
             <img src={fotoPadrao} alt="Foto do cliente" />

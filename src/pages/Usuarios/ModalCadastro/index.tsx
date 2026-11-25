@@ -4,7 +4,6 @@ import { Box } from "@mui/material";
 import Titulo from "../../../components/Titulo";
 import styled from "styled-components";
 import Botao from "../../../components/Botao";
-import autenticaStore from "../../../stores/autentica.store";
 import http from "../../../http";
 import { useForm } from "react-hook-form";
 import InputMask from "react-input-mask";
@@ -13,6 +12,9 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import IUsuario from "../../../types/IUsuario";
 import { managementDialogStyles, managementFieldStyles } from "../../../styles/managementStyles";
 import { mostrarMensagem } from "../../../stores/mensagem.store";
+import axios from "axios";
+import { centralRegistrationPreviewEnabled } from "../../../centralIdentity";
+import autenticaStore from "../../../stores/autentica.store";
 
 const BoxCustomizado = styled(Box)`
     position: fixed;
@@ -100,22 +102,34 @@ const createUserFromSchema = z.object({
         }).join(' ')
     }),
     email: z.string().min(8, { message: "Esse campo deve ser preenchido no minimo 8 caracteres" }).max(150, { message: "Esse campo deve ser preenchido no minimo 150 caracteres" }).email('Formato de email inválido').toLowerCase(),
-    senha: z.string().min(8, { message: "Esse campo deve ser preenchido no minimo 8 caracteres" }).max(255, { message: "Esse campo deve ser preenchido no minimo 255 caracteres" }),
-    senhaVerificada: z.string().min(8, { message: "Esse campo deve ser preenchido no minimo 8 caracteres" }).max(255, { message: "Esse campo deve ser preenchido no minimo 255 caracteres" }),
+    senha: z.string().max(255).optional(),
+    senhaVerificada: z.string().max(255).optional(),
     papel: z.string().min(1, { message: "Favor selecionar um papel" }),
   })
-  .refine(data => data.senha === data.senhaVerificada,
-    { message: "As senhas devem ser iguais", path: ["senhaVerificada"] 
+  .superRefine((data, context) => {
+    if (!centralRegistrationPreviewEnabled()) {
+        if (!data.senha || data.senha.length < 8) {
+            context.addIssue({ code: z.ZodIssueCode.custom, message: "A senha deve ter no mínimo 8 caracteres", path: ["senha"] });
+        }
+        if (!data.senhaVerificada || data.senhaVerificada.length < 8) {
+            context.addIssue({ code: z.ZodIssueCode.custom, message: "Confirme a senha com no mínimo 8 caracteres", path: ["senhaVerificada"] });
+        }
+        if (data.senha !== data.senhaVerificada) {
+            context.addIssue({ code: z.ZodIssueCode.custom, message: "As senhas devem ser iguais", path: ["senhaVerificada"] });
+        }
+    }
   });
   
   type CreateUserFromData = z.infer<typeof createUserFromSchema>;
   
 export default function ModalCadastro({ open, handleClose }: { open: boolean, handleClose: () => void }) {
-    const [output, setOutput] = useState("");    //react hook form
+    const [pendingIdentityId, setPendingIdentityId] = useState<string | null>(null);
+    const [submitting, setSubmitting] = useState(false);
+    const centralRegistration = centralRegistrationPreviewEnabled();
     const { register, handleSubmit, reset, formState:{errors}} = useForm<CreateUserFromData>({
         resolver: zodResolver(createUserFromSchema),
     });
-    const {usuario} = autenticaStore;
+    const { usuario } = autenticaStore;
 
     const axiosConfig = {
         headers: {
@@ -124,30 +138,74 @@ export default function ModalCadastro({ open, handleClose }: { open: boolean, ha
         },
       };    
 
-    function createUser(data: any){
-        //setOutput(JSON.stringify(data, null, 2));
+    function pendingIdentityFromError(error: unknown): string | null {
+        if (!axios.isAxiosError(error)) return null;
+        const identityId = error.response?.data?.identityId;
+        return typeof identityId === "string" ? identityId : null;
+    }
 
-        const user: IUsuario = {
-            login: data.login,
-            email: data.email,
-            password: data.senha,
-            nome: data.nome,
-            papel: data.papel,
-            active: true    
+    async function createUser(data: CreateUserFromData) {
+        setSubmitting(true);
+        try {
+            if (centralRegistration) {
+                await http.post("central-users", {
+                    login: data.login,
+                    email: data.email,
+                    name: data.nome,
+                    role: data.papel,
+                }, axiosConfig);
+                mostrarMensagem("Usuário cadastrado e convite enviado.", "success");
+            } else {
+                const user: IUsuario = {
+                    login: data.login,
+                    email: data.email,
+                    password: data.senha ?? "",
+                    nome: data.nome,
+                    papel: data.papel,
+                    active: true
+                };
+                await http.post("usuarios", user, axiosConfig);
+                mostrarMensagem("Usuário cadastrado com SUCESSO!", "success");
+            }
+            reset();
+            setPendingIdentityId(null);
+            handleClose();
+        } catch (error) {
+            const identityId = pendingIdentityFromError(error);
+            if (identityId) {
+                setPendingIdentityId(identityId);
+                mostrarMensagem("Usuário criado, mas o convite não foi enviado. Reemita o convite antes de tentar novo cadastro.", "warning");
+            } else if (axios.isAxiosError(error) && error.response?.status === 409) {
+                mostrarMensagem("Login ou e-mail já cadastrado nesta empresa.", "error");
+            } else if (axios.isAxiosError(error) && error.response?.status === 403) {
+                mostrarMensagem("Somente administradores podem cadastrar usuários.", "error");
+            } else {
+                mostrarMensagem("Não foi possível cadastrar o usuário. Verifique a conexão e tente novamente.", "error");
+            }
+        } finally {
+            setSubmitting(false);
         }
+    }
 
-        http.post(`usuarios`,user ,axiosConfig)
-        .then(resposta => {
-            reset()
-            mostrarMensagem("usuario cadastrado com SUCESSO!", "success")
-        })
-        .catch(erro => {            
-            mostrarMensagem("ERRO:" + erro, "error")
-        })
+    async function retryInvitation() {
+        if (!pendingIdentityId) return;
+        setSubmitting(true);
+        try {
+            await http.post(`central-users/${pendingIdentityId}/retry`, {}, axiosConfig);
+            mostrarMensagem("Convite reenviado com sucesso.", "success");
+            reset();
+            setPendingIdentityId(null);
+            handleClose();
+        } catch (error) {
+            mostrarMensagem("Não foi possível reenviar o convite. O usuário continua pendente.", "error");
+        } finally {
+            setSubmitting(false);
+        }
     }
 
     const Close =() => {
         reset()
+        setPendingIdentityId(null);
         handleClose()   
       }
 
@@ -161,6 +219,7 @@ export default function ModalCadastro({ open, handleClose }: { open: boolean, ha
             >
                 <BoxCustomizado role="dialog" aria-label="Cadastro de Usuário">
                     <Titulo>Cadastro de Usuário:</Titulo>
+                    {centralRegistration && <p>O usuário receberá um convite para definir a senha e ativar o acesso.</p>}
                     <form onSubmit={handleSubmit(createUser)}>
                         <Container>
                             {/* <ContainerInput>
@@ -183,16 +242,16 @@ export default function ModalCadastro({ open, handleClose }: { open: boolean, ha
                                 <Campo type="text" placeholder="Digite seu email" {...register('email')} />
                                 {errors.email && <SpanErro>{errors.email.message}</SpanErro>}
                             </ContainerInput>
-                            <ContainerInput>
+                            {!centralRegistration && <ContainerInput>
                                 <Rotulo>Senha</Rotulo>
                                 <Campo type="password" placeholder="Digite sua senha" {...register('senha')} />
                                 {errors.senha && <SpanErro>{errors.senha.message}</SpanErro>}
-                            </ContainerInput>
-                            <ContainerInput>
+                            </ContainerInput>}
+                            {!centralRegistration && <ContainerInput>
                                 <Rotulo>Repita a senha</Rotulo>
                                 <Campo type="password" placeholder="Digite sua senha novamente" {...register('senhaVerificada')} />
                                 {errors.senhaVerificada && <SpanErro>{errors.senhaVerificada.message}</SpanErro>}
-                            </ContainerInput>  
+                            </ContainerInput>}
                             <ContainerInput>
                                 <Rotulo>Papel</Rotulo>
                                 <CampoSelect {...register('papel')}>
@@ -205,9 +264,13 @@ export default function ModalCadastro({ open, handleClose }: { open: boolean, ha
                                 {errors.papel && <SpanErro>{errors.papel.message}</SpanErro>}
                             </ContainerInput>                                                
                         </Container>
-                        <BotaoCustomizado>Cadastrar</BotaoCustomizado>
-                        <pre>{output}</pre>
+                        <BotaoCustomizado disabled={submitting || !!pendingIdentityId}>
+                            {pendingIdentityId ? "Cadastro pendente" : submitting ? "Processando..." : "Cadastrar"}
+                        </BotaoCustomizado>
                     </form>
+                    {pendingIdentityId && <BotaoCustomizado onClick={retryInvitation} disabled={submitting}>
+                        {submitting ? "Processando..." : "Reemitir convite"}
+                    </BotaoCustomizado>}
                 </BoxCustomizado>
             </Modal >
         </>

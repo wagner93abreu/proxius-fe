@@ -18,6 +18,7 @@ import ModalPerfilAreaCliente from "../../components/ModalPerfilAreaCliente";
 import Rodape from "../../components/Rodape";
 import LogoProxiUs from "../../components/LogoProxiUs";
 import { mostrarMensagem } from "../../stores/mensagem.store";
+import { usePublicPhotoBaseUrl } from "../../PublicPhotoConfig";
 
 const Container = styled.section`
   width: 100%;
@@ -150,6 +151,7 @@ const InfoCliente = styled.div`
 `;
 
 export default function AreaCliente() {
+  const bucketName = usePublicPhotoBaseUrl();
   const {usuario} = autenticaStore;
   const isMobile = useMediaQuery("(max-width: 768px)");
   const [nome, setNome] = useState<string | null>('')
@@ -166,7 +168,6 @@ export default function AreaCliente() {
   const [imageKey, setImageKey] = useState(Date.now())
   const [openPerfilModal, setOpenPerfilModal] = useState(false)
   const [aguardandoAmbiente, setAguardandoAmbiente] = useState(false)
-  const bucketName = "https://rhsc-bucket-public.s3.us-east-1.amazonaws.com/";
   const handleLogout = () => {
     autenticaStore.logout()
   }
@@ -234,7 +235,7 @@ export default function AreaCliente() {
         </CabecalhoPagina>
         <LinhaPerfil>
           <CabecalhoPerfil>
-            {fotoCliente ? (
+            {fotoCliente && bucketName ? (
               <img src={`${bucketName}${fotoCliente.replaceAll(" ", "+")}?${imageKey}`} alt="Foto do cliente" />
             ) : (
               <img src={fotoPadrao} alt="Foto do cliente" />

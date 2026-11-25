@@ -2,6 +2,7 @@ import { render, screen, within } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import Home from ".";
 import http from "../../http";
+import { PublicPhotoConfigProvider } from "../../PublicPhotoConfig";
 
 jest.mock("../../http", () => ({
     __esModule: true,
@@ -102,4 +103,19 @@ test("mostra saudação, relógio, atividades pendentes + 5 últimas concluídas
         "card/get-cards-by-column?statusId=1",
         expect.any(Object),
     );
+});
+
+test("a foto usa a URL retornada pela API", async () => {
+    Object.defineProperty(window, "location", { configurable: true, value: { hostname: "rhsc.localhost" } });
+    const anterior = (http.get as jest.Mock).getMockImplementation()!;
+    (http.get as jest.Mock).mockImplementation((url: string, ...args: unknown[]) => {
+        if (url === "public-config") return Promise.resolve({ data: { publicPhotoBaseUrl: "https://fotos.example.test/" } });
+        if (url === "usuarios/7") return Promise.resolve({ data: { papel: "ATENDIMENTO", foto: "7/foto_perfil.png" } });
+        return anterior(url, ...args);
+    });
+    render(<PublicPhotoConfigProvider><MemoryRouter><Home /></MemoryRouter></PublicPhotoConfigProvider>);
+    expect(await screen.findByAltText("Sua foto de perfil")).toBeInTheDocument();
+    await screen.findByRole("heading", { name: "Olá, Maria" });
+    await screen.findByText("Cliente Mentorado");
+    expect(screen.getByAltText("Sua foto de perfil")).toHaveAttribute("src", "https://fotos.example.test/7/foto_perfil.png");
 });

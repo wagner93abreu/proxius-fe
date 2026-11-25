@@ -35,7 +35,7 @@ test("saves password fields and clears them after successful encrypted storage",
     fireEvent.change(api, { target: { value: "fake-api-key" } });
     fireEvent.change(webhook, { target: { value: "fake-webhook" } });
     fireEvent.click(screen.getByRole("button", { name: "Salvar configuracao" }));
-    expect(await screen.findByText(/Configuracao salva com segredos criptografados/)).toBeInTheDocument();
+    expect(await screen.findByText(/Chave validada no Sandbox/)).toBeInTheDocument();
     expect(client.put).toHaveBeenCalledWith("integracoes/asaas", {
         environment: "SANDBOX", apiKey: "fake-api-key", webhookToken: "fake-webhook",
     }, { headers: { Authorization: "Bearer tenant-token" } });
@@ -82,6 +82,19 @@ test("does not display the form to non-admin users", async () => {
     show();
     expect(await screen.findByText(/Apenas administradores da empresa/)).toBeInTheDocument();
     expect(screen.queryByRole("button", { name: "Salvar configuracao" })).not.toBeInTheDocument();
+});
+
+test("shows validation failure without clearing entered credentials", async () => {
+    client.put.mockRejectedValue({ isAxiosError: true, response: { status: 422 } });
+    show();
+    const api = await screen.findByLabelText(/^Chave da API Asaas/);
+    const webhook = screen.getByLabelText(/^Token de autenticacao do webhook/);
+    fireEvent.change(api, { target: { value: "invalid-test-key" } });
+    fireEvent.change(webhook, { target: { value: "fake-webhook" } });
+    fireEvent.click(screen.getByRole("button", { name: "Salvar configuracao" }));
+    expect(await screen.findByText(/Sandbox Asaas recusou a chave/)).toBeInTheDocument();
+    expect(api).toHaveValue("invalid-test-key");
+    expect(webhook).toHaveValue("fake-webhook");
 });
 
 test("never requests configuration outside a local tenant host", () => {
