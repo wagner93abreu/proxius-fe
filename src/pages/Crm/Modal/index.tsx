@@ -1213,7 +1213,7 @@ export default function ModalCRM({ open, handleClose, dados, colunas, arquivado}
                                     )}
                                 />
                             </Grid> 
-                            <Grid item xs={12} md={12}>
+                            <Grid item xs={12} md={8}>
                                 <Rotulo>Detalhamento</Rotulo>
                                 <Campo type="text" placeholder="" maxLength={200} {...register('comoConheceuDetalhamento',{
                                     onBlur: (e) => {
