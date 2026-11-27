@@ -1,5 +1,5 @@
-export function publicLoginPreviewTenant(): string | null {
-    if (process.env.REACT_APP_PUBLIC_LOGIN_PREVIEW !== "true" || window.location.protocol !== "https:") {
+function publicTenant(): string | null {
+    if (window.location.protocol !== "https:") {
         return null;
     }
     switch (window.location.hostname) {
@@ -11,4 +11,12 @@ export function publicLoginPreviewTenant(): string | null {
         default:
             return null;
     }
+}
+
+export function publicLoginPreviewTenant(): string | null {
+    return process.env.REACT_APP_PUBLIC_LOGIN_PREVIEW === "true" ? publicTenant() : null;
+}
+
+export function publicRoutingTenant(): string | null {
+    return process.env.REACT_APP_PUBLIC_TENANT_ROUTING === "true" ? publicTenant() : null;
 }

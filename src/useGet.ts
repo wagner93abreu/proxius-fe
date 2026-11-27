@@ -34,14 +34,15 @@ return {getDados, sucesso, erro, resposta}
 
 
 import { useEffect, useState } from "react";
-import { localApiURL } from "./http";
+import { localApiURL, tenantRequestHeaders } from "./http";
 
 export default function useGet<T>({url, token} : {url : string, token?: string}){
     const [dados, setDados] = useState<T | null>(null);
     const [erro, setErro] = useState('');
 
     const headers: HeadersInit = {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        ...tenantRequestHeaders()
     }
     if (token) {
         headers['Authorization'] = `Bearer ${token}`;

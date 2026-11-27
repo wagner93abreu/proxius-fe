@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { mostrarMensagem } from "./stores/mensagem.store";
-import { localApiURL } from "./http";
+import { localApiURL, tenantRequestHeaders } from "./http";
 
 export default function usePost() {
     const [erro, setErro] = useState('');
@@ -11,7 +11,8 @@ export default function usePost() {
         {url: string, dados: T, token?: string}) {
             
             const headers: HeadersInit = {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                ...tenantRequestHeaders()
             }
             if (token) {
                 headers['Authorization'] = `Bearer ${token}`;

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { publicLoginPreviewTenant } from "../publicLoginPreview";
+import { publicLoginPreviewTenant, publicRoutingTenant } from "../publicLoginPreview";
 
 // Verifica se está no ambiente de produção ou desenvolvimento
 const hostname = window.location.hostname;
@@ -11,7 +11,13 @@ const baseURL = isTenantPoc
     ? `http://${hostname}:8080/`
     : isProduction ? 'https://api.proxius.com.br/' : 'http://localhost:8080/';
 
-export const localApiURL = hostname === 'localhost' || isTenantPoc ? baseURL : 'http://localhost:8080/';
+export const localApiURL = hostname === 'localhost' || isTenantPoc || publicRoutingTenant()
+    ? baseURL : 'http://localhost:8080/';
+
+export function tenantRequestHeaders(): Record<string, string> {
+    const tenant = publicRoutingTenant() || publicLoginPreviewTenant();
+    return tenant ? { "X-Tenant-Slug": tenant } : {};
+}
 
 const http = axios.create({
     baseURL: baseURL
@@ -21,9 +27,8 @@ http.interceptors.request.use(config => {
     if (hostname === 'localhost') {
         return Promise.reject(new Error("O dominio raiz local nao possui acesso operacional. Use o subdominio da empresa."));
     }
-    const previewTenant = publicLoginPreviewTenant();
-    if (previewTenant) {
-        config.headers.set("X-Tenant-Slug", previewTenant);
+    for (const [name, value] of Object.entries(tenantRequestHeaders())) {
+        config.headers.set(name, value);
     }
     return config;
 });
