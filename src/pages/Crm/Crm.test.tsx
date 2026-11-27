@@ -27,7 +27,7 @@ const card: ICard = {
     id: "card-1", nome: "Ana Souza", atendenteId: 7, atendente: "Maria",
     fotoAtendente: "", email: "", telefone: "", linkedin: "", instagram: "",
     objetivo: null, produtoId: null, produto: null, precoId: null, preco: null,
-    descricao: "", statusId: 1, lastStatusUpdate: "2026-10-01T10:00:00",
+    descricao: "Contato principal", statusId: 1, lastStatusUpdate: "2026-10-01T10:00:00",
     tags: "[1]", cliente: null, venda: null, linkPgto: null, taskStatus: "0/1",
     tasks: [{
         id: "task-1", cardId: "card-1", description: "Enviar proposta", createdAt: "2026-10-01T10:00:00",
@@ -79,6 +79,7 @@ afterEach(() => {
 test("exibe etiquetas existentes em tons neutros sem alterar seus dados", async () => {
     renderCrm();
     const ana = await screen.findByRole("button", { name: "Abrir card de Ana Souza" });
+    expect(within(ana).getByText("Contato principal")).toHaveStyle({ fontWeight: "400" });
     expect(await within(ana).findByTestId("crm-tag-1")).toHaveStyle({ backgroundColor: "#ededed", color: "#242424" });
     expect(http.put).not.toHaveBeenCalled();
 });

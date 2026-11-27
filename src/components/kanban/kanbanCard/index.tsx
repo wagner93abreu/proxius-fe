@@ -58,6 +58,16 @@ const CardTitle = styled.p`
     overflow-wrap: anywhere;
 `
 
+const CardDescription = styled.p`
+    padding: 0 2px;
+    margin: -6px 0 4px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #666666;
+    overflow-wrap: anywhere;
+`
+
 const CardInfos = styled.div`
     display: flex;
     justify-content: space-between;
@@ -84,13 +94,14 @@ img{
 
 interface KanbanCardProps {
     nome: string;
+    descricao: string | null;
     data: ICard;
     onCardUpdate: () => void;
     colunas: IColumn[];
     tagsDisponiveis: ITag[];
 }
 
-export default function KanbanCard({nome, data, onCardUpdate, colunas, tagsDisponiveis}: KanbanCardProps) {
+export default function KanbanCard({nome, descricao, data, onCardUpdate, colunas, tagsDisponiveis}: KanbanCardProps) {
     const [open, setOpen] = useState(false);
     const [tagsSelecionadas, setTagsSelecionadas] = useState<number[]>([]);
     const bucketName = usePublicPhotoBaseUrl();
@@ -149,6 +160,7 @@ export default function KanbanCard({nome, data, onCardUpdate, colunas, tagsDispo
                 })}
             </Stack>
             <CardTitle>{nome}</CardTitle>
+            {descricao && <CardDescription>{descricao}</CardDescription>}
             <CardInfos>
                 <CardIcons>
                     <p><CommentIcon/>{data.taskStatus}</p>

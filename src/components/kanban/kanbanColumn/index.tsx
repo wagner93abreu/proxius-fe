@@ -177,7 +177,7 @@ const KanbanColumn: React.FC<KanbanColumnProps> = ({ name, cards, id, refreshCar
                 <KanbanCards className="kanban-cards" draggable="false">
                     {newCard && <KanbanNewCard onClose={handleCloseNewCard} onCardAdded={handleCardAdded} columnId={id} withLoading={withLoading}/>}
                     {cards.map((card, index) => {
-                        return <KanbanCard key={index} nome={card.nome} data={card} colunas={colunas} onCardUpdate={handleCardUpdate} tagsDisponiveis={tagsDisponiveis}/>;
+                        return <KanbanCard key={index} nome={card.nome} descricao={card.descricao} data={card} colunas={colunas} onCardUpdate={handleCardUpdate} tagsDisponiveis={tagsDisponiveis}/>;
                     })}
 
                 </KanbanCards>
