@@ -11,6 +11,7 @@ import axios from "axios";
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Typography } from "@mui/material";
 import LogoProxiUs from "../../components/LogoProxiUs";
 import { centralPreviewEnabled, isLocalTenant } from "../../centralIdentity";
+import { publicLoginPreviewTenant } from "../../publicLoginPreview";
 
 const Card = styled.div`
   width: 100%;
@@ -112,6 +113,7 @@ interface ILogin {
 
 export default function Login() {
   const central = centralPreviewEnabled() && isLocalTenant(window.location.hostname);
+  const publicLoginPreview = publicLoginPreviewTenant() !== null;
     // const tenantPoc = /^[a-z0-9](?:[a-z0-9-]{0,48}[a-z0-9])?\.localhost$/.test(window.location.hostname);
   const [login, setLogin] = useState("");
   const [senha, setSenha] = useState("");
@@ -132,10 +134,10 @@ export default function Login() {
 
     useEffect(() => {
 
-      if (localStorage.getItem('authToken') != null && !autenticaStore.isTokenExpired()) {
+      if (!publicLoginPreview && localStorage.getItem('authToken') != null && !autenticaStore.isTokenExpired()) {
           navigate('/home');
       }
-    }, [navigate]);
+    }, [navigate, publicLoginPreview]);
 
     // function onChange(value: string | null) {
     //   setVerified(Boolean(value));
@@ -228,6 +230,15 @@ export default function Login() {
   
       http.post('login', usuario, axiosConfig)
         .then(async resposta => {
+          if (publicLoginPreview) {
+            if (typeof resposta.data?.token !== "string" || !resposta.data.token) {
+              throw new Error("Resposta de login inválida.");
+            }
+            setSenha("");
+            setSuccessMessage("Login confirmado. Esta é uma prévia: o painel e as demais funções ainda não estão disponíveis.");
+            setShowSuccess(true);
+            return;
+          }
           await autenticaStore.login({login: login, token: resposta.data.token})
           resposta && navigate('/home')
         })
@@ -247,10 +258,11 @@ export default function Login() {
         <Imagem />
         <Titulo>ProxiUs</Titulo>
         <Subtitulo>Acesse sua conta para continuar</Subtitulo>
+        {publicLoginPreview && <Subtitulo>Prévia limitada ao teste de login. O painel ainda não está disponível.</Subtitulo>}
         <Formulario onSubmit={handleLogin}>
             <CampoDigitacao required={true} tipo={central ? "email" : "login"} label={central ? "E-mail" : "Login"} valor={login} placeholder={central ? "seuemail@exemplo.com" : "login"} onChange={setLogin} maxLength={central ? 254 : 50} />
             <CampoDigitacao required={true} tipo="password" label="Senha" valor={senha} placeholder="*******" onChange={setSenha} maxLength={central ? 1024 : 50} />
-            {!central && <LinkEsqueciSenha type="button" onClick={handleAbrirEsqueciSenha}>Esqueceu sua senha?</LinkEsqueciSenha>}
+            {!central && !publicLoginPreview && <LinkEsqueciSenha type="button" onClick={handleAbrirEsqueciSenha}>Esqueceu sua senha?</LinkEsqueciSenha>}
             {/* {!tenantPoc &&
               <ReCAPTCHA sitekey="6Lf10zsqAAAAAFLQBmVCZKH81pE1LpzUOSBny_dl" onChange={onChange} />} */}
             <BotaoCustomizado type="submit" >Entrar</BotaoCustomizado>

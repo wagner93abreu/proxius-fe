@@ -126,6 +126,31 @@ test("keeps login unauthenticated and shows an error when loading user data fail
     expect(window.alert).not.toHaveBeenCalled();
 });
 
+test("public login preview confirms credentials without creating a session", async () => {
+    const originalLocation = window.location;
+    const previousFlag = process.env.REACT_APP_PUBLIC_LOGIN_PREVIEW;
+    Object.defineProperty(window, "location", {
+        configurable: true,
+        value: { ...originalLocation, hostname: "proxius.com.br", protocol: "https:" },
+    });
+    process.env.REACT_APP_PUBLIC_LOGIN_PREVIEW = "true";
+    mockedHttp.post.mockResolvedValue({ data: { token: "test-token" } });
+    try {
+        renderLogin();
+        expect(screen.getByText(/Prévia limitada ao teste de login/)).toBeInTheDocument();
+        expect(screen.queryByRole("button", { name: "Esqueceu sua senha?" })).not.toBeInTheDocument();
+        fireEvent.click(screen.getByRole("button", { name: "Entrar" }));
+        expect(await screen.findByText(/Login confirmado/)).toBeInTheDocument();
+        expect(mockedHttp.get).not.toHaveBeenCalled();
+        expect(localStorage.getItem("authToken")).toBeNull();
+        expect(screen.queryByText("Página inicial")).not.toBeInTheDocument();
+    } finally {
+        Object.defineProperty(window, "location", { configurable: true, value: originalLocation });
+        if (previousFlag === undefined) delete process.env.REACT_APP_PUBLIC_LOGIN_PREVIEW;
+        else process.env.REACT_APP_PUBLIC_LOGIN_PREVIEW = previousFlag;
+    }
+});
+
 test("shows password recovery errors in the modal and preserves the recovery form", async () => {
     mockedHttp.post.mockRejectedValue({
         isAxiosError: true,

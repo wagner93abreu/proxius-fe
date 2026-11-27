@@ -1,4 +1,5 @@
 import axios from "axios";
+import { publicLoginPreviewTenant } from "../publicLoginPreview";
 
 // Verifica se está no ambiente de produção ou desenvolvimento
 const hostname = window.location.hostname;
@@ -19,6 +20,10 @@ const http = axios.create({
 http.interceptors.request.use(config => {
     if (hostname === 'localhost') {
         return Promise.reject(new Error("O dominio raiz local nao possui acesso operacional. Use o subdominio da empresa."));
+    }
+    const previewTenant = publicLoginPreviewTenant();
+    if (previewTenant) {
+        config.headers.set("X-Tenant-Slug", previewTenant);
     }
     return config;
 });
