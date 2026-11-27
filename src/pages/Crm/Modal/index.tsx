@@ -108,20 +108,6 @@ const InputMaskCustomizado = styled(InputMask)`
     &::placeholder { color: #666666; }
 `
 
-const CampoTextoLongo = styled.textarea`
-    color: #242424;
-    background:#ffffff;
-    width: 100%;
-    padding: 8px;
-    margin-top: 3px;
-    border-radius: 10px;
-    border: 1px solid rgba(20, 20, 20, 0.2);
-    &:focus-visible { outline: 2px solid #141414; }
-    box-sizing: border-box;
-    box-shadow: 0 4px 16px rgba(20, 20, 20, 0.04);
-    min-height: 100px; /* Ajuste a altura mínima conforme necessário */
-`;
-
 const BotaoCustomizado = styled(Botao)`
     width: 50%;
     display: block;
@@ -921,7 +907,6 @@ export default function ModalCRM({ open, handleClose, dados, colunas, arquivado}
         { value: 'instagram', label: 'Instagram' },
         { value: 'anuncios', label: 'Anúncios' },
         { value: 'eventos', label: 'Eventos' },
-        { value: 'mova', label: 'MOVA' },
         { value: 'tiktok', label: 'TikTok' },
         { value: 'youtube', label: 'Youtube' },
         { value: 'outros', label: 'Outros' },
@@ -1107,6 +1092,21 @@ export default function ModalCRM({ open, handleClose, dados, colunas, arquivado}
                                 })} />
                                  {errors.nome && typeof errors.nome.message === 'string' && <SpanErro>{errors.nome.message}</SpanErro>}                         
                             </Grid>   
+
+                            <Grid item xs={12} md={6}>
+                                <Rotulo>Contato</Rotulo>
+                                <Campo type="text" placeholder="" maxLength={2000} {...register('descricao', {
+                                    onBlur: (e) => {
+                                        if (e.target.value !== dadosCard?.descricao) {
+                                            const card = {
+                                                id: dados.id,
+                                                descricao: e.target.value
+                                            };
+                                            onInputblur(card);
+                                        }
+                                    }
+                                })} />
+                            </Grid>
 
                             <Grid item xs={6} md={3}>
                                 <Rotulo>E-mail</Rotulo>                                
@@ -1354,7 +1354,7 @@ export default function ModalCRM({ open, handleClose, dados, colunas, arquivado}
                             )}
 
                             {!isAtendimento && (
-                                <Grid item xs={9} md={6} >
+                                <Grid item xs={9} md={6} style={{ display: 'none' }}>
                                     <Rotulo>Venda</Rotulo>                                
                                     <Controller
                                         name="venda"
@@ -1403,7 +1403,7 @@ export default function ModalCRM({ open, handleClose, dados, colunas, arquivado}
                             )}                             
                               
 
-                            <Grid item xs={12} md={4}>
+                            <Grid item xs={12} md={4} style={{ display: 'none' }}>
                                 <Rotulo>Objetivo</Rotulo>
                                 <Controller
                                     name="objetivo"
@@ -1427,7 +1427,7 @@ export default function ModalCRM({ open, handleClose, dados, colunas, arquivado}
                                     )}
                                 />
                             </Grid>  
-                            <Grid item xs={12} md={12}>
+                            <Grid item xs={12} md={12} style={{ display: 'none' }}>
                                 <Rotulo>Link do Drive</Rotulo>
                                 <Controller
                                     name="linkDrive"
@@ -1451,21 +1451,6 @@ export default function ModalCRM({ open, handleClose, dados, colunas, arquivado}
                                 <DescricaoCard cardId={dados.id} usuarioNome={usuarioNomeAtual} usuarioId={usuarioIdAtual} />
                             </Grid>
 
-                            <Grid item xs={12} md={12} style={{ display: dadosCard?.descricao?.trim() ? undefined : 'none' }}>
-                                <Rotulo>Descrição</Rotulo>
-                                <CampoTextoLongo {...register('descricao', { 
-                                    onBlur: (e) => {
-                                        if(e.target.value !== dadosCard?.descricao){
-                                        let card = {
-                                            id: dados.id,
-                                            descricao: e.target.value                                        
-                                        }
-                                        onInputblur(card)
-                                    }
-                                    },
-                                    maxLength: 2000 })} />
-                                
-                            </Grid> 
                             <Grid item xs={12} md={12} style={{ marginLeft: "10px" }}>
                                 <Box sx={{ borderBottom: "1px solid rgba(20, 20, 20, 0.12)", mb: 1 }}>
                                     <Tabs
