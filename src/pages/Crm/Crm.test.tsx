@@ -80,7 +80,7 @@ test("exibe etiquetas existentes em tons neutros sem alterar seus dados", async 
     renderCrm();
     const ana = await screen.findByRole("button", { name: "Abrir card de Ana Souza" });
     expect(within(ana).getByText("Contato principal")).toHaveStyle({ fontWeight: "400" });
-    expect(await within(ana).findByTestId("crm-tag-1")).toHaveStyle({ backgroundColor: "#ededed", color: "#242424" });
+    expect(await within(ana).findByTestId("crm-tag-1")).toHaveStyle({ backgroundColor: "#123456", color: "#ffffff" });
     expect(http.put).not.toHaveBeenCalled();
 });
 
@@ -89,7 +89,7 @@ test("aplica o tema claro e preserva os filtros e a movimentação dos cards", a
     const ana = await screen.findByRole("button", { name: "Abrir card de Ana Souza" });
     expect(ana).toHaveStyle({ backgroundColor: "#ffffff", color: "#242424" });
     expect(screen.getByRole("banner")).toHaveStyle({ backgroundColor: "rgba(255, 255, 255, 0.94)" });
-    expect(await within(ana).findByTestId("crm-tag-1")).toHaveStyle({ backgroundColor: "#ededed", color: "#242424" });
+    expect(await within(ana).findByTestId("crm-tag-1")).toHaveStyle({ backgroundColor: "#123456", color: "#ffffff" });
 
     abrirMenu();
     expect(screen.getByRole("button", { name: "Gestão de Parceiros" })).toBeInTheDocument();

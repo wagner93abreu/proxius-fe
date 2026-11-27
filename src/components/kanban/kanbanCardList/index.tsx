@@ -129,13 +129,14 @@ export default function KanbanCardList({nome, data, onCardUpdate, colunas, tagsD
             <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
                 {tagsSelecionadas.map((tagId) => {
                     const tag = tagsDisponiveis.find((t) => t.id === tagId);
+                    const [backgroundColor = '#ededed', color = '#242424'] = tag?.color?.split(';') || [];
                     return (
                         <Chip
                             key={tagId}
                             label={tag?.name || `Tag ${tagId}`}
                             sx={{
-                                backgroundColor: '#ededed',
-                                color: '#242424',
+                                backgroundColor,
+                                color,
                                 fontWeight: 700,
                                 height: 20,
                                 fontSize: 10,

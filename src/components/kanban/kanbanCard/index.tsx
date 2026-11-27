@@ -140,6 +140,7 @@ export default function KanbanCard({nome, descricao, data, onCardUpdate, colunas
             <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
                 {tagsSelecionadas.map((tagId) => {
                     const tag = tagsDisponiveis.find((t) => t.id === tagId);
+                    const [backgroundColor = '#ededed', color = '#242424'] = tag?.color?.split(';') || [];
                     return (
                         
                         <Chip
@@ -147,8 +148,8 @@ export default function KanbanCard({nome, descricao, data, onCardUpdate, colunas
                             data-testid={`crm-tag-${tagId}`}
                             label={tag?.name || `Tag ${tagId}`}
                             sx={{
-                                backgroundColor: '#ededed',
-                                color: '#242424',
+                                backgroundColor,
+                                color,
                                 borderRadius: '5px',
                                 fontSize: 10,
                                 fontWeight: 400,
