@@ -1070,7 +1070,7 @@ export default function ModalCRM({ open, handleClose, dados, colunas, arquivado}
                                 <Campo type="text" readOnly {...register('cardID')} />
                             </Grid>
 
-                            <Grid item xs={12} md={6}>                                                                                     
+                            <Grid item xs={12} md={4}>
                                 <Rotulo>Nome *</Rotulo>                                
                                 <Campo type="text" placeholder="" maxLength={100} {...register('nome',{
                                 onBlur: (e) => {
@@ -1093,7 +1093,7 @@ export default function ModalCRM({ open, handleClose, dados, colunas, arquivado}
                                  {errors.nome && typeof errors.nome.message === 'string' && <SpanErro>{errors.nome.message}</SpanErro>}                         
                             </Grid>   
 
-                            <Grid item xs={12} md={6}>
+                            <Grid item xs={12} md={4}>
                                 <Rotulo>Contato</Rotulo>
                                 <Campo type="text" placeholder="" maxLength={2000} {...register('descricao', {
                                     onBlur: (e) => {
@@ -1108,7 +1108,7 @@ export default function ModalCRM({ open, handleClose, dados, colunas, arquivado}
                                 })} />
                             </Grid>
 
-                            <Grid item xs={6} md={3}>
+                            <Grid item xs={12} md={4}>
                                 <Rotulo>E-mail</Rotulo>                                
                                 <Campo type="text" placeholder="" maxLength={100} {...register('email', {
                                 onBlur: (e) => {
@@ -1139,7 +1139,7 @@ export default function ModalCRM({ open, handleClose, dados, colunas, arquivado}
                                         }})} />
                             </Grid>   */}  
 
-                            <Grid item xs={6} md={3}>
+                            <Grid item xs={12} md={4}>
                                 <Rotulo>Telefone</Rotulo>
                                 <Controller
                                     name="telefone"
@@ -1165,7 +1165,7 @@ export default function ModalCRM({ open, handleClose, dados, colunas, arquivado}
                                 />
                             </Grid>
 
-                            <Grid item xs={12} md={6}>
+                            <Grid item xs={12} md={4}>
                                 <Rotulo>LinkedIn</Rotulo>
                                 <Campo type="text" placeholder="" maxLength={200} {...register('linkedin',{
                                     onBlur: (e) => {
@@ -1177,7 +1177,7 @@ export default function ModalCRM({ open, handleClose, dados, colunas, arquivado}
                                     },
                                 })} />
                             </Grid>       
-                            <Grid item xs={12} md={6}>
+                            <Grid item xs={12} md={4}>
                                 <Rotulo>Instagram</Rotulo>
                                 <Campo type="text" placeholder="" maxLength={200} {...register('instagram',{
                                     onBlur: (e) => {
@@ -1213,7 +1213,7 @@ export default function ModalCRM({ open, handleClose, dados, colunas, arquivado}
                                     )}
                                 />
                             </Grid> 
-                            <Grid item xs={12} md={4}>
+                            <Grid item xs={12} md={12}>
                                 <Rotulo>Detalhamento</Rotulo>
                                 <Campo type="text" placeholder="" maxLength={200} {...register('comoConheceuDetalhamento',{
                                     onBlur: (e) => {
