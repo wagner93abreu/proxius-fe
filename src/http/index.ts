@@ -8,7 +8,7 @@ const isProduction = hostname !== 'localhost' && !isTenantPoc;
 // Define a URL base da API com base no ambiente
 const baseURL = isTenantPoc
     ? `http://${hostname}:8080/`
-    : isProduction ? 'https://api.rhintegrado.com.br/' : 'http://localhost:8080/';
+    : isProduction ? 'https://api.proxius.com.br/' : 'http://localhost:8080/';
 
 export const localApiURL = hostname === 'localhost' || isTenantPoc ? baseURL : 'http://localhost:8080/';
 
